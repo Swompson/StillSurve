@@ -1,0 +1,487 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/maze.gd" id="1"]
+
+[ext_resource type="PackedScene" path="res://scenes/world/wall.tscn" id="2"]
+
+[ext_resource type="Script" path="res://scripts/world/pickup.gd" id="3"]
+
+[ext_resource type="Texture2D" path="res://assets/textures/concrete_floor.png" id="4"]
+
+[node name="Maze" type="Node2D"]
+
+script = ExtResource("1")
+
+connections = PackedInt32Array(6, 14, 14, 12, 2, 10, 14, 14, 12, 6, 12, 5, 3, 13, 7, 14, 10, 9, 7, 9, 5, 1, 7, 10, 9, 7, 11, 10, 12, 7, 14, 11, 12, 5, 6, 10, 11, 10, 12, 5, 5, 7, 14, 13, 7, 11, 8, 6, 12, 3, 9, 3, 13, 1, 5, 3, 10, 10, 13, 5, 4, 4, 6, 9, 6, 13, 6, 10, 10, 13, 7, 15, 15, 9, 6, 11, 9, 7, 10, 12, 5, 7, 13, 5, 6, 13, 6, 12, 5, 4, 5, 5, 5, 3, 13, 3, 11, 9, 5, 5, 3, 11, 13, 3, 10, 13, 6, 10, 12, 5, 3, 10, 10, 11, 10, 10, 11, 9, 2, 11, 9)
+
+[node name="Floor" type="Sprite2D" parent="."]
+
+z_index = -20
+
+texture_repeat = 2
+
+texture = ExtResource("4")
+
+region_enabled = true
+
+region_rect = Rect2(0, 0, 4096, 4096)
+
+[node name="Walls" type="Node2D" parent="."]
+
+z_index = 5
+
+[node name="Wall000" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(0, -1760)
+
+wall_size = Vector2(3544, 24)
+
+[node name="Wall001" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(-160, -1440)
+
+wall_size = Vector2(664, 24)
+
+[node name="Wall002" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(-1280, -1120)
+
+wall_size = Vector2(344, 24)
+
+damaged = true
+
+[node name="Wall003" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(160, -1120)
+
+wall_size = Vector2(664, 24)
+
+[node name="Wall004" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(960, -1120)
+
+wall_size = Vector2(344, 24)
+
+[node name="Wall005" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(1600, -1120)
+
+wall_size = Vector2(344, 24)
+
+damaged = true
+
+[node name="Wall006" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(-1120, -800)
+
+wall_size = Vector2(664, 24)
+
+[node name="Wall007" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(-160, -800)
+
+wall_size = Vector2(664, 24)
+
+[node name="Wall008" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(1280, -800)
+
+wall_size = Vector2(344, 24)
+
+damaged = true
+
+[node name="Wall009" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(-640, -480)
+
+wall_size = Vector2(984, 24)
+
+[node name="Wall010" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(-1120, -160)
+
+wall_size = Vector2(664, 24)
+
+[node name="Wall011" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(320, -160)
+
+wall_size = Vector2(984, 24)
+
+[node name="Wall012" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(1280, -160)
+
+wall_size = Vector2(344, 24)
+
+[node name="Wall013" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(-1280, 160)
+
+wall_size = Vector2(984, 24)
+
+[node name="Wall014" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(960, 160)
+
+wall_size = Vector2(344, 24)
+
+damaged = true
+
+[node name="Wall015" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(-1120, 480)
+
+wall_size = Vector2(664, 24)
+
+[node name="Wall016" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(640, 480)
+
+wall_size = Vector2(344, 24)
+
+[node name="Wall017" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(1440, 480)
+
+wall_size = Vector2(664, 24)
+
+[node name="Wall018" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(-1280, 800)
+
+wall_size = Vector2(344, 24)
+
+[node name="Wall019" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(0, 1120)
+
+wall_size = Vector2(344, 24)
+
+[node name="Wall020" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(960, 1120)
+
+wall_size = Vector2(984, 24)
+
+[node name="Wall021" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(-1120, 1440)
+
+wall_size = Vector2(664, 24)
+
+[node name="Wall022" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(-160, 1440)
+
+wall_size = Vector2(664, 24)
+
+[node name="Wall023" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(960, 1440)
+
+wall_size = Vector2(344, 24)
+
+damaged = true
+
+[node name="Wall024" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(0, 1760)
+
+wall_size = Vector2(3544, 24)
+
+[node name="Wall025" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(-1760, 0)
+
+wall_size = Vector2(24, 3544)
+
+[node name="Wall026" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(-1440, -1280)
+
+wall_size = Vector2(24, 344)
+
+damaged = true
+
+[node name="Wall027" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(-1440, -640)
+
+wall_size = Vector2(24, 344)
+
+[node name="Wall028" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(-1440, 1120)
+
+wall_size = Vector2(24, 664)
+
+[node name="Wall029" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(-1120, 960)
+
+wall_size = Vector2(24, 344)
+
+damaged = true
+
+[node name="Wall030" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(-800, -1120)
+
+wall_size = Vector2(24, 664)
+
+[node name="Wall031" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(-800, -320)
+
+wall_size = Vector2(24, 344)
+
+[node name="Wall032" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(-800, 800)
+
+wall_size = Vector2(24, 664)
+
+[node name="Wall033" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(-480, -1600)
+
+wall_size = Vector2(24, 344)
+
+[node name="Wall034" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(-480, 640)
+
+wall_size = Vector2(24, 1624)
+
+[node name="Wall035" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(-160, -160)
+
+wall_size = Vector2(24, 664)
+
+[node name="Wall036" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(-160, 960)
+
+wall_size = Vector2(24, 344)
+
+[node name="Wall037" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(160, -640)
+
+wall_size = Vector2(24, 344)
+
+[node name="Wall038" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(160, 0)
+
+wall_size = Vector2(24, 344)
+
+damaged = true
+
+[node name="Wall039" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(160, 640)
+
+wall_size = Vector2(24, 344)
+
+[node name="Wall040" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(480, -640)
+
+wall_size = Vector2(24, 1624)
+
+[node name="Wall041" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(480, 960)
+
+wall_size = Vector2(24, 984)
+
+[node name="Wall042" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(800, -640)
+
+wall_size = Vector2(24, 344)
+
+[node name="Wall043" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(800, 320)
+
+wall_size = Vector2(24, 344)
+
+[node name="Wall044" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(800, 1600)
+
+wall_size = Vector2(24, 344)
+
+damaged = true
+
+[node name="Wall045" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(1120, -1440)
+
+wall_size = Vector2(24, 664)
+
+[node name="Wall046" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(1120, -160)
+
+wall_size = Vector2(24, 664)
+
+[node name="Wall047" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(1120, 640)
+
+wall_size = Vector2(24, 344)
+
+damaged = true
+
+[node name="Wall048" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(1440, -1280)
+
+wall_size = Vector2(24, 344)
+
+[node name="Wall049" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(1440, -320)
+
+wall_size = Vector2(24, 344)
+
+[node name="Wall050" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(1440, 1120)
+
+wall_size = Vector2(24, 664)
+
+[node name="Wall051" parent="Walls" instance=ExtResource("2")]
+
+position = Vector2(1760, 0)
+
+wall_size = Vector2(24, 3544)
+
+[node name="Pickups" type="Node2D" parent="."]
+
+z_index = 3
+
+[node name="Figurine01" type="Node2D" parent="Pickups"]
+
+position = Vector2(-1600, -1600)
+
+script = ExtResource("3")
+
+kind = "figurine"
+
+[node name="Figurine02" type="Node2D" parent="Pickups"]
+
+position = Vector2(1600, -1600)
+
+script = ExtResource("3")
+
+kind = "figurine"
+
+[node name="Figurine03" type="Node2D" parent="Pickups"]
+
+position = Vector2(-1600, 1600)
+
+script = ExtResource("3")
+
+kind = "figurine"
+
+[node name="Figurine04" type="Node2D" parent="Pickups"]
+
+position = Vector2(1600, 1600)
+
+script = ExtResource("3")
+
+kind = "figurine"
+
+[node name="Figurine05" type="Node2D" parent="Pickups"]
+
+position = Vector2(0, -1600)
+
+script = ExtResource("3")
+
+kind = "figurine"
+
+[node name="Figurine06" type="Node2D" parent="Pickups"]
+
+position = Vector2(-1600, 0)
+
+script = ExtResource("3")
+
+kind = "figurine"
+
+[node name="Figurine07" type="Node2D" parent="Pickups"]
+
+position = Vector2(0, 1600)
+
+script = ExtResource("3")
+
+kind = "figurine"
+
+[node name="Figurine08" type="Node2D" parent="Pickups"]
+
+position = Vector2(1280, -320)
+
+script = ExtResource("3")
+
+kind = "figurine"
+
+[node name="Figurine09" type="Node2D" parent="Pickups"]
+
+position = Vector2(1280, 640)
+
+script = ExtResource("3")
+
+kind = "figurine"
+
+[node name="Figurine10" type="Node2D" parent="Pickups"]
+
+position = Vector2(-960, -960)
+
+script = ExtResource("3")
+
+kind = "figurine"
+
+[node name="Figurine11" type="Node2D" parent="Pickups"]
+
+position = Vector2(-960, 640)
+
+script = ExtResource("3")
+
+kind = "figurine"
+
+[node name="Figurine12" type="Node2D" parent="Pickups"]
+
+position = Vector2(960, -1280)
+
+script = ExtResource("3")
+
+kind = "figurine"
+
+[node name="Battery01" type="Node2D" parent="Pickups"]
+
+position = Vector2(320, -960)
+
+script = ExtResource("3")
+
+kind = "battery"
+
+[node name="Battery02" type="Node2D" parent="Pickups"]
+
+position = Vector2(-320, -640)
+
+script = ExtResource("3")
+
+kind = "battery"
+
+[node name="Battery03" type="Node2D" parent="Pickups"]
+
+position = Vector2(640, 320)
+
+script = ExtResource("3")
+
+kind = "battery"

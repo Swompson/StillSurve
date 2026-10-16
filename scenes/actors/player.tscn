@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/actors/player_controller.gd" id="1"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/player/player_frames.tres" id="2"]
+[ext_resource type="Script" path="res://scripts/audio/footstep_audio.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/audio/breathing_audio.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/actors/held_flashlight.gd" id="5"]
+[sub_resource type="CircleShape2D" id="shape"]
+radius = 24.0
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 1
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1")
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("shape")
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+z_index = 200
+texture_filter = 2
+scale = Vector2(0.2882883, 0.2882883)
+sprite_frames = ExtResource("2")
+animation = &"idle"
+[node name="Flashlight" type="Node2D" parent="."]
+z_index = 201
+position = Vector2(-17, 22)
+rotation = 1.5707964
+script = ExtResource("5")
+[node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(0.7, 0.7)
+ignore_rotation = true
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+[node name="Footsteps" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("3")
+[node name="Breathing" type="AudioStreamPlayer" parent="."]
+script = ExtResource("4")

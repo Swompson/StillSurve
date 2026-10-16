@@ -1,0 +1,23 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/game/game_controller.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/world/maze.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/actors/player.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/actors/monster.tscn" id="4"]
+[ext_resource type="Script" path="res://scripts/rendering/visibility_mask.gd" id="5"]
+[ext_resource type="Script" path="res://scripts/ui/game_hud.gd" id="6"]
+[ext_resource type="Script" path="res://scripts/audio/ambient_audio.gd" id="7"]
+[node name="Game" type="Node2D"]
+script = ExtResource("1")
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+script = ExtResource("7")
+[node name="Maze" parent="." instance=ExtResource("2")]
+[node name="Player" parent="." instance=ExtResource("3")]
+position = Vector2(-1600, 1600)
+[node name="Monster" parent="." instance=ExtResource("4")]
+[node name="Visibility" type="Node2D" parent="."]
+z_index = 100
+script = ExtResource("5")
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 10
+script = ExtResource("6")
