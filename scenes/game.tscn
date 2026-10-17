@@ -1,23 +1,516 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene format=3 uid="uid://b7m4sxohli16x"]
 
-[ext_resource type="Script" path="res://scripts/game/game_controller.gd" id="1"]
+[ext_resource type="Script" uid="uid://6l20ig5m30tm" path="res://scripts/game/game_controller.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/world/maze.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/actors/player.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://scenes/actors/monster.tscn" id="4"]
-[ext_resource type="Script" path="res://scripts/rendering/visibility_mask.gd" id="5"]
-[ext_resource type="Script" path="res://scripts/ui/game_hud.gd" id="6"]
-[ext_resource type="Script" path="res://scripts/audio/ambient_audio.gd" id="7"]
-[node name="Game" type="Node2D"]
+[ext_resource type="Shader" uid="uid://di8mad8yen1pn" path="res://shaders/concrete_wall.gdshader" id="4_ca42v"]
+[ext_resource type="Script" uid="uid://cdd7x2wy3l7we" path="res://scripts/rendering/visibility_mask.gd" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/ui/game_hud.tscn" id="6"]
+[ext_resource type="Script" uid="uid://cds40enhnofvl" path="res://scripts/audio/ambient_audio.gd" id="7"]
+[ext_resource type="Script" uid="uid://natc18wr73je" path="res://scripts/rendering/atmospheric_haze.gd" id="8"]
+[ext_resource type="Script" uid="uid://dwt41kbfujaa" path="res://scripts/audio/room_acoustics.gd" id="9_room"]
+[ext_resource type="AudioStream" uid="uid://pcpjtt2ox7t1" path="res://assets/audio/user_originals/loottoy.mp3" id="10_toy"]
+[ext_resource type="AudioStream" uid="uid://bf3anbwpc0gex" path="res://assets/audio/user_originals/danger.mp3" id="audio_danger"]
+[ext_resource type="AudioStream" uid="uid://d3nkccdwqmd2g" path="res://assets/audio/user_originals/heartbeat.mp3" id="audio_heartbeat"]
+[ext_resource type="AudioStream" uid="uid://ck3i5c850xy4b" path="res://assets/audio/user_originals/screamer.mp3" id="audio_screamer"]
+[ext_resource type="AudioStream" uid="uid://xjxapka48km" path="res://assets/audio/user_originals/startgame.mp3" id="audio_startgame"]
+[ext_resource type="PackedScene" path="res://scenes/actors/stalker.tscn" id="stalker"]
+[ext_resource type="Shader" path="res://shaders/vignette.gdshader" id="vignette"]
+[ext_resource type="Script" path="res://scripts/rendering/vignette.gd" id="vignette_script"]
+
+[sub_resource type="ShaderMaterial" id="VignetteMaterial"]
+shader = ExtResource("vignette")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rysoc"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ssvqc"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_264po"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1kice"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5newe"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_37s47"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bt5mj"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e1j6l"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pl11u"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhx41"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qnb83"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sww3w"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_suyxu"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sgl2t"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qouja"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wljb1"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v2yb1"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_js0lu"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gxtfn"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_twgab"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_02fa5"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nepv3"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7025r"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m4url"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ool0"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pr1ej"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_05nbr"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0sl42"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oaba0"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_458eo"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3rex"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fedci"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8qswn"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rm0al"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i4re6"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pf7vy"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o8ni1"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3hbvx"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q8j3a"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ms3bu"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ixpq"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bk1p3"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n8ral"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yd4ix"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_66xif"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bnuda"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0rmfi"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xbak0"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3x28f"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l6q63"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mmvbu"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_weeiq"]
+shader = ExtResource("4_ca42v")
+shader_parameter/exposure = 0.18
+
+[node name="Game" type="Node2D" unique_id=1693087144]
 script = ExtResource("1")
-[node name="Ambience" type="AudioStreamPlayer" parent="."]
+
+[node name="Ambience" type="AudioStreamPlayer" parent="." unique_id=892000056]
 script = ExtResource("7")
-[node name="Maze" parent="." instance=ExtResource("2")]
-[node name="Player" parent="." instance=ExtResource("3")]
+
+[node name="Maze" parent="." unique_id=990319020 instance=ExtResource("2")]
+position = Vector2(14, 46)
+
+[node name="Wall000" parent="Maze/Walls" index="0"]
+z_index = 90
+material = SubResource("ShaderMaterial_rysoc")
+
+[node name="Wall001" parent="Maze/Walls" index="1"]
+z_index = 90
+material = SubResource("ShaderMaterial_ssvqc")
+
+[node name="Wall002" parent="Maze/Walls" index="2"]
+z_index = 90
+material = SubResource("ShaderMaterial_264po")
+
+[node name="Wall003" parent="Maze/Walls" index="3"]
+z_index = 90
+material = SubResource("ShaderMaterial_1kice")
+
+[node name="Wall004" parent="Maze/Walls" index="4"]
+z_index = 90
+material = SubResource("ShaderMaterial_5newe")
+
+[node name="Wall005" parent="Maze/Walls" index="5"]
+z_index = 90
+material = SubResource("ShaderMaterial_37s47")
+
+[node name="Wall006" parent="Maze/Walls" index="6"]
+z_index = 90
+material = SubResource("ShaderMaterial_bt5mj")
+
+[node name="Wall007" parent="Maze/Walls" index="7"]
+z_index = 90
+material = SubResource("ShaderMaterial_e1j6l")
+
+[node name="Wall008" parent="Maze/Walls" index="8"]
+z_index = 90
+material = SubResource("ShaderMaterial_pl11u")
+
+[node name="Wall009" parent="Maze/Walls" index="9"]
+z_index = 90
+material = SubResource("ShaderMaterial_bhx41")
+
+[node name="Wall010" parent="Maze/Walls" index="10"]
+z_index = 90
+material = SubResource("ShaderMaterial_qnb83")
+
+[node name="Wall011" parent="Maze/Walls" index="11"]
+z_index = 90
+material = SubResource("ShaderMaterial_sww3w")
+
+[node name="Wall012" parent="Maze/Walls" index="12"]
+z_index = 90
+material = SubResource("ShaderMaterial_suyxu")
+
+[node name="Wall013" parent="Maze/Walls" index="13"]
+z_index = 90
+material = SubResource("ShaderMaterial_sgl2t")
+
+[node name="Wall014" parent="Maze/Walls" index="14"]
+z_index = 90
+material = SubResource("ShaderMaterial_qouja")
+
+[node name="Wall015" parent="Maze/Walls" index="15"]
+z_index = 90
+material = SubResource("ShaderMaterial_wljb1")
+
+[node name="Wall016" parent="Maze/Walls" index="16"]
+z_index = 90
+material = SubResource("ShaderMaterial_v2yb1")
+
+[node name="Wall017" parent="Maze/Walls" index="17"]
+z_index = 90
+material = SubResource("ShaderMaterial_js0lu")
+
+[node name="Wall018" parent="Maze/Walls" index="18"]
+z_index = 90
+material = SubResource("ShaderMaterial_gxtfn")
+
+[node name="Wall019" parent="Maze/Walls" index="19"]
+z_index = 90
+material = SubResource("ShaderMaterial_twgab")
+
+[node name="Wall020" parent="Maze/Walls" index="20"]
+z_index = 90
+material = SubResource("ShaderMaterial_02fa5")
+
+[node name="Wall021" parent="Maze/Walls" index="21"]
+z_index = 90
+material = SubResource("ShaderMaterial_nepv3")
+
+[node name="Wall022" parent="Maze/Walls" index="22"]
+z_index = 90
+material = SubResource("ShaderMaterial_7025r")
+
+[node name="Wall023" parent="Maze/Walls" index="23"]
+z_index = 90
+material = SubResource("ShaderMaterial_m4url")
+
+[node name="Wall024" parent="Maze/Walls" index="24"]
+z_index = 90
+material = SubResource("ShaderMaterial_8ool0")
+
+[node name="Wall025" parent="Maze/Walls" index="25"]
+z_index = 90
+material = SubResource("ShaderMaterial_pr1ej")
+
+[node name="Wall026" parent="Maze/Walls" index="26"]
+z_index = 90
+material = SubResource("ShaderMaterial_05nbr")
+
+[node name="Wall027" parent="Maze/Walls" index="27"]
+z_index = 90
+material = SubResource("ShaderMaterial_0sl42")
+
+[node name="Wall028" parent="Maze/Walls" index="28"]
+z_index = 90
+material = SubResource("ShaderMaterial_oaba0")
+
+[node name="Wall029" parent="Maze/Walls" index="29"]
+z_index = 90
+material = SubResource("ShaderMaterial_458eo")
+
+[node name="Wall030" parent="Maze/Walls" index="30"]
+z_index = 90
+material = SubResource("ShaderMaterial_h3rex")
+
+[node name="Wall031" parent="Maze/Walls" index="31"]
+z_index = 90
+material = SubResource("ShaderMaterial_fedci")
+
+[node name="Wall032" parent="Maze/Walls" index="32"]
+z_index = 90
+material = SubResource("ShaderMaterial_8qswn")
+
+[node name="Wall033" parent="Maze/Walls" index="33"]
+z_index = 90
+material = SubResource("ShaderMaterial_rm0al")
+
+[node name="Wall034" parent="Maze/Walls" index="34"]
+z_index = 90
+material = SubResource("ShaderMaterial_i4re6")
+
+[node name="Wall035" parent="Maze/Walls" index="35"]
+z_index = 90
+material = SubResource("ShaderMaterial_pf7vy")
+
+[node name="Wall036" parent="Maze/Walls" index="36"]
+z_index = 90
+material = SubResource("ShaderMaterial_o8ni1")
+
+[node name="Wall037" parent="Maze/Walls" index="37"]
+z_index = 90
+material = SubResource("ShaderMaterial_3hbvx")
+
+[node name="Wall038" parent="Maze/Walls" index="38"]
+z_index = 90
+material = SubResource("ShaderMaterial_q8j3a")
+
+[node name="Wall039" parent="Maze/Walls" index="39"]
+z_index = 90
+material = SubResource("ShaderMaterial_ms3bu")
+
+[node name="Wall040" parent="Maze/Walls" index="40"]
+z_index = 90
+material = SubResource("ShaderMaterial_7ixpq")
+
+[node name="Wall041" parent="Maze/Walls" index="41"]
+z_index = 90
+material = SubResource("ShaderMaterial_bk1p3")
+
+[node name="Wall042" parent="Maze/Walls" index="42"]
+z_index = 90
+material = SubResource("ShaderMaterial_n8ral")
+
+[node name="Wall043" parent="Maze/Walls" index="43"]
+z_index = 90
+material = SubResource("ShaderMaterial_yd4ix")
+
+[node name="Wall044" parent="Maze/Walls" index="44"]
+z_index = 90
+material = SubResource("ShaderMaterial_66xif")
+
+[node name="Wall045" parent="Maze/Walls" index="45"]
+z_index = 90
+material = SubResource("ShaderMaterial_bnuda")
+
+[node name="Wall046" parent="Maze/Walls" index="46"]
+z_index = 90
+material = SubResource("ShaderMaterial_0rmfi")
+
+[node name="Wall047" parent="Maze/Walls" index="47"]
+z_index = 90
+material = SubResource("ShaderMaterial_xbak0")
+
+[node name="Wall048" parent="Maze/Walls" index="48"]
+z_index = 90
+material = SubResource("ShaderMaterial_3x28f")
+
+[node name="Wall049" parent="Maze/Walls" index="49"]
+z_index = 90
+material = SubResource("ShaderMaterial_l6q63")
+
+[node name="Wall050" parent="Maze/Walls" index="50"]
+z_index = 90
+material = SubResource("ShaderMaterial_mmvbu")
+
+[node name="Wall051" parent="Maze/Walls" index="51"]
+z_index = 90
+material = SubResource("ShaderMaterial_weeiq")
+
+[node name="Player" parent="." unique_id=925414340 instance=ExtResource("3")]
 position = Vector2(-1600, 1600)
-[node name="Monster" parent="." instance=ExtResource("4")]
-[node name="Visibility" type="Node2D" parent="."]
+
+[node name="Monster" parent="." unique_id=392432333 instance=ExtResource("4")]
+
+[node name="SecondMonster" parent="." unique_id=1825032226 instance=ExtResource("4")]
+position = Vector2(960, 960)
+
+[node name="Stalker" parent="." unique_id=1815365890 instance=ExtResource("stalker")]
+position = Vector2(-640, -960)
+
+[node name="Visibility" type="Node2D" parent="." unique_id=1658589971]
 z_index = 100
 script = ExtResource("5")
-[node name="HUD" type="CanvasLayer" parent="."]
-layer = 10
-script = ExtResource("6")
+
+[node name="HUD" parent="." unique_id=1997069694 instance=ExtResource("6")]
+
+[node name="Vignette" type="CanvasLayer" parent="."]
+layer = 6
+script = ExtResource("vignette_script")
+
+[node name="Edges" type="ColorRect" parent="Vignette"]
+material = SubResource("VignetteMaterial")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Haze" type="CanvasLayer" parent="." unique_id=589846081]
+script = ExtResource("8")
+
+[node name="RoomAcoustics" type="Node" parent="." unique_id=1548077817]
+script = ExtResource("9_room")
+
+[node name="ToyPickup" type="AudioStreamPlayer" parent="." unique_id=22695542]
+stream = ExtResource("10_toy")
+volume_db = -8.0
+
+[node name="GlassCrunch" type="AudioStreamPlayer2D" parent="." unique_id=2002958529]
+volume_db = -3.0
+max_distance = 700.0
+attenuation = 1.8
+max_polyphony = 3
+
+[node name="Heartbeat" type="AudioStreamPlayer" parent="." unique_id=1575281633]
+stream = ExtResource("audio_heartbeat")
+volume_db = -18.0
+
+[node name="StartGame" type="AudioStreamPlayer" parent="." unique_id=756270060]
+stream = ExtResource("audio_startgame")
+volume_db = -12.0
+
+[node name="Screamer" type="AudioStreamPlayer" parent="." unique_id=346603898]
+stream = ExtResource("audio_screamer")
+volume_db = -7.0
+
+[node name="Danger" type="AudioStreamPlayer" parent="." unique_id=1568277145]
+stream = ExtResource("audio_danger")
+volume_db = -12.0
+
+[node name="OpeningHowl" type="AudioStreamPlayer" parent="." unique_id=727466507]
+volume_db = -16.0
+
+[editable path="Maze"]
+[editable path="Maze/Overhead"]

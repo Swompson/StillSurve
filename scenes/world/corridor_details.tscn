@@ -1,0 +1,996 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://shaders/concrete_wall.gdshader" id="2_fj4g1"]
+[ext_resource type="Script" path="res://scripts/world/wall.gd" id="3_omoq8"]
+[ext_resource type="Texture2D" path="res://assets/textures/rubble/broken_concrete_0.svg" id="4_wmlyr"]
+[ext_resource type="Script" path="res://scripts/world/rubble.gd" id="4_xreub"]
+[ext_resource type="Texture2D" path="res://assets/textures/rubble/broken_concrete_1.svg" id="5_1cc6u"]
+[ext_resource type="Texture2D" path="res://assets/textures/rubble/broken_concrete_2.svg" id="6_6q4yq"]
+[ext_resource type="Texture2D" path="res://assets/textures/rubble/broken_concrete_3.svg" id="7_anxtn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uyjst"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0k81h"]
+size = Vector2(88, 28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fj4g1"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omoq8"]
+size = Vector2(88, 28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xreub"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmlyr"]
+size = Vector2(88, 28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1cc6u"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6q4yq"]
+size = Vector2(88, 28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_anxtn"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00l55"]
+size = Vector2(28, 88)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_264hd"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5c8s1"]
+size = Vector2(28, 88)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_abdi5"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eslhn"]
+size = Vector2(88, 28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bdihi"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sre0p"]
+size = Vector2(88, 28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6rkkn"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iktnd"]
+size = Vector2(28, 88)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_etiem"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjohx"]
+size = Vector2(28, 88)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lyknj"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgvr5"]
+size = Vector2(88, 28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c0xri"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qojji"]
+size = Vector2(88, 28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cfcvo"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_45nxa"]
+size = Vector2(28, 88)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_irpog"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bevl7"]
+size = Vector2(28, 88)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3urpi"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_va5sd"]
+size = Vector2(88, 28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5o0ih"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5s5s5"]
+size = Vector2(88, 28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jtpbx"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynpd6"]
+size = Vector2(28, 88)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ymlc"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_56u28"]
+size = Vector2(28, 88)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5lc06"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aoi3x"]
+size = Vector2(88, 28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pqg85"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6g2pv"]
+size = Vector2(88, 28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfini"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3p7lv"]
+size = Vector2(88, 28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r6sqh"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqico"]
+size = Vector2(88, 28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xv30a"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5wpm"]
+size = Vector2(88, 28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5e6oc"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8u6a"]
+size = Vector2(88, 28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_63sh3"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcs4k"]
+size = Vector2(88, 28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ppjpk"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36mp5"]
+size = Vector2(88, 28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uh8gx"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1lbv"]
+size = Vector2(28, 88)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_812y5"]
+shader = ExtResource("2_fj4g1")
+shader_parameter/exposure = 0.18
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrar7"]
+size = Vector2(28, 88)
+
+[node name="CorridorDetails" type="Node2D" unique_id=1945385162]
+
+[node name="Door00JambA" type="StaticBody2D" parent="." unique_id=1283495014 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_uyjst")
+position = Vector2(-1716, -1440)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(88, 28)
+
+[node name="Collision" type="CollisionShape2D" parent="Door00JambA" unique_id=1316657113]
+shape = SubResource("RectangleShape2D_0k81h")
+
+[node name="Door00JambB" type="StaticBody2D" parent="." unique_id=84695640 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_fj4g1")
+position = Vector2(-1484, -1440)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(88, 28)
+
+[node name="Collision" type="CollisionShape2D" parent="Door00JambB" unique_id=1978927065]
+shape = SubResource("RectangleShape2D_omoq8")
+
+[node name="Door01JambA" type="StaticBody2D" parent="." unique_id=1254932254 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_xreub")
+position = Vector2(-1716, -1120)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(88, 28)
+
+[node name="Collision" type="CollisionShape2D" parent="Door01JambA" unique_id=1913836216]
+shape = SubResource("RectangleShape2D_wmlyr")
+
+[node name="Door01JambB" type="StaticBody2D" parent="." unique_id=2021241479 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_1cc6u")
+position = Vector2(-1484, -1120)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(88, 28)
+
+[node name="Collision" type="CollisionShape2D" parent="Door01JambB" unique_id=1146582478]
+shape = SubResource("RectangleShape2D_6q4yq")
+
+[node name="Door02JambA" type="StaticBody2D" parent="." unique_id=190043234 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_anxtn")
+position = Vector2(-480, -1164)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(28, 88)
+
+[node name="Collision" type="CollisionShape2D" parent="Door02JambA" unique_id=1231299371]
+shape = SubResource("RectangleShape2D_00l55")
+
+[node name="Door02JambB" type="StaticBody2D" parent="." unique_id=1301340167 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_264hd")
+position = Vector2(-480, -1396)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(28, 88)
+
+[node name="Collision" type="CollisionShape2D" parent="Door02JambB" unique_id=1940099427]
+shape = SubResource("RectangleShape2D_5c8s1")
+
+[node name="Door03JambA" type="StaticBody2D" parent="." unique_id=206272666 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_abdi5")
+position = Vector2(-1716, -800)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(88, 28)
+
+[node name="Collision" type="CollisionShape2D" parent="Door03JambA" unique_id=402645122]
+shape = SubResource("RectangleShape2D_eslhn")
+
+[node name="Door03JambB" type="StaticBody2D" parent="." unique_id=358573120 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_bdihi")
+position = Vector2(-1484, -800)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(88, 28)
+
+[node name="Collision" type="CollisionShape2D" parent="Door03JambB" unique_id=1140286408]
+shape = SubResource("RectangleShape2D_sre0p")
+
+[node name="Door04JambA" type="StaticBody2D" parent="." unique_id=1860981230 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_6rkkn")
+position = Vector2(-480, -844)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(28, 88)
+
+[node name="Collision" type="CollisionShape2D" parent="Door04JambA" unique_id=1068253244]
+shape = SubResource("RectangleShape2D_iktnd")
+
+[node name="Door04JambB" type="StaticBody2D" parent="." unique_id=1567434920 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_etiem")
+position = Vector2(-480, -1076)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(28, 88)
+
+[node name="Collision" type="CollisionShape2D" parent="Door04JambB" unique_id=522775973]
+shape = SubResource("RectangleShape2D_kjohx")
+
+[node name="Door05JambA" type="StaticBody2D" parent="." unique_id=480770951 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_lyknj")
+position = Vector2(-1716, -480)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(88, 28)
+
+[node name="Collision" type="CollisionShape2D" parent="Door05JambA" unique_id=1578719911]
+shape = SubResource("RectangleShape2D_sgvr5")
+
+[node name="Door05JambB" type="StaticBody2D" parent="." unique_id=1290425955 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_c0xri")
+position = Vector2(-1484, -480)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(88, 28)
+
+[node name="Collision" type="CollisionShape2D" parent="Door05JambB" unique_id=1093892536]
+shape = SubResource("RectangleShape2D_qojji")
+
+[node name="Door06JambA" type="StaticBody2D" parent="." unique_id=798433510 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_cfcvo")
+position = Vector2(-480, -524)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(28, 88)
+
+[node name="Collision" type="CollisionShape2D" parent="Door06JambA" unique_id=1021388118]
+shape = SubResource("RectangleShape2D_45nxa")
+
+[node name="Door06JambB" type="StaticBody2D" parent="." unique_id=1817364070 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_irpog")
+position = Vector2(-480, -756)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(28, 88)
+
+[node name="Collision" type="CollisionShape2D" parent="Door06JambB" unique_id=2066086644]
+shape = SubResource("RectangleShape2D_bevl7")
+
+[node name="Door07JambA" type="StaticBody2D" parent="." unique_id=1846584813 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_3urpi")
+position = Vector2(-1716, -160)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(88, 28)
+
+[node name="Collision" type="CollisionShape2D" parent="Door07JambA" unique_id=1220372709]
+shape = SubResource("RectangleShape2D_va5sd")
+
+[node name="Door07JambB" type="StaticBody2D" parent="." unique_id=1478038304 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_5o0ih")
+position = Vector2(-1484, -160)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(88, 28)
+
+[node name="Collision" type="CollisionShape2D" parent="Door07JambB" unique_id=519059791]
+shape = SubResource("RectangleShape2D_5s5s5")
+
+[node name="Door08JambA" type="StaticBody2D" parent="." unique_id=151607726 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_jtpbx")
+position = Vector2(-480, -204)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(28, 88)
+
+[node name="Collision" type="CollisionShape2D" parent="Door08JambA" unique_id=1181439843]
+shape = SubResource("RectangleShape2D_ynpd6")
+
+[node name="Door08JambB" type="StaticBody2D" parent="." unique_id=309167892 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_6ymlc")
+position = Vector2(-480, -436)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(28, 88)
+
+[node name="Collision" type="CollisionShape2D" parent="Door08JambB" unique_id=131408546]
+shape = SubResource("RectangleShape2D_56u28")
+
+[node name="Door09JambA" type="StaticBody2D" parent="." unique_id=203422146 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_5lc06")
+position = Vector2(-1716, 480)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(88, 28)
+
+[node name="Collision" type="CollisionShape2D" parent="Door09JambA" unique_id=1444732651]
+shape = SubResource("RectangleShape2D_aoi3x")
+
+[node name="Door09JambB" type="StaticBody2D" parent="." unique_id=1950109279 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_pqg85")
+position = Vector2(-1484, 480)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(88, 28)
+
+[node name="Collision" type="CollisionShape2D" parent="Door09JambB" unique_id=390422462]
+shape = SubResource("RectangleShape2D_6g2pv")
+
+[node name="Door10JambA" type="StaticBody2D" parent="." unique_id=553885628 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_qfini")
+position = Vector2(-1716, 800)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(88, 28)
+
+[node name="Collision" type="CollisionShape2D" parent="Door10JambA" unique_id=1027212792]
+shape = SubResource("RectangleShape2D_3p7lv")
+
+[node name="Door10JambB" type="StaticBody2D" parent="." unique_id=475327806 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_r6sqh")
+position = Vector2(-1484, 800)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(88, 28)
+
+[node name="Collision" type="CollisionShape2D" parent="Door10JambB" unique_id=918314057]
+shape = SubResource("RectangleShape2D_xqico")
+
+[node name="Door11JambA" type="StaticBody2D" parent="." unique_id=453896842 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_xv30a")
+position = Vector2(-1716, 1120)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(88, 28)
+
+[node name="Collision" type="CollisionShape2D" parent="Door11JambA" unique_id=287485133]
+shape = SubResource("RectangleShape2D_w5wpm")
+
+[node name="Door11JambB" type="StaticBody2D" parent="." unique_id=1387233430 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_5e6oc")
+position = Vector2(-1484, 1120)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(88, 28)
+
+[node name="Collision" type="CollisionShape2D" parent="Door11JambB" unique_id=498768610]
+shape = SubResource("RectangleShape2D_g8u6a")
+
+[node name="Door12JambA" type="StaticBody2D" parent="." unique_id=1261987368 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_63sh3")
+position = Vector2(-1716, 1440)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(88, 28)
+
+[node name="Collision" type="CollisionShape2D" parent="Door12JambA" unique_id=1990471356]
+shape = SubResource("RectangleShape2D_rcs4k")
+
+[node name="Door12JambB" type="StaticBody2D" parent="." unique_id=1632040856 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_ppjpk")
+position = Vector2(-1484, 1440)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(88, 28)
+
+[node name="Collision" type="CollisionShape2D" parent="Door12JambB" unique_id=155355097]
+shape = SubResource("RectangleShape2D_36mp5")
+
+[node name="Door13JambA" type="StaticBody2D" parent="." unique_id=561169836 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_uh8gx")
+position = Vector2(-480, 1716)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(28, 88)
+
+[node name="Collision" type="CollisionShape2D" parent="Door13JambA" unique_id=752811602]
+shape = SubResource("RectangleShape2D_m1lbv")
+
+[node name="Door13JambB" type="StaticBody2D" parent="." unique_id=1170580156 groups=["door_jambs", "vision_blockers"]]
+z_index = 90
+material = SubResource("ShaderMaterial_812y5")
+position = Vector2(-480, 1484)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_omoq8")
+wall_size = Vector2(28, 88)
+
+[node name="Collision" type="CollisionShape2D" parent="Door13JambB" unique_id=36829657]
+shape = SubResource("RectangleShape2D_qrar7")
+
+[node name="Rubble00" type="StaticBody2D" parent="." unique_id=386504627]
+z_index = 90
+position = Vector2(1060, -1175)
+rotation = -0.22
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+
+[node name="Collision" type="CollisionPolygon2D" parent="Rubble00" unique_id=444388300]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="Rubble00" unique_id=1093321179]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("4_wmlyr")
+
+[node name="Rubble01" type="StaticBody2D" parent="." unique_id=1137378882]
+z_index = 90
+position = Vector2(-740, -535)
+rotation = 0.18
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+visual_variant = 1
+
+[node name="Collision" type="CollisionPolygon2D" parent="Rubble01" unique_id=131084662]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="Rubble01" unique_id=2098201404]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("5_1cc6u")
+
+[node name="Rubble02" type="StaticBody2D" parent="." unique_id=895211792]
+z_index = 90
+position = Vector2(1380, -215)
+rotation = -0.22
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+visual_variant = 2
+
+[node name="Collision" type="CollisionPolygon2D" parent="Rubble02" unique_id=406828030]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="Rubble02" unique_id=256317865]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("6_6q4yq")
+
+[node name="Rubble03" type="StaticBody2D" parent="." unique_id=383040000]
+z_index = 90
+position = Vector2(-420, 425)
+rotation = 0.18
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+visual_variant = 3
+
+[node name="Collision" type="CollisionPolygon2D" parent="Rubble03" unique_id=1469577633]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="Rubble03" unique_id=1198130845]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("7_anxtn")
+
+[node name="Rubble04" type="StaticBody2D" parent="." unique_id=1484414061]
+z_index = 90
+position = Vector2(1700, 745)
+rotation = -0.22
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+
+[node name="Collision" type="CollisionPolygon2D" parent="Rubble04" unique_id=627632010]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="Rubble04" unique_id=1585145410]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("4_wmlyr")
+
+[node name="Rubble05" type="StaticBody2D" parent="." unique_id=823986723]
+z_index = 90
+position = Vector2(-100, 1385)
+rotation = 0.18
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+visual_variant = 1
+
+[node name="Collision" type="CollisionPolygon2D" parent="Rubble05" unique_id=367357659]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="Rubble05" unique_id=138008905]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("5_1cc6u")
+
+[node name="Rubble06" type="StaticBody2D" parent="." unique_id=85544585]
+z_index = 90
+position = Vector2(-1500, -1495)
+rotation = -0.22
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+visual_variant = 2
+
+[node name="Collision" type="CollisionPolygon2D" parent="Rubble06" unique_id=1581001207]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="Rubble06" unique_id=806725568]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("6_6q4yq")
+
+[node name="Rubble07" type="StaticBody2D" parent="." unique_id=15305438]
+z_index = 90
+position = Vector2(220, -1175)
+rotation = 0.18
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+visual_variant = 3
+
+[node name="Collision" type="CollisionPolygon2D" parent="Rubble07" unique_id=692000908]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="Rubble07" unique_id=1511211829]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("7_anxtn")
+
+[node name="Rubble08" type="StaticBody2D" parent="." unique_id=2116277023]
+z_index = 90
+position = Vector2(-1180, -535)
+rotation = -0.22
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+
+[node name="Collision" type="CollisionPolygon2D" parent="Rubble08" unique_id=571099539]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="Rubble08" unique_id=2120553429]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("4_wmlyr")
+
+[node name="Rubble09" type="StaticBody2D" parent="." unique_id=575680681]
+z_index = 90
+position = Vector2(540, -215)
+rotation = 0.18
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+visual_variant = 1
+
+[node name="Collision" type="CollisionPolygon2D" parent="Rubble09" unique_id=1008542342]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="Rubble09" unique_id=368572642]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("5_1cc6u")
+
+[node name="Rubble10" type="StaticBody2D" parent="." unique_id=1749429002]
+z_index = 90
+position = Vector2(-860, 425)
+rotation = -0.22
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+visual_variant = 2
+
+[node name="Collision" type="CollisionPolygon2D" parent="Rubble10" unique_id=2103621940]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="Rubble10" unique_id=1073962091]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("6_6q4yq")
+
+[node name="Rubble11" type="StaticBody2D" parent="." unique_id=1701126064]
+z_index = 90
+position = Vector2(860, 745)
+rotation = 0.18
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+visual_variant = 3
+
+[node name="Collision" type="CollisionPolygon2D" parent="Rubble11" unique_id=1718872914]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="Rubble11" unique_id=1837820767]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("7_anxtn")
+
+[node name="Rubble12" type="StaticBody2D" parent="." unique_id=455016245]
+z_index = 90
+position = Vector2(-540, 1385)
+rotation = -0.22
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+
+[node name="Collision" type="CollisionPolygon2D" parent="Rubble12" unique_id=1070924088]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="Rubble12" unique_id=1558129779]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("4_wmlyr")
+
+[node name="Rubble13" type="StaticBody2D" parent="." unique_id=2038986439]
+z_index = 90
+position = Vector2(1180, 1705)
+rotation = 0.18
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+visual_variant = 1
+
+[node name="Collision" type="CollisionPolygon2D" parent="Rubble13" unique_id=1485008616]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="Rubble13" unique_id=311286076]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("5_1cc6u")
+
+[node name="Rubble14" type="StaticBody2D" parent="." unique_id=1225484948]
+z_index = 90
+position = Vector2(-220, -1175)
+rotation = -0.22
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+visual_variant = 2
+
+[node name="Collision" type="CollisionPolygon2D" parent="Rubble14" unique_id=1605751813]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="Rubble14" unique_id=1587744977]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("6_6q4yq")
+
+[node name="Rubble15" type="StaticBody2D" parent="." unique_id=1989733825]
+z_index = 90
+position = Vector2(1500, -855)
+rotation = 0.18
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+visual_variant = 3
+
+[node name="Collision" type="CollisionPolygon2D" parent="Rubble15" unique_id=1012409787]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="Rubble15" unique_id=863499777]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("7_anxtn")
+
+[node name="CornerCover00" type="StaticBody2D" parent="." unique_id=732184997]
+z_index = 90
+position = Vector2(-1694, -1694)
+rotation = 4.832389
+scale = Vector2(1.5, 1.25)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+
+[node name="Collision" type="CollisionPolygon2D" parent="CornerCover00" unique_id=1757541988]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="CornerCover00" unique_id=75610912]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("4_wmlyr")
+
+[node name="CornerCover01" type="StaticBody2D" parent="." unique_id=491437372]
+z_index = 90
+position = Vector2(-546, -1694)
+rotation = 0.12
+scale = Vector2(1.5, 1.25)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+visual_variant = 1
+
+[node name="Collision" type="CollisionPolygon2D" parent="CornerCover01" unique_id=596381721]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="CornerCover01" unique_id=894895613]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("5_1cc6u")
+
+[node name="CornerCover02" type="StaticBody2D" parent="." unique_id=669568485]
+z_index = 90
+position = Vector2(1054, -1694)
+rotation = 0.12
+scale = Vector2(1.5, 1.25)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+visual_variant = 2
+
+[node name="Collision" type="CollisionPolygon2D" parent="CornerCover02" unique_id=986246049]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="CornerCover02" unique_id=507597719]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("6_6q4yq")
+
+[node name="CornerCover03" type="StaticBody2D" parent="." unique_id=2082567609]
+z_index = 90
+position = Vector2(1694, -1694)
+rotation = 0.12
+scale = Vector2(1.5, 1.25)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+visual_variant = 3
+
+[node name="Collision" type="CollisionPolygon2D" parent="CornerCover03" unique_id=481157823]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="CornerCover03" unique_id=200241033]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("7_anxtn")
+
+[node name="CornerCover04" type="StaticBody2D" parent="." unique_id=864889394]
+z_index = 90
+position = Vector2(414, -1054)
+rotation = 0.12
+scale = Vector2(1.5, 1.25)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+
+[node name="Collision" type="CollisionPolygon2D" parent="CornerCover04" unique_id=1540154586]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="CornerCover04" unique_id=1927194569]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("4_wmlyr")
+
+[node name="CornerCover05" type="StaticBody2D" parent="." unique_id=1202899318]
+z_index = 90
+position = Vector2(94, -734)
+rotation = 0.12
+scale = Vector2(1.5, 1.25)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+visual_variant = 1
+
+[node name="Collision" type="CollisionPolygon2D" parent="CornerCover05" unique_id=268463259]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="CornerCover05" unique_id=870873164]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("5_1cc6u")
+
+[node name="CornerCover06" type="StaticBody2D" parent="." unique_id=456159628]
+z_index = 90
+position = Vector2(-226, -414)
+rotation = 0.12
+scale = Vector2(1.5, 1.25)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+visual_variant = 2
+
+[node name="Collision" type="CollisionPolygon2D" parent="CornerCover06" unique_id=1132347277]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="CornerCover06" unique_id=1889004470]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("6_6q4yq")
+
+[node name="CornerCover07" type="StaticBody2D" parent="." unique_id=1847533721]
+z_index = 90
+position = Vector2(414, -226)
+rotation = 1.6907964
+scale = Vector2(1.5, 1.25)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+visual_variant = 3
+
+[node name="Collision" type="CollisionPolygon2D" parent="CornerCover07" unique_id=1269507797]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="CornerCover07" unique_id=1905151884]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("7_anxtn")
+
+[node name="CornerCover08" type="StaticBody2D" parent="." unique_id=433609251]
+z_index = 90
+position = Vector2(1374, -226)
+rotation = 1.6907964
+scale = Vector2(1.5, 1.25)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+
+[node name="Collision" type="CollisionPolygon2D" parent="CornerCover08" unique_id=752628583]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="CornerCover08" unique_id=1177867840]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("4_wmlyr")
+
+[node name="CornerCover09" type="StaticBody2D" parent="." unique_id=1093953856]
+z_index = 90
+position = Vector2(-1694, 94)
+rotation = 3.2615926
+scale = Vector2(1.5, 1.25)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+visual_variant = 1
+
+[node name="Collision" type="CollisionPolygon2D" parent="CornerCover09" unique_id=530623437]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="CornerCover09" unique_id=1129973648]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("5_1cc6u")
+
+[node name="CornerCover10" type="StaticBody2D" parent="." unique_id=1542103928]
+z_index = 90
+position = Vector2(94, -94)
+rotation = 0.12
+scale = Vector2(1.5, 1.25)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+visual_variant = 2
+
+[node name="Collision" type="CollisionPolygon2D" parent="CornerCover10" unique_id=1762277665]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="CornerCover10" unique_id=1604224040]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("6_6q4yq")
+
+[node name="CornerCover11" type="StaticBody2D" parent="." unique_id=1306303082]
+z_index = 90
+position = Vector2(1054, 94)
+rotation = 1.6907964
+scale = Vector2(1.5, 1.25)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xreub")
+visual_variant = 3
+
+[node name="Collision" type="CollisionPolygon2D" parent="CornerCover11" unique_id=1442458878]
+polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
+
+[node name="Surface" type="Sprite2D" parent="CornerCover11" unique_id=1392251739]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("7_anxtn")

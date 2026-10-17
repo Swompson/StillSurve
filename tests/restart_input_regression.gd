@@ -24,10 +24,14 @@ func run_checks() -> void:
 	for frame in range(4): await process_frame
 	for attempt in range(4):
 		current_scene.get_node("Monster").set("active", false)
-		if attempt % 2 == 0:
-			send_key(KEY_ESCAPE, true)
-			send_key(KEY_ESCAPE, false)
-			expect(paused, "Esc must pause before keyboard restart")
+		var active_id: int = current_scene.get_instance_id()
+		send_key(KEY_R, true)
+		send_key(KEY_R, false)
+		for frame in range(3): await process_frame
+		expect(current_scene.get_instance_id() == active_id, "R during gameplay must not restart")
+		send_key(KEY_ESCAPE, true)
+		send_key(KEY_ESCAPE, false)
+		expect(paused, "Esc must pause before keyboard restart")
 		var old_id: int = current_scene.get_instance_id()
 		send_key(KEY_R, true)
 		for frame in range(6): await process_frame

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="AudioStream" path="res://assets/audio/ui/menu_hover.mp3" id="1"]
+[ext_resource type="AudioStream" path="res://assets/audio/ui/menu_accept.mp3" id="2"]
+
+[node name="MenuAudio" type="Node"]
+process_mode = 3
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1")
+volume_db = -15.0
+max_polyphony = 4
+
+[node name="Accept" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2")
+volume_db = -12.0
+max_polyphony = 4

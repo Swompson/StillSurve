@@ -1,0 +1,3 @@
+user_switch_on.wav: flashlight-included.wav, provided by the user in Downloads.
+user_switch_off.wav: flashlight-turned-off.wav, provided by the user in Downloads.
+Original samples copied without waveform edits; playback passes through the shared hall reflections and reverb bus.

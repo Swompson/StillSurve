@@ -1,0 +1,1163 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/game_hud.gd" id="1_acb04"]
+[ext_resource type="FontFile" path="res://assets/fonts/sjz/Sjz.otf" id="2_20ki6"]
+[ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="3_n5j44"]
+[ext_resource type="Shader" path="res://shaders/pause_backdrop.gdshader" id="4_x6mpk"]
+[ext_resource type="Script" path="res://scripts/ui/grab_skill_check.gd" id="5_ehshv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qk33"]
+content_margin_left = 18.0
+content_margin_top = 9.0
+content_margin_right = 18.0
+content_margin_bottom = 9.0
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tldsg"]
+content_margin_left = 18.0
+content_margin_top = 9.0
+content_margin_right = 18.0
+content_margin_bottom = 9.0
+bg_color = Color(0.0627451, 0.05490196, 0.05490196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sd8kv"]
+content_margin_left = 18.0
+content_margin_top = 9.0
+content_margin_right = 18.0
+content_margin_bottom = 9.0
+bg_color = Color(0.03137255, 0.02745098, 0.02745098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ryph"]
+content_margin_left = 18.0
+content_margin_top = 9.0
+content_margin_right = 18.0
+content_margin_bottom = 9.0
+bg_color = Color(0.16078432, 0.14509805, 0.14509805, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6s3p"]
+content_margin_left = 18.0
+content_margin_top = 9.0
+content_margin_right = 18.0
+content_margin_bottom = 9.0
+bg_color = Color(0.12941177, 0.11764706, 0.11764706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ns2j"]
+content_margin_left = 18.0
+content_margin_top = 9.0
+content_margin_right = 18.0
+content_margin_bottom = 9.0
+bg_color = Color(0.03137255, 0.02745098, 0.02745098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2336"]
+content_margin_left = 18.0
+content_margin_top = 9.0
+content_margin_right = 18.0
+content_margin_bottom = 9.0
+bg_color = Color(0.03137255, 0.02745098, 0.02745098, 1)
+
+[sub_resource type="Theme" id="Theme_kgd86"]
+default_font = ExtResource("2_20ki6")
+default_font_size = 24
+Button/colors/font_color = Color(0.8745098, 0.83137256, 0.7372549, 1)
+Button/styles/focus = SubResource("StyleBoxFlat_4qk33")
+Button/styles/hover = SubResource("StyleBoxFlat_tldsg")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_sd8kv")
+Button/styles/normal = SubResource("StyleBoxFlat_1ryph")
+Button/styles/pressed = SubResource("StyleBoxFlat_j6s3p")
+CheckButton/styles/focus = SubResource("StyleBoxFlat_4qk33")
+CheckButton/styles/hover = SubResource("StyleBoxFlat_tldsg")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxFlat_6ns2j")
+CheckButton/styles/normal = SubResource("StyleBoxFlat_1ryph")
+CheckButton/styles/pressed = SubResource("StyleBoxFlat_j6s3p")
+OptionButton/styles/focus = SubResource("StyleBoxFlat_4qk33")
+OptionButton/styles/hover = SubResource("StyleBoxFlat_tldsg")
+OptionButton/styles/hover_pressed = SubResource("StyleBoxFlat_j2336")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_1ryph")
+OptionButton/styles/pressed = SubResource("StyleBoxFlat_j6s3p")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81w0g"]
+content_margin_left = 18.0
+content_margin_top = 13.0
+content_margin_right = 18.0
+content_margin_bottom = 13.0
+bg_color = Color(1, 1, 1, 0)
+border_color = Color(0.5058824, 0.4392157, 0.37254903, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jpq7v"]
+bg_color = Color(0.14117648, 0.16862746, 0.15294118, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dom06"]
+bg_color = Color(0.6392157, 0.60784316, 0.5294118, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpcdm"]
+bg_color = Color(0.14117648, 0.16862746, 0.15294118, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0lp5"]
+bg_color = Color(0.77254903, 0.6509804, 0.44705883, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r7q5e"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tdr2q"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_647hh"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.26, 0.26, 0.22, 0.28)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4jcp"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.26, 0.26, 0.22, 0.28)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqumv"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2udvi"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.26, 0.26, 0.22, 0.28)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oftg1"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iehi4"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bu4hs"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.26, 0.26, 0.22, 0.28)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2k3d5"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.26, 0.26, 0.22, 0.28)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lh7ih"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsomc"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.26, 0.26, 0.22, 0.28)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dr4m"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bgh86"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bx12k"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.26, 0.26, 0.22, 0.28)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bwr6u"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.26, 0.26, 0.22, 0.28)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2v1x0"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fuk6f"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.26, 0.26, 0.22, 0.28)
+
+[sub_resource type="Theme" id="Theme_8dox7"]
+default_font = ExtResource("2_20ki6")
+default_font_size = 28
+Button/colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+Button/colors/font_hover_color = Color(0.8901961, 0.8745098, 0.8117647, 1)
+Button/colors/font_pressed_color = Color(0.8901961, 0.8745098, 0.8117647, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_r7q5e")
+Button/styles/focus = SubResource("StyleBoxFlat_tdr2q")
+Button/styles/hover = SubResource("StyleBoxFlat_647hh")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_g4jcp")
+Button/styles/normal = SubResource("StyleBoxFlat_iqumv")
+Button/styles/pressed = SubResource("StyleBoxFlat_2udvi")
+CheckButton/colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+CheckButton/colors/font_hover_color = Color(0.8901961, 0.8745098, 0.8117647, 1)
+CheckButton/colors/font_pressed_color = Color(0.8901961, 0.8745098, 0.8117647, 1)
+CheckButton/styles/disabled = SubResource("StyleBoxFlat_oftg1")
+CheckButton/styles/focus = SubResource("StyleBoxFlat_iehi4")
+CheckButton/styles/hover = SubResource("StyleBoxFlat_bu4hs")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxFlat_2k3d5")
+CheckButton/styles/normal = SubResource("StyleBoxFlat_lh7ih")
+CheckButton/styles/pressed = SubResource("StyleBoxFlat_tsomc")
+OptionButton/colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+OptionButton/colors/font_hover_color = Color(0.8901961, 0.8745098, 0.8117647, 1)
+OptionButton/colors/font_pressed_color = Color(0.8901961, 0.8745098, 0.8117647, 1)
+OptionButton/styles/disabled = SubResource("StyleBoxFlat_8dr4m")
+OptionButton/styles/focus = SubResource("StyleBoxFlat_bgh86")
+OptionButton/styles/hover = SubResource("StyleBoxFlat_bx12k")
+OptionButton/styles/hover_pressed = SubResource("StyleBoxFlat_bwr6u")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_2v1x0")
+OptionButton/styles/pressed = SubResource("StyleBoxFlat_fuk6f")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ub8ry"]
+shader = ExtResource("4_x6mpk")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkved"]
+content_margin_left = 22.0
+content_margin_top = 20.0
+content_margin_right = 22.0
+content_margin_bottom = 14.0
+bg_color = Color(0.022, 0.024, 0.02, 0.78)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3, 0.29, 0.25, 0.5)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_sn3uh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6hhip"]
+content_margin_left = 12.0
+content_margin_right = 4.0
+bg_color = Color(0.15, 0.15, 0.13, 0.32)
+
+[sub_resource type="Gradient" id="Gradient_1g4tu"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ssn0m"]
+gradient = SubResource("Gradient_1g4tu")
+width = 1
+height = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qkoi"]
+content_margin_left = 12.0
+content_margin_right = 4.0
+bg_color = Color(0.15, 0.15, 0.13, 0.32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbekg"]
+content_margin_left = 12.0
+content_margin_right = 4.0
+bg_color = Color(0.15, 0.15, 0.13, 0.32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nm63t"]
+content_margin_left = 12.0
+content_margin_right = 4.0
+bg_color = Color(0.15, 0.15, 0.13, 0.32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ryyfs"]
+content_margin_left = 12.0
+content_margin_right = 4.0
+bg_color = Color(0.15, 0.15, 0.13, 0.32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1nio4"]
+content_margin_left = 12.0
+content_margin_right = 4.0
+bg_color = Color(0.15, 0.15, 0.13, 0.32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rt0h7"]
+content_margin_left = 12.0
+content_margin_right = 4.0
+bg_color = Color(0.15, 0.15, 0.13, 0.32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rkri6"]
+content_margin_left = 12.0
+content_margin_right = 4.0
+bg_color = Color(0.15, 0.15, 0.13, 0.32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f2bph"]
+content_margin_left = 12.0
+content_margin_right = 4.0
+bg_color = Color(0.15, 0.15, 0.13, 0.32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4pqo"]
+content_margin_left = 12.0
+content_margin_right = 4.0
+bg_color = Color(0.15, 0.15, 0.13, 0.32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hpjsa"]
+content_margin_left = 12.0
+content_margin_right = 4.0
+bg_color = Color(0.15, 0.15, 0.13, 0.32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ab3c"]
+content_margin_left = 12.0
+content_margin_right = 4.0
+bg_color = Color(0.15, 0.15, 0.13, 0.32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p18fb"]
+content_margin_left = 12.0
+content_margin_right = 4.0
+bg_color = Color(0.15, 0.15, 0.13, 0.32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mihx"]
+content_margin_left = 12.0
+content_margin_right = 4.0
+bg_color = Color(0.15, 0.15, 0.13, 0.32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3aoqq"]
+content_margin_left = 12.0
+content_margin_right = 4.0
+bg_color = Color(0.15, 0.15, 0.13, 0.32)
+
+[node name="HUD" type="CanvasLayer" unique_id=1805165072]
+process_mode = 3
+layer = 10
+script = ExtResource("1_acb04")
+
+[node name="Layout" type="Control" parent="." unique_id=2015209634]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = SubResource("Theme_kgd86")
+
+[node name="status_panel" type="PanelContainer" parent="Layout" unique_id=2057136265]
+custom_minimum_size = Vector2(365, 156)
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = -180.0
+offset_right = 26.0
+offset_bottom = -180.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_81w0g")
+
+[node name="@VBoxContainer@3" type="VBoxContainer" parent="Layout/status_panel" unique_id=1126045077]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="objective" type="Label" parent="Layout/status_panel/@VBoxContainer@3" unique_id=2029510533]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.8745098, 0.83137256, 0.7372549, 1)
+text = "ФИГУРКИ  0 / 12"
+
+[node name="stamina_label" type="Label" parent="Layout/status_panel/@VBoxContainer@3" unique_id=890358131]
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+theme_override_colors/font_color = Color(0.8745098, 0.83137256, 0.7372549, 1)
+text = "ВЫНОСЛИВОСТЬ"
+
+[node name="stamina_bar" type="ProgressBar" parent="Layout/status_panel/@VBoxContainer@3" unique_id=1783863080]
+custom_minimum_size = Vector2(310, 5)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_jpq7v")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dom06")
+show_percentage = false
+
+[node name="charge_label" type="Label" parent="Layout/status_panel/@VBoxContainer@3" unique_id=546640795]
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+theme_override_colors/font_color = Color(0.8745098, 0.83137256, 0.7372549, 1)
+text = "ФОНАРИК · F"
+
+[node name="charge_bar" type="ProgressBar" parent="Layout/status_panel/@VBoxContainer@3" unique_id=1414350763]
+custom_minimum_size = Vector2(310, 5)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_gpcdm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_r0lp5")
+show_percentage = false
+
+[node name="pickup_notice" type="Label" parent="Layout" unique_id=560720959]
+layout_mode = 0
+offset_right = 900.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(0.8745098, 0.83137256, 0.7372549, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Notice1" type="Label" parent="Layout" unique_id=1333323261]
+layout_mode = 0
+offset_right = 900.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(0.8745098, 0.83137256, 0.7372549, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Notice2" type="Label" parent="Layout" unique_id=1506402410]
+layout_mode = 0
+offset_right = 900.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(0.8745098, 0.83137256, 0.7372549, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="overlay" type="ColorRect" parent="Layout" unique_id=84795560]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.02, 0.025, 0.021, 0.9)
+
+[node name="@CenterContainer@11" type="CenterContainer" parent="Layout/overlay" unique_id=773290790]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="@VBoxContainer@12" type="VBoxContainer" parent="Layout/overlay/@CenterContainer@11" unique_id=605255339]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="result_title" type="Label" parent="Layout/overlay/@CenterContainer@11/@VBoxContainer@12" unique_id=1513384466]
+layout_mode = 2
+theme_override_font_sizes/font_size = 38
+theme_override_colors/font_color = Color(0.8745098, 0.83137256, 0.7372549, 1)
+horizontal_alignment = 1
+
+[node name="result_text" type="Label" parent="Layout/overlay/@CenterContainer@11/@VBoxContainer@12" unique_id=569763443]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.8745098, 0.83137256, 0.7372549, 1)
+horizontal_alignment = 1
+
+[node name="RestartResult" type="Button" parent="Layout/overlay/@CenterContainer@11/@VBoxContainer@12" unique_id=1409386480]
+custom_minimum_size = Vector2(300, 48)
+layout_mode = 2
+text = "Начать заново [R]"
+
+[node name="QuitResult" type="Button" parent="Layout/overlay/@CenterContainer@11/@VBoxContainer@12" unique_id=1316634741]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "Выйти из игры"
+
+[node name="pause_overlay" type="ColorRect" parent="Layout" unique_id=889142855]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource("Theme_8dox7")
+color = Color(1, 1, 1, 0)
+script = ExtResource("3_n5j44")
+
+[node name="Backdrop" type="ColorRect" parent="Layout/pause_overlay" unique_id=1983344171]
+z_index = -1
+material = SubResource("ShaderMaterial_ub8ry")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="NavigationDivider" type="ColorRect" parent="Layout/pause_overlay" unique_id=1746296850]
+z_index = 1
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 0
+anchor_left = 0.307
+anchor_top = 0.09
+anchor_right = 0.307
+anchor_bottom = 0.92
+offset_right = 2.0
+mouse_filter = 2
+color = Color(0.32, 0.31, 0.27, 0.32)
+
+[node name="Navigation" type="VBoxContainer" parent="Layout/pause_overlay" unique_id=11201174]
+z_index = 1
+layout_mode = 0
+anchor_left = 0.065
+anchor_top = 0.17
+anchor_right = 0.277
+anchor_bottom = 0.17
+theme_override_constants/separation = 13
+
+[node name="PauseTitle" type="Label" parent="Layout/pause_overlay/Navigation" unique_id=368152456]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_20ki6")
+theme_override_font_sizes/font_size = 60
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "ПАУЗА"
+
+[node name="@Control@15" type="Control" parent="Layout/pause_overlay/Navigation" unique_id=1407293791]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Resume" type="Button" parent="Layout/pause_overlay/Navigation" unique_id=902066692]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "ПРОДОЛЖИТЬ"
+alignment = 0
+
+[node name="RestartPause" type="Button" parent="Layout/pause_overlay/Navigation" unique_id=300114275]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "НАЧАТЬ ЗАНОВО [R]"
+alignment = 0
+
+[node name="Settings" type="Button" parent="Layout/pause_overlay/Navigation" unique_id=1907270675]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+toggle_mode = true
+text = "НАСТРОЙКИ"
+alignment = 0
+
+[node name="SelectionArrow" type="Label" parent="Layout/pause_overlay/Navigation/Settings" unique_id=409261306]
+visible = false
+layout_mode = 0
+offset_left = -15.0
+offset_top = 3.0
+offset_right = -15.0
+offset_bottom = 3.0
+theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "›"
+
+[node name="QuitPause" type="Button" parent="Layout/pause_overlay/Navigation" unique_id=1619058839]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "ВЫЙТИ ИЗ ИГРЫ"
+alignment = 0
+
+[node name="SettingsPanel" type="PanelContainer" parent="Layout/pause_overlay" unique_id=354376541]
+visible = false
+z_index = 1
+layout_mode = 0
+anchor_left = 0.323
+anchor_top = 0.09
+anchor_right = 0.95
+anchor_bottom = 0.9
+theme_override_styles/panel = SubResource("StyleBoxFlat_fkved")
+
+[node name="Frame" type="VBoxContainer" parent="Layout/pause_overlay/SettingsPanel" unique_id=724051998]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="@Label@16" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame" unique_id=1910945360]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "НАСТРОЙКИ"
+
+[node name="@ColorRect@17" type="ColorRect" parent="Layout/pause_overlay/SettingsPanel/Frame" unique_id=2114213541]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.32, 0.31, 0.27, 0.32)
+
+[node name="Body" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame" unique_id=904952252]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="@VBoxContainer@18" type="VBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body" unique_id=1398802238]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="GraphicsTab" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/@VBoxContainer@18" unique_id=51348541]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_sn3uh")
+text = "ГРАФИКА"
+alignment = 0
+
+[node name="SoundTab" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/@VBoxContainer@18" unique_id=1679976560]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_sn3uh")
+text = "ЗВУК"
+alignment = 0
+
+[node name="GameTab" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/@VBoxContainer@18" unique_id=1235983955]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_sn3uh")
+text = "ИГРА"
+alignment = 0
+
+[node name="ControlsTab" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/@VBoxContainer@18" unique_id=1382000058]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_sn3uh")
+text = "УПРАВЛЕНИЕ"
+alignment = 0
+
+[node name="@ColorRect@19" type="ColorRect" parent="Layout/pause_overlay/SettingsPanel/Frame/Body" unique_id=1045156724]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.32, 0.31, 0.27, 0.32)
+
+[node name="Pages" type="Control" parent="Layout/pause_overlay/SettingsPanel/Frame/Body" unique_id=1442624580]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GraphicsPage" type="VBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages" unique_id=231949270]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 7
+
+[node name="@Label@20" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=1449984795]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "ЭКРАН"
+
+[node name="@PanelContainer@21" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=1325341270]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6hhip")
+
+[node name="@HBoxContainer@22" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@21" unique_id=569726085]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="@Label@23" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@21/@HBoxContainer@22" unique_id=1139196848]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "Полный экран"
+
+[node name="FullscreenPrevious" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@21/@HBoxContainer@22" unique_id=1520258173]
+custom_minimum_size = Vector2(30, 42)
+layout_mode = 2
+text = "‹"
+
+[node name="fullscreen_toggle" type="CheckButton" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@21/@HBoxContainer@22" unique_id=733493219]
+custom_minimum_size = Vector2(140, 42)
+layout_mode = 2
+theme_override_icons/checked = SubResource("GradientTexture2D_ssn0m")
+theme_override_icons/unchecked = SubResource("GradientTexture2D_ssn0m")
+theme_override_icons/checked_disabled = SubResource("GradientTexture2D_ssn0m")
+theme_override_icons/unchecked_disabled = SubResource("GradientTexture2D_ssn0m")
+text = "Выкл."
+alignment = 1
+
+[node name="FullscreenNext" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@21/@HBoxContainer@22" unique_id=1929199012]
+custom_minimum_size = Vector2(30, 42)
+layout_mode = 2
+text = "›"
+
+[node name="@PanelContainer@34" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=340776163]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4qkoi")
+
+[node name="@HBoxContainer@35" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@34" unique_id=141691517]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="@Label@36" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@34/@HBoxContainer@35" unique_id=346300421]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "Разрешение"
+
+[node name="ResolutionPrevious" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@34/@HBoxContainer@35" unique_id=1586750524]
+custom_minimum_size = Vector2(30, 42)
+layout_mode = 2
+text = "‹"
+
+[node name="ResolutionChoice" type="OptionButton" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@34/@HBoxContainer@35" unique_id=1729337953]
+custom_minimum_size = Vector2(140, 42)
+layout_mode = 2
+tooltip_text = "Размер окна. В полном экране используется разрешение дисплея."
+theme_override_font_sizes/font_size = 24
+theme_override_icons/arrow = SubResource("GradientTexture2D_ssn0m")
+alignment = 1
+selected = 0
+item_count = 3
+popup/item_0/text = "1280 × 720"
+popup/item_0/id = 0
+popup/item_1/text = "1600 × 900"
+popup/item_1/id = 1
+popup/item_2/text = "1920 × 1080"
+popup/item_2/id = 2
+
+[node name="ResolutionNext" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@34/@HBoxContainer@35" unique_id=1446024570]
+custom_minimum_size = Vector2(30, 42)
+layout_mode = 2
+text = "›"
+
+[node name="@PanelContainer@37" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=1659826560]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nbekg")
+
+[node name="@HBoxContainer@38" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@37" unique_id=1910575907]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="@Label@39" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@37/@HBoxContainer@38" unique_id=557979557]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "Частота обновления"
+
+[node name="RefreshRate" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@37/@HBoxContainer@38" unique_id=1424276747]
+custom_minimum_size = Vector2(206, 0)
+layout_mode = 2
+tooltip_text = "Текущая частота дисплея; изменяется в параметрах экрана Windows."
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.50980395, 0.49803922, 0.44705883, 1)
+text = "144 Гц"
+horizontal_alignment = 1
+
+[node name="@PanelContainer@40" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=97761921]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nm63t")
+
+[node name="@HBoxContainer@41" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@40" unique_id=114490638]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="@Label@42" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@40/@HBoxContainer@41" unique_id=897272962]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "Вертикальная синхронизация"
+
+[node name="VsyncPrevious" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@40/@HBoxContainer@41" unique_id=2113065506]
+custom_minimum_size = Vector2(30, 42)
+layout_mode = 2
+text = "‹"
+
+[node name="VsyncToggle" type="CheckButton" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@40/@HBoxContainer@41" unique_id=1992484655]
+custom_minimum_size = Vector2(140, 42)
+layout_mode = 2
+theme_override_icons/checked = SubResource("GradientTexture2D_ssn0m")
+theme_override_icons/unchecked = SubResource("GradientTexture2D_ssn0m")
+theme_override_icons/checked_disabled = SubResource("GradientTexture2D_ssn0m")
+theme_override_icons/unchecked_disabled = SubResource("GradientTexture2D_ssn0m")
+text = "Выкл."
+alignment = 1
+
+[node name="VsyncNext" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@40/@HBoxContainer@41" unique_id=2062941463]
+custom_minimum_size = Vector2(30, 42)
+layout_mode = 2
+text = "›"
+
+[node name="@PanelContainer@43" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=539028130]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ryyfs")
+
+[node name="@HBoxContainer@44" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@43" unique_id=1530997141]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="@Label@45" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@43/@HBoxContainer@44" unique_id=748308111]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "Виньетка"
+
+[node name="VignettePrevious" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@43/@HBoxContainer@44" unique_id=953448428]
+custom_minimum_size = Vector2(30, 42)
+layout_mode = 2
+text = "‹"
+
+[node name="VignetteToggle" type="CheckButton" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@43/@HBoxContainer@44" unique_id=330396032]
+custom_minimum_size = Vector2(140, 42)
+layout_mode = 2
+theme_override_icons/checked = SubResource("GradientTexture2D_ssn0m")
+theme_override_icons/unchecked = SubResource("GradientTexture2D_ssn0m")
+theme_override_icons/checked_disabled = SubResource("GradientTexture2D_ssn0m")
+theme_override_icons/unchecked_disabled = SubResource("GradientTexture2D_ssn0m")
+text = "Выкл."
+alignment = 1
+
+[node name="VignetteNext" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@43/@HBoxContainer@44" unique_id=874883630]
+custom_minimum_size = Vector2(30, 42)
+layout_mode = 2
+text = "›"
+
+[node name="@Control@46" type="Control" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=845137224]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="@Label@47" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=256735566]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "ПРОИЗВОДИТЕЛЬНОСТЬ"
+
+[node name="@PanelContainer@58" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=895700233]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1nio4")
+
+[node name="@HBoxContainer@59" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@58" unique_id=1455303058]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="@Label@60" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@58/@HBoxContainer@59" unique_id=1284592113]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "Лимит FPS"
+
+[node name="FpsPrevious" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@58/@HBoxContainer@59" unique_id=192193570]
+custom_minimum_size = Vector2(30, 42)
+layout_mode = 2
+text = "‹"
+
+[node name="FpsChoice" type="OptionButton" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@58/@HBoxContainer@59" unique_id=2125322523]
+custom_minimum_size = Vector2(140, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_icons/arrow = SubResource("GradientTexture2D_ssn0m")
+alignment = 1
+selected = 0
+item_count = 4
+popup/item_0/text = "60"
+popup/item_0/id = 60
+popup/item_1/text = "144"
+popup/item_1/id = 144
+popup/item_2/text = "180"
+popup/item_2/id = 180
+popup/item_3/text = "Без лимита"
+popup/item_3/id = 0
+
+[node name="FpsNext" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@58/@HBoxContainer@59" unique_id=1233251036]
+custom_minimum_size = Vector2(30, 42)
+layout_mode = 2
+text = "›"
+
+[node name="@PanelContainer@61" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=1294497574]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rt0h7")
+
+[node name="@HBoxContainer@62" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@61" unique_id=2069391772]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="@Label@63" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@61/@HBoxContainer@62" unique_id=339066755]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "Отображение FPS"
+
+[node name="CounterPrevious" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@61/@HBoxContainer@62" unique_id=1803763270]
+custom_minimum_size = Vector2(30, 42)
+layout_mode = 2
+text = "‹"
+
+[node name="FpsCounterToggle" type="CheckButton" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@61/@HBoxContainer@62" unique_id=942991326]
+custom_minimum_size = Vector2(140, 42)
+layout_mode = 2
+theme_override_icons/checked = SubResource("GradientTexture2D_ssn0m")
+theme_override_icons/unchecked = SubResource("GradientTexture2D_ssn0m")
+theme_override_icons/checked_disabled = SubResource("GradientTexture2D_ssn0m")
+theme_override_icons/unchecked_disabled = SubResource("GradientTexture2D_ssn0m")
+text = "Выкл."
+alignment = 1
+
+[node name="CounterNext" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@61/@HBoxContainer@62" unique_id=713894474]
+custom_minimum_size = Vector2(30, 42)
+layout_mode = 2
+text = "›"
+
+[node name="SoundPage" type="VBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages" unique_id=159344833]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 7
+
+[node name="@Label@64" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage" unique_id=43502288]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "ГРОМКОСТЬ"
+
+[node name="@PanelContainer@65" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage" unique_id=1809628218]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rkri6")
+
+[node name="@HBoxContainer@66" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@65" unique_id=796918018]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="@Label@67" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@65/@HBoxContainer@66" unique_id=1364744726]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "Общая громкость"
+
+[node name="MasterVolume" type="HSlider" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@65/@HBoxContainer@66" unique_id=2001500548]
+custom_minimum_size = Vector2(145, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VolumeValue" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@65/@HBoxContainer@66" unique_id=1890269439]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "80%"
+
+[node name="GamePage" type="VBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages" unique_id=745468332]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 7
+
+[node name="@Label@68" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GamePage" unique_id=1678428139]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "СЛОЖНОСТЬ"
+
+[node name="difficulty_0" type="CheckButton" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GamePage" unique_id=1823927679]
+layout_mode = 2
+text = "Хардкор · 3 монстра"
+
+[node name="@Label@69" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GamePage" unique_id=1182709367]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+theme_override_colors/font_color = Color(0.50980395, 0.49803922, 0.44705883, 1)
+text = "Применяется со следующего забега.
+Два охотника и бесшумный гуманоид.
+Четыре батарейки вместо пяти."
+
+[node name="ControlsPage" type="VBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages" unique_id=267627534]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 7
+
+[node name="@Label@70" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=92312422]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "УПРАВЛЕНИЕ"
+
+[node name="@PanelContainer@71" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=1385479834]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f2bph")
+
+[node name="@HBoxContainer@72" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@71" unique_id=749893652]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="@Label@73" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@71/@HBoxContainer@72" unique_id=602539273]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "Движение"
+
+[node name="@Label@74" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@71/@HBoxContainer@72" unique_id=131401245]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.50980395, 0.49803922, 0.44705883, 1)
+text = "WASD / стрелки"
+
+[node name="@PanelContainer@75" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=1926052482]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t4pqo")
+
+[node name="@HBoxContainer@76" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@75" unique_id=1339672533]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="@Label@77" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@75/@HBoxContainer@76" unique_id=869157464]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "Взгляд"
+
+[node name="@Label@78" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@75/@HBoxContainer@76" unique_id=861453442]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.50980395, 0.49803922, 0.44705883, 1)
+text = "Мышь"
+
+[node name="@PanelContainer@79" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=2128773165]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hpjsa")
+
+[node name="@HBoxContainer@80" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@79" unique_id=1347574811]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="@Label@81" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@79/@HBoxContainer@80" unique_id=605055422]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "Спринт"
+
+[node name="@Label@82" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@79/@HBoxContainer@80" unique_id=1514068294]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.50980395, 0.49803922, 0.44705883, 1)
+text = "Shift"
+
+[node name="@PanelContainer@83" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=1572605206]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6ab3c")
+
+[node name="@HBoxContainer@84" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@83" unique_id=1714090684]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="@Label@85" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@83/@HBoxContainer@84" unique_id=107911621]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "Фонарик"
+
+[node name="@Label@86" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@83/@HBoxContainer@84" unique_id=653565123]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.50980395, 0.49803922, 0.44705883, 1)
+text = "F"
+
+[node name="@PanelContainer@87" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=374721481]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p18fb")
+
+[node name="@HBoxContainer@88" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@87" unique_id=1751868275]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="@Label@89" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@87/@HBoxContainer@88" unique_id=950115648]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "Проверка захвата"
+
+[node name="@Label@90" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@87/@HBoxContainer@88" unique_id=307235543]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.50980395, 0.49803922, 0.44705883, 1)
+text = "Пробел"
+
+[node name="@PanelContainer@91" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=1458313161]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0mihx")
+
+[node name="@HBoxContainer@92" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@91" unique_id=1141504873]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="@Label@93" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@91/@HBoxContainer@92" unique_id=231988708]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "Пауза"
+
+[node name="@Label@94" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@91/@HBoxContainer@92" unique_id=314342146]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.50980395, 0.49803922, 0.44705883, 1)
+text = "Esc"
+
+[node name="@PanelContainer@95" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=165532066]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3aoqq")
+
+[node name="@HBoxContainer@96" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@95" unique_id=1545856940]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="@Label@97" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@95/@HBoxContainer@96" unique_id=1464765675]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "Полный экран"
+
+[node name="@Label@98" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@95/@HBoxContainer@96" unique_id=1952962508]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.50980395, 0.49803922, 0.44705883, 1)
+text = "F11"
+
+[node name="Footer" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame" unique_id=1786986852]
+layout_mode = 2
+
+[node name="SettingsBack" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Footer" unique_id=919918848]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "[ESC]  НАЗАД"
+alignment = 0
+
+[node name="@Control@99" type="Control" parent="Layout/pause_overlay/SettingsPanel/Frame/Footer" unique_id=1897389000]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="ApplySettings" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Footer" unique_id=1405845908]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "[ENTER]  ПРИМЕНИТЬ"
+alignment = 0
+
+[node name="FpsCounter" type="Label" parent="Layout" unique_id=1613166459]
+visible = false
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -150.0
+offset_top = 14.0
+offset_right = -20.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.8745098, 0.83137256, 0.7372549, 1)
+horizontal_alignment = 2
+
+[node name="GrabSkillCheck" type="Control" parent="Layout" unique_id=682356102]
+visible = false
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("5_ehshv")
