@@ -1,0 +1,614 @@
+[gd_scene format=3]
+
+[node name="FloorGlass" type="Node2D"]
+
+[node name="Patch00" type="Node2D" parent="." groups=["glass_patches"]]
+position = Vector2(-663.0, -1626.0)
+
+[node name="Shard0" type="Polygon2D" parent="Patch00"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(31, -14, 36, -12, 33, -9)
+
+[node name="Shard1" type="Polygon2D" parent="Patch00"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(28, -24, 33, -22, 30, -19)
+
+[node name="Shard2" type="Polygon2D" parent="Patch00"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-43, -20, -36, -18, -41, -13)
+
+[node name="Shard3" type="Polygon2D" parent="Patch00"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(27, -22, 37, -20, 29, -12)
+
+[node name="Shard4" type="Polygon2D" parent="Patch00"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(12, -18, 22, -16, 14, -8)
+
+[node name="Shard5" type="Polygon2D" parent="Patch00"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(25, 2, 34, 4, 27, 11)
+
+[node name="Shard6" type="Polygon2D" parent="Patch00"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(33, 14, 44, 16, 35, 25)
+
+[node name="Shard7" type="Polygon2D" parent="Patch00"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(4, 9, 11, 11, 6, 16)
+
+[node name="Shard8" type="Polygon2D" parent="Patch00"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-25, -29, -19, -27, -23, -23)
+
+[node name="Shard9" type="Polygon2D" parent="Patch00"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(1, 27, 12, 29, 3, 38)
+
+[node name="Shard10" type="Polygon2D" parent="Patch00"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-13, -11, -3, -9, -11, -1)
+
+[node name="Patch01" type="Node2D" parent="." groups=["glass_patches"]]
+position = Vector2(-683.0, -1276.0)
+
+[node name="Shard0" type="Polygon2D" parent="Patch01"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(9, 11, 19, 13, 11, 21)
+
+[node name="Shard1" type="Polygon2D" parent="Patch01"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-46, -22, -39, -20, -44, -15)
+
+[node name="Shard2" type="Polygon2D" parent="Patch01"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(14, 28, 20, 30, 16, 34)
+
+[node name="Shard3" type="Polygon2D" parent="Patch01"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-21, 35, -14, 37, -19, 42)
+
+[node name="Shard4" type="Polygon2D" parent="Patch01"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-1, -24, 6, -22, 1, -17)
+
+[node name="Shard5" type="Polygon2D" parent="Patch01"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(16, -26, 25, -24, 18, -17)
+
+[node name="Shard6" type="Polygon2D" parent="Patch01"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-29, 36, -18, 38, -27, 47)
+
+[node name="Shard7" type="Polygon2D" parent="Patch01"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(25, -37, 30, -35, 27, -32)
+
+[node name="Shard8" type="Polygon2D" parent="Patch01"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(27, 22, 37, 24, 29, 32)
+
+[node name="Shard9" type="Polygon2D" parent="Patch01"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(10, -13, 14, -11, 12, -9)
+
+[node name="Shard10" type="Polygon2D" parent="Patch01"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-3, 18, 2, 20, -1, 23)
+
+[node name="Patch02" type="Node2D" parent="." groups=["glass_patches"]]
+position = Vector2(1241.0, -1311.0)
+
+[node name="Shard0" type="Polygon2D" parent="Patch02"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(27, -22, 37, -20, 29, -12)
+
+[node name="Shard1" type="Polygon2D" parent="Patch02"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(4, 3, 12, 5, 6, 11)
+
+[node name="Shard2" type="Polygon2D" parent="Patch02"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-20, -4, -10, -2, -18, 6)
+
+[node name="Shard3" type="Polygon2D" parent="Patch02"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-28, 26, -18, 28, -26, 36)
+
+[node name="Shard4" type="Polygon2D" parent="Patch02"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(32, -11, 39, -9, 34, -4)
+
+[node name="Shard5" type="Polygon2D" parent="Patch02"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(33, 16, 44, 18, 35, 27)
+
+[node name="Shard6" type="Polygon2D" parent="Patch02"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(37, 26, 43, 28, 39, 32)
+
+[node name="Shard7" type="Polygon2D" parent="Patch02"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-4, 19, 3, 21, -2, 26)
+
+[node name="Shard8" type="Polygon2D" parent="Patch02"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(19, -21, 24, -19, 21, -16)
+
+[node name="Shard9" type="Polygon2D" parent="Patch02"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-18, 30, -13, 32, -16, 35)
+
+[node name="Shard10" type="Polygon2D" parent="Patch02"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(34, -1, 42, 1, 36, 7)
+
+[node name="Patch03" type="Node2D" parent="." groups=["glass_patches"]]
+position = Vector2(-12.0, -1011.0)
+
+[node name="Shard0" type="Polygon2D" parent="Patch03"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(40, 30, 44, 32, 42, 34)
+
+[node name="Shard1" type="Polygon2D" parent="Patch03"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(16, -23, 21, -21, 18, -18)
+
+[node name="Shard2" type="Polygon2D" parent="Patch03"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(1, 3, 7, 5, 3, 9)
+
+[node name="Shard3" type="Polygon2D" parent="Patch03"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-17, 38, -7, 40, -15, 48)
+
+[node name="Shard4" type="Polygon2D" parent="Patch03"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-8, -36, -4, -34, -6, -32)
+
+[node name="Shard5" type="Polygon2D" parent="Patch03"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(36, 29, 45, 31, 38, 38)
+
+[node name="Shard6" type="Polygon2D" parent="Patch03"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-32, -17, -26, -15, -30, -11)
+
+[node name="Shard7" type="Polygon2D" parent="Patch03"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-11, -38, -1, -36, -9, -28)
+
+[node name="Shard8" type="Polygon2D" parent="Patch03"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(27, -21, 34, -19, 29, -14)
+
+[node name="Shard9" type="Polygon2D" parent="Patch03"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(10, -26, 21, -24, 12, -15)
+
+[node name="Shard10" type="Polygon2D" parent="Patch03"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(4, -24, 11, -22, 6, -17)
+
+[node name="Patch04" type="Node2D" parent="." groups=["glass_patches"]]
+position = Vector2(-48.0, -641.0)
+
+[node name="Shard0" type="Polygon2D" parent="Patch04"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-42, -5, -31, -3, -40, 6)
+
+[node name="Shard1" type="Polygon2D" parent="Patch04"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-11, -32, -3, -30, -9, -24)
+
+[node name="Shard2" type="Polygon2D" parent="Patch04"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-38, 20, -31, 22, -36, 27)
+
+[node name="Shard3" type="Polygon2D" parent="Patch04"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-10, 37, 0, 39, -8, 47)
+
+[node name="Shard4" type="Polygon2D" parent="Patch04"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-27, 19, -22, 21, -25, 24)
+
+[node name="Shard5" type="Polygon2D" parent="Patch04"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(5, -2, 16, 0, 7, 9)
+
+[node name="Shard6" type="Polygon2D" parent="Patch04"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-40, -6, -30, -4, -38, 4)
+
+[node name="Shard7" type="Polygon2D" parent="Patch04"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-15, -13, -9, -11, -13, -7)
+
+[node name="Shard8" type="Polygon2D" parent="Patch04"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(0, 2, 11, 4, 2, 13)
+
+[node name="Shard9" type="Polygon2D" parent="Patch04"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-21, 13, -10, 15, -19, 24)
+
+[node name="Shard10" type="Polygon2D" parent="Patch04"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-36, -5, -29, -3, -34, 2)
+
+[node name="Patch05" type="Node2D" parent="." groups=["glass_patches"]]
+position = Vector2(-978.0, -270.0)
+
+[node name="Shard0" type="Polygon2D" parent="Patch05"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(28, 22, 39, 24, 30, 33)
+
+[node name="Shard1" type="Polygon2D" parent="Patch05"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(18, -9, 22, -7, 20, -5)
+
+[node name="Shard2" type="Polygon2D" parent="Patch05"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(30, 30, 36, 32, 32, 36)
+
+[node name="Shard3" type="Polygon2D" parent="Patch05"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-19, 5, -8, 7, -17, 16)
+
+[node name="Shard4" type="Polygon2D" parent="Patch05"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(35, 36, 44, 38, 37, 45)
+
+[node name="Shard5" type="Polygon2D" parent="Patch05"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-3, -14, 6, -12, -1, -5)
+
+[node name="Shard6" type="Polygon2D" parent="Patch05"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(38, -25, 44, -23, 40, -19)
+
+[node name="Shard7" type="Polygon2D" parent="Patch05"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-6, 27, 4, 29, -4, 37)
+
+[node name="Shard8" type="Polygon2D" parent="Patch05"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(38, -12, 42, -10, 40, -8)
+
+[node name="Shard9" type="Polygon2D" parent="Patch05"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-22, -12, -11, -10, -20, -1)
+
+[node name="Shard10" type="Polygon2D" parent="Patch05"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(45, -34, 49, -32, 47, -30)
+
+[node name="Patch06" type="Node2D" parent="." groups=["glass_patches"]]
+position = Vector2(-985.0, 49.0)
+
+[node name="Shard0" type="Polygon2D" parent="Patch06"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-42, -34, -36, -32, -40, -28)
+
+[node name="Shard1" type="Polygon2D" parent="Patch06"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-38, 33, -29, 35, -36, 42)
+
+[node name="Shard2" type="Polygon2D" parent="Patch06"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-37, -7, -29, -5, -35, 1)
+
+[node name="Shard3" type="Polygon2D" parent="Patch06"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-20, 13, -15, 15, -18, 18)
+
+[node name="Shard4" type="Polygon2D" parent="Patch06"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(17, 5, 27, 7, 19, 15)
+
+[node name="Shard5" type="Polygon2D" parent="Patch06"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-2, -16, 8, -14, 0, -6)
+
+[node name="Shard6" type="Polygon2D" parent="Patch06"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(20, -14, 25, -12, 22, -9)
+
+[node name="Shard7" type="Polygon2D" parent="Patch06"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-46, 15, -38, 17, -44, 23)
+
+[node name="Shard8" type="Polygon2D" parent="Patch06"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(28, -36, 36, -34, 30, -28)
+
+[node name="Shard9" type="Polygon2D" parent="Patch06"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(29, 36, 34, 38, 31, 41)
+
+[node name="Shard10" type="Polygon2D" parent="Patch06"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-19, -29, -10, -27, -17, -20)
+
+[node name="Patch07" type="Node2D" parent="." groups=["glass_patches"]]
+position = Vector2(911.0, 46.0)
+
+[node name="Shard0" type="Polygon2D" parent="Patch07"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(27, -6, 36, -4, 29, 3)
+
+[node name="Shard1" type="Polygon2D" parent="Patch07"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-25, 23, -16, 25, -23, 32)
+
+[node name="Shard2" type="Polygon2D" parent="Patch07"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(12, 32, 17, 34, 14, 37)
+
+[node name="Shard3" type="Polygon2D" parent="Patch07"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(11, 24, 16, 26, 13, 29)
+
+[node name="Shard4" type="Polygon2D" parent="Patch07"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-24, -1, -18, 1, -22, 5)
+
+[node name="Shard5" type="Polygon2D" parent="Patch07"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-25, -26, -17, -24, -23, -18)
+
+[node name="Shard6" type="Polygon2D" parent="Patch07"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-13, 9, -9, 11, -11, 13)
+
+[node name="Shard7" type="Polygon2D" parent="Patch07"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(21, 13, 29, 15, 23, 21)
+
+[node name="Shard8" type="Polygon2D" parent="Patch07"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-12, -32, -8, -30, -10, -28)
+
+[node name="Shard9" type="Polygon2D" parent="Patch07"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(5, 27, 9, 29, 7, 31)
+
+[node name="Shard10" type="Polygon2D" parent="Patch07"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(6, 2, 15, 4, 8, 11)
+
+[node name="Patch08" type="Node2D" parent="." groups=["glass_patches"]]
+position = Vector2(46.0, 271.0)
+
+[node name="Shard0" type="Polygon2D" parent="Patch08"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-18, -33, -14, -31, -16, -29)
+
+[node name="Shard1" type="Polygon2D" parent="Patch08"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-44, -11, -39, -9, -42, -6)
+
+[node name="Shard2" type="Polygon2D" parent="Patch08"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(44, 1, 51, 3, 46, 8)
+
+[node name="Shard3" type="Polygon2D" parent="Patch08"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-32, 7, -24, 9, -30, 15)
+
+[node name="Shard4" type="Polygon2D" parent="Patch08"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(18, 19, 29, 21, 20, 30)
+
+[node name="Shard5" type="Polygon2D" parent="Patch08"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-28, -19, -24, -17, -26, -15)
+
+[node name="Shard6" type="Polygon2D" parent="Patch08"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-36, -6, -25, -4, -34, 5)
+
+[node name="Shard7" type="Polygon2D" parent="Patch08"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(35, 22, 41, 24, 37, 28)
+
+[node name="Shard8" type="Polygon2D" parent="Patch08"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-39, 20, -30, 22, -37, 29)
+
+[node name="Shard9" type="Polygon2D" parent="Patch08"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(7, -29, 11, -27, 9, -25)
+
+[node name="Shard10" type="Polygon2D" parent="Patch08"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(14, 35, 24, 37, 16, 45)
+
+[node name="Patch09" type="Node2D" parent="." groups=["glass_patches"]]
+position = Vector2(998.0, 615.0)
+
+[node name="Shard0" type="Polygon2D" parent="Patch09"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-12, 28, -4, 30, -10, 36)
+
+[node name="Shard1" type="Polygon2D" parent="Patch09"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(20, 27, 31, 29, 22, 38)
+
+[node name="Shard2" type="Polygon2D" parent="Patch09"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-31, -31, -27, -29, -29, -27)
+
+[node name="Shard3" type="Polygon2D" parent="Patch09"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(19, 8, 27, 10, 21, 16)
+
+[node name="Shard4" type="Polygon2D" parent="Patch09"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-13, 22, -9, 24, -11, 26)
+
+[node name="Shard5" type="Polygon2D" parent="Patch09"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-3, 31, 2, 33, -1, 36)
+
+[node name="Shard6" type="Polygon2D" parent="Patch09"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-8, 11, 3, 13, -6, 22)
+
+[node name="Shard7" type="Polygon2D" parent="Patch09"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-34, 7, -28, 9, -32, 13)
+
+[node name="Shard8" type="Polygon2D" parent="Patch09"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-10, 36, -3, 38, -8, 43)
+
+[node name="Shard9" type="Polygon2D" parent="Patch09"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-41, -34, -33, -32, -39, -26)
+
+[node name="Shard10" type="Polygon2D" parent="Patch09"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(40, -16, 50, -14, 42, -6)
+
+[node name="Patch10" type="Node2D" parent="." groups=["glass_patches"]]
+position = Vector2(3.0, 983.0)
+
+[node name="Shard0" type="Polygon2D" parent="Patch10"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-29, 31, -24, 33, -27, 36)
+
+[node name="Shard1" type="Polygon2D" parent="Patch10"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(31, -5, 42, -3, 33, 6)
+
+[node name="Shard2" type="Polygon2D" parent="Patch10"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(16, -21, 20, -19, 18, -17)
+
+[node name="Shard3" type="Polygon2D" parent="Patch10"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-27, -33, -20, -31, -25, -26)
+
+[node name="Shard4" type="Polygon2D" parent="Patch10"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(6, 15, 17, 17, 8, 26)
+
+[node name="Shard5" type="Polygon2D" parent="Patch10"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-29, 11, -25, 13, -27, 15)
+
+[node name="Shard6" type="Polygon2D" parent="Patch10"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-6, 30, 5, 32, -4, 41)
+
+[node name="Shard7" type="Polygon2D" parent="Patch10"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-37, -2, -30, 0, -35, 5)
+
+[node name="Shard8" type="Polygon2D" parent="Patch10"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-20, 6, -11, 8, -18, 15)
+
+[node name="Shard9" type="Polygon2D" parent="Patch10"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(4, -1, 12, 1, 6, 7)
+
+[node name="Shard10" type="Polygon2D" parent="Patch10"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-4, -10, 1, -8, -2, -5)
+
+[node name="Patch11" type="Node2D" parent="." groups=["glass_patches"]]
+position = Vector2(-40.0, 1283.0)
+
+[node name="Shard0" type="Polygon2D" parent="Patch11"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-1, -25, 10, -23, 1, -14)
+
+[node name="Shard1" type="Polygon2D" parent="Patch11"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-27, -4, -21, -2, -25, 2)
+
+[node name="Shard2" type="Polygon2D" parent="Patch11"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(24, 7, 35, 9, 26, 18)
+
+[node name="Shard3" type="Polygon2D" parent="Patch11"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(16, -37, 21, -35, 18, -32)
+
+[node name="Shard4" type="Polygon2D" parent="Patch11"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(29, 2, 33, 4, 31, 6)
+
+[node name="Shard5" type="Polygon2D" parent="Patch11"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-22, 1, -11, 3, -20, 12)
+
+[node name="Shard6" type="Polygon2D" parent="Patch11"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-15, 6, -9, 8, -13, 12)
+
+[node name="Shard7" type="Polygon2D" parent="Patch11"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(44, -3, 48, -1, 46, 1)
+
+[node name="Shard8" type="Polygon2D" parent="Patch11"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-6, -5, 3, -3, -4, 4)
+
+[node name="Shard9" type="Polygon2D" parent="Patch11"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-26, -25, -19, -23, -24, -18)
+
+[node name="Shard10" type="Polygon2D" parent="Patch11"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-37, 31, -28, 33, -35, 40)
+
+[node name="Patch12" type="Node2D" parent="." groups=["glass_patches"]]
+position = Vector2(-684.0, 1632.0)
+
+[node name="Shard0" type="Polygon2D" parent="Patch12"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-17, 25, -10, 27, -15, 32)
+
+[node name="Shard1" type="Polygon2D" parent="Patch12"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(8, -8, 14, -6, 10, -2)
+
+[node name="Shard2" type="Polygon2D" parent="Patch12"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(16, -14, 21, -12, 18, -9)
+
+[node name="Shard3" type="Polygon2D" parent="Patch12"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(42, 29, 49, 31, 44, 36)
+
+[node name="Shard4" type="Polygon2D" parent="Patch12"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(37, 7, 45, 9, 39, 15)
+
+[node name="Shard5" type="Polygon2D" parent="Patch12"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(40, -22, 51, -20, 42, -11)
+
+[node name="Shard6" type="Polygon2D" parent="Patch12"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(26, -9, 34, -7, 28, -1)
+
+[node name="Shard7" type="Polygon2D" parent="Patch12"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(33, -30, 42, -28, 35, -21)
+
+[node name="Shard8" type="Polygon2D" parent="Patch12"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-29, -1, -24, 1, -27, 4)
+
+[node name="Shard9" type="Polygon2D" parent="Patch12"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(-5, 25, 3, 27, -3, 33)
+
+[node name="Shard10" type="Polygon2D" parent="Patch12"]
+color = Color(0.35, 0.48, 0.46, 0.8)
+polygon = PackedVector2Array(12, 15, 20, 17, 14, 23)

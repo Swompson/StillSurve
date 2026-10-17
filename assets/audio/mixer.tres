@@ -1,38 +1,58 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://bnw4c3m40lcyc"]
+[gd_resource type="AudioBusLayout" format=3 uid="uid://1phgk4o0qbvw"]
 
-[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_5pd45"]
+[sub_resource type="AudioEffectDelay" id="AudioEffectDelay_5pd45"]
+tap1_delay_ms = 72.0
+tap1_level_db = -18.0
+tap1_pan = -0.45
+tap2_delay_ms = 127.0
+tap2_level_db = -23.0
+tap2_pan = 0.45
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_rt6da"]
+predelay_msec = 55.0
+predelay_feedback = 0.06
+room_size = 0.9
+damping = 0.72
+spread = 0.9
+wet = 0.18
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_eat0o"]
 cutoff_hz = 1600.0
 resonance = 0.1
 
-[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_rt6da"]
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_rt30n"]
 predelay_msec = 50.0
 predelay_feedback = 0.08
 room_size = 0.85
 damping = 0.8
 spread = 0.85
 dry = 0.85
-wet = 0.2
+wet = 0.075
 
-[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_eat0o"]
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_yr2v5"]
 cutoff_hz = 2200.0
 resonance = 0.1
 
-[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_rt30n"]
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_ua1rs"]
 room_size = 0.7
 damping = 0.85
-wet = 0.045
+wet = 0.025
 
 [resource]
 bus/0/volume_db = -2.0
+bus/0/effect/0/effect = SubResource("AudioEffectDelay_5pd45")
+bus/0/effect/0/enabled = true
+bus/0/effect/1/effect = SubResource("AudioEffectReverb_rt6da")
+bus/0/effect/1/enabled = true
 bus/1/name = &"StepsRoom"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
 bus/1/volume_db = 0.0
 bus/1/send = &"Master"
-bus/1/effect/0/effect = SubResource("AudioEffectLowPassFilter_5pd45")
+bus/1/effect/0/effect = SubResource("AudioEffectLowPassFilter_eat0o")
 bus/1/effect/0/enabled = true
-bus/1/effect/1/effect = SubResource("AudioEffectReverb_rt6da")
+bus/1/effect/1/effect = SubResource("AudioEffectReverb_rt30n")
 bus/1/effect/1/enabled = true
 bus/2/name = &"Breathing"
 bus/2/solo = false
@@ -40,9 +60,9 @@ bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
 bus/2/send = &"Master"
-bus/2/effect/0/effect = SubResource("AudioEffectLowPassFilter_eat0o")
+bus/2/effect/0/effect = SubResource("AudioEffectLowPassFilter_yr2v5")
 bus/2/effect/0/enabled = true
-bus/2/effect/1/effect = SubResource("AudioEffectReverb_rt30n")
+bus/2/effect/1/effect = SubResource("AudioEffectReverb_ua1rs")
 bus/2/effect/1/enabled = true
 bus/3/name = &"Ambience"
 bus/3/solo = false

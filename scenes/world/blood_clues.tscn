@@ -1,0 +1,892 @@
+[gd_scene format=3]
+[ext_resource type="Texture2D" path="res://assets/textures/pickups/blood_footprint.svg" id="foot"]
+[node name="BloodClues" type="Node2D"]
+z_index = 2
+
+[node name="Figurine01" type="Node2D" parent="." groups=["blood_clues"]]
+
+[node name="Step00" type="Sprite2D" parent="Figurine01"]
+position = Vector2(-1610.000, -1150.000)
+rotation = 0.000000
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.798)
+
+[node name="Step01" type="Sprite2D" parent="Figurine01"]
+position = Vector2(-1590.000, -1195.000)
+rotation = 0.000000
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.861)
+
+[node name="Step02" type="Sprite2D" parent="Figurine01"]
+position = Vector2(-1610.000, -1240.000)
+rotation = 0.000000
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.744)
+
+[node name="Step03" type="Sprite2D" parent="Figurine01"]
+position = Vector2(-1590.000, -1285.000)
+rotation = 0.000000
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.790)
+
+[node name="Step04" type="Sprite2D" parent="Figurine01"]
+position = Vector2(-1610.000, -1330.000)
+rotation = 0.000000
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.740)
+
+[node name="Step05" type="Sprite2D" parent="Figurine01"]
+position = Vector2(-1590.000, -1375.000)
+rotation = 0.000000
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.840)
+
+[node name="Step06" type="Sprite2D" parent="Figurine01"]
+position = Vector2(-1610.000, -1420.000)
+rotation = 0.000000
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.904)
+
+[node name="Step07" type="Sprite2D" parent="Figurine01"]
+position = Vector2(-1590.000, -1465.000)
+rotation = 0.000000
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.896)
+
+[node name="Step08" type="Sprite2D" parent="Figurine01"]
+position = Vector2(-1610.000, -1510.000)
+rotation = 0.000000
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.816)
+
+[node name="Figurine02" type="Node2D" parent="." groups=["blood_clues"]]
+
+[node name="Step00" type="Sprite2D" parent="Figurine02"]
+position = Vector2(1270.000, -1470.000)
+rotation = 0.000000
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.722)
+
+[node name="Step01" type="Sprite2D" parent="Figurine02"]
+position = Vector2(1290.000, -1515.000)
+rotation = 0.000000
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.858)
+
+[node name="Step02" type="Sprite2D" parent="Figurine02"]
+position = Vector2(1270.000, -1560.000)
+rotation = 0.000000
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.856)
+
+[node name="Step03" type="Sprite2D" parent="Figurine02"]
+position = Vector2(1285.000, -1590.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.877)
+
+[node name="Step04" type="Sprite2D" parent="Figurine02"]
+position = Vector2(1330.000, -1610.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.898)
+
+[node name="Step05" type="Sprite2D" parent="Figurine02"]
+position = Vector2(1375.000, -1590.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.847)
+
+[node name="Step06" type="Sprite2D" parent="Figurine02"]
+position = Vector2(1420.000, -1610.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.887)
+
+[node name="Step07" type="Sprite2D" parent="Figurine02"]
+position = Vector2(1465.000, -1590.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.681)
+
+[node name="Step08" type="Sprite2D" parent="Figurine02"]
+position = Vector2(1510.000, -1610.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.754)
+
+[node name="Figurine03" type="Node2D" parent="." groups=["blood_clues"]]
+
+[node name="Step00" type="Sprite2D" parent="Figurine03"]
+position = Vector2(-1590.000, 1150.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.809)
+
+[node name="Step01" type="Sprite2D" parent="Figurine03"]
+position = Vector2(-1610.000, 1195.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.715)
+
+[node name="Step02" type="Sprite2D" parent="Figurine03"]
+position = Vector2(-1590.000, 1240.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.711)
+
+[node name="Step03" type="Sprite2D" parent="Figurine03"]
+position = Vector2(-1610.000, 1285.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.686)
+
+[node name="Step04" type="Sprite2D" parent="Figurine03"]
+position = Vector2(-1590.000, 1330.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.710)
+
+[node name="Step05" type="Sprite2D" parent="Figurine03"]
+position = Vector2(-1610.000, 1375.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.781)
+
+[node name="Step06" type="Sprite2D" parent="Figurine03"]
+position = Vector2(-1590.000, 1420.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.872)
+
+[node name="Step07" type="Sprite2D" parent="Figurine03"]
+position = Vector2(-1610.000, 1465.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.696)
+
+[node name="Step08" type="Sprite2D" parent="Figurine03"]
+position = Vector2(-1590.000, 1510.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.833)
+
+[node name="Figurine04" type="Node2D" parent="." groups=["blood_clues"]]
+
+[node name="Step00" type="Sprite2D" parent="Figurine04"]
+position = Vector2(1290.000, 1470.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.677)
+
+[node name="Step01" type="Sprite2D" parent="Figurine04"]
+position = Vector2(1270.000, 1515.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.866)
+
+[node name="Step02" type="Sprite2D" parent="Figurine04"]
+position = Vector2(1290.000, 1560.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.860)
+
+[node name="Step03" type="Sprite2D" parent="Figurine04"]
+position = Vector2(1285.000, 1610.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.819)
+
+[node name="Step04" type="Sprite2D" parent="Figurine04"]
+position = Vector2(1330.000, 1590.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.724)
+
+[node name="Step05" type="Sprite2D" parent="Figurine04"]
+position = Vector2(1375.000, 1610.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.854)
+
+[node name="Step06" type="Sprite2D" parent="Figurine04"]
+position = Vector2(1420.000, 1590.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.705)
+
+[node name="Step07" type="Sprite2D" parent="Figurine04"]
+position = Vector2(1465.000, 1610.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.868)
+
+[node name="Step08" type="Sprite2D" parent="Figurine04"]
+position = Vector2(1510.000, 1590.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.920)
+
+[node name="Figurine05" type="Node2D" parent="." groups=["blood_clues"]]
+
+[node name="Step00" type="Sprite2D" parent="Figurine05"]
+position = Vector2(450.000, -1590.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.792)
+
+[node name="Step01" type="Sprite2D" parent="Figurine05"]
+position = Vector2(405.000, -1610.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.908)
+
+[node name="Step02" type="Sprite2D" parent="Figurine05"]
+position = Vector2(360.000, -1590.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.820)
+
+[node name="Step03" type="Sprite2D" parent="Figurine05"]
+position = Vector2(315.000, -1610.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.868)
+
+[node name="Step04" type="Sprite2D" parent="Figurine05"]
+position = Vector2(270.000, -1590.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.720)
+
+[node name="Step05" type="Sprite2D" parent="Figurine05"]
+position = Vector2(225.000, -1610.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.699)
+
+[node name="Step06" type="Sprite2D" parent="Figurine05"]
+position = Vector2(180.000, -1590.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.750)
+
+[node name="Step07" type="Sprite2D" parent="Figurine05"]
+position = Vector2(135.000, -1610.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.689)
+
+[node name="Step08" type="Sprite2D" parent="Figurine05"]
+position = Vector2(90.000, -1590.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.855)
+
+[node name="Figurine06" type="Node2D" parent="." groups=["blood_clues"]]
+
+[node name="Step00" type="Sprite2D" parent="Figurine06"]
+position = Vector2(-1590.000, -450.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.830)
+
+[node name="Step01" type="Sprite2D" parent="Figurine06"]
+position = Vector2(-1610.000, -405.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.807)
+
+[node name="Step02" type="Sprite2D" parent="Figurine06"]
+position = Vector2(-1590.000, -360.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.809)
+
+[node name="Step03" type="Sprite2D" parent="Figurine06"]
+position = Vector2(-1610.000, -315.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.912)
+
+[node name="Step04" type="Sprite2D" parent="Figurine06"]
+position = Vector2(-1590.000, -270.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.683)
+
+[node name="Step05" type="Sprite2D" parent="Figurine06"]
+position = Vector2(-1610.000, -225.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.711)
+
+[node name="Step06" type="Sprite2D" parent="Figurine06"]
+position = Vector2(-1590.000, -180.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.822)
+
+[node name="Step07" type="Sprite2D" parent="Figurine06"]
+position = Vector2(-1610.000, -135.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.672)
+
+[node name="Step08" type="Sprite2D" parent="Figurine06"]
+position = Vector2(-1590.000, -90.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.896)
+
+[node name="Figurine07" type="Node2D" parent="." groups=["blood_clues"]]
+
+[node name="Step00" type="Sprite2D" parent="Figurine07"]
+position = Vector2(330.000, 1470.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.705)
+
+[node name="Step01" type="Sprite2D" parent="Figurine07"]
+position = Vector2(310.000, 1515.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.736)
+
+[node name="Step02" type="Sprite2D" parent="Figurine07"]
+position = Vector2(330.000, 1560.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.916)
+
+[node name="Step03" type="Sprite2D" parent="Figurine07"]
+position = Vector2(315.000, 1590.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.857)
+
+[node name="Step04" type="Sprite2D" parent="Figurine07"]
+position = Vector2(270.000, 1610.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.758)
+
+[node name="Step05" type="Sprite2D" parent="Figurine07"]
+position = Vector2(225.000, 1590.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.688)
+
+[node name="Step06" type="Sprite2D" parent="Figurine07"]
+position = Vector2(180.000, 1610.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.774)
+
+[node name="Step07" type="Sprite2D" parent="Figurine07"]
+position = Vector2(135.000, 1590.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.844)
+
+[node name="Step08" type="Sprite2D" parent="Figurine07"]
+position = Vector2(90.000, 1610.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.740)
+
+[node name="Figurine08" type="Node2D" parent="." groups=["blood_clues"]]
+
+[node name="Step00" type="Sprite2D" parent="Figurine08"]
+position = Vector2(1410.000, -630.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.802)
+
+[node name="Step01" type="Sprite2D" parent="Figurine08"]
+position = Vector2(1365.000, -650.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.822)
+
+[node name="Step02" type="Sprite2D" parent="Figurine08"]
+position = Vector2(1320.000, -630.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.857)
+
+[node name="Step03" type="Sprite2D" parent="Figurine08"]
+position = Vector2(1270.000, -635.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.745)
+
+[node name="Step04" type="Sprite2D" parent="Figurine08"]
+position = Vector2(1290.000, -590.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.759)
+
+[node name="Step05" type="Sprite2D" parent="Figurine08"]
+position = Vector2(1270.000, -545.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.897)
+
+[node name="Step06" type="Sprite2D" parent="Figurine08"]
+position = Vector2(1290.000, -500.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.918)
+
+[node name="Step07" type="Sprite2D" parent="Figurine08"]
+position = Vector2(1270.000, -455.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.718)
+
+[node name="Step08" type="Sprite2D" parent="Figurine08"]
+position = Vector2(1290.000, -410.000)
+rotation = 3.141593
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.770)
+
+[node name="Figurine09" type="Node2D" parent="." groups=["blood_clues"]]
+
+[node name="Step00" type="Sprite2D" parent="Figurine09"]
+position = Vector2(1590.000, 770.000)
+rotation = 0.000000
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.725)
+
+[node name="Step01" type="Sprite2D" parent="Figurine09"]
+position = Vector2(1610.000, 725.000)
+rotation = 0.000000
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.830)
+
+[node name="Step02" type="Sprite2D" parent="Figurine09"]
+position = Vector2(1590.000, 680.000)
+rotation = 0.000000
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.830)
+
+[node name="Step03" type="Sprite2D" parent="Figurine09"]
+position = Vector2(1595.000, 630.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.856)
+
+[node name="Step04" type="Sprite2D" parent="Figurine09"]
+position = Vector2(1550.000, 650.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.741)
+
+[node name="Step05" type="Sprite2D" parent="Figurine09"]
+position = Vector2(1505.000, 630.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.708)
+
+[node name="Step06" type="Sprite2D" parent="Figurine09"]
+position = Vector2(1460.000, 650.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.759)
+
+[node name="Step07" type="Sprite2D" parent="Figurine09"]
+position = Vector2(1415.000, 630.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.773)
+
+[node name="Step08" type="Sprite2D" parent="Figurine09"]
+position = Vector2(1370.000, 650.000)
+rotation = 4.712389
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.824)
+
+[node name="Figurine10" type="Node2D" parent="." groups=["blood_clues"]]
+
+[node name="Step00" type="Sprite2D" parent="Figurine10"]
+position = Vector2(-1410.000, -970.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.862)
+
+[node name="Step01" type="Sprite2D" parent="Figurine10"]
+position = Vector2(-1365.000, -950.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.851)
+
+[node name="Step02" type="Sprite2D" parent="Figurine10"]
+position = Vector2(-1320.000, -970.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.797)
+
+[node name="Step03" type="Sprite2D" parent="Figurine10"]
+position = Vector2(-1275.000, -950.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.693)
+
+[node name="Step04" type="Sprite2D" parent="Figurine10"]
+position = Vector2(-1230.000, -970.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.831)
+
+[node name="Step05" type="Sprite2D" parent="Figurine10"]
+position = Vector2(-1185.000, -950.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.835)
+
+[node name="Step06" type="Sprite2D" parent="Figurine10"]
+position = Vector2(-1140.000, -970.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.766)
+
+[node name="Step07" type="Sprite2D" parent="Figurine10"]
+position = Vector2(-1095.000, -950.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.746)
+
+[node name="Step08" type="Sprite2D" parent="Figurine10"]
+position = Vector2(-1050.000, -970.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.816)
+
+[node name="Figurine11" type="Node2D" parent="." groups=["blood_clues"]]
+
+[node name="Step00" type="Sprite2D" parent="Figurine11"]
+position = Vector2(-1410.000, 630.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.836)
+
+[node name="Step01" type="Sprite2D" parent="Figurine11"]
+position = Vector2(-1365.000, 650.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.793)
+
+[node name="Step02" type="Sprite2D" parent="Figurine11"]
+position = Vector2(-1320.000, 630.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.747)
+
+[node name="Step03" type="Sprite2D" parent="Figurine11"]
+position = Vector2(-1275.000, 650.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.895)
+
+[node name="Step04" type="Sprite2D" parent="Figurine11"]
+position = Vector2(-1230.000, 630.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.836)
+
+[node name="Step05" type="Sprite2D" parent="Figurine11"]
+position = Vector2(-1185.000, 650.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.878)
+
+[node name="Step06" type="Sprite2D" parent="Figurine11"]
+position = Vector2(-1140.000, 630.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.750)
+
+[node name="Step07" type="Sprite2D" parent="Figurine11"]
+position = Vector2(-1095.000, 650.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.883)
+
+[node name="Step08" type="Sprite2D" parent="Figurine11"]
+position = Vector2(-1050.000, 630.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.885)
+
+[node name="Figurine12" type="Node2D" parent="." groups=["blood_clues"]]
+
+[node name="Step00" type="Sprite2D" parent="Figurine12"]
+position = Vector2(630.000, -1150.000)
+rotation = 0.000000
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.852)
+
+[node name="Step01" type="Sprite2D" parent="Figurine12"]
+position = Vector2(650.000, -1195.000)
+rotation = 0.000000
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.805)
+
+[node name="Step02" type="Sprite2D" parent="Figurine12"]
+position = Vector2(630.000, -1240.000)
+rotation = 0.000000
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.891)
+
+[node name="Step03" type="Sprite2D" parent="Figurine12"]
+position = Vector2(645.000, -1270.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.815)
+
+[node name="Step04" type="Sprite2D" parent="Figurine12"]
+position = Vector2(690.000, -1290.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.835)
+
+[node name="Step05" type="Sprite2D" parent="Figurine12"]
+position = Vector2(735.000, -1270.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.811)
+
+[node name="Step06" type="Sprite2D" parent="Figurine12"]
+position = Vector2(780.000, -1290.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.761)
+
+[node name="Step07" type="Sprite2D" parent="Figurine12"]
+position = Vector2(825.000, -1270.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = true
+modulate = Color(1, 1, 1, 0.738)
+
+[node name="Step08" type="Sprite2D" parent="Figurine12"]
+position = Vector2(870.000, -1290.000)
+rotation = 1.570796
+texture = ExtResource("foot")
+scale = Vector2(0.48, 0.48)
+flip_h = false
+modulate = Color(1, 1, 1, 0.908)

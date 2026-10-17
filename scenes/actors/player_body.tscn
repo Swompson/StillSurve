@@ -1,0 +1,129 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/actors/articulated_actor.gd" id="1_d3w53"]
+[ext_resource type="Texture2D" path="res://assets/characters/player/rig/foot.tres" id="2_ej0de"]
+[ext_resource type="Texture2D" path="res://assets/characters/player/rig/torso.tres" id="3_hcgh2"]
+[ext_resource type="Texture2D" path="res://assets/characters/player/rig/upper_arm.tres" id="4_s266d"]
+[ext_resource type="Texture2D" path="res://assets/characters/player/rig/forearm.tres" id="5_shkus"]
+[ext_resource type="Texture2D" path="res://assets/characters/player/rig/hand.tres" id="6_37y3e"]
+[ext_resource type="Shader" path="res://shaders/rig_joint.gdshader" id="7_36c5y"]
+[ext_resource type="Texture2D" path="res://assets/characters/player/rig/parts.png" id="8_d65wp"]
+[ext_resource type="Texture2D" path="res://assets/characters/player/rig/head.tres" id="9_nmca0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s12ty"]
+shader = ExtResource("7_36c5y")
+shader_parameter/patch_size = Vector2(51.8, 51.8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61a2d"]
+atlas = ExtResource("8_d65wp")
+region = Rect2(1093.1, 195.6, 51.8, 51.8)
+filter_clip = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2pims"]
+shader = ExtResource("7_36c5y")
+shader_parameter/patch_size = Vector2(51.8, 51.8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8y1ui"]
+atlas = ExtResource("8_d65wp")
+region = Rect2(1093.1, 195.6, 51.8, 51.8)
+filter_clip = true
+
+[node name="ArticulatedBody" type="Node2D" unique_id=1359993832]
+script = ExtResource("1_d3w53")
+
+[node name="LeftFoot" type="Sprite2D" parent="." unique_id=841001318]
+z_index = -1
+texture_filter = 2
+position = Vector2(-13, -31)
+scale = Vector2(0.084337346, 0.1292517)
+texture = ExtResource("2_ej0de")
+
+[node name="RightFoot" type="Sprite2D" parent="." unique_id=942084484]
+z_index = -1
+texture_filter = 2
+position = Vector2(13, -31)
+scale = Vector2(0.084337346, 0.1292517)
+texture = ExtResource("2_ej0de")
+flip_h = true
+
+[node name="Torso" type="Sprite2D" parent="." unique_id=2007893706]
+texture_filter = 2
+position = Vector2(0, -5)
+rotation = 3.1415927
+scale = Vector2(0.1671159, 0.1484375)
+texture = ExtResource("3_hcgh2")
+
+[node name="LeftUpperArm" type="Sprite2D" parent="." unique_id=1651669884]
+z_index = 1
+texture_filter = 2
+position = Vector2(-32.99311, 16.009174)
+rotation = 0.9261481
+scale = Vector2(0.11486486, 0.06172839)
+texture = ExtResource("4_s266d")
+
+[node name="LeftForearm" type="Sprite2D" parent="." unique_id=534015077]
+z_index = 2
+texture_filter = 2
+position = Vector2(-31.49311, 28.509174)
+rotation = -0.9710661
+scale = Vector2(0.09448819, 0.08115941)
+texture = ExtResource("5_shkus")
+
+[node name="LeftHand" type="Sprite2D" parent="." unique_id=1864848165]
+z_index = 3
+texture_filter = 2
+position = Vector2(-18.698048, 37.25768)
+rotation = -0.9710662
+scale = Vector2(0.05050505, 0.04137931)
+texture = ExtResource("6_37y3e")
+
+[node name="LeftElbow" type="Sprite2D" parent="." unique_id=1123402861]
+z_index = 2
+texture_filter = 2
+material = SubResource("ShaderMaterial_s12ty")
+position = Vector2(-40.98622, 22.018347)
+scale = Vector2(0.25490198, 0.25490198)
+texture = SubResource("AtlasTexture_61a2d")
+
+[node name="RightUpperArm" type="Sprite2D" parent="." unique_id=10027389]
+z_index = 1
+texture_filter = 2
+position = Vector2(34.6269, 12.706074)
+rotation = -1.2967725
+scale = Vector2(0.11486486, 0.061728396)
+texture = ExtResource("4_s266d")
+flip_h = true
+
+[node name="RightForearm" type="Sprite2D" parent="." unique_id=193842864]
+z_index = 2
+texture_filter = 2
+position = Vector2(39.1269, 25.706074)
+rotation = 0.46208706
+scale = Vector2(0.09448819, 0.08115942)
+texture = ExtResource("5_shkus")
+flip_h = true
+
+[node name="RightHand" type="Sprite2D" parent="." unique_id=1903042141]
+z_index = 3
+texture_filter = 2
+position = Vector2(32.216732, 39.580498)
+rotation = 0.46208706
+scale = Vector2(0.05050505, 0.04137931)
+texture = ExtResource("6_37y3e")
+flip_h = true
+
+[node name="RightElbow" type="Sprite2D" parent="." unique_id=233409063]
+z_index = 2
+texture_filter = 2
+material = SubResource("ShaderMaterial_2pims")
+position = Vector2(44.253796, 15.4121475)
+scale = Vector2(0.25490198, 0.25490198)
+texture = SubResource("AtlasTexture_8y1ui")
+flip_h = true
+
+[node name="Head" type="Sprite2D" parent="." unique_id=422527987]
+z_index = 4
+texture_filter = 2
+position = Vector2(0, 23)
+scale = Vector2(0.097826086, 0.08630952)
+texture = ExtResource("9_nmca0")

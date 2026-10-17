@@ -1,0 +1,1480 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/ceiling_fixture.gd" id="6_5ss6h"]
+[ext_resource type="Texture2D" path="res://assets/textures/overhead/shade.svg" id="7_3bk6i"]
+[ext_resource type="Texture2D" path="res://assets/textures/overhead/glow.svg" id="8_4h56i"]
+[ext_resource type="Texture2D" path="res://assets/textures/overhead/spark.svg" id="9_gduto"]
+[ext_resource type="Texture2D" path="res://assets/textures/overhead/fluorescent_top.svg" id="10_5ss6h"]
+[ext_resource type="Texture2D" path="res://assets/textures/overhead/bunker.svg" id="11_cedey"]
+[ext_resource type="Texture2D" path="res://assets/textures/overhead/beam.svg" id="Beams"]
+[ext_resource type="Script" path="res://scripts/audio/pipe_drip.gd" id="drip"]
+[ext_resource type="Texture2D" path="res://assets/textures/overhead/pipe.svg" id="Pipes"]
+[ext_resource type="Script" path="res://scripts/world/overhead.gd" id="script"]
+[ext_resource type="Shader" path="res://shaders/overhead_surface.gdshader" id="shader"]
+[ext_resource type="AudioStream" path="res://assets/audio/user_originals/waterdrop.mp3" id="waterdrop"]
+[ext_resource type="Texture2D" path="res://assets/textures/overhead/wire.svg" id="Wires"]
+
+[sub_resource type="ShaderMaterial" id="PipesMat"]
+shader = ExtResource("shader")
+shader_parameter/camera_center = null
+shader_parameter/elevation = 0.035
+shader_parameter/exposure = null
+
+[sub_resource type="ShaderMaterial" id="BeamsMat"]
+shader = ExtResource("shader")
+shader_parameter/camera_center = null
+shader_parameter/elevation = 0.042
+shader_parameter/exposure = null
+
+[sub_resource type="ShaderMaterial" id="WiresMat"]
+shader = ExtResource("shader")
+shader_parameter/camera_center = null
+shader_parameter/elevation = 0.048
+shader_parameter/exposure = null
+
+[sub_resource type="CanvasItemMaterial" id="Additive"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="SparkScale"]
+_data = [Vector2(0, 0.4), 0.0, 0.0, 0, 0, Vector2(0.12, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.02), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="SparkColors"]
+offsets = PackedFloat32Array(0, 0.12, 0.5, 1)
+colors = PackedColorArray(1, 1, 0.85, 1, 1, 0.84, 0.38, 1, 1, 0.32, 0.045, 0.85, 0.65, 0.07, 0.005, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_derex"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_8ow2n"]
+_data = [Vector2(0, 0.4), 0.0, 0.0, 0, 0, Vector2(0.12, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.02), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_84ty7"]
+offsets = PackedFloat32Array(0, 0.12, 0.5, 1)
+colors = PackedColorArray(1, 1, 0.85, 1, 1, 0.84, 0.38, 1, 1, 0.32, 0.045, 0.85, 0.65, 0.07, 0.005, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7m1vw"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_8e0cb"]
+_data = [Vector2(0, 0.4), 0.0, 0.0, 0, 0, Vector2(0.12, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.02), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_4jigf"]
+offsets = PackedFloat32Array(0, 0.12, 0.5, 1)
+colors = PackedColorArray(1, 1, 0.85, 1, 1, 0.84, 0.38, 1, 1, 0.32, 0.045, 0.85, 0.65, 0.07, 0.005, 0)
+
+[node name="Overhead" type="Node2D" unique_id=839590107]
+process_priority = 12
+z_index = 94
+script = ExtResource("script")
+
+[node name="Pipes" type="Node2D" parent="." unique_id=1542838175]
+material = SubResource("PipesMat")
+
+[node name="Span00" type="Line2D" parent="Pipes" unique_id=1737288049 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-1285, -1766, -1285, -1280, -1285, -794)
+width = 15.0
+texture = ExtResource("Pipes")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket00_0" type="Polygon2D" parent="Pipes" unique_id=1042626803]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-1298, -1775, -1272, -1775, -1272, -1757, -1298, -1757)
+
+[node name="Socket00_1" type="Polygon2D" parent="Pipes" unique_id=2099577974]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-1298, -803, -1272, -803, -1272, -785, -1298, -785)
+
+[node name="Span01" type="Line2D" parent="Pipes" unique_id=1978826133 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(56, -1766, 56, -1600, 56, -1434)
+width = 15.0
+texture = ExtResource("Pipes")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket01_0" type="Polygon2D" parent="Pipes" unique_id=1674613699]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(43, -1775, 69, -1775, 69, -1757, 43, -1757)
+
+[node name="Socket01_1" type="Polygon2D" parent="Pipes" unique_id=114107416]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(43, -1443, 69, -1443, 69, -1425, 43, -1425)
+
+[node name="Span02" type="Line2D" parent="Pipes" unique_id=294510110 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-959, -1766, -959, -1280, -959, -794)
+width = 15.0
+texture = ExtResource("Pipes")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket02_0" type="Polygon2D" parent="Pipes" unique_id=1364078945]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-972, -1775, -946, -1775, -946, -1757, -972, -1757)
+
+[node name="Socket02_1" type="Polygon2D" parent="Pipes" unique_id=1895189653]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-972, -803, -946, -803, -946, -785, -972, -785)
+
+[node name="Span03" type="Line2D" parent="Pipes" unique_id=1858025089 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(333, -1766, 333, -1440, 333, -1114)
+width = 15.0
+texture = ExtResource("Pipes")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket03_0" type="Polygon2D" parent="Pipes" unique_id=1157343132]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(320, -1775, 346, -1775, 346, -1757, 320, -1757)
+
+[node name="Socket03_1" type="Polygon2D" parent="Pipes" unique_id=887396396]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(320, -1123, 346, -1123, 346, -1105, 320, -1105)
+
+[node name="Span04" type="Line2D" parent="Pipes" unique_id=895915154 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-596, -1766, -596, -1120, -596, -474)
+width = 15.0
+texture = ExtResource("Pipes")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket04_0" type="Polygon2D" parent="Pipes" unique_id=1857147268]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-609, -1775, -583, -1775, -583, -1757, -609, -1757)
+
+[node name="Socket04_1" type="Polygon2D" parent="Pipes" unique_id=1553995579]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-609, -483, -583, -483, -583, -465, -609, -465)
+
+[node name="Span05" type="Line2D" parent="Pipes" unique_id=938235010 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-294, -806, -294, -640, -294, -474)
+width = 15.0
+texture = ExtResource("Pipes")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket05_0" type="Polygon2D" parent="Pipes" unique_id=1032227077]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-307, -815, -281, -815, -281, -797, -307, -797)
+
+[node name="Socket05_1" type="Polygon2D" parent="Pipes" unique_id=1599954232]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-307, -483, -281, -483, -281, -465, -307, -465)
+
+[node name="Span06" type="Line2D" parent="Pipes" unique_id=1764591422 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-1319, -806, -1319, -480, -1319, -154)
+width = 15.0
+texture = ExtResource("Pipes")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket06_0" type="Polygon2D" parent="Pipes" unique_id=138336989]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-1332, -815, -1306, -815, -1306, -797, -1332, -797)
+
+[node name="Socket06_1" type="Polygon2D" parent="Pipes" unique_id=1617468306]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-1332, -163, -1306, -163, -1306, -145, -1332, -145)
+
+[node name="Span07" type="Line2D" parent="Pipes" unique_id=590054506 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(2, -806, 2, -480, 2, -154)
+width = 15.0
+texture = ExtResource("Pipes")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket07_0" type="Polygon2D" parent="Pipes" unique_id=1422761434]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-11, -815, 15, -815, 15, -797, -11, -797)
+
+[node name="Socket07_1" type="Polygon2D" parent="Pipes" unique_id=401342929]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-11, -163, 15, -163, 15, -145, -11, -145)
+
+[node name="Span08" type="Line2D" parent="Pipes" unique_id=1604563984 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-949, -166, -949, 0, -949, 166)
+width = 15.0
+texture = ExtResource("Pipes")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket08_0" type="Polygon2D" parent="Pipes" unique_id=173599038]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-962, -175, -936, -175, -936, -157, -962, -157)
+
+[node name="Socket08_1" type="Polygon2D" parent="Pipes" unique_id=1664960576]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-962, 157, -936, 157, -936, 175, -962, 175)
+
+[node name="Span09" type="Line2D" parent="Pipes" unique_id=955358248 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(704, -166, 704, 160, 704, 486)
+width = 15.0
+texture = ExtResource("Pipes")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket09_0" type="Polygon2D" parent="Pipes" unique_id=334453639]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(691, -175, 717, -175, 717, -157, 691, -157)
+
+[node name="Socket09_1" type="Polygon2D" parent="Pipes" unique_id=1517852044]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(691, 477, 717, 477, 717, 495, 691, 495)
+
+[node name="Span10" type="Line2D" parent="Pipes" unique_id=577134349 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-1274, 794, -1274, 1120, -1274, 1446)
+width = 15.0
+texture = ExtResource("Pipes")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket10_0" type="Polygon2D" parent="Pipes" unique_id=1828056099]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-1287, 785, -1261, 785, -1261, 803, -1287, 803)
+
+[node name="Socket10_1" type="Polygon2D" parent="Pipes" unique_id=845656169]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-1287, 1437, -1261, 1437, -1261, 1455, -1287, 1455)
+
+[node name="Span11" type="Line2D" parent="Pipes" unique_id=835840961 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-59, -166, -59, 480, -59, 1126)
+width = 15.0
+texture = ExtResource("Pipes")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket11_0" type="Polygon2D" parent="Pipes" unique_id=1122324507]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-72, -175, -46, -175, -46, -157, -72, -157)
+
+[node name="Socket11_1" type="Polygon2D" parent="Pipes" unique_id=909204342]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-72, 1117, -46, 1117, -46, 1135, -72, 1135)
+
+[node name="Span12" type="Line2D" parent="Pipes" unique_id=229872940 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(1213, 474, 1213, 800, 1213, 1126)
+width = 15.0
+texture = ExtResource("Pipes")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket12_0" type="Polygon2D" parent="Pipes" unique_id=1545199247]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(1200, 465, 1226, 465, 1226, 483, 1200, 483)
+
+[node name="Socket12_1" type="Polygon2D" parent="Pipes" unique_id=1433551049]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(1200, 1117, 1226, 1117, 1226, 1135, 1200, 1135)
+
+[node name="Span13" type="Line2D" parent="Pipes" unique_id=175578554 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-966, 474, -966, 960, -966, 1446)
+width = 15.0
+texture = ExtResource("Pipes")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket13_0" type="Polygon2D" parent="Pipes" unique_id=2059590871]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-979, 465, -953, 465, -953, 483, -979, 483)
+
+[node name="Socket13_1" type="Polygon2D" parent="Pipes" unique_id=156529818]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-979, 1437, -953, 1437, -953, 1455, -979, 1455)
+
+[node name="Span14" type="Line2D" parent="Pipes" unique_id=1723586709 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(1659, 474, 1659, 1120, 1659, 1766)
+width = 15.0
+texture = ExtResource("Pipes")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket14_0" type="Polygon2D" parent="Pipes" unique_id=904171289]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(1646, 465, 1672, 465, 1672, 483, 1646, 483)
+
+[node name="Socket14_1" type="Polygon2D" parent="Pipes" unique_id=1185004410]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(1646, 1757, 1672, 1757, 1672, 1775, 1646, 1775)
+
+[node name="Span15" type="Line2D" parent="Pipes" unique_id=259926025 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(619, 1114, 619, 1440, 619, 1766)
+width = 15.0
+texture = ExtResource("Pipes")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket15_0" type="Polygon2D" parent="Pipes" unique_id=935235943]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(606, 1105, 632, 1105, 632, 1123, 606, 1123)
+
+[node name="Socket15_1" type="Polygon2D" parent="Pipes" unique_id=471976775]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(606, 1757, 632, 1757, 632, 1775, 606, 1775)
+
+[node name="Beams" type="Node2D" parent="." unique_id=1175779801]
+material = SubResource("BeamsMat")
+
+[node name="Span00" type="Line2D" parent="Beams" unique_id=1295649201 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(1114, -1541, 1440, -1541, 1766, -1541)
+width = 19.0
+texture = ExtResource("Beams")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket00_0" type="Polygon2D" parent="Beams" unique_id=439817805]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(1105, -1554, 1123, -1554, 1123, -1528, 1105, -1528)
+
+[node name="Socket00_1" type="Polygon2D" parent="Beams" unique_id=321806009]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(1757, -1554, 1775, -1554, 1775, -1528, 1757, -1528)
+
+[node name="Span01" type="Line2D" parent="Beams" unique_id=1705464723 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-806, -1313, -160, -1313, 486, -1313)
+width = 19.0
+texture = ExtResource("Beams")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket01_0" type="Polygon2D" parent="Beams" unique_id=1302445021]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-815, -1326, -797, -1326, -797, -1300, -815, -1300)
+
+[node name="Socket01_1" type="Polygon2D" parent="Beams" unique_id=632264265]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(477, -1326, 495, -1326, 495, -1300, 477, -1300)
+
+[node name="Span02" type="Line2D" parent="Beams" unique_id=751953567 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-1766, -1009, -1280, -1009, -794, -1009)
+width = 19.0
+texture = ExtResource("Beams")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket02_0" type="Polygon2D" parent="Beams" unique_id=1352874795]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-1775, -1022, -1757, -1022, -1757, -996, -1775, -996)
+
+[node name="Socket02_1" type="Polygon2D" parent="Beams" unique_id=117010541]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-803, -1022, -785, -1022, -785, -996, -803, -996)
+
+[node name="Span03" type="Line2D" parent="Beams" unique_id=1006677291 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-806, -891, -160, -891, 486, -891)
+width = 19.0
+texture = ExtResource("Beams")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket03_0" type="Polygon2D" parent="Beams" unique_id=1225133485]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-815, -904, -797, -904, -797, -878, -815, -878)
+
+[node name="Socket03_1" type="Polygon2D" parent="Beams" unique_id=119366673]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(477, -904, 495, -904, 495, -878, 477, -878)
+
+[node name="Span04" type="Line2D" parent="Beams" unique_id=1966091995 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(474, -632, 640, -632, 806, -632)
+width = 19.0
+texture = ExtResource("Beams")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket04_0" type="Polygon2D" parent="Beams" unique_id=10133343]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(465, -645, 483, -645, 483, -619, 465, -619)
+
+[node name="Socket04_1" type="Polygon2D" parent="Beams" unique_id=580647699]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(797, -645, 815, -645, 815, -619, 797, -619)
+
+[node name="Span05" type="Line2D" parent="Beams" unique_id=1978827522 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-1766, -297, -1280, -297, -794, -297)
+width = 19.0
+texture = ExtResource("Beams")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket05_0" type="Polygon2D" parent="Beams" unique_id=368863145]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-1775, -310, -1757, -310, -1757, -284, -1775, -284)
+
+[node name="Socket05_1" type="Polygon2D" parent="Beams" unique_id=1110435873]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-803, -310, -785, -310, -785, -284, -803, -284)
+
+[node name="Span06" type="Line2D" parent="Beams" unique_id=1659610941 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(474, -286, 800, -286, 1126, -286)
+width = 19.0
+texture = ExtResource("Beams")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket06_0" type="Polygon2D" parent="Beams" unique_id=1344864137]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(465, -299, 483, -299, 483, -273, 465, -273)
+
+[node name="Socket06_1" type="Polygon2D" parent="Beams" unique_id=1171416427]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(1117, -299, 1135, -299, 1135, -273, 1117, -273)
+
+[node name="Span07" type="Line2D" parent="Beams" unique_id=1507732723 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-1766, -37, -1120, -37, -474, -37)
+width = 19.0
+texture = ExtResource("Beams")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket07_0" type="Polygon2D" parent="Beams" unique_id=547443250]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-1775, -50, -1757, -50, -1757, -24, -1775, -24)
+
+[node name="Socket07_1" type="Polygon2D" parent="Beams" unique_id=826970889]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-483, -50, -465, -50, -465, -24, -483, -24)
+
+[node name="Span08" type="Line2D" parent="Beams" unique_id=751545359 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(1114, 54, 1440, 54, 1766, 54)
+width = 19.0
+texture = ExtResource("Beams")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket08_0" type="Polygon2D" parent="Beams" unique_id=1098059811]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(1105, 41, 1123, 41, 1123, 67, 1105, 67)
+
+[node name="Socket08_1" type="Polygon2D" parent="Beams" unique_id=1827527262]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(1757, 41, 1775, 41, 1775, 67, 1757, 67)
+
+[node name="Span09" type="Line2D" parent="Beams" unique_id=1980558356 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-486, 337, 160, 337, 806, 337)
+width = 19.0
+texture = ExtResource("Beams")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket09_0" type="Polygon2D" parent="Beams" unique_id=264633415]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-495, 324, -477, 324, -477, 350, -495, 350)
+
+[node name="Socket09_1" type="Polygon2D" parent="Beams" unique_id=953381526]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(797, 324, 815, 324, 815, 350, 797, 350)
+
+[node name="Span10" type="Line2D" parent="Beams" unique_id=617312627 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(794, 300, 1280, 300, 1766, 300)
+width = 19.0
+texture = ExtResource("Beams")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket10_0" type="Polygon2D" parent="Beams" unique_id=1060533580]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(785, 287, 803, 287, 803, 313, 785, 313)
+
+[node name="Socket10_1" type="Polygon2D" parent="Beams" unique_id=842742552]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(1757, 287, 1775, 287, 1775, 313, 1757, 313)
+
+[node name="Span11" type="Line2D" parent="Beams" unique_id=1203785547 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-486, 688, -160, 688, 166, 688)
+width = 19.0
+texture = ExtResource("Beams")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket11_0" type="Polygon2D" parent="Beams" unique_id=401783866]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-495, 675, -477, 675, -477, 701, -495, 701)
+
+[node name="Socket11_1" type="Polygon2D" parent="Beams" unique_id=1969727479]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(157, 675, 175, 675, 175, 701, 157, 701)
+
+[node name="Span12" type="Line2D" parent="Beams" unique_id=1428069932 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-1766, 972, -1600, 972, -1434, 972)
+width = 19.0
+texture = ExtResource("Beams")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket12_0" type="Polygon2D" parent="Beams" unique_id=597080007]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-1775, 959, -1757, 959, -1757, 985, -1775, 985)
+
+[node name="Socket12_1" type="Polygon2D" parent="Beams" unique_id=2021932295]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-1443, 959, -1425, 959, -1425, 985, -1443, 985)
+
+[node name="Span13" type="Line2D" parent="Beams" unique_id=10206147 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-166, 937, 160, 937, 486, 937)
+width = 19.0
+texture = ExtResource("Beams")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket13_0" type="Polygon2D" parent="Beams" unique_id=1891340446]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-175, 924, -157, 924, -157, 950, -175, 950)
+
+[node name="Socket13_1" type="Polygon2D" parent="Beams" unique_id=93014335]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(477, 924, 495, 924, 495, 950, 477, 950)
+
+[node name="Span14" type="Line2D" parent="Beams" unique_id=856519050 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-1446, 1348, -960, 1348, -474, 1348)
+width = 19.0
+texture = ExtResource("Beams")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket14_0" type="Polygon2D" parent="Beams" unique_id=547559612]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-1455, 1335, -1437, 1335, -1437, 1361, -1455, 1361)
+
+[node name="Socket14_1" type="Polygon2D" parent="Beams" unique_id=1892717174]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-483, 1335, -465, 1335, -465, 1361, -483, 1361)
+
+[node name="Span15" type="Line2D" parent="Beams" unique_id=1313131796 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(474, 1226, 960, 1226, 1446, 1226)
+width = 19.0
+texture = ExtResource("Beams")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket15_0" type="Polygon2D" parent="Beams" unique_id=814656061]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(465, 1213, 483, 1213, 483, 1239, 465, 1239)
+
+[node name="Socket15_1" type="Polygon2D" parent="Beams" unique_id=948519767]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(1437, 1213, 1455, 1213, 1455, 1239, 1437, 1239)
+
+[node name="Wires" type="Node2D" parent="." unique_id=212642305]
+material = SubResource("WiresMat")
+
+[node name="Span00" type="Line2D" parent="Wires" unique_id=1598872862 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-1766, -1593, -1120, -1573, -474, -1593)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket00_0" type="Polygon2D" parent="Wires" unique_id=884949184]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-1775, -1606, -1757, -1606, -1757, -1580, -1775, -1580)
+
+[node name="Socket00_1" type="Polygon2D" parent="Wires" unique_id=2062476213]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-483, -1606, -465, -1606, -465, -1580, -483, -1580)
+
+[node name="Span01" type="Line2D" parent="Wires" unique_id=823663144 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-667, -1766, -647, -1120, -667, -474)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket01_0" type="Polygon2D" parent="Wires" unique_id=1898487832]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-680, -1775, -654, -1775, -654, -1757, -680, -1757)
+
+[node name="Socket01_1" type="Polygon2D" parent="Wires" unique_id=1401757594]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-680, -483, -654, -483, -654, -465, -680, -465)
+
+[node name="Span02" type="Line2D" parent="Wires" unique_id=834378647 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-1766, -1306, -1280, -1286, -794, -1306)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket02_0" type="Polygon2D" parent="Wires" unique_id=592920895]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-1775, -1319, -1757, -1319, -1757, -1293, -1775, -1293)
+
+[node name="Socket02_1" type="Polygon2D" parent="Wires" unique_id=2006235786]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-803, -1319, -785, -1319, -785, -1293, -803, -1293)
+
+[node name="Span03" type="Line2D" parent="Wires" unique_id=885641246 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-361, -1446, -341, -1120, -361, -794)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket03_0" type="Polygon2D" parent="Wires" unique_id=1819313926]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-374, -1455, -348, -1455, -348, -1437, -374, -1437)
+
+[node name="Socket03_1" type="Polygon2D" parent="Wires" unique_id=1922491221]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-374, -803, -348, -803, -348, -785, -374, -785)
+
+[node name="Span04" type="Line2D" parent="Wires" unique_id=1342600957 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(474, -1277, 800, -1257, 1126, -1277)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket04_0" type="Polygon2D" parent="Wires" unique_id=1928427157]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(465, -1290, 483, -1290, 483, -1264, 465, -1264)
+
+[node name="Socket04_1" type="Polygon2D" parent="Wires" unique_id=442539839]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(1117, -1290, 1135, -1290, 1135, -1264, 1117, -1264)
+
+[node name="Span05" type="Line2D" parent="Wires" unique_id=227510838 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-1766, -1013, -1280, -993, -794, -1013)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket05_0" type="Polygon2D" parent="Wires" unique_id=2076798263]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-1775, -1026, -1757, -1026, -1757, -1000, -1775, -1000)
+
+[node name="Socket05_1" type="Polygon2D" parent="Wires" unique_id=2047737518]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-803, -1026, -785, -1026, -785, -1000, -803, -1000)
+
+[node name="Span06" type="Line2D" parent="Wires" unique_id=709598139 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(48, -1126, 68, -960, 48, -794)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket06_0" type="Polygon2D" parent="Wires" unique_id=1035929216]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(35, -1135, 61, -1135, 61, -1117, 35, -1117)
+
+[node name="Socket06_1" type="Polygon2D" parent="Wires" unique_id=238698492]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(35, -803, 61, -803, 61, -785, 35, -785)
+
+[node name="Span07" type="Line2D" parent="Wires" unique_id=976354535 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(474, -897, 1120, -877, 1766, -897)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket07_0" type="Polygon2D" parent="Wires" unique_id=33428472]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(465, -910, 483, -910, 483, -884, 465, -884)
+
+[node name="Socket07_1" type="Polygon2D" parent="Wires" unique_id=953995400]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(1757, -910, 1775, -910, 1775, -884, 1757, -884)
+
+[node name="Span08" type="Line2D" parent="Wires" unique_id=1058039039 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(334, -1126, 354, -640, 334, -154)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket08_0" type="Polygon2D" parent="Wires" unique_id=1306668528]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(321, -1135, 347, -1135, 347, -1117, 321, -1117)
+
+[node name="Socket08_1" type="Polygon2D" parent="Wires" unique_id=1855675267]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(321, -163, 347, -163, 347, -145, 321, -145)
+
+[node name="Span09" type="Line2D" parent="Wires" unique_id=2024567568 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(794, -620, 1280, -600, 1766, -620)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket09_0" type="Polygon2D" parent="Wires" unique_id=989538279]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(785, -633, 803, -633, 803, -607, 785, -607)
+
+[node name="Socket09_1" type="Polygon2D" parent="Wires" unique_id=1180273520]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(1757, -633, 1775, -633, 1775, -607, 1757, -607)
+
+[node name="Span10" type="Line2D" parent="Wires" unique_id=1854249443 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-1327, -806, -1307, -480, -1327, -154)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket10_0" type="Polygon2D" parent="Wires" unique_id=1909945369]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-1340, -815, -1314, -815, -1314, -797, -1340, -797)
+
+[node name="Socket10_1" type="Polygon2D" parent="Wires" unique_id=1380887360]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-1340, -163, -1314, -163, -1314, -145, -1340, -145)
+
+[node name="Span11" type="Line2D" parent="Wires" unique_id=1415540697 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-806, -260, -480, -240, -154, -260)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket11_0" type="Polygon2D" parent="Wires" unique_id=826518373]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-815, -273, -797, -273, -797, -247, -815, -247)
+
+[node name="Socket11_1" type="Polygon2D" parent="Wires" unique_id=951090687]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-163, -273, -145, -273, -145, -247, -163, -247)
+
+[node name="Span12" type="Line2D" parent="Wires" unique_id=50287552 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(1434, -386, 1600, -366, 1766, -386)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket12_0" type="Polygon2D" parent="Wires" unique_id=2025200152]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(1425, -399, 1443, -399, 1443, -373, 1425, -373)
+
+[node name="Socket12_1" type="Polygon2D" parent="Wires" unique_id=944302201]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(1757, -399, 1775, -399, 1775, -373, 1757, -373)
+
+[node name="Span13" type="Line2D" parent="Wires" unique_id=94822225 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-966, -166, -946, 0, -966, 166)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket13_0" type="Polygon2D" parent="Wires" unique_id=1057391191]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-979, -175, -953, -175, -953, -157, -979, -157)
+
+[node name="Socket13_1" type="Polygon2D" parent="Wires" unique_id=942267530]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-979, 157, -953, 157, -953, 175, -979, 175)
+
+[node name="Span14" type="Line2D" parent="Wires" unique_id=1930491360 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-166, 46, 160, 66, 486, 46)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket14_0" type="Polygon2D" parent="Wires" unique_id=355690551]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-175, 33, -157, 33, -157, 59, -175, 59)
+
+[node name="Socket14_1" type="Polygon2D" parent="Wires" unique_id=480884380]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(477, 33, 495, 33, 495, 59, 477, 59)
+
+[node name="Span15" type="Line2D" parent="Wires" unique_id=1464369548 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-1766, 289, -1120, 309, -474, 289)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket15_0" type="Polygon2D" parent="Wires" unique_id=1076625701]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-1775, 276, -1757, 276, -1757, 302, -1775, 302)
+
+[node name="Socket15_1" type="Polygon2D" parent="Wires" unique_id=935354869]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-483, 276, -465, 276, -465, 302, -483, 302)
+
+[node name="Span16" type="Line2D" parent="Wires" unique_id=881867076 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-486, 256, 160, 276, 806, 256)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket16_0" type="Polygon2D" parent="Wires" unique_id=1945845156]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-495, 243, -477, 243, -477, 269, -495, 269)
+
+[node name="Socket16_1" type="Polygon2D" parent="Wires" unique_id=222933263]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(797, 243, 815, 243, 815, 269, 797, 269)
+
+[node name="Span17" type="Line2D" parent="Wires" unique_id=1765681107 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(1290, -166, 1310, 160, 1290, 486)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket17_0" type="Polygon2D" parent="Wires" unique_id=977053046]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(1277, -175, 1303, -175, 1303, -157, 1277, -157)
+
+[node name="Socket17_1" type="Polygon2D" parent="Wires" unique_id=1957903151]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(1277, 477, 1303, 477, 1303, 495, 1277, 495)
+
+[node name="Span18" type="Line2D" parent="Wires" unique_id=870133290 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-1766, 710, -1280, 730, -794, 710)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket18_0" type="Polygon2D" parent="Wires" unique_id=2133139798]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-1775, 697, -1757, 697, -1757, 723, -1775, 723)
+
+[node name="Socket18_1" type="Polygon2D" parent="Wires" unique_id=726255307]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-803, 697, -785, 697, -785, 723, -803, 723)
+
+[node name="Span19" type="Line2D" parent="Wires" unique_id=1066272193 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(474, 674, 1120, 694, 1766, 674)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket19_0" type="Polygon2D" parent="Wires" unique_id=1208992343]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(465, 661, 483, 661, 483, 687, 465, 687)
+
+[node name="Socket19_1" type="Polygon2D" parent="Wires" unique_id=272364125]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(1757, 661, 1775, 661, 1775, 687, 1757, 687)
+
+[node name="Span20" type="Line2D" parent="Wires" unique_id=286973382 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(1570, 474, 1590, 1120, 1570, 1766)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket20_0" type="Polygon2D" parent="Wires" unique_id=1042742]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(1557, 465, 1583, 465, 1583, 483, 1557, 483)
+
+[node name="Socket20_1" type="Polygon2D" parent="Wires" unique_id=241255210]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(1557, 1757, 1583, 1757, 1583, 1775, 1557, 1775)
+
+[node name="Span21" type="Line2D" parent="Wires" unique_id=838654332 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-1446, 892, -1120, 912, -794, 892)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket21_0" type="Polygon2D" parent="Wires" unique_id=412675456]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-1455, 879, -1437, 879, -1437, 905, -1455, 905)
+
+[node name="Socket21_1" type="Polygon2D" parent="Wires" unique_id=190651164]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-803, 879, -785, 879, -785, 905, -803, 905)
+
+[node name="Span22" type="Line2D" parent="Wires" unique_id=1067037431 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(62, -166, 82, 480, 62, 1126)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket22_0" type="Polygon2D" parent="Wires" unique_id=155348792]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(49, -175, 75, -175, 75, -157, 49, -157)
+
+[node name="Socket22_1" type="Polygon2D" parent="Wires" unique_id=817828835]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(49, 1117, 75, 1117, 75, 1135, 49, 1135)
+
+[node name="Span23" type="Line2D" parent="Wires" unique_id=766350495 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(474, 936, 960, 956, 1446, 936)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket23_0" type="Polygon2D" parent="Wires" unique_id=358980249]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(465, 923, 483, 923, 483, 949, 465, 949)
+
+[node name="Socket23_1" type="Polygon2D" parent="Wires" unique_id=1985820391]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(1437, 923, 1455, 923, 1455, 949, 1437, 949)
+
+[node name="Span24" type="Line2D" parent="Wires" unique_id=538078783 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-1446, 1277, -960, 1297, -474, 1277)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket24_0" type="Polygon2D" parent="Wires" unique_id=1421793475]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-1455, 1264, -1437, 1264, -1437, 1290, -1455, 1290)
+
+[node name="Socket24_1" type="Polygon2D" parent="Wires" unique_id=864537988]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-483, 1264, -465, 1264, -465, 1290, -483, 1290)
+
+[node name="Span25" type="Line2D" parent="Wires" unique_id=122418637 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(474, 1299, 960, 1319, 1446, 1299)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket25_0" type="Polygon2D" parent="Wires" unique_id=335271720]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(465, 1286, 483, 1286, 483, 1312, 465, 1312)
+
+[node name="Socket25_1" type="Polygon2D" parent="Wires" unique_id=2017149906]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(1437, 1286, 1455, 1286, 1455, 1312, 1437, 1312)
+
+[node name="Span26" type="Line2D" parent="Wires" unique_id=586266557 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(-1332, 1434, -1312, 1600, -1332, 1766)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket26_0" type="Polygon2D" parent="Wires" unique_id=332683675]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-1345, 1425, -1319, 1425, -1319, 1443, -1345, 1443)
+
+[node name="Socket26_1" type="Polygon2D" parent="Wires" unique_id=1627620279]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-1345, 1757, -1319, 1757, -1319, 1775, -1345, 1775)
+
+[node name="Span27" type="Line2D" parent="Wires" unique_id=2057873691 groups=["anchored_overhead"]]
+use_parent_material = true
+points = PackedVector2Array(587, 1114, 607, 1440, 587, 1766)
+width = 5.0
+texture = ExtResource("Wires")
+texture_mode = 2
+antialiased = true
+
+[node name="Socket27_0" type="Polygon2D" parent="Wires" unique_id=1478282561]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(574, 1105, 600, 1105, 600, 1123, 574, 1123)
+
+[node name="Socket27_1" type="Polygon2D" parent="Wires" unique_id=1476968340]
+use_parent_material = true
+color = Color(0.16, 0.18, 0.16, 1)
+polygon = PackedVector2Array(574, 1757, 600, 1757, 600, 1775, 574, 1775)
+
+[node name="Fixtures" type="Node2D" parent="." unique_id=1018980248]
+
+[node name="CeilingLamp1" type="Node2D" parent="Fixtures" unique_id=511377281 groups=["ceiling_fixtures"]]
+z_index = -2
+position = Vector2(-1015, -297)
+script = ExtResource("6_5ss6h")
+mount_elevation = 0.042
+metadata/previous_position = Vector2(-1015, -585)
+metadata/mount_support = "Beams/Span05"
+
+[node name="Housing" type="Node2D" parent="Fixtures/CeilingLamp1" unique_id=954737682]
+
+[node name="Lens" type="Sprite2D" parent="Fixtures/CeilingLamp1/Housing" unique_id=1481597369]
+texture = ExtResource("7_3bk6i")
+
+[node name="Glow" type="Sprite2D" parent="Fixtures/CeilingLamp1/Housing" unique_id=1742017149]
+modulate = Color(1, 0.85, 0.5, 0.55)
+z_index = -1
+material = SubResource("Additive")
+scale = Vector2(3.4, 3)
+texture = ExtResource("8_4h56i")
+
+[node name="Sparks" type="CPUParticles2D" parent="Fixtures/CeilingLamp1/Housing" unique_id=637163011]
+material = SubResource("Additive")
+emitting = false
+amount = 38
+texture = ExtResource("9_gduto")
+lifetime = 0.72
+one_shot = true
+explosiveness = 0.9
+randomness = 0.65
+emission_shape = 2
+emission_sphere_radius = 1.0
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 170.0
+gravity = Vector2(0, 180)
+initial_velocity_min = 65.0
+initial_velocity_max = 200.0
+angular_velocity_min = -240.0
+angular_velocity_max = 240.0
+damping_min = 30.0
+damping_max = 65.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 0.14
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("SparkScale")
+color_ramp = SubResource("SparkColors")
+
+[node name="CeilingLamp2" type="Node2D" parent="Fixtures" unique_id=281503722 groups=["ceiling_fixtures"]]
+z_index = -2
+position = Vector2(1210, -1541)
+script = ExtResource("6_5ss6h")
+light_tint = Color(0.78, 0.96, 1, 1)
+fixture_kind = "fluorescent"
+mount_elevation = 0.042
+metadata/previous_position = Vector2(975, -1230)
+metadata/mount_support = "Beams/Span00"
+
+[node name="Housing" type="Node2D" parent="Fixtures/CeilingLamp2" unique_id=375023270]
+
+[node name="Lens" type="Sprite2D" parent="Fixtures/CeilingLamp2/Housing" unique_id=525109674]
+texture = ExtResource("10_5ss6h")
+
+[node name="Glow" type="Sprite2D" parent="Fixtures/CeilingLamp2/Housing" unique_id=1111058814]
+modulate = Color(0.65, 0.88, 1, 0.55)
+z_index = -1
+material = SubResource("CanvasItemMaterial_derex")
+scale = Vector2(3.4, 3)
+texture = ExtResource("8_4h56i")
+
+[node name="Sparks" type="CPUParticles2D" parent="Fixtures/CeilingLamp2/Housing" unique_id=1784795565]
+material = SubResource("CanvasItemMaterial_derex")
+emitting = false
+amount = 38
+texture = ExtResource("9_gduto")
+lifetime = 0.72
+one_shot = true
+explosiveness = 0.9
+randomness = 0.65
+emission_shape = 2
+emission_sphere_radius = 1.0
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 170.0
+gravity = Vector2(0, 180)
+initial_velocity_min = 65.0
+initial_velocity_max = 200.0
+angular_velocity_min = -240.0
+angular_velocity_max = 240.0
+damping_min = 30.0
+damping_max = 65.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 0.14
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_8ow2n")
+color_ramp = SubResource("Gradient_84ty7")
+
+[node name="CeilingLamp3" type="Node2D" parent="Fixtures" unique_id=881151691 groups=["ceiling_fixtures"]]
+z_index = -2
+position = Vector2(619, 1282)
+rotation = 1.5707964
+script = ExtResource("6_5ss6h")
+metadata/previous_position = Vector2(690, 1015)
+metadata/mount_support = "Pipes/Span15"
+
+[node name="Housing" type="Node2D" parent="Fixtures/CeilingLamp3" unique_id=24040419]
+
+[node name="Lens" type="Sprite2D" parent="Fixtures/CeilingLamp3/Housing" unique_id=1787836809]
+texture = ExtResource("7_3bk6i")
+
+[node name="Glow" type="Sprite2D" parent="Fixtures/CeilingLamp3/Housing" unique_id=289682700]
+modulate = Color(1, 0.85, 0.5, 0.55)
+z_index = -1
+material = SubResource("Additive")
+scale = Vector2(3.4, 3)
+texture = ExtResource("8_4h56i")
+
+[node name="Sparks" type="CPUParticles2D" parent="Fixtures/CeilingLamp3/Housing" unique_id=1212616987]
+material = SubResource("Additive")
+emitting = false
+amount = 38
+texture = ExtResource("9_gduto")
+lifetime = 0.72
+one_shot = true
+explosiveness = 0.9
+randomness = 0.65
+emission_shape = 2
+emission_sphere_radius = 1.0
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 170.0
+gravity = Vector2(0, 180)
+initial_velocity_min = 65.0
+initial_velocity_max = 200.0
+angular_velocity_min = -240.0
+angular_velocity_max = 240.0
+damping_min = 30.0
+damping_max = 65.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 0.14
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("SparkScale")
+color_ramp = SubResource("SparkColors")
+
+[node name="WallLamp" type="Node2D" parent="Fixtures" unique_id=1554960951 groups=["ceiling_fixtures"]]
+position = Vector2(-1230, 514)
+rotation = 3.1415927
+script = ExtResource("6_5ss6h")
+fixture_kind = "bunker"
+metadata/previous_position = Vector2(-1230, 585)
+metadata/mount_wall = "Walls/Wall015"
+
+[node name="Housing" type="Node2D" parent="Fixtures/WallLamp" unique_id=1537143040]
+
+[node name="Lens" type="Sprite2D" parent="Fixtures/WallLamp/Housing" unique_id=1803853286]
+texture = ExtResource("11_cedey")
+
+[node name="Glow" type="Sprite2D" parent="Fixtures/WallLamp/Housing" unique_id=1090043098]
+modulate = Color(1, 0.85, 0.5, 0.55)
+z_index = -1
+material = SubResource("CanvasItemMaterial_7m1vw")
+scale = Vector2(3.4, 3)
+texture = ExtResource("8_4h56i")
+
+[node name="Sparks" type="CPUParticles2D" parent="Fixtures/WallLamp/Housing" unique_id=1442287046]
+material = SubResource("CanvasItemMaterial_7m1vw")
+emitting = false
+amount = 38
+texture = ExtResource("9_gduto")
+lifetime = 0.72
+one_shot = true
+explosiveness = 0.9
+randomness = 0.65
+emission_shape = 2
+emission_sphere_radius = 1.0
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 170.0
+gravity = Vector2(0, 180)
+initial_velocity_min = 65.0
+initial_velocity_max = 200.0
+angular_velocity_min = -240.0
+angular_velocity_max = 240.0
+damping_min = 30.0
+damping_max = 65.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 0.14
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_8e0cb")
+color_ramp = SubResource("Gradient_4jigf")
+
+[node name="CeilingLamp5" type="Node2D" parent="Fixtures" unique_id=2025688927 groups=["ceiling_fixtures"]]
+z_index = -2
+position = Vector2(-59, 10)
+rotation = 1.5707964
+script = ExtResource("6_5ss6h")
+light_tint = Color(0.78, 0.96, 1, 1)
+fixture_kind = "fluorescent"
+metadata/previous_position = Vector2(69.99999, 10)
+metadata/mount_support = "Pipes/Span11"
+
+[node name="Housing" type="Node2D" parent="Fixtures/CeilingLamp5" unique_id=535806357]
+
+[node name="Lens" type="Sprite2D" parent="Fixtures/CeilingLamp5/Housing" unique_id=632373934]
+texture = ExtResource("10_5ss6h")
+
+[node name="Glow" type="Sprite2D" parent="Fixtures/CeilingLamp5/Housing" unique_id=1146541085]
+modulate = Color(0.65, 0.88, 1, 0.55)
+z_index = -1
+material = SubResource("CanvasItemMaterial_derex")
+scale = Vector2(3.4, 3)
+texture = ExtResource("8_4h56i")
+
+[node name="Sparks" type="CPUParticles2D" parent="Fixtures/CeilingLamp5/Housing" unique_id=1138577285]
+material = SubResource("CanvasItemMaterial_derex")
+emitting = false
+amount = 38
+texture = ExtResource("9_gduto")
+lifetime = 0.72
+one_shot = true
+explosiveness = 0.9
+randomness = 0.65
+emission_shape = 2
+emission_sphere_radius = 1.0
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 170.0
+gravity = Vector2(0, 180)
+initial_velocity_min = 65.0
+initial_velocity_max = 200.0
+angular_velocity_min = -240.0
+angular_velocity_max = 240.0
+damping_min = 30.0
+damping_max = 65.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 0.14
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_8ow2n")
+color_ramp = SubResource("Gradient_84ty7")
+
+[node name="WallLampUpperLeft" type="Node2D" parent="Fixtures" unique_id=1059959080 groups=["ceiling_fixtures"]]
+position = Vector2(-1406, -1320)
+rotation = 1.5707964
+script = ExtResource("6_5ss6h")
+fixture_kind = "bunker"
+metadata/previous_position = Vector2(-1230, 585)
+metadata/mount_wall = "Walls/Wall026"
+
+[node name="Housing" type="Node2D" parent="Fixtures/WallLampUpperLeft" unique_id=81090739]
+
+[node name="Lens" type="Sprite2D" parent="Fixtures/WallLampUpperLeft/Housing" unique_id=1448680989]
+texture = ExtResource("11_cedey")
+
+[node name="Glow" type="Sprite2D" parent="Fixtures/WallLampUpperLeft/Housing" unique_id=2122358765]
+modulate = Color(1, 0.85, 0.5, 0.55)
+z_index = -1
+material = SubResource("CanvasItemMaterial_7m1vw")
+scale = Vector2(3.4, 3)
+texture = ExtResource("8_4h56i")
+
+[node name="Sparks" type="CPUParticles2D" parent="Fixtures/WallLampUpperLeft/Housing" unique_id=696140434]
+material = SubResource("CanvasItemMaterial_7m1vw")
+emitting = false
+amount = 38
+texture = ExtResource("9_gduto")
+lifetime = 0.72
+one_shot = true
+explosiveness = 0.9
+randomness = 0.65
+emission_shape = 2
+emission_sphere_radius = 1.0
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 170.0
+gravity = Vector2(0, 180)
+initial_velocity_min = 65.0
+initial_velocity_max = 200.0
+angular_velocity_min = -240.0
+angular_velocity_max = 240.0
+damping_min = 30.0
+damping_max = 65.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 0.14
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_8e0cb")
+color_ramp = SubResource("Gradient_4jigf")
+
+[node name="PipeDrip1" type="AudioStreamPlayer2D" parent="." unique_id=636120064]
+position = Vector2(-1285, -1280)
+stream = ExtResource("waterdrop")
+volume_db = -15.0
+max_distance = 620.0
+attenuation = 2.0
+script = ExtResource("drip")
+
+[node name="PipeDrip2" type="AudioStreamPlayer2D" parent="." unique_id=1713310778]
+position = Vector2(56, -1600)
+stream = ExtResource("waterdrop")
+volume_db = -15.0
+max_distance = 620.0
+attenuation = 2.0
+script = ExtResource("drip")
+start_offset = 7.3
+
+[node name="PipeDrip3" type="AudioStreamPlayer2D" parent="." unique_id=1513454533]
+position = Vector2(333, -1440)
+stream = ExtResource("waterdrop")
+volume_db = -15.0
+max_distance = 620.0
+attenuation = 2.0
+script = ExtResource("drip")
+start_offset = 14.6

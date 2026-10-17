@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=15 format=3]
 
 [ext_resource type="Script" path="res://scripts/world/maze.gd" id="1"]
 
@@ -8,6 +8,26 @@
 
 [ext_resource type="Texture2D" path="res://assets/textures/concrete_floor.png" id="4"]
 
+[ext_resource type="PackedScene" path="res://scenes/world/corridor_details.tscn" id="5"]
+
+[ext_resource type="Shader" path="res://shaders/floor_surface.gdshader" id="6_floor"]
+[ext_resource type="Texture2D" path="res://assets/textures/concrete_floor_normal.png" id="7_normal"]
+
+[ext_resource type="PackedScene" path="res://scenes/world/floor_glass.tscn" id="glass"]
+[ext_resource type="PackedScene" path="res://scenes/world/overhead.tscn" id="overhead"]
+
+[ext_resource type="PackedScene" path="res://scenes/world/blood_stains.tscn" id="blood"]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pickups/straw_figurine.png" id="straw"]
+[ext_resource type="PackedScene" path="res://scenes/world/blood_clues.tscn" id="clues"]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pickups/battery.png" id="battery_texture"]
+
+[sub_resource type="ShaderMaterial" id="FloorMaterial"]
+shader = ExtResource("6_floor")
+shader_parameter/normal_texture = ExtResource("7_normal")
+shader_parameter/normal_strength = 0.6
+
 [node name="Maze" type="Node2D"]
 
 script = ExtResource("1")
@@ -16,6 +36,7 @@ connections = PackedInt32Array(6, 14, 14, 12, 2, 10, 14, 14, 12, 6, 12, 5, 3, 13
 
 [node name="Floor" type="Sprite2D" parent="."]
 
+material = SubResource("FloorMaterial")
 z_index = -20
 
 texture_repeat = 2
@@ -374,6 +395,11 @@ script = ExtResource("3")
 
 kind = "figurine"
 
+[node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine01"]
+texture = ExtResource("straw")
+scale = Vector2(0.05, 0.05)
+texture_filter = 2
+
 [node name="Figurine02" type="Node2D" parent="Pickups"]
 
 position = Vector2(1600, -1600)
@@ -381,6 +407,11 @@ position = Vector2(1600, -1600)
 script = ExtResource("3")
 
 kind = "figurine"
+
+[node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine02"]
+texture = ExtResource("straw")
+scale = Vector2(0.05, 0.05)
+texture_filter = 2
 
 [node name="Figurine03" type="Node2D" parent="Pickups"]
 
@@ -390,6 +421,11 @@ script = ExtResource("3")
 
 kind = "figurine"
 
+[node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine03"]
+texture = ExtResource("straw")
+scale = Vector2(0.05, 0.05)
+texture_filter = 2
+
 [node name="Figurine04" type="Node2D" parent="Pickups"]
 
 position = Vector2(1600, 1600)
@@ -397,6 +433,11 @@ position = Vector2(1600, 1600)
 script = ExtResource("3")
 
 kind = "figurine"
+
+[node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine04"]
+texture = ExtResource("straw")
+scale = Vector2(0.05, 0.05)
+texture_filter = 2
 
 [node name="Figurine05" type="Node2D" parent="Pickups"]
 
@@ -406,6 +447,11 @@ script = ExtResource("3")
 
 kind = "figurine"
 
+[node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine05"]
+texture = ExtResource("straw")
+scale = Vector2(0.05, 0.05)
+texture_filter = 2
+
 [node name="Figurine06" type="Node2D" parent="Pickups"]
 
 position = Vector2(-1600, 0)
@@ -413,6 +459,11 @@ position = Vector2(-1600, 0)
 script = ExtResource("3")
 
 kind = "figurine"
+
+[node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine06"]
+texture = ExtResource("straw")
+scale = Vector2(0.05, 0.05)
+texture_filter = 2
 
 [node name="Figurine07" type="Node2D" parent="Pickups"]
 
@@ -422,6 +473,11 @@ script = ExtResource("3")
 
 kind = "figurine"
 
+[node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine07"]
+texture = ExtResource("straw")
+scale = Vector2(0.05, 0.05)
+texture_filter = 2
+
 [node name="Figurine08" type="Node2D" parent="Pickups"]
 
 position = Vector2(1280, -320)
@@ -429,6 +485,11 @@ position = Vector2(1280, -320)
 script = ExtResource("3")
 
 kind = "figurine"
+
+[node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine08"]
+texture = ExtResource("straw")
+scale = Vector2(0.05, 0.05)
+texture_filter = 2
 
 [node name="Figurine09" type="Node2D" parent="Pickups"]
 
@@ -438,6 +499,11 @@ script = ExtResource("3")
 
 kind = "figurine"
 
+[node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine09"]
+texture = ExtResource("straw")
+scale = Vector2(0.05, 0.05)
+texture_filter = 2
+
 [node name="Figurine10" type="Node2D" parent="Pickups"]
 
 position = Vector2(-960, -960)
@@ -445,6 +511,11 @@ position = Vector2(-960, -960)
 script = ExtResource("3")
 
 kind = "figurine"
+
+[node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine10"]
+texture = ExtResource("straw")
+scale = Vector2(0.05, 0.05)
+texture_filter = 2
 
 [node name="Figurine11" type="Node2D" parent="Pickups"]
 
@@ -454,6 +525,11 @@ script = ExtResource("3")
 
 kind = "figurine"
 
+[node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine11"]
+texture = ExtResource("straw")
+scale = Vector2(0.05, 0.05)
+texture_filter = 2
+
 [node name="Figurine12" type="Node2D" parent="Pickups"]
 
 position = Vector2(960, -1280)
@@ -462,26 +538,69 @@ script = ExtResource("3")
 
 kind = "figurine"
 
+[node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine12"]
+texture = ExtResource("straw")
+scale = Vector2(0.05, 0.05)
+texture_filter = 2
+
 [node name="Battery01" type="Node2D" parent="Pickups"]
-
-position = Vector2(320, -960)
-
+position = Vector2(-1280, -1280)
 script = ExtResource("3")
-
 kind = "battery"
+
+[node name="BatteryBody" type="Sprite2D" parent="Pickups/Battery01"]
+texture = ExtResource("battery_texture")
+scale = Vector2(0.036, 0.036)
+texture_filter = 2
 
 [node name="Battery02" type="Node2D" parent="Pickups"]
-
-position = Vector2(-320, -640)
-
+position = Vector2(1280, -960)
 script = ExtResource("3")
-
 kind = "battery"
+
+[node name="BatteryBody" type="Sprite2D" parent="Pickups/Battery02"]
+texture = ExtResource("battery_texture")
+scale = Vector2(0.036, 0.036)
+texture_filter = 2
 
 [node name="Battery03" type="Node2D" parent="Pickups"]
-
-position = Vector2(640, 320)
-
+position = Vector2(-1280, 960)
 script = ExtResource("3")
-
 kind = "battery"
+
+[node name="BatteryBody" type="Sprite2D" parent="Pickups/Battery03"]
+texture = ExtResource("battery_texture")
+scale = Vector2(0.036, 0.036)
+texture_filter = 2
+
+[node name="Battery04" type="Node2D" parent="Pickups"]
+position = Vector2(1280, 1280)
+script = ExtResource("3")
+kind = "battery"
+
+[node name="BatteryBody" type="Sprite2D" parent="Pickups/Battery04"]
+texture = ExtResource("battery_texture")
+scale = Vector2(0.036, 0.036)
+texture_filter = 2
+
+[node name="Battery05" type="Node2D" parent="Pickups"]
+position = Vector2(0, 320)
+script = ExtResource("3")
+kind = "battery"
+
+[node name="BatteryBody" type="Sprite2D" parent="Pickups/Battery05"]
+texture = ExtResource("battery_texture")
+scale = Vector2(0.036, 0.036)
+texture_filter = 2
+
+[node name="CorridorDetails" parent="." instance=ExtResource("5")]
+
+[node name="FloorGlass" parent="." instance=ExtResource("glass")]
+
+[node name="Overhead" parent="." instance=ExtResource("overhead")]
+
+[node name="BloodStains" parent="." instance=ExtResource("blood")]
+
+[node name="BloodClues" parent="." instance=ExtResource("clues")]
+
+[editable path="Overhead"]

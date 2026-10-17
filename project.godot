@@ -11,22 +11,31 @@ config_version=5
 [application]
 
 config/name="StillSurve"
-config/version="0.0.1-preAlpha"
-run/main_scene="res://scenes/game.tscn"
+config/version="0.0.2-preAlpha"
+run/main_scene="res://scenes/ui/studio_intro.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
+boot_splash/bg_color=Color(0.005, 0.007, 0.008, 1)
+boot_splash/show_image=false
 config/icon="res://assets/ui/app_icon.png"
 
 [audio]
 
 buses/default_bus_layout="res://assets/audio/mixer.tres"
 
+[autoload]
+
+MenuAudio="*res://scenes/ui/menu_audio.tscn"
+RuntimeBudget="*res://scripts/game/runtime_budget.gd"
+
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/mode=3
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
 
 [input]
 
@@ -69,6 +78,10 @@ restart={
 "events": Array[InputEventKey]([Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":82,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ])
 }
+
+[physics]
+
+common/physics_interpolation=true
 
 [rendering]
 

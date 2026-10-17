@@ -1,0 +1,91 @@
+extends SceneTree
+var failures: int = 0
+func expect(value: bool, message: String) -> void:
+	if not value:
+		failures += 1
+		push_error(message)
+func press(game: Node, code: int, echo: bool = false) -> void:
+	var event: InputEventKey = InputEventKey.new()
+	event.physical_keycode = code
+	event.pressed = true
+	event.echo = echo
+	game.call("_input", event)
+func cheat(game: Node) -> void:
+	for code in [KEY_Q, KEY_A, KEY_Z]: press(game, code)
+func _initialize() -> void:
+	call_deferred("run_checks")
+func run_checks() -> void:
+	change_scene_to_file("res://scenes/game.tscn")
+	for frame in range(5): await process_frame
+	var game: Node = current_scene
+	var player: CharacterBody2D = game.get_node("Player")
+	player.set_physics_process(false)
+	for hunter in game.get("monsters"): hunter.set_physics_process(false)
+	expect(game.get_node("StartGame").playing, "Start sound plays on a new game")
+	expect(game.get_node("OpeningHowl").playing, "Opening howl is guaranteed regardless of spawn distance")
+	expect(game.get_node("Monster/Growl").get("howl_timer") >= 26.0, "Opening howl schedules the next howl")
+	for sound in ["StartGame", "OpeningHowl", "Danger", "Heartbeat", "Screamer"]:
+		expect(game.get_node(sound).bus == &"Master", "Event audio uses shared room acoustics")
+	press(game, KEY_Q)
+	press(game, KEY_Q, true)
+	press(game, KEY_A)
+	press(game, KEY_Z)
+	expect(game.get("immortal"), "Physical QAZ with key repeat toggles immortality on")
+	game.call("kill_player")
+	expect(not game.get("finished") and player.get("alive"), "Immortality blocks a lethal hit")
+	expect(not game.get_node("Screamer").playing, "Invulnerable hits do not play the screamer")
+	cheat(game)
+	expect(not game.get("immortal"), "A second QAZ toggles immortality off")
+	for code in [KEY_Q, KEY_X, KEY_A, KEY_Z]: press(game, code)
+	expect(not game.get("immortal"), "Interrupted code does not activate immortality")
+	var monster: CharacterBody2D = game.get_node("Monster")
+	var other: CharacterBody2D = game.get_node("SecondMonster")
+	other.set("active", false)
+	other.set("state", "patrol")
+	var maze: Node2D = game.get_node("Maze")
+	monster.global_position = maze.call("cell_position", 60)
+	player.global_position = monster.global_position + Vector2(0, 75)
+	monster.set("state", "patrol")
+	monster.set("active", true)
+	monster.set("disengage_timer", 0.0)
+	monster.set("facing_angle", 0.0)
+	monster.velocity = Vector2(100, 0)
+	var position_before: Vector2 = monster.global_position
+	monster.call("perceive")
+	expect(monster.get("state") == "alert" and monster.get("detection_remaining") == 0.5, "Detection starts a half-second alert")
+	expect(game.get_node("Danger").playing, "Detection plays danger")
+	monster.call("_physics_process", 0.25)
+	expect(monster.position == position_before and monster.velocity == Vector2.ZERO, "Monster stands still during alert")
+	expect(absf(angle_difference(monster.get("facing_angle"), PI * 0.5)) < 0.1, "Monster turns toward the detected player")
+	monster.call("perceive")
+	expect(is_equal_approx(monster.get("detection_remaining"), 0.25), "Repeated sight does not restart the delay")
+	monster.call("hear_noise", player.global_position, 12000.0)
+	expect(monster.get("state") == "alert", "Footstep noise cannot cancel the detection pause")
+	game.call("update_chase_audio", 0.2)
+	expect(game.get_node("Heartbeat").playing and game.get_node("Heartbeat").stream.loop, "Heartbeat loops during alert and pursuit")
+	monster.call("_physics_process", 0.24)
+	expect(monster.get("state") == "alert" and monster.position == position_before, "No movement before half a second elapses")
+	monster.call("_physics_process", 0.02)
+	expect(monster.get("state") == "hunt", "Pursuit begins after half a second")
+	monster.set("state", "patrol")
+	game.call("update_chase_audio", 2.0)
+	expect(not game.get_node("Heartbeat").playing, "Heartbeat fades out after pursuit ends")
+	monster.global_position = player.global_position + Vector2(20, 0)
+	monster.set("state", "patrol")
+	monster.set("sense_timer", 0.0)
+	monster.set("memory", 0.0)
+	monster.call("_physics_process", 0.01)
+	expect(not game.get("finished"), "Detection pause also protects against immediate close-range attacks")
+	monster.call("_physics_process", 0.51)
+	expect(game.get("finished") and not game.get("won"), "Lethal attack works after the pause with immortality disabled")
+	expect(game.get_node("Screamer").playing, "Death plays screamer")
+	expect(not game.get_node("Heartbeat").playing, "Death stops heartbeat")
+	game.call("finish", false)
+	change_scene_to_file("res://scenes/game.tscn")
+	for frame in range(4): await process_frame
+	expect(not current_scene.get("immortal"), "A new run starts without immortality")
+	expect(current_scene.get_node("OpeningHowl").playing and current_scene.get_node("StartGame").playing, "Restart plays the introduction again")
+	current_scene.call("finish", true)
+	expect(not current_scene.get_node("Screamer").playing, "Victory does not play a death screamer")
+	print("RESULT immortality, event audio, opening howl and detection pause: %d failure(s)" % failures)
+	quit(0 if failures == 0 else 1)

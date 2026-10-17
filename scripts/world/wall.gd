@@ -1,6 +1,14 @@
 @tool
 extends StaticBody2D
 
+signal vision_geometry_changed
+
+var cached_transform: Transform2D
+var cached_size: Vector2 = Vector2.INF
+var cached_damaged: bool = false
+var cached_gap: float = -1.0
+var cached_corners: PackedVector2Array = PackedVector2Array()
+
 @export var wall_size: Vector2 = Vector2(320, 24):
 	set(value):
 		wall_size = value
@@ -21,6 +29,12 @@ extends StaticBody2D
 			update_shape()
 
 func _ready() -> void:
+	set_notify_transform(true)
+	z_index = 90
+	var concrete: ShaderMaterial = ShaderMaterial.new()
+	concrete.shader = preload("res://shaders/concrete_wall.gdshader")
+	concrete.set_shader_parameter("exposure", 0.18)
+	material = concrete
 	collision_layer = 2
 	collision_mask = 0
 	add_to_group("vision_blockers")
@@ -42,6 +56,13 @@ func update_shape() -> void:
 		shape.size = rectangles[index].size
 		collision.position = rectangles[index].get_center()
 		collision.shape = shape
+	if has_node("Height"):
+		$Height.queue_redraw()
+	vision_geometry_changed.emit()
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_TRANSFORM_CHANGED:
+		vision_geometry_changed.emit()
 
 func get_wall_rectangles() -> Array[Rect2]:
 	var bounds: Rect2 = Rect2(-wall_size * 0.5, wall_size)
@@ -53,10 +74,17 @@ func get_wall_rectangles() -> Array[Rect2]:
 	return [Rect2(bounds.position, Vector2(wall_size.x, wall_size.y * 0.5 - half_gap)), Rect2(Vector2(bounds.position.x, half_gap), Vector2(wall_size.x, wall_size.y * 0.5 - half_gap))]
 
 func get_vision_corners() -> PackedVector2Array:
+	if global_transform == cached_transform and wall_size == cached_size and damaged == cached_damaged and gap_width == cached_gap:
+		return cached_corners
 	var corners: PackedVector2Array = PackedVector2Array()
 	for bounds in get_wall_rectangles():
 		corners.append_array(PackedVector2Array([to_global(bounds.position), to_global(Vector2(bounds.end.x, bounds.position.y)), to_global(bounds.end), to_global(Vector2(bounds.position.x, bounds.end.y))]))
-	return corners
+	cached_transform = global_transform
+	cached_size = wall_size
+	cached_damaged = damaged
+	cached_gap = gap_width
+	cached_corners = corners
+	return cached_corners
 
 func get_visibility_distance(origin: Vector2, direction: Vector2) -> float:
 	var local_origin: Vector2 = to_local(origin)
@@ -78,14 +106,7 @@ func _draw() -> void:
 		draw_damage()
 
 func draw_wall_section(bounds: Rect2) -> void:
-	draw_rect(bounds, Color("393832"))
-	draw_rect(bounds.grow(-3.0), Color("77715d"), false, 2.0)
-	if wall_size.x > wall_size.y:
-		for x in range(int(bounds.position.x) + 32, int(bounds.end.x), 80):
-			draw_line(Vector2(x, bounds.position.y + 3), Vector2(x, bounds.end.y - 3), Color("24251f"), 2)
-	else:
-		for y in range(int(bounds.position.y) + 32, int(bounds.end.y), 80):
-			draw_line(Vector2(bounds.position.x + 3, y), Vector2(bounds.end.x - 3, y), Color("24251f"), 2)
+	draw_rect(bounds, Color.WHITE)
 
 func draw_damage() -> void:
 	var horizontal: bool = wall_size.x > wall_size.y
