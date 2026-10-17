@@ -1,5 +1,7 @@
 [gd_scene format=3]
 
+[ext_resource type="PackedScene" path="res://scenes/ui/mobile_settings.tscn" id="mobile_settings"]
+
 [ext_resource type="Script" path="res://scripts/ui/game_hud.gd" id="1_acb04"]
 [ext_resource type="FontFile" path="res://assets/fonts/sjz/Sjz.otf" id="2_20ki6"]
 [ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="3_n5j44"]
@@ -1161,3 +1163,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource("5_ehshv")
+
+[node name="MobileSettings" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" instance=ExtResource("mobile_settings")]

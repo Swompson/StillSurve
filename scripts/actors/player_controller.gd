@@ -85,8 +85,12 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("flashlight"):
 		toggle_flashlight()
 	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var mobile: Node = game.get_node_or_null("MobileControls/Controls") if is_instance_valid(game) else null
+	if mobile and mobile.get("enabled") and (OS.has_feature("android") or int(mobile.get("move_finger")) >= 0):
+		direction = mobile.get("move_vector")
 	var forward_amount: float = direction.dot(Vector2.from_angle(facing_angle))
-	sprinting = not grabbed and Input.is_action_pressed("sprint") and not direction.is_zero_approx() and not exhausted and stamina > 0.0 and forward_amount > -0.2
+	var sprint_pressed: bool = Input.is_action_pressed("sprint") or (mobile != null and bool(mobile.get("sprint_requested")))
+	sprinting = not grabbed and sprint_pressed and not direction.is_zero_approx() and not exhausted and stamina > 0.0 and forward_amount > -0.2
 	var previous_position: Vector2 = global_position
 	velocity = direction * get_movement_speed(direction)
 	move_and_slide()
@@ -165,6 +169,9 @@ func restore_stamina(fraction: float = 0.25) -> void:
 
 func update_mouse_aim(delta: float) -> void:
 	var offset: Vector2 = get_global_mouse_position() - global_position
+	var mobile: Node = game.get_node_or_null("MobileControls/Controls") if is_instance_valid(game) else null
+	if mobile and mobile.get("enabled") and (OS.has_feature("android") or int(mobile.get("aim_finger")) >= 0):
+		offset = Vector2(mobile.get("aim_vector")) * 100.0
 	if offset.length_squared() > 256.0:
 		turn_towards(offset.angle(), delta)
 	hero_sprite.rotation = facing_angle - PI * 0.5

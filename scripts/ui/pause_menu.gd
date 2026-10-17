@@ -61,7 +61,34 @@ func _ready() -> void:
 	for button_name in ["VignettePrevious", "VignetteNext"]:
 		find_child(button_name, true, false).pressed.connect(func() -> void: vignette.button_pressed = not vignette.button_pressed)
 	select_category("Graphics")
+	var controls_page: Node = pages["Controls"]
+	if not controls_page.has_node("MobileSettings"):
+		controls_page.add_child(preload("res://scenes/ui/mobile_settings.tscn").instantiate())
+	var mobile_settings: Node = controls_page.get_node("MobileSettings")
+	mobile_settings.get_node("Customize").pressed.connect(func() -> void: mobile_controls().call("begin_edit"))
+	mobile_settings.get_node("SprintMode").item_selected.connect(func(index: int) -> void:
+		var mobile: Node = mobile_controls()
+		mobile.set("button_sprint", index == 1)
+		mobile.call("clear_controls")
+		mobile.call("save_preferences"))
+	mobile_settings.get_node("HudSize").value_changed.connect(func(value: float) -> void:
+		var mobile: Node = mobile_controls()
+		mobile.set("hud_scale", value / 100.0)
+		mobile.call("save_preferences")
+		hud.call("set_mobile_layout", true))
 	reset_menu()
+
+func mobile_controls() -> Node:
+	return get_tree().current_scene.get_node("MobileControls/Controls")
+
+func sync_mobile_settings() -> void:
+	var mobile: Node = mobile_controls()
+	var use_mobile: bool = mobile.get("enabled")
+	for child in pages["Controls"].get_children():
+		child.visible = use_mobile if child.name == "MobileSettings" else not use_mobile
+	var panel: Node = pages["Controls"].get_node("MobileSettings")
+	panel.get_node("SprintMode").select(1 if mobile.get("button_sprint") else 0)
+	panel.get_node("HudSize").set_value_no_signal(float(mobile.get("hud_scale")) * 100.0)
 
 func reset_menu() -> void:
 	show_settings(false)
@@ -70,7 +97,9 @@ func show_settings(enabled: bool) -> void:
 	settings_panel.visible = enabled
 	$Navigation/Settings.set_pressed_no_signal(enabled)
 	$Navigation/Settings/SelectionArrow.visible = enabled
-	if enabled: sync_video()
+	if enabled:
+		sync_video()
+		sync_mobile_settings()
 	refresh_menu.call_deferred()
 
 func close_settings() -> bool:

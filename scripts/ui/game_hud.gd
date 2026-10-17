@@ -21,6 +21,7 @@ var notice_labels: Array[Label] = []
 var notices: Array[Dictionary] = []
 var pending_notices: Array[Dictionary] = []
 var notice_clock: float = 0.0
+var mobile_layout: bool = false
 const NOTICE_LIMIT: int = 3
 const NOTICE_ROW_HEIGHT: float = 38.0
 
@@ -55,6 +56,20 @@ func _ready() -> void:
 		button.mouse_entered.connect(_button_hovered.bind(button))
 		button.pressed.connect(_button_accepted)
 	update_cursor()
+	set_mobile_layout(OS.has_feature("android") or "--touch-controls" in OS.get_cmdline_user_args())
+
+func set_mobile_layout(value: bool) -> void:
+	mobile_layout = value
+	var mobile: Node = get_tree().current_scene.get_node_or_null("MobileControls/Controls") if is_instance_valid(get_tree().current_scene) else null
+	var ui_scale: float = float(mobile.get("hud_scale")) if value and mobile else (1.4 if value else 1.0)
+	status_panel.scale = Vector2.ONE * ui_scale
+	for label in [objective, stamina_label, charge_label]:
+		label.add_theme_font_size_override("font_size", 26 if value else (24 if label == objective else 20))
+	status_panel.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT if value else Control.PRESET_BOTTOM_LEFT)
+	status_panel.offset_left = 30.0 if value else 26.0
+	status_panel.offset_top = 24.0 if value else -180.0
+	status_panel.offset_right = status_panel.offset_left + status_panel.size.x
+	status_panel.offset_bottom = status_panel.offset_top + status_panel.size.y
 
 func _button_hovered(button: BaseButton) -> void:
 	if button.is_visible_in_tree():
@@ -188,6 +203,17 @@ func build_pause_menu(root: Control, _style: StyleBoxFlat) -> void:
 	fullscreen_toggle = pause_overlay.find_child("fullscreen_toggle", true, false)
 	fps_choice = pause_overlay.find_child("FpsChoice", true, false)
 
+func _notification(what: int) -> void:
+	if not OS.has_feature("android") or not is_instance_valid(game): return
+	var mobile: Node = game.get_node_or_null("MobileControls/Controls")
+	if mobile and mobile.get("editing"):
+		if what == NOTIFICATION_WM_GO_BACK_REQUEST: mobile.call("finish_edit", false)
+		return
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST and not game.get("finished"):
+		set_paused(not get_tree().paused)
+	elif what == NOTIFICATION_APPLICATION_FOCUS_OUT and not game.get("finished"):
+		set_paused(true)
+
 func _input(event: InputEvent) -> void:
 	if event is not InputEventKey or not event.pressed or event.echo:
 		return
@@ -239,6 +265,7 @@ func create_aim_cursor() -> void:
 	aim_cursor = ImageTexture.create_from_image(image)
 
 func update_cursor() -> void:
+	if OS.has_feature("android"): return
 	var menu_open: bool = get_tree().paused or (is_instance_valid(overlay) and overlay.visible)
 	Input.set_custom_mouse_cursor(null if menu_open else aim_cursor, Input.CURSOR_ARROW, Vector2.ZERO if menu_open else Vector2(16, 16))
 
@@ -291,7 +318,7 @@ func _process(delta: float) -> void:
 	charge_bar.max_value = float(player.get("battery_max"))
 	charge_bar.value = float(player.get("battery"))
 	stamina_label.text = "ВЫНОСЛИВОСТЬ  %d / %d %s" % [int(stamina_bar.value), int(stamina_bar.max_value), "— выдохся" if player.get("exhausted") else ""]
-	charge_label.text = "ФОНАРЬ [F]  %s   %d / 70" % ["ВКЛ" if player.get("flashlight_on") else "ВЫКЛ", int(charge_bar.value)]
+	charge_label.text = ("ФОНАРЬ  %s   %d / 70" if mobile_layout else "ФОНАРЬ [F]  %s   %d / 70") % ["ВКЛ" if player.get("flashlight_on") else "ВЫКЛ", int(charge_bar.value)]
 	update_notices(delta)
 	for label in notice_labels:
 		label.visible = true

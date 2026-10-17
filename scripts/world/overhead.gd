@@ -77,7 +77,9 @@ func _process(_delta: float) -> void:
 	if floor_surface: floor_surface.set_shader_parameter("fixture_power_f", sixth_power)
 
 func build_fixture_shadows(origins: PackedVector2Array) -> void:
-	var image: Image = Image.create(SHADOW_SAMPLES, 6, false, Image.FORMAT_RF)
+	# Mobile GLES hardware supports half-float directly; avoid a driver conversion.
+	var format: Image.Format = Image.FORMAT_RH if OS.has_feature("android") else Image.FORMAT_RF
+	var image: Image = Image.create(SHADOW_SAMPLES, 6, false, format)
 	image.fill(Color(1, 0, 0, 1))
 	var space: PhysicsDirectSpaceState2D = get_world_2d().direct_space_state
 	var query: PhysicsRayQueryParameters2D = PhysicsRayQueryParameters2D.new()

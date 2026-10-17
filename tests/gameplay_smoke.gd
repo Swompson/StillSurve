@@ -79,7 +79,7 @@ func run_checks() -> void:
 		for neighbor in graph.get_point_connections(cell):
 			expect(bool(maze.call("clear_line", maze.call("cell_position", cell), maze.call("cell_position", neighbor))), "Graph passage blocked by wall")
 	expect(player.global_position.length() > 1300.0, "Spawn is too close to central monster")
-	expect(monster.global_position.distance_to(maze.call("cell_position", 60)) < 15.0, "Monster did not spawn in maze center")
+	expect(monster.global_position.x < 0.0 and game.get_node("SecondMonster").global_position.x > 0.0, "Hunters must spawn on opposite halves")
 	var items: Array[Node] = maze.get_node("Pickups").get_children()
 	var dolls: Array[Node] = []
 	var batteries: Array[Node] = []

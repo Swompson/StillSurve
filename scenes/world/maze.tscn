@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3]
+[gd_scene load_steps=14 format=3]
 
 [ext_resource type="Script" path="res://scripts/world/maze.gd" id="1"]
 
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" path="res://scenes/world/corridor_details.tscn" id="5"]
 
 [ext_resource type="Shader" path="res://shaders/floor_surface.gdshader" id="6_floor"]
-[ext_resource type="Texture2D" path="res://assets/textures/concrete_floor_normal.png" id="7_normal"]
 
 [ext_resource type="PackedScene" path="res://scenes/world/floor_glass.tscn" id="glass"]
 [ext_resource type="PackedScene" path="res://scenes/world/overhead.tscn" id="overhead"]
@@ -25,8 +24,6 @@
 
 [sub_resource type="ShaderMaterial" id="FloorMaterial"]
 shader = ExtResource("6_floor")
-shader_parameter/normal_texture = ExtResource("7_normal")
-shader_parameter/normal_strength = 0.6
 
 [node name="Maze" type="Node2D"]
 

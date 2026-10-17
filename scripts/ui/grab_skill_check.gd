@@ -39,8 +39,9 @@ func _draw() -> void:
 func _input(event: InputEvent) -> void:
 	if Engine.is_editor_hint() or not visible or get_tree().paused: return
 	var keyboard: bool = event is InputEventKey and event.pressed and not event.echo and (event.physical_keycode == KEY_SPACE or event.keycode == KEY_SPACE)
-	var mouse: bool = event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT
-	if keyboard or mouse:
+	var mouse: bool = not OS.has_feature("android") and event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT
+	var touch: bool = event is InputEventScreenTouch and event.pressed and event.position.x > size.x * 0.4 and event.position.x < size.x * 0.6
+	if keyboard or mouse or touch:
 		# Judge the angle that was actually drawn, including high refresh interpolation.
 		var phase: float = displayed_phase if displayed_round == stalker.get("results").size() else -1.0
 		stalker.call("submit_check", phase)

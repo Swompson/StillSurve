@@ -41,16 +41,23 @@ func _ready() -> void:
 	camera.reset_smoothing()
 	camera.force_update_scroll()
 	player.set("game", self)
-	monster.global_position = maze.call("cell_position", 60)
 	var second: CharacterBody2D = $SecondMonster
-	# The second hunter starts away from both the player and the central hunter.
-	var best_score: float = -1.0
-	for cell in range(int(maze.get("width")) * int(maze.get("height"))):
-		var point: Vector2 = maze.call("cell_position", cell)
-		var score: float = minf(point.distance_to(player.global_position), point.distance_to(monster.global_position))
-		if score > best_score:
-			best_score = score
-			second.global_position = point
+	# Give each hunter a different half, with a safe initial distance to the player.
+	for index in range(2):
+		var hunter: CharacterBody2D = [monster, second][index]
+		var side: int = -1 if index == 0 else 1
+		hunter.set("patrol_side", side)
+		var best_score: float = -INF
+		for cell in range(int(maze.get("width")) * int(maze.get("height"))):
+			var column: int = cell % int(maze.get("width"))
+			var middle: float = float(int(maze.get("width")) - 1) * 0.5
+			if (float(column) - middle) * float(side) < 1.0:
+				continue
+			var point: Vector2 = maze.call("cell_position", cell)
+			var score: float = point.distance_to(player.global_position) + rng.randf_range(0.0, 160.0)
+			if score > best_score:
+				best_score = score
+				hunter.global_position = point
 	for hunter in [monster, second]:
 		hunter.reset_physics_interpolation()
 		hunter.set("game", self)

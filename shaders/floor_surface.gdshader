@@ -7,8 +7,6 @@ uniform float light_angle = 0.0;
 uniform float light_range = 700.0;
 uniform float light_power = 1.0;
 uniform float half_fov = 0.8063;
-uniform sampler2D normal_texture : hint_normal, repeat_enable;
-uniform float normal_strength : hint_range(0.0, 1.0) = 0.6;
 uniform vec2 fixture_a = vec2(-100000.0);
 uniform vec2 fixture_b = vec2(-100000.0);
 uniform vec2 fixture_c = vec2(-100000.0);
@@ -32,12 +30,6 @@ void fragment() {
 	vec3 cold = mix(surface.rgb, vec3(value) * vec3(0.55, 0.73, 0.76), 0.70);
 	vec3 warm = mix(surface.rgb, vec3(value) * vec3(1.18, 1.11, 0.88), 0.64);
 	vec3 lit = mix(cold * (0.7 + pool * 0.20), warm * (0.95 + reach * 0.28), cone * reach * light_power);
-	if (normal_strength > 0.0) {
-	vec3 normal = normalize(texture(normal_texture, UV).rgb * 2.0 - 1.0);
-	vec3 direction = normalize(vec3(-offset, 140.0));
-	float relief = clamp(dot(normal, direction) / max(direction.z, 0.25), 0.72, 1.22);
-	lit *= mix(1.0, relief, cone * reach * light_power * normal_strength);
-	}
 	float lamp_a = fixture_amount(world_point, fixture_a, 0, fixture_power.x);
 	float lamp_b = fixture_amount(world_point, fixture_b, 1, fixture_power.y);
 	float lamp_c = fixture_amount(world_point, fixture_c, 2, fixture_power.z);

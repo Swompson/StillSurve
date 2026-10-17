@@ -38,6 +38,8 @@ var stuck_timer: float = 0.0
 var path_rebuilds: int = 0
 var previous_patrol_cell: int = -1
 var recent_patrol_cells: Array[int] = []
+var patrol_side: int = 0
+var patrol_visits: Dictionary = {}
 var saved_patrol_target: Vector2
 var has_saved_patrol: bool = false
 var investigation_route: PackedVector2Array = PackedVector2Array()
@@ -145,6 +147,7 @@ func choose_patrol_target() -> void:
 		path_goal = -1
 		return
 	var current_cell: int = int(maze.call("cell_at", global_position))
+	patrol_visits[current_cell] = int(patrol_visits.get(current_cell, 0)) + 1
 	var candidate: int = local_patrol_cell(current_cell)
 	previous_patrol_cell = current_cell
 	recent_patrol_cells.append(current_cell)
@@ -188,6 +191,11 @@ func local_patrol_cell(current_cell: int) -> int:
 			continue
 		var depth: int = int(distances[cell])
 		var score: float = (2.0 if interest.has(cell) else 0.0) - float(depth) * 0.35 + randf() * 0.3
+		# Keep local routes, but stop circling the same figurines indefinitely.
+		score -= float(patrol_visits.get(cell, 0)) * 1.1
+		var column: int = cell % int(maze.get("width"))
+		var middle: float = float(int(maze.get("width")) - 1) * 0.5
+		score -= maxf(0.0, (float(column) - middle) * -float(patrol_side)) * 1.2
 		if depth == 1:
 			score -= 2.0
 		if cell == previous_patrol_cell or recent_patrol_cells.has(cell):

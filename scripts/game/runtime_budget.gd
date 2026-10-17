@@ -14,6 +14,7 @@ var vignette_enabled: bool = true
 signal vignette_changed(enabled: bool)
 var window_size: Vector2i = Vector2i(1280, 720)
 var settings_path: String = "user://settings.cfg"
+var mobile_platform: bool = OS.has_feature("android")
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -55,11 +56,12 @@ func has_focused_game_window() -> bool:
 	return false
 
 func _process(delta: float) -> void:
-	if DisplayServer.get_name() == "headless": return
+	if mobile_platform or DisplayServer.get_name() == "headless": return
 	if focus_loss_pending or not focused:
 		update_window_focus(has_focused_game_window(), delta)
 
 func update_window_focus(window_focused: bool, delta: float) -> void:
+	if mobile_platform: return
 	if window_focused:
 		mark_focused()
 	elif focus_loss_pending:
@@ -72,10 +74,19 @@ func update_window_focus(window_focused: bool, delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	# Input delivered to an embedded game proves it is active, even if Windows
 	# failed to send its initial focus-in event. Menu input follows this path too.
-	if (event is InputEventKey or event is InputEventMouseButton) and event.is_pressed():
+	if (event is InputEventKey or event is InputEventMouseButton or event is InputEventScreenTouch) and event.is_pressed():
 		mark_focused()
 	elif event is InputEventMouseMotion and has_focused_game_window():
 		mark_focused()
+
+func _notification(what: int) -> void:
+	if not mobile_platform: return
+	if what == NOTIFICATION_APPLICATION_FOCUS_IN or what == NOTIFICATION_APPLICATION_RESUMED:
+		mark_focused()
+	elif what == NOTIFICATION_APPLICATION_FOCUS_OUT or what == NOTIFICATION_APPLICATION_PAUSED:
+		focus_loss_pending = false
+		focused = false
+		apply_budget()
 
 func set_paused(value: bool) -> void:
 	paused = value

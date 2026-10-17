@@ -1,0 +1,81 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/mobile_controls.gd" id="1"]
+
+[node name="MobileControls" type="CanvasLayer"]
+layer = 20
+
+[node name="Controls" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="Editor" type="PanelContainer" parent="Controls"]
+visible = false
+anchor_left = 0.27
+anchor_right = 0.73
+anchor_top = 0.03
+anchor_bottom = 0.03
+theme_override_font_sizes/font_size = 28
+
+[node name="Box" type="VBoxContainer" parent="Controls/Editor"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Hint" type="Label" parent="Controls/Editor/Box"]
+layout_mode = 2
+text = "Перетащите элемент. Ползунок меняет размер."
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 23
+
+[node name="Element" type="OptionButton" parent="Controls/Editor/Box"]
+theme_override_font_sizes/font_size = 28
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+item_count = 5
+selected = 0
+popup/item_0/text = "Ходьба"
+popup/item_0/id = 0
+popup/item_1/text = "Взгляд"
+popup/item_1/id = 1
+popup/item_2/text = "Фонарь"
+popup/item_2/id = 2
+popup/item_3/text = "Пауза"
+popup/item_3/id = 3
+popup/item_4/text = "Бег (кнопочный режим)"
+popup/item_4/id = 4
+
+[node name="Size" type="HSlider" parent="Controls/Editor/Box"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+min_value = 65.0
+max_value = 180.0
+step = 5.0
+value = 100.0
+
+[node name="Actions" type="HBoxContainer" parent="Controls/Editor/Box"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Save" type="Button" parent="Controls/Editor/Box/Actions"]
+theme_override_font_sizes/font_size = 26
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Сохранить"
+
+[node name="Cancel" type="Button" parent="Controls/Editor/Box/Actions"]
+theme_override_font_sizes/font_size = 26
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Отмена"
+
+[node name="Reset" type="Button" parent="Controls/Editor/Box/Actions"]
+theme_override_font_sizes/font_size = 26
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Сброс"

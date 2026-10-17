@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://b7m4sxohli16x"]
 
+[ext_resource type="PackedScene" path="res://scenes/ui/mobile_controls.tscn" id="mobile_controls"]
+
 [ext_resource type="Script" uid="uid://6l20ig5m30tm" path="res://scripts/game/game_controller.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/world/maze.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/actors/player.tscn" id="3"]
@@ -514,3 +516,5 @@ volume_db = -16.0
 
 [editable path="Maze"]
 [editable path="Maze/Overhead"]
+
+[node name="MobileControls" parent="." instance=ExtResource("mobile_controls")]

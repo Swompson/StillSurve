@@ -1,0 +1,45 @@
+[gd_scene format=3]
+
+[node name="MobileSettings" type="VBoxContainer"]
+visible = false
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Мобильное управление"
+
+[node name="SprintMode" type="OptionButton" parent="."]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 27
+item_count = 2
+selected = 0
+popup/item_0/text = "Бег: за кольцом джойстика"
+popup/item_0/id = 0
+popup/item_1/text = "Бег: отдельная кнопка"
+popup/item_1/id = 1
+
+[node name="Customize" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Размер и положение кнопок"
+
+[node name="HudLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Размер HUD"
+
+[node name="HudSize" type="HSlider" parent="."]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+min_value = 100.0
+max_value = 180.0
+step = 10.0
+value = 140.0
+
+[node name="Help" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Ходьба — с постоянной скоростью.\nНастройки сохраняются на устройстве."
