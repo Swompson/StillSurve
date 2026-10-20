@@ -52,6 +52,11 @@ func run() -> void:
 		hero.flashlight_reveal = 1.0
 		stalker.sense_timer = 0.0
 		stalker._physics_process(1.0 / 60.0)
+		# Flashlight fear needs the authored 0.24-second exposure, unlike a lamp.
+		for tick in range(16):
+			if stalker.state == "flee": break
+			await physics_frame
+			stalker._physics_process(1.0 / 60.0)
 		assert(stalker.state == "flee", "A flashlight aimed into the ambush corner repels the hunter")
 		break
 	assert(found, "Maze contains a viable concealed corner on an objective route")

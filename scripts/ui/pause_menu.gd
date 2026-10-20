@@ -12,6 +12,11 @@ var blank_icon: GradientTexture2D
 func _ready() -> void:
 	hud = get_parent().get_parent() as CanvasLayer
 	settings_panel = $SettingsPanel
+	var music: OptionButton = find_child("MusicChoice", true, false)
+	music.select(MenuAudio.selected_track)
+	music.item_selected.connect(MenuAudio.select_track)
+	# The selector owns this callable, so freeing its scene disconnects it.
+	MenuAudio.track_changed.connect(music.select)
 	$Navigation/Settings.toggled.connect(show_settings)
 	$SettingsPanel/Frame/Footer/SettingsBack.pressed.connect(func() -> void: show_settings(false))
 	$SettingsPanel/Frame/Footer/ApplySettings.pressed.connect(func() -> void: show_settings(false))
@@ -19,7 +24,7 @@ func _ready() -> void:
 		pages[category] = find_child(category + "Page", true, false)
 		tabs[category] = find_child(category + "Tab", true, false)
 		tabs[category].pressed.connect(select_category.bind(category))
-	for spec in [["Fps", "FpsChoice"], ["Resolution", "ResolutionChoice"]]:
+	for spec in [["Fps", "FpsChoice"], ["Resolution", "ResolutionChoice"], ["Music", "MusicChoice"]]:
 		var selector: OptionButton = find_child(spec[1], true, false)
 		find_child(spec[0] + "Previous", true, false).pressed.connect(cycle_option.bind(selector, -1))
 		find_child(spec[0] + "Next", true, false).pressed.connect(cycle_option.bind(selector, 1))
@@ -44,6 +49,14 @@ func _ready() -> void:
 		RuntimeBudget.set_master_volume(value / 100.0)
 		find_child("VolumeValue", true, false).text = "%d%%" % value)
 	find_child("VolumeValue", true, false).text = "%d%%" % volume.value
+	for category in RuntimeBudget.category_volumes:
+		var slider: HSlider = find_child(category + "Volume", true, false)
+		var readout: Label = find_child(category + "VolumeValue", true, false)
+		slider.set_value_no_signal(float(RuntimeBudget.category_volumes[category]) * 100.0)
+		readout.text = "%d%%" % slider.value
+		slider.value_changed.connect(func(value: float) -> void:
+			RuntimeBudget.set_category_volume(category, value / 100.0)
+			readout.text = "%d%%" % value)
 	var counter: CheckButton = find_child("FpsCounterToggle", true, false)
 	counter.set_pressed_no_signal(RuntimeBudget.show_fps)
 	counter.toggled.connect(func(value: bool) -> void:
@@ -126,7 +139,7 @@ func button(text: String, node_name: String) -> Button:
 
 func line() -> ColorRect:
 	var node: ColorRect = ColorRect.new()
-	node.color = Color(0.32, 0.31, 0.27, 0.32)
+	node.color = Color.TRANSPARENT
 	node.custom_minimum_size = Vector2(1, 1)
 	node.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	return node
@@ -140,16 +153,18 @@ func spacer(height: float) -> Control:
 func row(parent: Node, caption: String) -> HBoxContainer:
 	var panel: PanelContainer = PanelContainer.new()
 	var style: StyleBoxFlat = StyleBoxFlat.new()
-	style.bg_color = Color(0.15, 0.15, 0.13, 0.32)
+	style.bg_color = Color.TRANSPARENT
+	style.set_corner_radius_all(5)
+	style.anti_aliasing = true
 	style.content_margin_left = 12
 	style.content_margin_right = 4
 	panel.add_theme_stylebox_override("panel", style)
 	parent.add_child(panel)
 	var box: HBoxContainer = HBoxContainer.new()
-	box.custom_minimum_size.y = 42
+	box.custom_minimum_size.y = 30
 	box.add_theme_constant_override("separation", 3)
 	panel.add_child(box)
-	var caption_label: Label = label(caption, 24)
+	var caption_label: Label = label(caption, 22)
 	caption_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	box.add_child(caption_label)
 	return box
@@ -158,13 +173,13 @@ func selector_row(parent: Node, caption: String, prefix: String, selector: Contr
 	var box: HBoxContainer = row(parent, caption)
 	var previous: Button = button("‹", prefix + "Previous")
 	previous.alignment = HORIZONTAL_ALIGNMENT_CENTER
-	previous.custom_minimum_size = Vector2(30, 42)
+	previous.custom_minimum_size = Vector2(30, 30)
 	box.add_child(previous)
-	selector.custom_minimum_size = Vector2(140, 42)
+	selector.custom_minimum_size = Vector2(140, 30)
 	box.add_child(selector)
 	var next: Button = button("›", prefix + "Next")
 	next.alignment = HORIZONTAL_ALIGNMENT_CENTER
-	next.custom_minimum_size = Vector2(30, 42)
+	next.custom_minimum_size = Vector2(30, 30)
 	box.add_child(next)
 
 func toggle(node_name: String) -> CheckButton:
@@ -188,6 +203,11 @@ func build_layout() -> void:
 	name = "pause_overlay"
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	color = Color.TRANSPARENT
+	var game_frame: BackBufferCopy = BackBufferCopy.new()
+	game_frame.name = "GameFrame"
+	game_frame.z_index = -2
+	game_frame.copy_mode = BackBufferCopy.COPY_MODE_VIEWPORT
+	add_child(game_frame)
 	var backdrop: ShaderMaterial = ShaderMaterial.new()
 	backdrop.shader = preload("res://shaders/pause_backdrop.gdshader")
 	var background: ColorRect = ColorRect.new()
@@ -211,6 +231,7 @@ func build_layout() -> void:
 		menu_theme.set_color("font_hover_color", kind, Color("e3dfcf"))
 		menu_theme.set_color("font_pressed_color", kind, Color("e3dfcf"))
 	theme = menu_theme
+	apply_navigation_style()
 	blank_icon = GradientTexture2D.new()
 	blank_icon.width = 1
 	blank_icon.height = 1
@@ -227,6 +248,7 @@ func build_layout() -> void:
 	divider.offset_right = 2
 	var navigation: VBoxContainer = VBoxContainer.new()
 	navigation.name = "Navigation"
+	navigation.theme = get_meta("navigation_theme")
 	navigation.z_index = 1
 	add_child(navigation)
 	navigation.anchor_left = 0.065
@@ -237,11 +259,14 @@ func build_layout() -> void:
 	title.name = "PauseTitle"
 	title.add_theme_font_override("font", title_font)
 	navigation.add_child(title)
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	navigation.add_child(spacer(35))
-	for spec in [["ПРОДОЛЖИТЬ", "Resume"], ["НАЧАТЬ ЗАНОВО [R]", "RestartPause"], ["НАСТРОЙКИ", "Settings"], ["ВЫЙТИ ИЗ ИГРЫ", "QuitPause"]]:
+	for spec in [["ПРОДОЛЖИТЬ", "Resume"], ["НАЧАТЬ ЗАНОВО [R]", "RestartPause"], ["НАСТРОЙКИ", "Settings"], ["В ГЛАВНОЕ МЕНЮ", "MainMenu"], ["ВЫЙТИ ИЗ ИГРЫ", "QuitPause"]]:
 		var entry: Button = button(spec[0], spec[1])
 		entry.custom_minimum_size.y = 50
+		entry.alignment = HORIZONTAL_ALIGNMENT_CENTER
 		navigation.add_child(entry)
+		add_navigation_highlight(entry)
 		if spec[1] == "Settings":
 			entry.toggle_mode = true
 			var arrow: Label = label("›", 32)
@@ -251,6 +276,10 @@ func build_layout() -> void:
 			arrow.hide()
 	settings_panel = PanelContainer.new()
 	settings_panel.name = "SettingsPanel"
+	settings_panel.set_script(load("res://scripts/ui/soft_panel.gd"))
+	var soft_material: ShaderMaterial = ShaderMaterial.new()
+	soft_material.shader = load("res://shaders/soft_panel.gdshader")
+	settings_panel.material = soft_material
 	settings_panel.z_index = 1
 	add_child(settings_panel)
 	settings_panel.anchor_left = 0.323
@@ -258,32 +287,38 @@ func build_layout() -> void:
 	settings_panel.anchor_right = 0.95
 	settings_panel.anchor_bottom = 0.90
 	var panel_style: StyleBoxFlat = StyleBoxFlat.new()
-	panel_style.bg_color = Color(0.022, 0.024, 0.020, 0.78)
+	panel_style.bg_color = Color(0.018, 0.019, 0.017, 0.94)
 	panel_style.border_color = Color(0.30, 0.29, 0.25, 0.5)
-	panel_style.set_border_width_all(1)
+	panel_style.set_border_width_all(0)
+	panel_style.set_corner_radius_all(0)
+	panel_style.anti_aliasing = true
+	panel_style.shadow_color = Color(0, 0, 0, 0.6)
+	panel_style.shadow_size = 0
 	panel_style.content_margin_left = 22
 	panel_style.content_margin_right = 22
-	panel_style.content_margin_top = 20
-	panel_style.content_margin_bottom = 14
+	panel_style.content_margin_top = 12
+	panel_style.content_margin_bottom = 12
 	settings_panel.add_theme_stylebox_override("panel", panel_style)
 	var frame: VBoxContainer = VBoxContainer.new()
 	frame.name = "Frame"
-	frame.add_theme_constant_override("separation", 16)
+	frame.add_theme_constant_override("separation", 6)
 	settings_panel.add_child(frame)
 	frame.add_child(label("НАСТРОЙКИ", 32))
 	frame.add_child(line())
-	var body: HBoxContainer = HBoxContainer.new()
+	var body: VBoxContainer = VBoxContainer.new()
 	body.name = "Body"
 	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	body.add_theme_constant_override("separation", 20)
+	body.add_theme_constant_override("separation", 6)
 	frame.add_child(body)
-	var categories: VBoxContainer = VBoxContainer.new()
+	var categories: HBoxContainer = HBoxContainer.new()
 	categories.custom_minimum_size.x = 140
 	categories.add_theme_constant_override("separation", 5)
 	body.add_child(categories)
 	var tab_group: ButtonGroup = ButtonGroup.new()
 	for spec in [["ГРАФИКА", "Graphics"], ["ЗВУК", "Sound"], ["ИГРА", "Game"], ["УПРАВЛЕНИЕ", "Controls"]]:
 		var tab: Button = button(spec[0], spec[1] + "Tab")
+		tab.custom_minimum_size.y = 32
+		tab.add_theme_font_size_override("font_size", 23)
 		tab.toggle_mode = true
 		tab.button_group = tab_group
 		categories.add_child(tab)
@@ -292,12 +327,13 @@ func build_layout() -> void:
 	var content: Control = Control.new()
 	content.name = "Pages"
 	content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	content.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	body.add_child(content)
 	for category in ["Graphics", "Sound", "Game", "Controls"]:
 		var page: VBoxContainer = VBoxContainer.new()
 		page.name = category + "Page"
 		page.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		page.add_theme_constant_override("separation", 7)
+		page.add_theme_constant_override("separation", 3)
 		content.add_child(page)
 		pages[category] = page
 	var graphics: VBoxContainer = pages.Graphics
@@ -339,13 +375,26 @@ func build_layout() -> void:
 	volume_value.name = "VolumeValue"
 	volume_value.custom_minimum_size.x = 60
 	volume_row.add_child(volume_value)
-	var game_page: VBoxContainer = pages.Game
-	game_page.add_child(label("СЛОЖНОСТЬ", 28))
-	var hard: CheckButton = CheckButton.new()
-	hard.name = "difficulty_0"
-	hard.text = "Хардкор · 3 монстра"
-	game_page.add_child(hard)
-	game_page.add_child(label("Применяется со следующего забега.\nДва охотника и бесшумный гуманоид.\nЧетыре батарейки вместо пяти.", 23, MUTED))
+	for spec in [["Музыка", "Music"], ["Окружение", "Environment"], ["Шаги", "StepsRoom"], ["Дыхание", "Breathing"], ["Сердцебиение", "Heartbeat"], ["Звуковые эффекты", "Effects"]]:
+		var channel_row: HBoxContainer = row(sound, spec[0])
+		var channel: HSlider = HSlider.new()
+		channel.name = spec[1] + "Volume"
+		channel.max_value = 100
+		channel.step = 1
+		channel.value = 100
+		channel.custom_minimum_size.x = 145
+		channel.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		channel_row.add_child(channel)
+		var readout: Label = label("100%", 24)
+		readout.name = spec[1] + "VolumeValue"
+		readout.custom_minimum_size.x = 60
+		channel_row.add_child(readout)
+	sound.add_child(spacer(15))
+	sound.add_child(label("МУЗЫКА ГЛАВНОГО МЕНЮ", 28))
+	var music: OptionButton = option("MusicChoice")
+	for caption in ["Основная", "Трек 1", "Трек 2", "Трек 3"]:
+		music.add_item(caption)
+	selector_row(sound, "Композиция", "Music", music)
 	var controls: VBoxContainer = pages.Controls
 	controls.add_child(label("УПРАВЛЕНИЕ", 28))
 	for spec in [["Движение", "WASD / стрелки"], ["Взгляд", "Мышь"], ["Спринт", "Shift"], ["Фонарик", "F"], ["Проверка захвата", "Пробел"], ["Пауза", "Esc"], ["Полный экран", "F11"]]:
@@ -360,4 +409,49 @@ func build_layout() -> void:
 	footer.add_child(footer_gap)
 	footer.add_child(button("[ENTER]  ПРИМЕНИТЬ", "ApplySettings"))
 	settings_panel.hide()
+	for control in settings_panel.find_children("*", "BaseButton", true, false):
+		for font_state in ["font_hover_color", "font_focus_color", "font_pressed_color", "font_hover_pressed_color"]:
+			control.add_theme_color_override(font_state, Color("fff6de"))
+		for state in ["normal", "hover", "pressed", "hover_pressed", "focus"]:
+			var clear: StyleBoxEmpty = StyleBoxEmpty.new()
+			clear.content_margin_left = 12
+			clear.content_margin_right = 12
+			control.add_theme_stylebox_override(state, clear)
 	hide()
+
+func apply_navigation_style() -> void:
+	var navigation_theme: Theme = Theme.new()
+	navigation_theme.default_font = title_font
+	navigation_theme.default_font_size = 30
+	var empty: StyleBoxEmpty = StyleBoxEmpty.new()
+	empty.content_margin_left = 22
+	empty.content_margin_right = 22
+	for state in ["normal", "disabled"]:
+		navigation_theme.set_stylebox(state, "Button", empty)
+	for state in ["hover", "pressed", "hover_pressed", "focus"]:
+		navigation_theme.set_stylebox(state, "Button", empty)
+	navigation_theme.set_color("font_color", "Button", Color("85847d"))
+	for state in ["font_hover_color", "font_pressed_color", "font_focus_color", "font_hover_pressed_color"]:
+		navigation_theme.set_color(state, "Button", Color("f2eee0"))
+	# The theme is assigned after navigation exists by the scene baker.
+	set_meta("navigation_theme", navigation_theme)
+
+func add_navigation_highlight(entry: BaseButton) -> void:
+	var glow: TextureRect = TextureRect.new()
+	glow.name = "Highlight"
+	glow.set_script(load("res://scripts/ui/menu_highlight.gd"))
+	var source: Texture2D = load("res://assets/ui/menu/lightbutton.png")
+	var atlas: AtlasTexture = AtlasTexture.new()
+	atlas.atlas = source
+	atlas.region = Rect2(0, source.get_height() * 0.42, source.get_width() * 0.56, source.get_height() * 0.22)
+	glow.texture = atlas
+	glow.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	glow.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	glow.show_behind_parent = true
+	var glow_material: ShaderMaterial = ShaderMaterial.new()
+	glow_material.shader = load("res://shaders/menu_highlight.gdshader")
+	glow.material = glow_material
+	glow.modulate.a = 0.0
+	glow.process_mode = Node.PROCESS_MODE_ALWAYS
+	entry.add_child(glow)
+	glow.fit_to_text()

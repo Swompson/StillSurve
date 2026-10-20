@@ -5,6 +5,7 @@ const STALKING = preload("res://scripts/actors/stalker_stalking.gd")
 const AMBUSH = preload("res://scripts/actors/stalker_ambush.gd")
 var stalking: RefCounted = STALKING.new()
 var game: Node
+var glass_contact: RefCounted = preload("res://scripts/world/glass_contact.gd").new()
 var maze: Node2D
 var player: CharacterBody2D
 var active: bool = false
@@ -124,16 +125,27 @@ func _physics_process(delta: float) -> void:
 		approach_target = choose_approach_target()
 	var target: Vector2 = flee_target if state == "flee" else approach_target
 	if path_timer <= 0.0:
-		path = navigation.route(global_position, target)
+		if is_ambush_transit():
+			path = navigation.concealed_route(global_position, target, player)
+			if path.is_empty():
+				abandon_ambush()
+				return
+		else:
+			path = navigation.route(global_position, target)
 		path_index = 0
 		if path.size() > 1 and maze.call("can_walk_line", global_position, path[1]): path_index = 1
 		path_timer = 0.22
 	var destination: Vector2 = next_destination(target)
+	# Recheck between replans: the player can step into the selected detour.
+	if is_ambush_transit() and not navigation.concealed_segment(global_position, destination, player):
+		abandon_ambush()
+		return
 	var pace: float = movement_pace()
 	sprinting = state == "flee" or (pace >= 300.0 and not observed)
 	velocity = global_position.direction_to(destination) * minf(pace, global_position.distance_to(destination) * 8.0)
 	var before: Vector2 = global_position
 	move_and_slide()
+	glass_contact.update(self, before, global_position, game, false, delta)
 	var retreat_blocked: bool = (state == "flee" or attack_cooldown > 0.0) and global_position.distance_to(target) > 80.0
 	stuck_time = stuck_time + delta if (velocity.length() > 10.0 or retreat_blocked) and global_position.distance_to(before) < 0.2 else 0.0
 	if stuck_time > 0.7:
@@ -155,6 +167,19 @@ func movement_pace() -> float:
 	if state == "flee" or attack_cooldown > 0.0: return 430.0
 	if strategy == "sneak": return stalking.pace()
 	return 170.0 if observed else 700.0
+
+func is_ambush_transit() -> bool:
+	return strategy == "ambush" and state == "stalk" and attack_cooldown <= 0.0 and not ambush_ready
+
+func abandon_ambush() -> void:
+	strategy = "sneak"
+	ambush_planned = false
+	ambush_ready = false
+	stalking.reset()
+	path.clear()
+	path_timer = 0.0
+	velocity = Vector2.ZERO
+	sprinting = false
 
 func choose_strategy() -> void:
 	strategy = "sneak" if randf() < 0.5 else "ambush"
@@ -219,9 +244,9 @@ func choose_approach_target() -> Vector2:
 
 func next_destination(target: Vector2) -> Vector2:
 	# Only shortcut when the whole segment is dark; preserve the weighted lamp detour.
-	if maze.call("can_walk_line", global_position, target) and dark_segment(global_position, target):
+	if maze.call("can_walk_line", global_position, target) and dark_segment(global_position, target) and (not is_ambush_transit() or navigation.concealed_segment(global_position, target, player)):
 		return target
-	while path_index < path.size() and global_position.distance_to(path[path_index]) < 24.0:
+	while path_index < path.size() and global_position.distance_to(path[path_index]) < 6.0:
 		path_index += 1
 	return path[path_index] if path_index < path.size() else global_position
 
@@ -249,7 +274,7 @@ func is_flashlight_illuminated() -> bool:
 	if global_position.distance_to(player.global_position) < 100.0:
 		origin = player.global_position
 		offset = global_position - origin
-	return offset.length() < float(player.call("get_view_distance")) * 0.85 and absf(angle_difference(float(player.get("facing_angle")), offset.angle())) < deg_to_rad(float(player.get("field_of_view"))) * 0.42 and maze.call("clear_line", origin, global_position)
+	return offset.length() < float(player.call("get_view_distance")) * 0.85 and absf(angle_difference(float(player.call("get_view_angle")), offset.angle())) < deg_to_rad(float(player.get("field_of_view"))) * 0.42 and maze.call("clear_line", origin, global_position)
 
 func begin_flee(duration: float = 6.0, from_light: bool = false) -> void:
 	if from_light and state != "flee": $Laugh.play_laugh()
@@ -274,7 +299,7 @@ func choose_flee_target() -> void:
 		if distance < 420.0 or distance > 1250.0 or navigation.lamp_exposure(point) > 0.1:
 			continue
 		var id: int = navigation.get_closest_point(point)
-		if navigation.get_id_path(start, id).is_empty(): continue
+		if not navigation.has_route(start, id): continue
 		var score: float = point.distance_to(player.global_position) - distance * 0.32
 		if score > best:
 			best = score
@@ -283,7 +308,7 @@ func choose_flee_target() -> void:
 		# Cell centers may be lit; fall back to reachable lateral samples.
 		for id in navigation.get_point_ids():
 			var point: Vector2 = navigation.get_point_position(id)
-			if global_position.distance_to(point) < 100.0 or navigation.get_id_path(start, id).is_empty(): continue
+			if global_position.distance_to(point) < 100.0 or not navigation.has_route(start, id): continue
 			var score: float = point.distance_to(player.global_position) - navigation.lamp_exposure(point) * 1500.0
 			if score > best:
 				best = score
@@ -293,7 +318,9 @@ func update_leap(delta: float) -> void:
 	leap_elapsed += delta
 	leap_progress = clampf(leap_elapsed / 0.3, 0.0, 1.0)
 	velocity = global_position.direction_to(player.global_position + grab_offset) * 650.0
+	var before: Vector2 = global_position
 	move_and_slide()
+	glass_contact.update(self, before, global_position, game, false, delta)
 	if global_position.distance_to(player.global_position) < 68.0 and maze.call("clear_line", global_position, player.global_position):
 		begin_grab()
 	elif leap_elapsed >= 0.35:
@@ -315,7 +342,7 @@ func begin_grab() -> void:
 	results.clear()
 	feedback = ""
 	player.call("set_grabbed", true)
-	$Laugh.play_laugh()
+	$Screamer.play()
 	begin_check()
 
 func begin_check() -> void:
@@ -356,7 +383,10 @@ func resolve_check(success: bool) -> void:
 		successful_checks += 1
 		green_half_width = maxf(0.05, 0.10 - mini(successful_checks, 2) * 0.025)
 	check_index = mini(results.size(), 2)
-	if results.size() < 3: begin_check()
+	if results.size() < 3:
+		begin_check()
+	else:
+		begin_flee(randf_range(6.0, 8.0))
 
 func update_grab(delta: float) -> void:
 	feedback_remaining = maxf(0.0, feedback_remaining - delta)
@@ -369,7 +399,7 @@ func update_grab(delta: float) -> void:
 		remaining -= step
 		if attack_elapsed >= 3.0 - 0.00001:
 			if results.size() < 3: resolve_check(false)
-			begin_flee(randf_range(6.0, 8.0))
+			if state == "grab": begin_flee(randf_range(6.0, 8.0))
 		elif attack_elapsed >= deadline - 0.00001:
 			resolve_check(false)
 	if state == "grab":

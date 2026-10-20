@@ -25,7 +25,7 @@ func run_checks() -> void:
 	expect(game.get_node("OpeningHowl").playing, "Opening howl is guaranteed regardless of spawn distance")
 	expect(game.get_node("Monster/Growl").get("howl_timer") >= 26.0, "Opening howl schedules the next howl")
 	for sound in ["StartGame", "OpeningHowl", "Danger", "Heartbeat", "Screamer"]:
-		expect(game.get_node(sound).bus == &"Master", "Event audio uses shared room acoustics")
+		expect(game.get_node(sound).bus == (&"Heartbeat" if sound == "Heartbeat" else &"Effects"), "Event audio uses shared room acoustics")
 	press(game, KEY_Q)
 	press(game, KEY_Q, true)
 	press(game, KEY_A)

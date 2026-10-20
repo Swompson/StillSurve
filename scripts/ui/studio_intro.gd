@@ -10,7 +10,7 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	$Title.modulate.a = 0.0
 	$Subtitle.modulate.a = 0.0
-	ResourceLoader.load_threaded_request("res://scenes/game.tscn")
+	ResourceLoader.load_threaded_request("res://scenes/ui/main_menu.tscn")
 
 func _process(delta: float) -> void:
 	elapsed += delta
@@ -25,12 +25,9 @@ func _process(delta: float) -> void:
 		if capture: get_tree().quit()
 		else: finish()
 
-func _unhandled_input(event: InputEvent) -> void:
-	if elapsed > 0.3 and event.is_pressed() and (event is InputEventKey or event is InputEventMouseButton): finish()
-
 func finish() -> void:
-	if leaving: return
-	if ResourceLoader.load_threaded_get_status("res://scenes/game.tscn") != ResourceLoader.THREAD_LOAD_LOADED: return
+	if leaving or elapsed < DURATION: return
+	if ResourceLoader.load_threaded_get_status("res://scenes/ui/main_menu.tscn") != ResourceLoader.THREAD_LOAD_LOADED: return
 	leaving = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get("res://scenes/game.tscn"))
+	get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get("res://scenes/ui/main_menu.tscn"))

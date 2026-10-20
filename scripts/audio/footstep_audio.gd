@@ -21,7 +21,6 @@ func _ready() -> void:
 
 func add_travel(distance: float) -> void:
 	if distance < 0.05:
-		travel = 0.0
 		return
 	travel += distance
 	var stride: float = 77.5 if running else 72.0

@@ -1,17 +1,31 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="AudioStream" path="res://assets/audio/ui/menu_hover.mp3" id="1"]
 [ext_resource type="AudioStream" path="res://assets/audio/ui/menu_accept.mp3" id="2"]
+[ext_resource type="Script" path="res://scripts/audio/menu_music.gd" id="3"]
+[ext_resource type="AudioStream" path="res://assets/audio/user_originals/startgame_button.mp3" id="4_start"]
 
 [node name="MenuAudio" type="Node"]
 process_mode = 3
+script = ExtResource("3")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+volume_db = -17.0
 
 [node name="Hover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1")
-volume_db = -15.0
+bus = &"Effects"
+volume_db = -25.0
 max_polyphony = 4
 
 [node name="Accept" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2")
+bus = &"Effects"
 volume_db = -12.0
 max_polyphony = 4
+
+[node name="StartGameButton" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_start")
+bus = &"Effects"
+volume_db = -24.0

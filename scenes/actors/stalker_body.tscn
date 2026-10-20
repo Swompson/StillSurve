@@ -1,141 +1,191 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://scripts/actors/stalker_rig.gd" id="1_26yjc"]
-[ext_resource type="Texture2D" path="res://assets/characters/player/rig/foot.tres" id="2_t7oaj"]
-[ext_resource type="Texture2D" path="res://assets/characters/player/rig/torso.tres" id="3_1rxqy"]
-[ext_resource type="Texture2D" path="res://assets/characters/player/rig/upper_arm.tres" id="4_0irvw"]
-[ext_resource type="Texture2D" path="res://assets/characters/player/rig/forearm.tres" id="5_6lvjh"]
-[ext_resource type="Texture2D" path="res://assets/characters/player/rig/hand.tres" id="6_rkupk"]
-[ext_resource type="Shader" path="res://shaders/rig_joint.gdshader" id="7_blped"]
-[ext_resource type="Texture2D" path="res://assets/characters/monster/rig/parts.png" id="8_s8k3s"]
-[ext_resource type="Texture2D" path="res://assets/characters/player/rig/head.tres" id="9_v15nj"]
+[ext_resource type="Script" path="res://scripts/actors/stalker_rig.gd" id="1_4515e"]
+[ext_resource type="Texture2D" path="res://assets/characters/stalker/rig_v4/foot.tres" id="2_w4vi8"]
+[ext_resource type="Texture2D" path="res://assets/characters/stalker/rig_v4/shin.tres" id="3_4yqu3"]
+[ext_resource type="Texture2D" path="res://assets/characters/stalker/rig_v4/thigh.tres" id="4_ut4gm"]
+[ext_resource type="Texture2D" path="res://assets/characters/stalker/rig_v4/knee.tres" id="5_t5ia6"]
+[ext_resource type="Texture2D" path="res://assets/characters/stalker/rig_v4/hand.tres" id="6_kxhy3"]
+[ext_resource type="Texture2D" path="res://assets/characters/stalker/rig_v4/forearm.tres" id="7_4ohgn"]
+[ext_resource type="Texture2D" path="res://assets/characters/stalker/rig_v4/upper_arm.tres" id="8_gqp83"]
+[ext_resource type="Shader" path="res://shaders/sleeve_fold.gdshader" id="9_7nc7o"]
+[ext_resource type="Texture2D" path="res://assets/characters/stalker/rig_v4/elbow.tres" id="10_w1ywj"]
+[ext_resource type="Texture2D" path="res://assets/characters/stalker/rig_v4/shoulder.tres" id="11_wef02"]
+[ext_resource type="Texture2D" path="res://assets/characters/stalker/rig_v4/torso.tres" id="12_24fdx"]
+[ext_resource type="Texture2D" path="res://assets/characters/stalker/rig_v4/head.tres" id="13_ibpm3"]
+[ext_resource type="AnimationLibrary" path="res://assets/characters/stalker/rig_v4/locomotion.tres" id="14_8yoll"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_133vc"]
-shader = ExtResource("7_blped")
-shader_parameter/patch_size = Vector2(116.2, 116.2)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4e1hq"]
+shader = ExtResource("9_7nc7o")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o5c3r"]
-atlas = ExtResource("8_s8k3s")
-region = Rect2(993.9, 163.9, 116.2, 116.2)
-filter_clip = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k4234"]
+shader = ExtResource("9_7nc7o")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wqc2h"]
-shader = ExtResource("7_blped")
-shader_parameter/patch_size = Vector2(116.2, 116.2)
+[node name="ArticulatedBody" type="Node2D" unique_id=780617567]
+script = ExtResource("1_4515e")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gjk5x"]
-atlas = ExtResource("8_s8k3s")
-region = Rect2(993.9, 163.9, 116.2, 116.2)
-filter_clip = true
+[node name="LeftFoot" type="Sprite2D" parent="." unique_id=209767678]
+z_index = -10
+texture_filter = 2
+position = Vector2(-10.5, 7.5)
+rotation = -0.055
+scale = Vector2(0.07272727, 0.08018868)
+texture = ExtResource("2_w4vi8")
 
-[node name="ArticulatedBody" type="Node2D" unique_id=966879390]
-script = ExtResource("1_26yjc")
+[node name="LeftShin" type="Sprite2D" parent="." unique_id=649016135]
+z_index = -9
+texture_filter = 2
+position = Vector2(-10.655001, 1.465)
+rotation = -0.14865394
+scale = Vector2(0.055045873, 0.026823258)
+texture = ExtResource("3_4yqu3")
 
-[node name="LeftFoot" type="Sprite2D" parent="." unique_id=1062330255]
-self_modulate = Color(0.16, 0.18, 0.22, 1)
+[node name="LeftThigh" type="Sprite2D" parent="." unique_id=770504335]
+z_index = -8
+texture_filter = 2
+position = Vector2(-9.905001, -0.78499997)
+rotation = 0.6402008
+scale = Vector2(0.052447554, 0.025653457)
+texture = ExtResource("4_ut4gm")
+
+[node name="LeftKnee" type="Sprite2D" parent="." unique_id=869738776]
+z_index = -7
+texture_filter = 2
+position = Vector2(-10.81, 0.43000007)
+scale = Vector2(0.0398773, 0.036516853)
+texture = ExtResource("5_t5ia6")
+
+[node name="LeftHand" type="Sprite2D" parent="." unique_id=760773021]
+z_index = -4
+texture_filter = 2
+position = Vector2(-13.282947, 8.454523)
+rotation = -0.68756783
+scale = Vector2(0.041935485, 0.036055986)
+texture = ExtResource("6_kxhy3")
+
+[node name="LeftForearm" type="Sprite2D" parent="." unique_id=722760906]
+z_index = -3
+texture_filter = 2
+position = Vector2(-18.628391, 1.945652)
+rotation = -0.68756783
+scale = Vector2(0.050925925, 0.048750285)
+texture = ExtResource("7_4ohgn")
+
+[node name="LeftUpperArm" type="Sprite2D" parent="." unique_id=5133554]
+z_index = -2
+texture_filter = 2
+position = Vector2(-18.7176, -0.23602581)
+rotation = -4.285532
+scale = Vector2(0.057692308, 0.0317999)
+texture = ExtResource("8_gqp83")
+
+[node name="LeftElbow" type="Sprite2D" parent="." unique_id=26145436]
 z_index = -1
 texture_filter = 2
-position = Vector2(-13, -44)
-scale = Vector2(0.078313254, 0.17006803)
-texture = ExtResource("2_t7oaj")
+material = SubResource("ShaderMaterial_4e1hq")
+position = Vector2(-21.4352, -1.4720516)
+rotation = -0.68756783
+scale = Vector2(0.13541667, 0.0877193)
+texture = ExtResource("10_w1ywj")
 
-[node name="RightFoot" type="Sprite2D" parent="." unique_id=980592595]
-self_modulate = Color(0.16, 0.18, 0.22, 1)
+[node name="LeftShoulder" type="Sprite2D" parent="." unique_id=1365572354]
+texture_filter = 2
+position = Vector2(-16, 1)
+scale = Vector2(0.059139784, 0.057894737)
+texture = ExtResource("11_wef02")
+
+[node name="RightFoot" type="Sprite2D" parent="." unique_id=460517207]
+z_index = -10
+texture_filter = 2
+position = Vector2(10.5, 7.5)
+rotation = 0.055
+scale = Vector2(0.07272727, 0.08018868)
+texture = ExtResource("2_w4vi8")
+flip_h = true
+
+[node name="RightShin" type="Sprite2D" parent="." unique_id=430098804]
+z_index = -9
+texture_filter = 2
+position = Vector2(10.655001, 1.465)
+rotation = 0.14865391
+scale = Vector2(0.055045873, 0.026823258)
+texture = ExtResource("3_4yqu3")
+flip_h = true
+
+[node name="RightThigh" type="Sprite2D" parent="." unique_id=1144048329]
+z_index = -8
+texture_filter = 2
+position = Vector2(9.905001, -0.78499997)
+rotation = -0.64020085
+scale = Vector2(0.052447554, 0.025653457)
+texture = ExtResource("4_ut4gm")
+flip_h = true
+
+[node name="RightKnee" type="Sprite2D" parent="." unique_id=2078722651]
+z_index = -7
+texture_filter = 2
+position = Vector2(10.81, 0.43000007)
+scale = Vector2(0.0398773, 0.036516853)
+texture = ExtResource("5_t5ia6")
+flip_h = true
+
+[node name="RightHand" type="Sprite2D" parent="." unique_id=351837315]
+z_index = -4
+texture_filter = 2
+position = Vector2(13.282947, 8.454523)
+rotation = 0.6875679
+scale = Vector2(0.041935485, 0.036055986)
+texture = ExtResource("6_kxhy3")
+flip_h = true
+
+[node name="RightForearm" type="Sprite2D" parent="." unique_id=468891681]
+z_index = -3
+texture_filter = 2
+position = Vector2(18.628391, 1.945652)
+rotation = 0.6875679
+scale = Vector2(0.050925925, 0.048750285)
+texture = ExtResource("7_4ohgn")
+flip_h = true
+
+[node name="RightUpperArm" type="Sprite2D" parent="." unique_id=1548972900]
+z_index = -2
+texture_filter = 2
+position = Vector2(18.7176, -0.23602581)
+rotation = -1.9976535
+scale = Vector2(0.057692308, 0.0317999)
+texture = ExtResource("8_gqp83")
+flip_h = true
+
+[node name="RightElbow" type="Sprite2D" parent="." unique_id=1270760915]
 z_index = -1
 texture_filter = 2
-position = Vector2(13, -44)
-scale = Vector2(0.078313254, 0.17006803)
-texture = ExtResource("2_t7oaj")
+material = SubResource("ShaderMaterial_k4234")
+position = Vector2(21.4352, -1.4720516)
+rotation = 0.6875679
+scale = Vector2(0.13541667, 0.0877193)
+texture = ExtResource("10_w1ywj")
 flip_h = true
 
-[node name="Torso" type="Sprite2D" parent="." unique_id=759273502]
-self_modulate = Color(0.16, 0.18, 0.22, 1)
+[node name="RightShoulder" type="Sprite2D" parent="." unique_id=1415816315]
 texture_filter = 2
-position = Vector2(0, -8)
-rotation = 3.1415927
-scale = Vector2(0.11320755, 0.22135417)
-texture = ExtResource("3_1rxqy")
+position = Vector2(16, 1)
+scale = Vector2(0.059139784, 0.057894737)
+texture = ExtResource("11_wef02")
+flip_h = true
 
-[node name="LeftUpperArm" type="Sprite2D" parent="." unique_id=22402650]
-self_modulate = Color(0.16, 0.18, 0.22, 1)
+[node name="Torso" type="Sprite2D" parent="." unique_id=1664992375]
 z_index = 1
 texture_filter = 2
-position = Vector2(-7.0831404, 13.676538)
-rotation = -0.8402406
-scale = Vector2(0.08108108, 0.09135803)
-texture = ExtResource("4_0irvw")
+position = Vector2(0, -4)
+scale = Vector2(0.10161663, 0.12837838)
+texture = ExtResource("12_24fdx")
 
-[node name="LeftForearm" type="Sprite2D" parent="." unique_id=1913746672]
-self_modulate = Color(0.16, 0.18, 0.22, 1)
-z_index = 2
+[node name="Head" type="Sprite2D" parent="." unique_id=673183714]
+z_index = 5
 texture_filter = 2
-position = Vector2(-13.08314, 30.676538)
-rotation = 1.2315105
-scale = Vector2(0.062992126, 0.12463768)
-texture = ExtResource("5_6lvjh")
+position = Vector2(0, 10)
+scale = Vector2(0.0877193, 0.08695652)
+texture = ExtResource("13_ibpm3")
 
-[node name="LeftHand" type="Sprite2D" parent="." unique_id=633571245]
-self_modulate = Color(0.16, 0.18, 0.22, 1)
-z_index = 3
-texture_filter = 2
-position = Vector2(-31, 37)
-rotation = 1.2315105
-scale = Vector2(0.05050505, 0.07931034)
-texture = ExtResource("6_rkupk")
-
-[node name="LeftElbow" type="Sprite2D" parent="." unique_id=782310242]
-self_modulate = Color(0.12, 0.14, 0.17, 1)
-z_index = 2
-texture_filter = 2
-material = SubResource("ShaderMaterial_133vc")
-position = Vector2(4.8337193, 24.353077)
-scale = Vector2(0.077586204, 0.077586204)
-texture = SubResource("AtlasTexture_o5c3r")
-
-[node name="RightUpperArm" type="Sprite2D" parent="." unique_id=2028418460]
-self_modulate = Color(0.16, 0.18, 0.22, 1)
-z_index = 1
-texture_filter = 2
-position = Vector2(7.0831404, 13.676538)
-rotation = 0.84024066
-scale = Vector2(0.08108108, 0.09135803)
-texture = ExtResource("4_0irvw")
-flip_h = true
-
-[node name="RightForearm" type="Sprite2D" parent="." unique_id=378907571]
-self_modulate = Color(0.16, 0.18, 0.22, 1)
-z_index = 2
-texture_filter = 2
-position = Vector2(13.08314, 30.676538)
-rotation = -1.2315104
-scale = Vector2(0.062992126, 0.12463768)
-texture = ExtResource("5_6lvjh")
-flip_h = true
-
-[node name="RightHand" type="Sprite2D" parent="." unique_id=95213574]
-self_modulate = Color(0.16, 0.18, 0.22, 1)
-z_index = 3
-texture_filter = 2
-position = Vector2(31, 37)
-rotation = -1.2315104
-scale = Vector2(0.05050505, 0.07931034)
-texture = ExtResource("6_rkupk")
-flip_h = true
-
-[node name="RightElbow" type="Sprite2D" parent="." unique_id=948553105]
-self_modulate = Color(0.12, 0.14, 0.17, 1)
-z_index = 2
-texture_filter = 2
-material = SubResource("ShaderMaterial_wqc2h")
-position = Vector2(-4.8337193, 24.353077)
-scale = Vector2(0.077586204, 0.077586204)
-texture = SubResource("AtlasTexture_gjk5x")
-flip_h = true
-
-[node name="Head" type="Sprite2D" parent="." unique_id=2099906992]
-self_modulate = Color(0.24, 0.25, 0.28, 1)
-z_index = 4
-texture_filter = 2
-position = Vector2(0, 25)
-scale = Vector2(0.08695652, 0.09821428)
-texture = ExtResource("9_v15nj")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1374526345]
+libraries/ = ExtResource("14_8yoll")

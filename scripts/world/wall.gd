@@ -86,19 +86,6 @@ func get_vision_corners() -> PackedVector2Array:
 	cached_corners = corners
 	return cached_corners
 
-func get_visibility_distance(origin: Vector2, direction: Vector2) -> float:
-	var local_origin: Vector2 = to_local(origin)
-	var local_direction: Vector2 = to_local(origin + direction) - local_origin
-	var half_size: Vector2 = wall_size * 0.5
-	var exit_distance: float = INF
-	if absf(local_direction.x) > 0.000001:
-		var edge_x: float = half_size.x if local_direction.x > 0.0 else -half_size.x
-		exit_distance = minf(exit_distance, (edge_x - local_origin.x) / local_direction.x)
-	if absf(local_direction.y) > 0.000001:
-		var edge_y: float = half_size.y if local_direction.y > 0.0 else -half_size.y
-		exit_distance = minf(exit_distance, (edge_y - local_origin.y) / local_direction.y)
-	return maxf(0.0, exit_distance)
-
 func _draw() -> void:
 	for bounds in get_wall_rectangles():
 		draw_wall_section(bounds)

@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/sjz/Sjz.otf" id="1"]
+[ext_resource type="Shader" path="res://shaders/menu_panel_fade.gdshader" id="2"]
+[ext_resource type="Script" path="res://scripts/ui/soft_panel.gd" id="3"]
+
+[sub_resource type="ShaderMaterial" id="Feather"]
+shader = ExtResource("2")
+shader_parameter/panel_size = Vector2(416, 280)
+shader_parameter/feather = 48.0
+
+[sub_resource type="StyleBoxFlat" id="Panel"]
+bg_color = Color(0.027, 0.029, 0.025, 0.98)
+content_margin_left = 28.0
+content_margin_top = 24.0
+content_margin_right = 28.0
+content_margin_bottom = 26.0
+
+[node name="ModeTooltip" type="PanelContainer"]
+material = SubResource("Feather")
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Panel")
+script = ExtResource("3")
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Caption" type="Label" parent="Content"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.51, 0.50, 0.44, 1)
+theme_override_fonts/font = ExtResource("1")
+theme_override_font_sizes/font_size = 16
+text = "РЕЖИМ ВЫЖИВАНИЯ"
+
+[node name="Title" type="Label" parent="Content"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.85, 0.83, 0.75, 1)
+theme_override_fonts/font = ExtResource("1")
+theme_override_font_sizes/font_size = 34
+text = "ОБЫЧНЫЙ"
+
+[node name="Divider" type="ColorRect" parent="Content"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.49, 0.47, 0.37, 0.22)
+
+[node name="Description" type="Label" parent="Content"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.65, 0.64, 0.58, 1)
+theme_override_fonts/font = ExtResource("1")
+theme_override_font_sizes/font_size = 23
+text = "Соберите 12 фигурок и берегите заряд фонарика. Два монстра патрулируют здание."
+autowrap_mode = 2

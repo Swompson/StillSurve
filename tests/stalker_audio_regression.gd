@@ -33,7 +33,11 @@ func run() -> void:
 	laugh.stop()
 	laugh.cooldown = 0.0
 	stalker.begin_grab()
-	assert(played.size() == 1 and game.player.grabbed and laugh.playing)
+	var screamer: AudioStreamPlayer2D = stalker.get_node("Screamer")
+	assert(played.is_empty() and game.player.grabbed and screamer.playing)
+	assert(screamer.stream.resource_path.ends_with("user_originals/stalker_screamer.mp3"))
+	assert(screamer.stream.get_length() > 0.0 and screamer.bus == &"Effects")
+	laugh.play_laugh()
 	var laugh_origin: Vector2 = laugh.global_position
 	stalker.global_position += Vector2(20, 0)
 	assert(laugh.global_position == laugh_origin)
@@ -55,6 +59,7 @@ func run() -> void:
 		game.player.global_position = point
 		game.player.flashlight_on = true
 		game.player.flashlight_strength = 1.0
+		game.player.flashlight_reveal = 1.0
 		game.player.facing_angle = 0.0
 		stalker.global_position = point + Vector2(80, 0)
 		stalker.state = "stalk"
@@ -67,11 +72,11 @@ func run() -> void:
 		tested_flashlight = true
 		break
 	assert(tested_flashlight)
-	assert(laugh.bus == &"Master" and AudioServer.get_bus_effect(0, 0) is AudioEffectDelay and AudioServer.get_bus_effect(0, 1) is AudioEffectReverb)
+	assert(laugh.bus == &"Effects" and AudioServer.get_bus_effect(0, 0) is AudioEffectDelay and AudioServer.get_bus_effect(0, 1) is AudioEffectReverb)
 	var intro: Node = load("res://scenes/ui/studio_intro.tscn").instantiate()
 	var sound: AudioStreamPlayer = intro.get_node("Sound")
-	assert(sound.autoplay and sound.bus == &"Master")
+	assert(sound.autoplay and sound.bus == &"Effects")
 	assert(sound.stream.resource_path.ends_with("swompson_intro_sound.wav") and absf(sound.stream.get_length() - 4.516667) < 0.01)
 	intro.free()
-	print("RESULT 30 shuffle cycles, no repeats, attack/light-only laughter and intro sound: passed")
+	print("RESULT original grab screamer, 30 laugh shuffle cycles, light reactions and intro sound: passed")
 	quit()

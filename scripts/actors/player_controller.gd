@@ -3,8 +3,8 @@ extends CharacterBody2D
 @export var speed: float = 180.0
 @export var sprint_speed: float = 310.0
 @export var backward_speed_multiplier: float = 0.6
-@export var turn_response: float = 14.58
-@export var turn_speed_degrees: float = 874.8
+@export var turn_response: float = 10.2
+@export var turn_speed_degrees: float = 612.0
 @export_range(0.1, 1.0) var tired_turn_multiplier: float = 0.55
 @export var field_of_view: float = 83.16
 @export var ambient_view_distance: float = 180.0
@@ -15,12 +15,15 @@ extends CharacterBody2D
 @export var stamina_regen: float = 18.0
 @export var battery_max: float = 70.0
 @export var battery_drain: float = 0.5
+@export var flashlight_draw_duration: float = 0.68
+@export var flashlight_stow_duration: float = 0.82
 
 @onready var hero_sprite: AnimatedSprite2D = $Sprite
 @onready var footsteps: AudioStreamPlayer2D = $Footsteps
 @onready var torch: Node2D = $Flashlight
 
 var game: Node
+var glass_contact: RefCounted = preload("res://scripts/world/glass_contact.gd").new()
 var alive: bool = true
 var facing_angle: float = PI * 0.5
 var stamina: float = 100.0
@@ -35,11 +38,13 @@ var regen_delay: float = 0.0
 var stride_phase: float = 0.0
 var flashlight_reveal: float = 0.0
 var flashlight_strength: float = 0.0
+var switch_engaged: bool = false
 var flicker_clock: float = 0.0
 var flicker_remaining: float = 0.0
 var flicker_multiplier: float = 1.0
 const SWITCH_ON = preload("res://assets/audio/flashlight/user_switch_on.wav")
 const SWITCH_OFF = preload("res://assets/audio/flashlight/user_switch_off.wav")
+const SWITCH_ATTACK_TIME: float = 0.12
 
 func _ready() -> void:
 	# These visuals follow the interpolated observer at render frequency. Their
@@ -54,8 +59,6 @@ func _ready() -> void:
 	$AudioListener.make_current()
 	stamina = stamina_max
 	footsteps.stepped.connect(_on_step)
-	$FlashlightSwitch.stream = SWITCH_ON
-	$FlashlightSwitch.play()
 
 func _process(delta: float) -> void:
 	var observer: Vector2 = get_render_observer()
@@ -77,8 +80,14 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		sprinting = false
 		return
-	flashlight_reveal = move_toward(flashlight_reveal, 1.0 if flashlight_on else 0.0, delta / 0.48)
-	var beam_target: float = smoothstep(0.4, 1.0, flashlight_reveal) if flashlight_on else 0.0
+	var flashlight_duration: float = flashlight_draw_duration if flashlight_on else flashlight_stow_duration
+	flashlight_reveal = move_toward(flashlight_reveal, 1.0 if flashlight_on else 0.0, delta / maxf(flashlight_duration, 0.01))
+	# The thumb clicks once the flashlight has reached the carrying position.
+	if flashlight_on and not switch_engaged and flashlight_reveal >= 0.72:
+		switch_engaged = true
+		$FlashlightSwitch.stream = SWITCH_ON
+		$FlashlightSwitch.play(SWITCH_ATTACK_TIME)
+	var beam_target: float = 1.0 if flashlight_on and switch_engaged else 0.0
 	update_flicker(delta)
 	beam_target *= flicker_multiplier
 	flashlight_strength = lerpf(flashlight_strength, beam_target, 1.0 - exp(-16.0 * delta))
@@ -91,6 +100,7 @@ func _physics_process(delta: float) -> void:
 	velocity = direction * get_movement_speed(direction)
 	move_and_slide()
 	var travelled: float = global_position.distance_to(previous_position)
+	glass_contact.update(self, previous_position, global_position, game, true, delta, 77.5 if sprinting else 72.0)
 	if travelled < 0.05:
 		sprinting = false
 	update_resources(delta, sprinting)
@@ -140,8 +150,10 @@ func update_resources(delta: float, running: bool) -> void:
 		battery = maxf(0.0, battery - battery_drain * delta)
 		if battery <= 0.0:
 			flashlight_on = false
+			switch_engaged = false
+			flashlight_strength = 0.0
 			$FlashlightSwitch.stream = SWITCH_OFF
-			$FlashlightSwitch.play()
+			$FlashlightSwitch.play(SWITCH_ATTACK_TIME)
 
 func toggle_flashlight() -> void:
 	var previous: bool = flashlight_on
@@ -150,8 +162,11 @@ func toggle_flashlight() -> void:
 	elif battery > 0.0:
 		flashlight_on = true
 	if previous != flashlight_on:
-		$FlashlightSwitch.stream = SWITCH_ON if flashlight_on else SWITCH_OFF
-		$FlashlightSwitch.play()
+		switch_engaged = false
+		if not flashlight_on:
+			flashlight_strength = 0.0
+			$FlashlightSwitch.stream = SWITCH_OFF
+			$FlashlightSwitch.play(SWITCH_ATTACK_TIME)
 
 func add_battery(amount: float = 20.0) -> void:
 	battery = minf(battery_max, battery + amount)
@@ -178,7 +193,7 @@ func turn_towards(target_angle: float, delta: float) -> void:
 func update_animation(delta: float) -> void:
 	var moving: bool = velocity.length_squared() > 1.0
 	var animation_name: String = "run" if sprinting else ("walk" if moving else "idle")
-	# The articulated rig owns the continuous gait.
+	# The saved 2D rig owns the continuous, blended overhead gait.
 	hero_sprite.animation = animation_name
 	hero_sprite.stop()
 	stride_phase += delta * (16.0 if sprinting else 10.0)
@@ -187,19 +202,18 @@ func update_animation(delta: float) -> void:
 func update_flashlight() -> void:
 	torch.global_position = get_view_origin()
 	var reveal: float = smoothstep(0.0, 1.0, flashlight_reveal)
-	torch.rotation = facing_angle + (1.0 - reveal) * 1.25
-	torch.modulate.a = reveal
+	torch.rotation = facing_angle + float(hero_sprite.call("get_flashlight_angle"))
+	torch.modulate.a = float(hero_sprite.call("get_flashlight_alpha"))
 	torch.scale = Vector2.ONE * lerpf(0.75, 1.0, reveal)
-	torch.set("lit", flashlight_strength > 0.2)
+	torch.set("lit", flashlight_on and flashlight_strength > 0.2)
 	torch.queue_redraw()
 
 func get_view_origin() -> Vector2:
 	return get_view_origin_at(global_position)
 
 func get_view_origin_at(observer: Vector2) -> Vector2:
-	var reveal: float = smoothstep(0.0, 1.0, flashlight_reveal)
 	var grip: Vector2 = hero_sprite.call("get_flashlight_grip")
-	var torch_angle: float = facing_angle + (1.0 - reveal) * 1.25
+	var torch_angle: float = facing_angle + float(hero_sprite.call("get_flashlight_angle"))
 	var desired: Vector2 = observer + grip.rotated(facing_angle - PI * 0.5) + Vector2.from_angle(torch_angle) * 15.0
 	return resolve_view_origin(observer, desired)
 
@@ -231,7 +245,7 @@ func get_mask_extent() -> float:
 	return maxf(get_view_distance() * 2.0, get_viewport_rect().size.length() / maxf(zoom, 0.01) * 2.0 + 256.0)
 
 func get_view_angle() -> float:
-	return facing_angle
+	return facing_angle + float(hero_sprite.call("get_flashlight_angle"))
 
 func is_point_visible(point: Vector2) -> bool:
 	if global_position.distance_to(point) <= ambient_view_distance:
@@ -242,7 +256,7 @@ func is_point_visible(point: Vector2) -> bool:
 	var offset: Vector2 = point - get_view_origin()
 	if offset.length() > get_view_distance():
 		return false
-	if absf(angle_difference(facing_angle, offset.angle())) > deg_to_rad(field_of_view) * 0.5:
+	if absf(angle_difference(get_view_angle(), offset.angle())) > deg_to_rad(field_of_view) * 0.5:
 		return false
 	var query: PhysicsRayQueryParameters2D = PhysicsRayQueryParameters2D.create(get_view_origin(), point, 2)
 	return get_world_2d().direct_space_state.intersect_ray(query).is_empty()
@@ -250,10 +264,6 @@ func is_point_visible(point: Vector2) -> bool:
 func _on_step() -> void:
 	if is_instance_valid(game):
 		game.call("emit_player_noise", global_position, 1050.0 if sprinting else 400.0)
-		for patch in get_tree().get_nodes_in_group("glass_patches"):
-			if patch.global_position.distance_squared_to(global_position) < 58.0 * 58.0:
-				game.call("step_on_glass", global_position)
-				break
 
 func update_flicker(delta: float) -> void:
 	var danger: bool = false

@@ -31,13 +31,16 @@ var path_timer: float = 0.0
 var path: PackedVector2Array = PackedVector2Array()
 var path_index: int = 0
 var gait: float = 0.0
-var glass_step_distance: float = 0.0
+var glass_contact: RefCounted = preload("res://scripts/world/glass_contact.gd").new()
 var path_goal: int = -1
+var path_target: Vector2
 var search_timer: float = 0.0
 var stuck_timer: float = 0.0
 var path_rebuilds: int = 0
 var previous_patrol_cell: int = -1
 var recent_patrol_cells: Array[int] = []
+var patrol_side: int = 0
+var patrol_visits: Dictionary = {}
 var saved_patrol_target: Vector2
 var has_saved_patrol: bool = false
 var investigation_route: PackedVector2Array = PackedVector2Array()
@@ -85,7 +88,7 @@ func _physics_process(delta: float) -> void:
 			choose_patrol_target()
 			searching = false
 	var goal: int = int(maze.call("cell_at", target))
-	if goal != path_goal or path.is_empty() or (path_timer <= 0.0 and stuck_timer > 0.8):
+	if goal != path_goal or path.is_empty() or (path_timer <= 0.0 and (stuck_timer > 0.8 or path_target.distance_to(target) > 24.0)):
 		rebuild_path(goal)
 	var destination: Vector2 = global_position if searching else navigation_destination()
 	var direction: Vector2 = global_position.direction_to(destination)
@@ -105,7 +108,7 @@ func _physics_process(delta: float) -> void:
 	velocity = velocity.lerp(desired_velocity, 1.0 - exp(-12.0 * delta))
 	var before: Vector2 = global_position
 	move_and_slide()
-	update_glass_steps(global_position.distance_to(before))
+	update_glass_steps(global_position.distance_to(before), before, delta)
 	if desired_speed > 20.0 and global_position.distance_to(before) < desired_speed * delta * 0.12:
 		stuck_timer += delta
 	else:
@@ -145,6 +148,7 @@ func choose_patrol_target() -> void:
 		path_goal = -1
 		return
 	var current_cell: int = int(maze.call("cell_at", global_position))
+	patrol_visits[current_cell] = int(patrol_visits.get(current_cell, 0)) + 1
 	var candidate: int = local_patrol_cell(current_cell)
 	previous_patrol_cell = current_cell
 	recent_patrol_cells.append(current_cell)
@@ -188,6 +192,11 @@ func local_patrol_cell(current_cell: int) -> int:
 			continue
 		var depth: int = int(distances[cell])
 		var score: float = (2.0 if interest.has(cell) else 0.0) - float(depth) * 0.35 + randf() * 0.3
+		# Keep local routes, but stop circling the same figurines indefinitely.
+		score -= float(patrol_visits.get(cell, 0)) * 1.1
+		var column: int = cell % int(maze.get("width"))
+		var middle: float = float(int(maze.get("width")) - 1) * 0.5
+		score -= maxf(0.0, (float(column) - middle) * -float(patrol_side)) * 1.2
 		if depth == 1:
 			score -= 2.0
 		if cell == previous_patrol_cell or recent_patrol_cells.has(cell):
@@ -204,6 +213,7 @@ func local_patrol_cell(current_cell: int) -> int:
 func rebuild_path(goal: int) -> void:
 	path = investigation_route if state == "investigate" and not investigation_route.is_empty() else maze.call("find_path", global_position, target)
 	path_goal = goal
+	path_target = target
 	path_index = 0
 	path_timer = 0.65
 	path_rebuilds += 1
@@ -217,13 +227,13 @@ func rebuild_path(goal: int) -> void:
 
 func navigation_destination() -> Vector2:
 	if state == "investigate" and not investigation_route.is_empty():
-		while path_index < path.size() and global_position.distance_to(path[path_index]) < 18.0:
+		while path_index < path.size() and global_position.distance_to(path[path_index]) < 6.0:
 			path_index += 1
 		return path[path_index] if path_index < path.size() else target
 	if maze.call("can_walk_line", global_position, target):
 		return target
 	while path_index < path.size() - 1:
-		if global_position.distance_to(path[path_index]) < 18.0 or maze.call("can_walk_line", global_position, path[path_index + 1]):
+		if global_position.distance_to(path[path_index]) < 6.0 or maze.call("can_walk_line", global_position, path[path_index + 1]):
 			path_index += 1
 		else:
 			break
@@ -280,12 +290,6 @@ func assign_investigation_route(route: PackedVector2Array) -> void:
 	path_goal = -1
 	path_timer = 0.0
 
-func update_glass_steps(distance: float) -> void:
-	glass_step_distance += distance
-	if glass_step_distance < 58.0 or not is_instance_valid(game):
-		return
-	glass_step_distance = fmod(glass_step_distance, 58.0)
-	for patch in get_tree().get_nodes_in_group("glass_patches"):
-		if patch.global_position.distance_squared_to(global_position) < 58.0 * 58.0:
-			game.call("step_on_glass", global_position, false, self)
-			break
+func update_glass_steps(distance: float, before: Vector2 = Vector2.INF, delta: float = 1.0 / 60.0) -> void:
+	if before == Vector2.INF: before = global_position - Vector2.from_angle(facing_angle) * distance
+	glass_contact.update(self, before, global_position, game, false, delta)

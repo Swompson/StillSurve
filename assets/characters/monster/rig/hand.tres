@@ -1,8 +1,0 @@
-[gd_resource type="AtlasTexture" format=3]
-
-[ext_resource type="Texture2D" path="res://assets/characters/monster/rig/parts.png" id="1_dltck"]
-
-[resource]
-atlas = ExtResource("1_dltck")
-region = Rect2(1019, 473, 210, 386)
-filter_clip = true

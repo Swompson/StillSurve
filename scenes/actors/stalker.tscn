@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/actors/stalker_controller.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/actors/stalker_body.tscn" id="2"]
 [ext_resource type="Script" path="res://scripts/audio/stalker_laugh.gd" id="laugh"]
+[ext_resource type="AudioStream" path="res://assets/audio/user_originals/stalker_screamer.mp3" id="screamer"]
 
 [sub_resource type="CircleShape2D" id="BodyShape"]
 radius = 24.0
@@ -22,8 +23,14 @@ z_index = 72
 [node name="ArticulatedBody" parent="Visual" instance=ExtResource("2")]
 
 [node name="Laugh" type="AudioStreamPlayer2D" parent="."]
-volume_db = -4.0
+volume_db = -14.0
 max_distance = 1200.0
 attenuation = 0.65
-bus = &"Master"
+bus = &"Effects"
 script = ExtResource("laugh")
+
+[node name="Screamer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("screamer")
+volume_db = -7.0
+max_distance = 1200.0
+bus = &"Effects"

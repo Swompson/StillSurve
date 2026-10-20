@@ -1,0 +1,69 @@
+[gd_resource type="AnimatedTexture" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/loading/basement_flicker_balanced_new_00.png" id="f0"]
+[ext_resource type="Texture2D" path="res://assets/ui/loading/basement_flicker_balanced_new_01.png" id="f1"]
+[ext_resource type="Texture2D" path="res://assets/ui/loading/basement_flicker_balanced_new_02.png" id="f2"]
+[ext_resource type="Texture2D" path="res://assets/ui/loading/basement_flicker_balanced_new_03.png" id="f3"]
+[ext_resource type="Texture2D" path="res://assets/ui/loading/basement_flicker_balanced_new_04.png" id="f4"]
+[ext_resource type="Texture2D" path="res://assets/ui/loading/basement_flicker_balanced_new_05.png" id="f5"]
+[ext_resource type="Texture2D" path="res://assets/ui/loading/basement_flicker_balanced_new_06.png" id="f6"]
+[ext_resource type="Texture2D" path="res://assets/ui/loading/basement_flicker_balanced_new_07.png" id="f7"]
+[ext_resource type="Texture2D" path="res://assets/ui/loading/basement_flicker_balanced_new_08.png" id="f8"]
+[ext_resource type="Texture2D" path="res://assets/ui/loading/basement_flicker_balanced_new_09.png" id="f9"]
+[ext_resource type="Texture2D" path="res://assets/ui/loading/basement_flicker_balanced_new_10.png" id="f10"]
+[ext_resource type="Texture2D" path="res://assets/ui/loading/basement_flicker_balanced_new_11.png" id="f11"]
+[ext_resource type="Texture2D" path="res://assets/ui/loading/basement_flicker_balanced_new_12.png" id="f12"]
+[ext_resource type="Texture2D" path="res://assets/ui/loading/basement_flicker_balanced_new_13.png" id="f13"]
+[ext_resource type="Texture2D" path="res://assets/ui/loading/basement_flicker_balanced_new_14.png" id="f14"]
+[ext_resource type="Texture2D" path="res://assets/ui/loading/basement_flicker_balanced_new_15.png" id="f15"]
+[ext_resource type="Texture2D" path="res://assets/ui/loading/basement_flicker_balanced_new_16.png" id="f16"]
+[ext_resource type="Texture2D" path="res://assets/ui/loading/basement_flicker_balanced_new_17.png" id="f17"]
+[ext_resource type="Texture2D" path="res://assets/ui/loading/basement_flicker_balanced_new_18.png" id="f18"]
+[ext_resource type="Texture2D" path="res://assets/ui/loading/basement_flicker_balanced_new_19.png" id="f19"]
+[ext_resource type="Texture2D" path="res://assets/ui/loading/basement_flicker_balanced_new_20.png" id="f20"]
+
+[resource]
+frames = 21
+fps = 0.0
+frame_0/texture = ExtResource("f0")
+frame_0/duration = 0.36
+frame_1/texture = ExtResource("f1")
+frame_1/duration = 0.12
+frame_2/texture = ExtResource("f2")
+frame_2/duration = 0.12
+frame_3/texture = ExtResource("f3")
+frame_3/duration = 0.12
+frame_4/texture = ExtResource("f4")
+frame_4/duration = 0.12
+frame_5/texture = ExtResource("f5")
+frame_5/duration = 0.12
+frame_6/texture = ExtResource("f6")
+frame_6/duration = 0.12
+frame_7/texture = ExtResource("f7")
+frame_7/duration = 0.12
+frame_8/texture = ExtResource("f8")
+frame_8/duration = 0.84
+frame_9/texture = ExtResource("f9")
+frame_9/duration = 0.12
+frame_10/texture = ExtResource("f10")
+frame_10/duration = 0.12
+frame_11/texture = ExtResource("f11")
+frame_11/duration = 0.12
+frame_12/texture = ExtResource("f12")
+frame_12/duration = 0.48
+frame_13/texture = ExtResource("f13")
+frame_13/duration = 0.12
+frame_14/texture = ExtResource("f14")
+frame_14/duration = 0.12
+frame_15/texture = ExtResource("f15")
+frame_15/duration = 0.12
+frame_16/texture = ExtResource("f16")
+frame_16/duration = 0.6
+frame_17/texture = ExtResource("f17")
+frame_17/duration = 0.12
+frame_18/texture = ExtResource("f18")
+frame_18/duration = 0.12
+frame_19/texture = ExtResource("f19")
+frame_19/duration = 0.12
+frame_20/texture = ExtResource("f20")
+frame_20/duration = 0.6

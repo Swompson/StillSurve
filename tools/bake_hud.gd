@@ -3,6 +3,7 @@ extends SceneTree
 func own_children(node: Node, owner_node: Node) -> void:
 	for child in node.get_children():
 		child.owner = owner_node
+		if not child.scene_file_path.is_empty(): continue
 		own_children(child, owner_node)
 
 func _initialize() -> void:

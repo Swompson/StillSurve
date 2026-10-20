@@ -22,18 +22,24 @@ varying vec2 world_point;
 void vertex() { world_point = (MODEL_MATRIX * vec4(VERTEX, 0, 1)).xy; }
 void fragment() {
 	vec4 surface = texture(TEXTURE, UV);
+	vec2 uv_dx = dFdx(UV);
+	vec2 uv_dy = dFdy(UV);
 	float value = dot(surface.rgb, vec3(0.299, 0.587, 0.114));
 	vec2 offset = world_point - light_origin;
-	float relative = atan(offset.y, offset.x) - light_angle;
-	float angle = abs(atan(sin(relative), cos(relative)));
-	float cone = 1.0 - smoothstep(half_fov * 0.65, half_fov, angle);
-	float reach = 1.0 - smoothstep(light_range * 0.4, light_range, length(offset));
+	float cone = 0.0;
+	float reach = 0.0;
+	if (light_power > 0.0 && dot(offset, offset) < light_range * light_range) {
+		float relative = atan(offset.y, offset.x) - light_angle;
+		float angle = abs(atan(sin(relative), cos(relative)));
+		cone = 1.0 - smoothstep(half_fov * 0.65, half_fov, angle);
+		reach = 1.0 - smoothstep(light_range * 0.4, light_range, length(offset));
+	}
 	float pool = exp(-dot(world_point - observer_position, world_point - observer_position) / 18000.0);
 	vec3 cold = mix(surface.rgb, vec3(value) * vec3(0.55, 0.73, 0.76), 0.70);
 	vec3 warm = mix(surface.rgb, vec3(value) * vec3(1.18, 1.11, 0.88), 0.64);
 	vec3 lit = mix(cold * (0.7 + pool * 0.20), warm * (0.95 + reach * 0.28), cone * reach * light_power);
-	if (normal_strength > 0.0) {
-	vec3 normal = normalize(texture(normal_texture, UV).rgb * 2.0 - 1.0);
+	if (normal_strength > 0.0 && cone * reach * light_power > 0.0) {
+	vec3 normal = normalize(textureGrad(normal_texture, UV, uv_dx, uv_dy).rgb * 2.0 - 1.0);
 	vec3 direction = normalize(vec3(-offset, 140.0));
 	float relief = clamp(dot(normal, direction) / max(direction.z, 0.25), 0.72, 1.22);
 	lit *= mix(1.0, relief, cone * reach * light_power * normal_strength);

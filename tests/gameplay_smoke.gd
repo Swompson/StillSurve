@@ -79,7 +79,7 @@ func run_checks() -> void:
 		for neighbor in graph.get_point_connections(cell):
 			expect(bool(maze.call("clear_line", maze.call("cell_position", cell), maze.call("cell_position", neighbor))), "Graph passage blocked by wall")
 	expect(player.global_position.length() > 1300.0, "Spawn is too close to central monster")
-	expect(monster.global_position.distance_to(maze.call("cell_position", 60)) < 15.0, "Monster did not spawn in maze center")
+	expect(monster.global_position.x < 0.0 and game.get_node("SecondMonster").global_position.x > 0.0, "Hunters must spawn on opposite halves")
 	var items: Array[Node] = maze.get_node("Pickups").get_children()
 	var dolls: Array[Node] = []
 	var batteries: Array[Node] = []
@@ -97,8 +97,9 @@ func run_checks() -> void:
 	expect(ambience.playing, "Ambient loop did not start")
 	expect(ambience.stream is AudioStreamWAV and ambience.stream.loop_mode == AudioStreamWAV.LOOP_FORWARD, "Ambient must loop")
 	expect(ambience.stream.get_length() >= 30.0, "Ambient loop is too short")
-	expect(sprite.sprite_frames.get_frame_count("run") == 8 and sprite.sprite_frames.get_frame_count("walk") == 8, "Editor-ready walk/run frames missing")
-	expect(sprite.sprite_frames.get_frame_texture("run", 0).atlas != sprite.sprite_frames.get_frame_texture("walk", 0).atlas, "Run must use its distinct sprite sheet")
+	expect(sprite.sprite_frames.has_animation("run") and sprite.sprite_frames.has_animation("walk"), "Walk and run states remain available to the continuous rig")
+	var authored_torso: Sprite2D = sprite.get_node("ArticulatedBody/Torso")
+	expect(authored_torso.texture.atlas.resource_path.ends_with("player/rig_v3/overhead_parts.png"), "Editor and gameplay share the newly generated 2D survivor")
 	var visibility: Node2D = game.get_node("Visibility")
 	var benchmark_start: int = Time.get_ticks_usec()
 	for sample in range(90):

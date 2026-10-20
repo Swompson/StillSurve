@@ -13,6 +13,9 @@
 [ext_resource type="Shader" path="res://shaders/overhead_surface.gdshader" id="shader"]
 [ext_resource type="AudioStream" path="res://assets/audio/user_originals/waterdrop.mp3" id="waterdrop"]
 [ext_resource type="Texture2D" path="res://assets/textures/overhead/wire.svg" id="Wires"]
+[ext_resource type="AudioStream" path="res://assets/audio/fixtures/ballast_hum.wav" id="fixture_hum"]
+[ext_resource type="AudioStream" path="res://assets/audio/fixtures/contact_flicker.wav" id="fixture_flicker"]
+[ext_resource type="AudioStream" path="res://assets/audio/fixtures/electrical_arc.wav" id="fixture_arc"]
 
 [sub_resource type="ShaderMaterial" id="PipesMat"]
 shader = ExtResource("shader")
@@ -1163,7 +1166,7 @@ polygon = PackedVector2Array(574, 1757, 600, 1757, 600, 1775, 574, 1775)
 
 [node name="CeilingLamp1" type="Node2D" parent="Fixtures" unique_id=511377281 groups=["ceiling_fixtures"]]
 z_index = -2
-position = Vector2(-1015, -297)
+position = Vector2(-1390, -297)
 script = ExtResource("6_5ss6h")
 mount_elevation = 0.042
 metadata/previous_position = Vector2(-1015, -585)
@@ -1184,9 +1187,9 @@ texture = ExtResource("8_4h56i")
 [node name="Sparks" type="CPUParticles2D" parent="Fixtures/CeilingLamp1/Housing" unique_id=637163011]
 material = SubResource("Additive")
 emitting = false
-amount = 38
+amount = 14
 texture = ExtResource("9_gduto")
-lifetime = 0.72
+lifetime = 0.34
 one_shot = true
 explosiveness = 0.9
 randomness = 0.65
@@ -1195,9 +1198,9 @@ emission_sphere_radius = 1.0
 particle_flag_align_y = true
 direction = Vector2(0, 1)
 spread = 170.0
-gravity = Vector2(0, 180)
+gravity = Vector2(0, 90)
 initial_velocity_min = 65.0
-initial_velocity_max = 200.0
+initial_velocity_max = 145.0
 angular_velocity_min = -240.0
 angular_velocity_max = 240.0
 damping_min = 30.0
@@ -1211,7 +1214,7 @@ color_ramp = SubResource("SparkColors")
 
 [node name="CeilingLamp2" type="Node2D" parent="Fixtures" unique_id=281503722 groups=["ceiling_fixtures"]]
 z_index = -2
-position = Vector2(1210, -1541)
+position = Vector2(1440, -1541)
 script = ExtResource("6_5ss6h")
 light_tint = Color(0.78, 0.96, 1, 1)
 fixture_kind = "fluorescent"
@@ -1234,9 +1237,9 @@ texture = ExtResource("8_4h56i")
 [node name="Sparks" type="CPUParticles2D" parent="Fixtures/CeilingLamp2/Housing" unique_id=1784795565]
 material = SubResource("CanvasItemMaterial_derex")
 emitting = false
-amount = 38
+amount = 14
 texture = ExtResource("9_gduto")
-lifetime = 0.72
+lifetime = 0.34
 one_shot = true
 explosiveness = 0.9
 randomness = 0.65
@@ -1245,9 +1248,9 @@ emission_sphere_radius = 1.0
 particle_flag_align_y = true
 direction = Vector2(0, 1)
 spread = 170.0
-gravity = Vector2(0, 180)
+gravity = Vector2(0, 90)
 initial_velocity_min = 65.0
-initial_velocity_max = 200.0
+initial_velocity_max = 145.0
 angular_velocity_min = -240.0
 angular_velocity_max = 240.0
 damping_min = 30.0
@@ -1282,9 +1285,9 @@ texture = ExtResource("8_4h56i")
 [node name="Sparks" type="CPUParticles2D" parent="Fixtures/CeilingLamp3/Housing" unique_id=1212616987]
 material = SubResource("Additive")
 emitting = false
-amount = 38
+amount = 14
 texture = ExtResource("9_gduto")
-lifetime = 0.72
+lifetime = 0.34
 one_shot = true
 explosiveness = 0.9
 randomness = 0.65
@@ -1293,9 +1296,9 @@ emission_sphere_radius = 1.0
 particle_flag_align_y = true
 direction = Vector2(0, 1)
 spread = 170.0
-gravity = Vector2(0, 180)
+gravity = Vector2(0, 90)
 initial_velocity_min = 65.0
-initial_velocity_max = 200.0
+initial_velocity_max = 145.0
 angular_velocity_min = -240.0
 angular_velocity_max = 240.0
 damping_min = 30.0
@@ -1330,9 +1333,9 @@ texture = ExtResource("8_4h56i")
 [node name="Sparks" type="CPUParticles2D" parent="Fixtures/WallLamp/Housing" unique_id=1442287046]
 material = SubResource("CanvasItemMaterial_7m1vw")
 emitting = false
-amount = 38
+amount = 14
 texture = ExtResource("9_gduto")
-lifetime = 0.72
+lifetime = 0.34
 one_shot = true
 explosiveness = 0.9
 randomness = 0.65
@@ -1341,9 +1344,9 @@ emission_sphere_radius = 1.0
 particle_flag_align_y = true
 direction = Vector2(0, 1)
 spread = 170.0
-gravity = Vector2(0, 180)
+gravity = Vector2(0, 90)
 initial_velocity_min = 65.0
-initial_velocity_max = 200.0
+initial_velocity_max = 145.0
 angular_velocity_min = -240.0
 angular_velocity_max = 240.0
 damping_min = 30.0
@@ -1357,7 +1360,7 @@ color_ramp = SubResource("Gradient_4jigf")
 
 [node name="CeilingLamp5" type="Node2D" parent="Fixtures" unique_id=2025688927 groups=["ceiling_fixtures"]]
 z_index = -2
-position = Vector2(-59, 10)
+position = Vector2(-59, 370)
 rotation = 1.5707964
 script = ExtResource("6_5ss6h")
 light_tint = Color(0.78, 0.96, 1, 1)
@@ -1380,9 +1383,9 @@ texture = ExtResource("8_4h56i")
 [node name="Sparks" type="CPUParticles2D" parent="Fixtures/CeilingLamp5/Housing" unique_id=1138577285]
 material = SubResource("CanvasItemMaterial_derex")
 emitting = false
-amount = 38
+amount = 14
 texture = ExtResource("9_gduto")
-lifetime = 0.72
+lifetime = 0.34
 one_shot = true
 explosiveness = 0.9
 randomness = 0.65
@@ -1391,9 +1394,9 @@ emission_sphere_radius = 1.0
 particle_flag_align_y = true
 direction = Vector2(0, 1)
 spread = 170.0
-gravity = Vector2(0, 180)
+gravity = Vector2(0, 90)
 initial_velocity_min = 65.0
-initial_velocity_max = 200.0
+initial_velocity_max = 145.0
 angular_velocity_min = -240.0
 angular_velocity_max = 240.0
 damping_min = 30.0
@@ -1428,9 +1431,9 @@ texture = ExtResource("8_4h56i")
 [node name="Sparks" type="CPUParticles2D" parent="Fixtures/WallLampUpperLeft/Housing" unique_id=696140434]
 material = SubResource("CanvasItemMaterial_7m1vw")
 emitting = false
-amount = 38
+amount = 14
 texture = ExtResource("9_gduto")
-lifetime = 0.72
+lifetime = 0.34
 one_shot = true
 explosiveness = 0.9
 randomness = 0.65
@@ -1439,9 +1442,9 @@ emission_sphere_radius = 1.0
 particle_flag_align_y = true
 direction = Vector2(0, 1)
 spread = 170.0
-gravity = Vector2(0, 180)
+gravity = Vector2(0, 90)
 initial_velocity_min = 65.0
-initial_velocity_max = 200.0
+initial_velocity_max = 145.0
 angular_velocity_min = -240.0
 angular_velocity_max = 240.0
 damping_min = 30.0
@@ -1456,25 +1459,205 @@ color_ramp = SubResource("Gradient_4jigf")
 [node name="PipeDrip1" type="AudioStreamPlayer2D" parent="." unique_id=636120064]
 position = Vector2(-1285, -1280)
 stream = ExtResource("waterdrop")
-volume_db = -15.0
-max_distance = 620.0
-attenuation = 2.0
+volume_db = -9.0
+max_distance = 760.0
+attenuation = 1.5
 script = ExtResource("drip")
 
 [node name="PipeDrip2" type="AudioStreamPlayer2D" parent="." unique_id=1713310778]
 position = Vector2(56, -1600)
 stream = ExtResource("waterdrop")
-volume_db = -15.0
-max_distance = 620.0
-attenuation = 2.0
+volume_db = -9.0
+max_distance = 760.0
+attenuation = 1.5
 script = ExtResource("drip")
 start_offset = 7.3
 
 [node name="PipeDrip3" type="AudioStreamPlayer2D" parent="." unique_id=1513454533]
 position = Vector2(333, -1440)
 stream = ExtResource("waterdrop")
-volume_db = -15.0
-max_distance = 620.0
-attenuation = 2.0
+volume_db = -9.0
+max_distance = 760.0
+attenuation = 1.5
 script = ExtResource("drip")
 start_offset = 14.6
+
+[node name="PipeDrip4" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-966, 960)
+stream = ExtResource("waterdrop")
+volume_db = -9.0
+max_distance = 760.0
+attenuation = 1.5
+script = ExtResource("drip")
+start_offset = 3.7
+
+[node name="PipeDrip5" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(1213, 800)
+stream = ExtResource("waterdrop")
+volume_db = -9.0
+max_distance = 760.0
+attenuation = 1.5
+script = ExtResource("drip")
+start_offset = 11.1
+
+[node name="Hum" type="AudioStreamPlayer2D" parent="Fixtures/CeilingLamp1"]
+stream = ExtResource("fixture_hum")
+volume_db = -25.0
+max_distance = 540.0
+attenuation = 1.6
+panning_strength = 0.75
+bus = &"Environment"
+max_polyphony = 1
+
+[node name="Flicker" type="AudioStreamPlayer2D" parent="Fixtures/CeilingLamp1"]
+stream = ExtResource("fixture_flicker")
+volume_db = -12.0
+max_distance = 580.0
+attenuation = 1.6
+panning_strength = 0.75
+bus = &"Effects"
+max_polyphony = 1
+
+[node name="Arc" type="AudioStreamPlayer2D" parent="Fixtures/CeilingLamp1"]
+stream = ExtResource("fixture_arc")
+volume_db = -16.0
+max_distance = 650.0
+attenuation = 1.6
+panning_strength = 0.75
+bus = &"Effects"
+max_polyphony = 1
+
+[node name="Hum" type="AudioStreamPlayer2D" parent="Fixtures/CeilingLamp2"]
+stream = ExtResource("fixture_hum")
+volume_db = -25.0
+max_distance = 540.0
+attenuation = 1.6
+panning_strength = 0.75
+bus = &"Environment"
+max_polyphony = 1
+
+[node name="Flicker" type="AudioStreamPlayer2D" parent="Fixtures/CeilingLamp2"]
+stream = ExtResource("fixture_flicker")
+volume_db = -12.0
+max_distance = 580.0
+attenuation = 1.6
+panning_strength = 0.75
+bus = &"Effects"
+max_polyphony = 1
+
+[node name="Arc" type="AudioStreamPlayer2D" parent="Fixtures/CeilingLamp2"]
+stream = ExtResource("fixture_arc")
+volume_db = -16.0
+max_distance = 650.0
+attenuation = 1.6
+panning_strength = 0.75
+bus = &"Effects"
+max_polyphony = 1
+
+[node name="Hum" type="AudioStreamPlayer2D" parent="Fixtures/CeilingLamp3"]
+stream = ExtResource("fixture_hum")
+volume_db = -25.0
+max_distance = 540.0
+attenuation = 1.6
+panning_strength = 0.75
+bus = &"Environment"
+max_polyphony = 1
+
+[node name="Flicker" type="AudioStreamPlayer2D" parent="Fixtures/CeilingLamp3"]
+stream = ExtResource("fixture_flicker")
+volume_db = -12.0
+max_distance = 580.0
+attenuation = 1.6
+panning_strength = 0.75
+bus = &"Effects"
+max_polyphony = 1
+
+[node name="Arc" type="AudioStreamPlayer2D" parent="Fixtures/CeilingLamp3"]
+stream = ExtResource("fixture_arc")
+volume_db = -16.0
+max_distance = 650.0
+attenuation = 1.6
+panning_strength = 0.75
+bus = &"Effects"
+max_polyphony = 1
+
+[node name="Hum" type="AudioStreamPlayer2D" parent="Fixtures/WallLamp"]
+stream = ExtResource("fixture_hum")
+volume_db = -25.0
+max_distance = 540.0
+attenuation = 1.6
+panning_strength = 0.75
+bus = &"Environment"
+max_polyphony = 1
+
+[node name="Flicker" type="AudioStreamPlayer2D" parent="Fixtures/WallLamp"]
+stream = ExtResource("fixture_flicker")
+volume_db = -12.0
+max_distance = 580.0
+attenuation = 1.6
+panning_strength = 0.75
+bus = &"Effects"
+max_polyphony = 1
+
+[node name="Arc" type="AudioStreamPlayer2D" parent="Fixtures/WallLamp"]
+stream = ExtResource("fixture_arc")
+volume_db = -16.0
+max_distance = 650.0
+attenuation = 1.6
+panning_strength = 0.75
+bus = &"Effects"
+max_polyphony = 1
+
+[node name="Hum" type="AudioStreamPlayer2D" parent="Fixtures/CeilingLamp5"]
+stream = ExtResource("fixture_hum")
+volume_db = -25.0
+max_distance = 540.0
+attenuation = 1.6
+panning_strength = 0.75
+bus = &"Environment"
+max_polyphony = 1
+
+[node name="Flicker" type="AudioStreamPlayer2D" parent="Fixtures/CeilingLamp5"]
+stream = ExtResource("fixture_flicker")
+volume_db = -12.0
+max_distance = 580.0
+attenuation = 1.6
+panning_strength = 0.75
+bus = &"Effects"
+max_polyphony = 1
+
+[node name="Arc" type="AudioStreamPlayer2D" parent="Fixtures/CeilingLamp5"]
+stream = ExtResource("fixture_arc")
+volume_db = -16.0
+max_distance = 650.0
+attenuation = 1.6
+panning_strength = 0.75
+bus = &"Effects"
+max_polyphony = 1
+
+[node name="Hum" type="AudioStreamPlayer2D" parent="Fixtures/WallLampUpperLeft"]
+stream = ExtResource("fixture_hum")
+volume_db = -25.0
+max_distance = 540.0
+attenuation = 1.6
+panning_strength = 0.75
+bus = &"Environment"
+max_polyphony = 1
+
+[node name="Flicker" type="AudioStreamPlayer2D" parent="Fixtures/WallLampUpperLeft"]
+stream = ExtResource("fixture_flicker")
+volume_db = -12.0
+max_distance = 580.0
+attenuation = 1.6
+panning_strength = 0.75
+bus = &"Effects"
+max_polyphony = 1
+
+[node name="Arc" type="AudioStreamPlayer2D" parent="Fixtures/WallLampUpperLeft"]
+stream = ExtResource("fixture_arc")
+volume_db = -16.0
+max_distance = 650.0
+attenuation = 1.6
+panning_strength = 0.75
+bus = &"Effects"
+max_polyphony = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3]
+[gd_scene load_steps=16 format=3]
 
 [ext_resource type="Script" path="res://scripts/world/maze.gd" id="1"]
 
@@ -22,6 +22,8 @@
 [ext_resource type="PackedScene" path="res://scenes/world/blood_clues.tscn" id="clues"]
 
 [ext_resource type="Texture2D" path="res://assets/textures/pickups/battery.png" id="battery_texture"]
+
+[ext_resource type="PackedScene" path="res://scenes/world/warehouse.tscn" id="warehouse"]
 
 [sub_resource type="ShaderMaterial" id="FloorMaterial"]
 shader = ExtResource("6_floor")
@@ -396,6 +398,7 @@ script = ExtResource("3")
 kind = "figurine"
 
 [node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine01"]
+self_modulate = Color(0.86, 0.86, 0.86, 1)
 texture = ExtResource("straw")
 scale = Vector2(0.05, 0.05)
 texture_filter = 2
@@ -409,6 +412,7 @@ script = ExtResource("3")
 kind = "figurine"
 
 [node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine02"]
+self_modulate = Color(0.86, 0.86, 0.86, 1)
 texture = ExtResource("straw")
 scale = Vector2(0.05, 0.05)
 texture_filter = 2
@@ -422,6 +426,7 @@ script = ExtResource("3")
 kind = "figurine"
 
 [node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine03"]
+self_modulate = Color(0.86, 0.86, 0.86, 1)
 texture = ExtResource("straw")
 scale = Vector2(0.05, 0.05)
 texture_filter = 2
@@ -435,6 +440,7 @@ script = ExtResource("3")
 kind = "figurine"
 
 [node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine04"]
+self_modulate = Color(0.86, 0.86, 0.86, 1)
 texture = ExtResource("straw")
 scale = Vector2(0.05, 0.05)
 texture_filter = 2
@@ -448,6 +454,7 @@ script = ExtResource("3")
 kind = "figurine"
 
 [node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine05"]
+self_modulate = Color(0.86, 0.86, 0.86, 1)
 texture = ExtResource("straw")
 scale = Vector2(0.05, 0.05)
 texture_filter = 2
@@ -461,6 +468,7 @@ script = ExtResource("3")
 kind = "figurine"
 
 [node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine06"]
+self_modulate = Color(0.86, 0.86, 0.86, 1)
 texture = ExtResource("straw")
 scale = Vector2(0.05, 0.05)
 texture_filter = 2
@@ -474,6 +482,7 @@ script = ExtResource("3")
 kind = "figurine"
 
 [node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine07"]
+self_modulate = Color(0.86, 0.86, 0.86, 1)
 texture = ExtResource("straw")
 scale = Vector2(0.05, 0.05)
 texture_filter = 2
@@ -487,6 +496,7 @@ script = ExtResource("3")
 kind = "figurine"
 
 [node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine08"]
+self_modulate = Color(0.86, 0.86, 0.86, 1)
 texture = ExtResource("straw")
 scale = Vector2(0.05, 0.05)
 texture_filter = 2
@@ -500,6 +510,7 @@ script = ExtResource("3")
 kind = "figurine"
 
 [node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine09"]
+self_modulate = Color(0.86, 0.86, 0.86, 1)
 texture = ExtResource("straw")
 scale = Vector2(0.05, 0.05)
 texture_filter = 2
@@ -513,6 +524,7 @@ script = ExtResource("3")
 kind = "figurine"
 
 [node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine10"]
+self_modulate = Color(0.86, 0.86, 0.86, 1)
 texture = ExtResource("straw")
 scale = Vector2(0.05, 0.05)
 texture_filter = 2
@@ -526,6 +538,7 @@ script = ExtResource("3")
 kind = "figurine"
 
 [node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine11"]
+self_modulate = Color(0.86, 0.86, 0.86, 1)
 texture = ExtResource("straw")
 scale = Vector2(0.05, 0.05)
 texture_filter = 2
@@ -539,6 +552,7 @@ script = ExtResource("3")
 kind = "figurine"
 
 [node name="StrawDoll" type="Sprite2D" parent="Pickups/Figurine12"]
+self_modulate = Color(0.86, 0.86, 0.86, 1)
 texture = ExtResource("straw")
 scale = Vector2(0.05, 0.05)
 texture_filter = 2
@@ -602,5 +616,7 @@ texture_filter = 2
 [node name="BloodStains" parent="." instance=ExtResource("blood")]
 
 [node name="BloodClues" parent="." instance=ExtResource("clues")]
+
+[node name="Warehouse" parent="." instance=ExtResource("warehouse")]
 
 [editable path="Overhead"]

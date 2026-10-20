@@ -61,4 +61,4 @@ mouse_filter = 2
 stream = ExtResource("sound")
 volume_db = -3.0
 autoplay = true
-bus = &"Master"
+bus = &"Effects"

@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
+
+[ext_resource type="Shader" path="res://shaders/warehouse_top.gdshader" id="shader"]
+[ext_resource type="Texture2D" path="res://assets/textures/rubble/user_rock_original.png" id="texture"]
+
+[resource]
+shader = ExtResource("shader")
+shader_parameter/use_detail_texture = true
+shader_parameter/editor_preview = true
+shader_parameter/detail_texture = ExtResource("texture")
+shader_parameter/detail_tint = Color(0.68, 0.70, 0.65, 1)
+shader_parameter/detail_texels_per_unit = 5.5
+shader_parameter/detail_uv_offset = Vector2(0.51, 0.39)
+shader_parameter/detail_uv_angle = 1.11
+shader_parameter/stone_relief = true
+shader_parameter/stone_outline = PackedVector2Array(-35, -14, -8, -23, 22, -17, 37, -1, 26, 18, 1, 23, -25, 15, -39, 0)

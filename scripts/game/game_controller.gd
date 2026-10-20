@@ -1,5 +1,7 @@
 extends Node2D
 
+signal glass_crunched(point: Vector2, source: Node)
+
 const TOTAL_FIGURINES: int = 12
 var monsters: Array[CharacterBody2D] = []
 var hard_mode: bool = false
@@ -10,6 +12,8 @@ var survived_seconds: float = 0.0
 @onready var hud: CanvasLayer = $HUD
 const GLASS_SOUNDS: Array[AudioStream] = [preload("res://assets/audio/user_originals/steklo1.mp3"), preload("res://assets/audio/user_originals/steklo2.mp3"), preload("res://assets/audio/user_originals/steklo3.mp3")]
 var last_glass: int = -1
+var last_glass_voice: int = -1
+var glass_voice_sources: Array[int] = [0, 0, 0]
 var collected: int = 0
 var finished: bool = false
 var won: bool = false
@@ -41,16 +45,23 @@ func _ready() -> void:
 	camera.reset_smoothing()
 	camera.force_update_scroll()
 	player.set("game", self)
-	monster.global_position = maze.call("cell_position", 60)
 	var second: CharacterBody2D = $SecondMonster
-	# The second hunter starts away from both the player and the central hunter.
-	var best_score: float = -1.0
-	for cell in range(int(maze.get("width")) * int(maze.get("height"))):
-		var point: Vector2 = maze.call("cell_position", cell)
-		var score: float = minf(point.distance_to(player.global_position), point.distance_to(monster.global_position))
-		if score > best_score:
-			best_score = score
-			second.global_position = point
+	# Give each hunter a different half, with a safe initial distance to the player.
+	for index in range(2):
+		var hunter: CharacterBody2D = [monster, second][index]
+		var side: int = -1 if index == 0 else 1
+		hunter.set("patrol_side", side)
+		var best_score: float = -INF
+		for cell in range(int(maze.get("width")) * int(maze.get("height"))):
+			var column: int = cell % int(maze.get("width"))
+			var middle: float = float(int(maze.get("width")) - 1) * 0.5
+			if (float(column) - middle) * float(side) < 1.0:
+				continue
+			var point: Vector2 = maze.call("cell_position", cell)
+			var score: float = point.distance_to(player.global_position) + rng.randf_range(0.0, 160.0)
+			if score > best_score:
+				best_score = score
+				hunter.global_position = point
 	for hunter in [monster, second]:
 		hunter.reset_physics_interpolation()
 		hunter.set("game", self)
@@ -88,6 +99,7 @@ func _process(delta: float) -> void:
 	spotted_notice_cooldown = maxf(0.0, spotted_notice_cooldown - delta)
 	if not finished:
 		survived_seconds += delta
+		$GameCues.update_context(collected, TOTAL_FIGURINES, float(player.get("battery")))
 	update_chase_audio(delta)
 
 func notify_player_spotted(_hunter: Node) -> void:
@@ -113,12 +125,14 @@ func collect_pickup(pickup: Node2D) -> void:
 		player.call("add_battery", 20.0)
 		hud.call("notify_pickup", "+20 заряда · +10 максимальной выносливости", 3.0)
 	else:
-		$ToyPickup.play()
 		collected += 1
+		if collected < TOTAL_FIGURINES: $ToyPickup.play()
 		player.call("restore_stamina", 0.25)
 		hud.call("notify_pickup", "+25% выносливости", 2.4)
 		if collected >= TOTAL_FIGURINES:
 			finish(true)
+	if not finished:
+		$GameCues.update_context(collected, TOTAL_FIGURINES, float(player.get("battery")))
 
 func set_next_hard_mode(enabled: bool) -> void:
 	get_tree().set_meta("hard_mode", enabled)
@@ -136,8 +150,10 @@ func finish(victory: bool) -> void:
 		return
 	finished = true
 	won = victory
-	for sound in [$Heartbeat, $Danger, $StartGame, $OpeningHowl]:
+	for sound in [$Heartbeat, $Danger, $StartGame, $OpeningHowl, $ToyPickup]:
 		sound.stop()
+	MenuAudio.get_node("StartGameButton").stop()
+	$GameCues.finish(victory)
 	if not victory:
 		$Screamer.play()
 	player.set("alive", false)
@@ -167,9 +183,28 @@ func step_on_glass(point: Vector2, _caused_by_player: bool = true, source: Node 
 	if variant >= last_glass and last_glass >= 0:
 		variant += 1
 	last_glass = variant
-	$GlassCrunch.global_position = point
-	$GlassCrunch.stream = GLASS_SOUNDS[variant]
-	$GlassCrunch.play()
+	var voices: Array[AudioStreamPlayer2D] = [$GlassCrunch, $GlassCrunch2, $GlassCrunch3]
+	if not is_instance_valid(source) and _caused_by_player:
+		source = player
+	var source_id: int = source.get_instance_id() if is_instance_valid(source) else 0
+	var voice_index: int = (last_glass_voice + 1) % voices.size()
+	for index in range(voices.size()):
+		if not voices[index].playing:
+			voice_index = index
+			break
+	# A new footfall replaces this actor's tail; other actors keep their own voices.
+	for index in range(voices.size()):
+		if source_id != 0 and glass_voice_sources[index] == source_id and voices[index].playing:
+			voice_index = index
+			break
+	last_glass_voice = voice_index
+	glass_voice_sources[voice_index] = source_id
+	var voice: AudioStreamPlayer2D = voices[voice_index]
+	# Independent sources keep their own position and acoustic routing.
+	voice.stop()
+	voice.global_position = point
+	voice.stream = GLASS_SOUNDS[variant]
+	voice.play()
 	var responders: Array[CharacterBody2D] = []
 	for hunter in monsters:
 		if hunter != source and hunter.get("active"):
@@ -178,6 +213,7 @@ func step_on_glass(point: Vector2, _caused_by_player: bool = true, source: Node 
 				responders.append(hunter)
 	if responders.size() == 2:
 		coordinate_glass_search(responders, point)
+	glass_crunched.emit(point, source)
 
 func coordinate_glass_search(responders: Array[CharacterBody2D], point: Vector2) -> void:
 	var first_route: PackedVector2Array = maze.call("find_path", responders[0].global_position, point)
@@ -229,7 +265,7 @@ func update_chase_audio(delta: float) -> void:
 		if not heartbeat.playing:
 			heartbeat.volume_db = -30.0
 			heartbeat.play()
-		heartbeat.volume_db = move_toward(heartbeat.volume_db, -14.0, delta * 24.0)
+		heartbeat.volume_db = move_toward(heartbeat.volume_db, -8.0, delta * 24.0)
 	else:
 		heartbeat.volume_db = move_toward(heartbeat.volume_db, -40.0, delta * 30.0)
 		if heartbeat.volume_db <= -40.0:

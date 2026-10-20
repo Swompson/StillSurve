@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/grab_skill_check.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/textures/ui/skill_dial.svg" id="2"]
+[ext_resource type="Texture2D" path="res://assets/textures/ui/skill_needle.svg" id="3"]
+[ext_resource type="FontFile" path="res://assets/fonts/sjz/Sjz.otf" id="4"]
+
+[node name="GrabSkillCheck" type="Control"]
+process_mode = 1
+physics_interpolation_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="Dial" type="Node2D" parent="."]
+position = Vector2(640, 475.2)
+
+[node name="Plate" type="Sprite2D" parent="Dial"]
+texture = ExtResource("2")
+
+[node name="Target" type="Line2D" parent="Dial"]
+points = PackedVector2Array(-56.13286, 59.77543, -57.67837, 58.28556, -59.18434, 56.75574, -60.64975, 55.18703, -62.07359, 53.58049, -63.45490, 51.93723, -64.79271, 50.25838, -66.08612, 48.54508, -67.33424, 46.79851, -68.53620, 45.01987, -69.69120, 43.21038, -70.79844, 41.37127, -71.85715, 39.50380, -72.86661, 37.60926, -73.82614, 35.68895, -74.73507, 33.74418, -75.59278, 31.77628, -76.39868, 29.78660, -77.15222, 27.77651, -77.85289, 25.74738, -78.50020, 23.70061, -79.09371, 21.63759, -79.63301, 19.55974, -80.11774, 17.46849, -80.54755, 15.36527, -80.92217, 13.25151, -81.24132, 11.12868, -81.50480, 8.99821, -81.71241, 6.86158, -81.86403, 4.72025, -81.95954, 2.57568, -81.99888, 0.42935, -81.98202, -1.71728, -81.90897, -3.86273, -81.77979, -6.00553, -81.59456, -8.14422, -81.35341, -10.27733, -81.05650, -12.40339, -80.70404, -14.52095, -80.29627, -16.62856, -79.83347, -18.72477, -79.31596, -20.80815, -78.74408, -22.87727, -78.11824, -24.93071, -77.43886, -26.96707, -76.70641, -28.98494, -75.92139, -30.98294, -75.08433, -32.95972, -74.19582, -34.91390)
+width = 10.0
+default_color = Color(0.643137, 0.705882, 0.486275, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Needle" type="Node2D" parent="Dial"]
+rotation = 0.753982
+
+[node name="Arrow" type="Sprite2D" parent="Dial/Needle"]
+position = Vector2(0, -27.5)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("3")
+
+[node name="Feedback" type="Line2D" parent="Dial"]
+points = PackedVector2Array(118.00000, 0.00000, 117.74735, 7.71757, 116.99049, 15.40209, 115.73266, 23.02066, 113.97925, 30.54065, 111.73776, 37.92986, 109.01778, 45.15665, 105.83098, 52.19007, 102.19100, 59.00000, 98.11341, 65.55729, 93.61569, 71.83385, 88.71710, 77.80281, 83.43860, 83.43860, 77.80281, 88.71710, 71.83385, 93.61569, 65.55729, 98.11341, 59.00000, 102.19100, 52.19007, 105.83098, 45.15665, 109.01778, 37.92986, 111.73776, 30.54065, 113.97925, 23.02066, 115.73266, 15.40209, 116.99049, 7.71757, 117.74735, 0.00000, 118.00000, -7.71757, 117.74735, -15.40209, 116.99049, -23.02066, 115.73266, -30.54065, 113.97925, -37.92986, 111.73776, -45.15665, 109.01778, -52.19007, 105.83098, -59.00000, 102.19100, -65.55729, 98.11341, -71.83385, 93.61569, -77.80281, 88.71710, -83.43860, 83.43860, -88.71710, 77.80281, -93.61569, 71.83385, -98.11341, 65.55729, -102.19100, 59.00000, -105.83098, 52.19007, -109.01778, 45.15665, -111.73776, 37.92986, -113.97925, 30.54065, -115.73266, 23.02066, -116.99049, 15.40209, -117.74735, 7.71757, -118.00000, 0.00000, -117.74735, -7.71757, -116.99049, -15.40209, -115.73266, -23.02066, -113.97925, -30.54065, -111.73776, -37.92986, -109.01778, -45.15665, -105.83098, -52.19007, -102.19100, -59.00000, -98.11341, -65.55729, -93.61569, -71.83385, -88.71710, -77.80281, -83.43860, -83.43860, -77.80281, -88.71710, -71.83385, -93.61569, -65.55729, -98.11341, -59.00000, -102.19100, -52.19007, -105.83098, -45.15665, -109.01778, -37.92986, -111.73776, -30.54065, -113.97925, -23.02066, -115.73266, -15.40209, -116.99049, -7.71757, -117.74735, -0.00000, -118.00000, 7.71757, -117.74735, 15.40209, -116.99049, 23.02066, -115.73266, 30.54065, -113.97925, 37.92986, -111.73776, 45.15665, -109.01778, 52.19007, -105.83098, 59.00000, -102.19100, 65.55729, -98.11341, 71.83385, -93.61569, 77.80281, -88.71710, 83.43860, -83.43860, 88.71710, -77.80281, 93.61569, -71.83385, 98.11341, -65.55729, 102.19100, -59.00000, 105.83098, -52.19007, 109.01778, -45.15665, 111.73776, -37.92986, 113.97925, -30.54065, 115.73266, -23.02066, 116.99049, -15.40209, 117.74735, -7.71757, 118.00000, -0.00000)
+width = 1.0
+default_color = Color(0.85, 0.79, 0.65, 0)
+antialiased = true
+
+[node name="Title" type="Label" parent="Dial"]
+offset_left = -200.0
+offset_top = -161.0
+offset_right = 200.0
+offset_bottom = -127.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.85, 0.79, 0.65, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("4")
+theme_override_font_sizes/font_size = 28
+text = "ОСВОБОДИСЬ"
+horizontal_alignment = 1
+
+[node name="Result1" type="Polygon2D" parent="Dial"]
+position = Vector2(-26, 127)
+polygon = PackedVector2Array(0, -4, 4, 0, 0, 4, -4, 0)
+color = Color(0.286275, 0.278431, 0.235294, 1)
+
+[node name="Result2" type="Polygon2D" parent="Dial"]
+position = Vector2(0, 127)
+polygon = PackedVector2Array(0, -4, 4, 0, 0, 4, -4, 0)
+color = Color(0.286275, 0.278431, 0.235294, 1)
+
+[node name="Result3" type="Polygon2D" parent="Dial"]
+position = Vector2(26, 127)
+polygon = PackedVector2Array(0, -4, 4, 0, 0, 4, -4, 0)
+color = Color(0.286275, 0.278431, 0.235294, 1)
+
+[node name="Hint" type="Label" parent="Dial"]
+offset_left = -200.0
+offset_top = 140.0
+offset_right = 200.0
+offset_bottom = 168.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("4")
+theme_override_font_sizes/font_size = 23
+text = "ПРОБЕЛ / ЛКМ"
+horizontal_alignment = 1

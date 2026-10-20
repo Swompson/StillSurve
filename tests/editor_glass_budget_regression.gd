@@ -6,6 +6,7 @@ func expect(value: bool, message: String) -> void:
 		push_error(message)
 func _initialize() -> void: call_deferred("run_checks")
 func run_checks() -> void:
+	set_meta("hard_mode", false)
 	change_scene_to_file("res://world.tscn")
 	for frame in range(5): await process_frame
 	var game: Node = current_scene
@@ -16,7 +17,7 @@ func run_checks() -> void:
 	expect(hunters.size() == 2 and game.has_node("Heartbeat"), "Legacy editor scene uses the complete current game")
 	var maze: Node2D = game.get_node("Maze")
 	var fixtures: Node = maze.get_node("Overhead/Fixtures")
-	expect(fixtures.get_child_count() == 5, "Exactly five revised fixtures")
+	expect(fixtures.get_child_count() == 6, "All six authored fixtures are present")
 	for fixture in fixtures.get_children():
 		expect(fixture.scene_file_path.is_empty(), "Fixtures are actual native nodes, not hidden nested instances")
 		expect(fixture.get_node("Housing/Lens").owner == maze.get_node("Overhead"), "Complete fixture mesh is stored in editable overhead scene")
@@ -38,9 +39,8 @@ func run_checks() -> void:
 	expect(listener.state == "investigate" and listener.last_heard == source.global_position, "Other hunter hears distant monster glass crunch")
 	var crunch: AudioStreamPlayer2D = game.get_node("GlassCrunch")
 	expect(crunch.playing and crunch.max_distance == 700 and crunch.attenuation >= 1.5, "Player hears crunch over a much smaller spatial range")
-	expect(crunch.bus == &"Master", "Glass audio retains shared building reflections")
+	expect(crunch.bus == &"Effects", "Glass audio retains shared building reflections")
 	listener.state = "patrol"
-	source.glass_step_distance = 0.0
 	source.call("update_glass_steps", 60.0)
 	expect(listener.state == "investigate", "Actual movement across glass alerts the other hunter")
 	var budget: Node = root.get_node("RuntimeBudget")

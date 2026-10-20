@@ -89,6 +89,9 @@ func build_fixture_shadows(origins: PackedVector2Array) -> void:
 			query.to = query.from + Vector2.from_angle(TAU * (float(sample) + 0.5) / SHADOW_SAMPLES) * 245.0
 			var hit: Dictionary = space.intersect_ray(query)
 			var reach: float = 245.0 if hit.is_empty() else maxf(0.0, query.from.distance_to(hit.position) - 0.5)
+			if not hit.is_empty() and hit.collider.is_in_group("warehouse_props"):
+				# The shared lamp shader fades over three pixels, inside the prop.
+				reach = minf(245.0, query.from.distance_to(hit.position) + 3.0)
 			image.set_pixel(sample, row, Color(reach / 245.0, 0, 0, 1))
 	if shadow_texture == null:
 		shadow_texture = ImageTexture.create_from_image(image)

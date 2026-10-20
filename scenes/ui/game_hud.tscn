@@ -1,81 +1,86 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://scripts/ui/game_hud.gd" id="1_acb04"]
-[ext_resource type="FontFile" path="res://assets/fonts/sjz/Sjz.otf" id="2_20ki6"]
-[ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="3_n5j44"]
-[ext_resource type="Shader" path="res://shaders/pause_backdrop.gdshader" id="4_x6mpk"]
-[ext_resource type="Script" path="res://scripts/ui/grab_skill_check.gd" id="5_ehshv"]
+[ext_resource type="Script" path="res://scripts/ui/game_hud.gd" id="1_4qk33"]
+[ext_resource type="FontFile" path="res://assets/fonts/sjz/Sjz.otf" id="2_tldsg"]
+[ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="3_sd8kv"]
+[ext_resource type="Shader" path="res://shaders/pause_backdrop.gdshader" id="4_1ryph"]
+[ext_resource type="Shader" path="res://shaders/menu_highlight.gdshader" id="5_j6s3p"]
+[ext_resource type="Texture2D" path="res://assets/ui/menu/lightbutton.png" id="6_6ns2j"]
+[ext_resource type="Script" path="res://scripts/ui/menu_highlight.gd" id="7_j2336"]
+[ext_resource type="Shader" path="res://shaders/soft_panel.gdshader" id="8_kgd86"]
+[ext_resource type="Script" path="res://scripts/ui/soft_panel.gd" id="9_81w0g"]
+[ext_resource type="PackedScene" path="res://scenes/ui/grab_skill_check.tscn" id="10_jpq7v"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qk33"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dom06"]
 content_margin_left = 18.0
 content_margin_top = 9.0
 content_margin_right = 18.0
 content_margin_bottom = 9.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tldsg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpcdm"]
 content_margin_left = 18.0
 content_margin_top = 9.0
 content_margin_right = 18.0
 content_margin_bottom = 9.0
 bg_color = Color(0.0627451, 0.05490196, 0.05490196, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sd8kv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0lp5"]
 content_margin_left = 18.0
 content_margin_top = 9.0
 content_margin_right = 18.0
 content_margin_bottom = 9.0
 bg_color = Color(0.03137255, 0.02745098, 0.02745098, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ryph"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r7q5e"]
 content_margin_left = 18.0
 content_margin_top = 9.0
 content_margin_right = 18.0
 content_margin_bottom = 9.0
 bg_color = Color(0.16078432, 0.14509805, 0.14509805, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6s3p"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tdr2q"]
 content_margin_left = 18.0
 content_margin_top = 9.0
 content_margin_right = 18.0
 content_margin_bottom = 9.0
 bg_color = Color(0.12941177, 0.11764706, 0.11764706, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ns2j"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_647hh"]
 content_margin_left = 18.0
 content_margin_top = 9.0
 content_margin_right = 18.0
 content_margin_bottom = 9.0
 bg_color = Color(0.03137255, 0.02745098, 0.02745098, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2336"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4jcp"]
 content_margin_left = 18.0
 content_margin_top = 9.0
 content_margin_right = 18.0
 content_margin_bottom = 9.0
 bg_color = Color(0.03137255, 0.02745098, 0.02745098, 1)
 
-[sub_resource type="Theme" id="Theme_kgd86"]
-default_font = ExtResource("2_20ki6")
+[sub_resource type="Theme" id="Theme_iqumv"]
+default_font = ExtResource("2_tldsg")
 default_font_size = 24
 Button/colors/font_color = Color(0.8745098, 0.83137256, 0.7372549, 1)
-Button/styles/focus = SubResource("StyleBoxFlat_4qk33")
-Button/styles/hover = SubResource("StyleBoxFlat_tldsg")
-Button/styles/hover_pressed = SubResource("StyleBoxFlat_sd8kv")
-Button/styles/normal = SubResource("StyleBoxFlat_1ryph")
-Button/styles/pressed = SubResource("StyleBoxFlat_j6s3p")
-CheckButton/styles/focus = SubResource("StyleBoxFlat_4qk33")
-CheckButton/styles/hover = SubResource("StyleBoxFlat_tldsg")
-CheckButton/styles/hover_pressed = SubResource("StyleBoxFlat_6ns2j")
-CheckButton/styles/normal = SubResource("StyleBoxFlat_1ryph")
-CheckButton/styles/pressed = SubResource("StyleBoxFlat_j6s3p")
-OptionButton/styles/focus = SubResource("StyleBoxFlat_4qk33")
-OptionButton/styles/hover = SubResource("StyleBoxFlat_tldsg")
-OptionButton/styles/hover_pressed = SubResource("StyleBoxFlat_j2336")
-OptionButton/styles/normal = SubResource("StyleBoxFlat_1ryph")
-OptionButton/styles/pressed = SubResource("StyleBoxFlat_j6s3p")
+Button/styles/focus = SubResource("StyleBoxFlat_dom06")
+Button/styles/hover = SubResource("StyleBoxFlat_gpcdm")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_r0lp5")
+Button/styles/normal = SubResource("StyleBoxFlat_r7q5e")
+Button/styles/pressed = SubResource("StyleBoxFlat_tdr2q")
+CheckButton/styles/focus = SubResource("StyleBoxFlat_dom06")
+CheckButton/styles/hover = SubResource("StyleBoxFlat_gpcdm")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxFlat_647hh")
+CheckButton/styles/normal = SubResource("StyleBoxFlat_r7q5e")
+CheckButton/styles/pressed = SubResource("StyleBoxFlat_tdr2q")
+OptionButton/styles/focus = SubResource("StyleBoxFlat_dom06")
+OptionButton/styles/hover = SubResource("StyleBoxFlat_gpcdm")
+OptionButton/styles/hover_pressed = SubResource("StyleBoxFlat_g4jcp")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_r7q5e")
+OptionButton/styles/pressed = SubResource("StyleBoxFlat_tdr2q")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81w0g"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2udvi"]
 content_margin_left = 18.0
 content_margin_top = 13.0
 content_margin_right = 18.0
@@ -83,67 +88,50 @@ content_margin_bottom = 13.0
 bg_color = Color(1, 1, 1, 0)
 border_color = Color(0.5058824, 0.4392157, 0.37254903, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jpq7v"]
-bg_color = Color(0.14117648, 0.16862746, 0.15294118, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dom06"]
-bg_color = Color(0.6392157, 0.60784316, 0.5294118, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpcdm"]
-bg_color = Color(0.14117648, 0.16862746, 0.15294118, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0lp5"]
-bg_color = Color(0.77254903, 0.6509804, 0.44705883, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r7q5e"]
-content_margin_left = 12.0
-content_margin_right = 12.0
-bg_color = Color(1, 1, 1, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tdr2q"]
-content_margin_left = 12.0
-content_margin_right = 12.0
-bg_color = Color(1, 1, 1, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_647hh"]
-content_margin_left = 12.0
-content_margin_right = 12.0
-bg_color = Color(0.26, 0.26, 0.22, 0.28)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4jcp"]
-content_margin_left = 12.0
-content_margin_right = 12.0
-bg_color = Color(0.26, 0.26, 0.22, 0.28)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqumv"]
-content_margin_left = 12.0
-content_margin_right = 12.0
-bg_color = Color(1, 1, 1, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2udvi"]
-content_margin_left = 12.0
-content_margin_right = 12.0
-bg_color = Color(0.26, 0.26, 0.22, 0.28)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oftg1"]
-content_margin_left = 12.0
-content_margin_right = 12.0
-bg_color = Color(1, 1, 1, 0)
+bg_color = Color(0.14117648, 0.16862746, 0.15294118, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iehi4"]
-content_margin_left = 12.0
-content_margin_right = 12.0
-bg_color = Color(1, 1, 1, 0)
+bg_color = Color(0.6392157, 0.60784316, 0.5294118, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bu4hs"]
-content_margin_left = 12.0
-content_margin_right = 12.0
-bg_color = Color(0.26, 0.26, 0.22, 0.28)
+bg_color = Color(0.14117648, 0.16862746, 0.15294118, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2k3d5"]
-content_margin_left = 12.0
-content_margin_right = 12.0
-bg_color = Color(0.26, 0.26, 0.22, 0.28)
+bg_color = Color(0.77254903, 0.6509804, 0.44705883, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1nio4"]
+content_margin_left = 22.0
+content_margin_right = 22.0
+
+[sub_resource type="Theme" id="Theme_4qk33"]
+default_font = ExtResource("2_tldsg")
+default_font_size = 44
+Button/colors/font_color = Color(0.52156866, 0.5176471, 0.49019608, 1)
+Button/colors/font_focus_color = Color(0.9490196, 0.93333334, 0.8784314, 1)
+Button/colors/font_hover_color = Color(0.9490196, 0.93333334, 0.8784314, 1)
+Button/colors/font_hover_pressed_color = Color(0.9490196, 0.93333334, 0.8784314, 1)
+Button/colors/font_pressed_color = Color(0.9490196, 0.93333334, 0.8784314, 1)
+Button/styles/disabled = SubResource("StyleBoxEmpty_1nio4")
+Button/styles/focus = SubResource("StyleBoxEmpty_1nio4")
+Button/styles/hover = SubResource("StyleBoxEmpty_1nio4")
+Button/styles/hover_pressed = SubResource("StyleBoxEmpty_1nio4")
+Button/styles/normal = SubResource("StyleBoxEmpty_1nio4")
+Button/styles/pressed = SubResource("StyleBoxEmpty_1nio4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tldsg"]
+shader = ExtResource("5_j6s3p")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sd8kv"]
+atlas = ExtResource("6_6ns2j")
+region = Rect2(0, 395.22, 936.32, 207.02)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ryph"]
+shader = ExtResource("5_j6s3p")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6s3p"]
+atlas = ExtResource("6_6ns2j")
+region = Rect2(0, 395.22, 936.32, 207.02)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lh7ih"]
 content_margin_left = 12.0
@@ -153,22 +141,22 @@ bg_color = Color(1, 1, 1, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsomc"]
 content_margin_left = 12.0
 content_margin_right = 12.0
-bg_color = Color(0.26, 0.26, 0.22, 0.28)
+bg_color = Color(1, 1, 1, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dr4m"]
 content_margin_left = 12.0
 content_margin_right = 12.0
-bg_color = Color(1, 1, 1, 0)
+bg_color = Color(0.26, 0.26, 0.22, 0.28)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bgh86"]
 content_margin_left = 12.0
 content_margin_right = 12.0
-bg_color = Color(1, 1, 1, 0)
+bg_color = Color(0.26, 0.26, 0.22, 0.28)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bx12k"]
 content_margin_left = 12.0
 content_margin_right = 12.0
-bg_color = Color(0.26, 0.26, 0.22, 0.28)
+bg_color = Color(1, 1, 1, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bwr6u"]
 content_margin_left = 12.0
@@ -183,153 +171,917 @@ bg_color = Color(1, 1, 1, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fuk6f"]
 content_margin_left = 12.0
 content_margin_right = 12.0
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dox7"]
+content_margin_left = 12.0
+content_margin_right = 12.0
 bg_color = Color(0.26, 0.26, 0.22, 0.28)
 
-[sub_resource type="Theme" id="Theme_8dox7"]
-default_font = ExtResource("2_20ki6")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ub8ry"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.26, 0.26, 0.22, 0.28)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkved"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sn3uh"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.26, 0.26, 0.22, 0.28)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6hhip"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1g4tu"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssn0m"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.26, 0.26, 0.22, 0.28)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qkoi"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.26, 0.26, 0.22, 0.28)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbekg"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nm63t"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.26, 0.26, 0.22, 0.28)
+
+[sub_resource type="Theme" id="Theme_ryyfs"]
+default_font = ExtResource("2_tldsg")
 default_font_size = 28
 Button/colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 Button/colors/font_hover_color = Color(0.8901961, 0.8745098, 0.8117647, 1)
 Button/colors/font_pressed_color = Color(0.8901961, 0.8745098, 0.8117647, 1)
-Button/styles/disabled = SubResource("StyleBoxFlat_r7q5e")
-Button/styles/focus = SubResource("StyleBoxFlat_tdr2q")
-Button/styles/hover = SubResource("StyleBoxFlat_647hh")
-Button/styles/hover_pressed = SubResource("StyleBoxFlat_g4jcp")
-Button/styles/normal = SubResource("StyleBoxFlat_iqumv")
-Button/styles/pressed = SubResource("StyleBoxFlat_2udvi")
+Button/styles/disabled = SubResource("StyleBoxFlat_lh7ih")
+Button/styles/focus = SubResource("StyleBoxFlat_tsomc")
+Button/styles/hover = SubResource("StyleBoxFlat_8dr4m")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_bgh86")
+Button/styles/normal = SubResource("StyleBoxFlat_bx12k")
+Button/styles/pressed = SubResource("StyleBoxFlat_bwr6u")
 CheckButton/colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 CheckButton/colors/font_hover_color = Color(0.8901961, 0.8745098, 0.8117647, 1)
 CheckButton/colors/font_pressed_color = Color(0.8901961, 0.8745098, 0.8117647, 1)
-CheckButton/styles/disabled = SubResource("StyleBoxFlat_oftg1")
-CheckButton/styles/focus = SubResource("StyleBoxFlat_iehi4")
-CheckButton/styles/hover = SubResource("StyleBoxFlat_bu4hs")
-CheckButton/styles/hover_pressed = SubResource("StyleBoxFlat_2k3d5")
-CheckButton/styles/normal = SubResource("StyleBoxFlat_lh7ih")
-CheckButton/styles/pressed = SubResource("StyleBoxFlat_tsomc")
+CheckButton/styles/disabled = SubResource("StyleBoxFlat_2v1x0")
+CheckButton/styles/focus = SubResource("StyleBoxFlat_fuk6f")
+CheckButton/styles/hover = SubResource("StyleBoxFlat_8dox7")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxFlat_ub8ry")
+CheckButton/styles/normal = SubResource("StyleBoxFlat_fkved")
+CheckButton/styles/pressed = SubResource("StyleBoxFlat_sn3uh")
 OptionButton/colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 OptionButton/colors/font_hover_color = Color(0.8901961, 0.8745098, 0.8117647, 1)
 OptionButton/colors/font_pressed_color = Color(0.8901961, 0.8745098, 0.8117647, 1)
-OptionButton/styles/disabled = SubResource("StyleBoxFlat_8dr4m")
-OptionButton/styles/focus = SubResource("StyleBoxFlat_bgh86")
-OptionButton/styles/hover = SubResource("StyleBoxFlat_bx12k")
-OptionButton/styles/hover_pressed = SubResource("StyleBoxFlat_bwr6u")
-OptionButton/styles/normal = SubResource("StyleBoxFlat_2v1x0")
-OptionButton/styles/pressed = SubResource("StyleBoxFlat_fuk6f")
+OptionButton/styles/disabled = SubResource("StyleBoxFlat_6hhip")
+OptionButton/styles/focus = SubResource("StyleBoxFlat_1g4tu")
+OptionButton/styles/hover = SubResource("StyleBoxFlat_ssn0m")
+OptionButton/styles/hover_pressed = SubResource("StyleBoxFlat_4qkoi")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_nbekg")
+OptionButton/styles/pressed = SubResource("StyleBoxFlat_nm63t")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ub8ry"]
-shader = ExtResource("4_x6mpk")
+[sub_resource type="Theme" id="Theme_rt0h7"]
+default_font = ExtResource("2_tldsg")
+default_font_size = 30
+Button/colors/font_color = Color(0.52156866, 0.5176471, 0.49019608, 1)
+Button/colors/font_focus_color = Color(0.9490196, 0.93333334, 0.8784314, 1)
+Button/colors/font_hover_color = Color(0.9490196, 0.93333334, 0.8784314, 1)
+Button/colors/font_hover_pressed_color = Color(0.9490196, 0.93333334, 0.8784314, 1)
+Button/colors/font_pressed_color = Color(0.9490196, 0.93333334, 0.8784314, 1)
+Button/styles/disabled = SubResource("StyleBoxEmpty_1nio4")
+Button/styles/focus = SubResource("StyleBoxEmpty_1nio4")
+Button/styles/hover = SubResource("StyleBoxEmpty_1nio4")
+Button/styles/hover_pressed = SubResource("StyleBoxEmpty_1nio4")
+Button/styles/normal = SubResource("StyleBoxEmpty_1nio4")
+Button/styles/pressed = SubResource("StyleBoxEmpty_1nio4")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkved"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rkri6"]
+shader = ExtResource("4_1ryph")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f2bph"]
+shader = ExtResource("5_j6s3p")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4pqo"]
+atlas = ExtResource("6_6ns2j")
+region = Rect2(0, 395.22, 936.32, 207.02)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hpjsa"]
+shader = ExtResource("5_j6s3p")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ab3c"]
+atlas = ExtResource("6_6ns2j")
+region = Rect2(0, 395.22, 936.32, 207.02)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p18fb"]
+shader = ExtResource("5_j6s3p")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mihx"]
+atlas = ExtResource("6_6ns2j")
+region = Rect2(0, 395.22, 936.32, 207.02)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3aoqq"]
+shader = ExtResource("5_j6s3p")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1av1f"]
+atlas = ExtResource("6_6ns2j")
+region = Rect2(0, 395.22, 936.32, 207.02)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c8pwp"]
+shader = ExtResource("5_j6s3p")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4hyg"]
+atlas = ExtResource("6_6ns2j")
+region = Rect2(0, 395.22, 936.32, 207.02)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ua0o"]
+shader = ExtResource("8_kgd86")
+shader_parameter/panel_size = null
+shader_parameter/feather = null
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kfe3p"]
 content_margin_left = 22.0
-content_margin_top = 20.0
+content_margin_top = 12.0
 content_margin_right = 22.0
-content_margin_bottom = 14.0
-bg_color = Color(0.022, 0.024, 0.02, 0.78)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
+content_margin_bottom = 12.0
+bg_color = Color(0.018, 0.019, 0.017, 0.94)
 border_color = Color(0.3, 0.29, 0.25, 0.5)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_sn3uh"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v1220"]
+content_margin_left = 12.0
+content_margin_right = 12.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6hhip"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iuq22"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ct3lo"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ufxl"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_065hy"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_grh7q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4eb0p"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ev7n3"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ewqgb"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2123q"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t35cy"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6kwpx"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kh8gb"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i6tiv"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fsxin"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kqco8"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gielg"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3o5oq"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ciul"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_54cbk"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0f4h1"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6pl51"]
 content_margin_left = 12.0
 content_margin_right = 4.0
-bg_color = Color(0.15, 0.15, 0.13, 0.32)
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
-[sub_resource type="Gradient" id="Gradient_1g4tu"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cw6g2"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pr6xc"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1lefd"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uuq1k"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y0vmq"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b8bff"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fi8or"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_46y33"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dxweu"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gdc3y"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="Gradient" id="Gradient_ks7vf"]
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ssn0m"]
-gradient = SubResource("Gradient_1g4tu")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bljsh"]
+gradient = SubResource("Gradient_ks7vf")
 width = 1
 height = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qkoi"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1rrpw"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1tqa0"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lco63"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gfa2e"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dx8jc"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8x4bp"]
 content_margin_left = 12.0
 content_margin_right = 4.0
-bg_color = Color(0.15, 0.15, 0.13, 0.32)
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbekg"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jdjjt"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f3jcg"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u2f8h"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_53cj2"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lg8w8"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ob0mx"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xw5i4"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r3xdc"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ybxqk"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bxv3v"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4tfnt"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4nr4q"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yeorq"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c2ksn"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_01ou0"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3g47"]
 content_margin_left = 12.0
 content_margin_right = 4.0
-bg_color = Color(0.15, 0.15, 0.13, 0.32)
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nm63t"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5e4b"]
 content_margin_left = 12.0
 content_margin_right = 4.0
-bg_color = Color(0.15, 0.15, 0.13, 0.32)
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ryyfs"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d3vce"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rcr2x"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m4mtb"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_execp"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5e6bc"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5lw2k"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fm6aa"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w8huk"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mcgps"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i8t80"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ceby"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y4tc0"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_roh2t"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1y6vh"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xkq6w"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yefkq"]
 content_margin_left = 12.0
 content_margin_right = 4.0
-bg_color = Color(0.15, 0.15, 0.13, 0.32)
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1nio4"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k3fcn"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_emecb"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1uhe"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pj3xj"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5eepp"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1w0cq"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cedm7"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g5w1n"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lumob"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t441f"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s1l6d"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yl3dq"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rnxhe"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yxctv"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64swb"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gr78l"]
 content_margin_left = 12.0
 content_margin_right = 4.0
-bg_color = Color(0.15, 0.15, 0.13, 0.32)
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rt0h7"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kqwdh"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3dct3"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oj2rg"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wgy2e"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jv77h"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xhtxj"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qow3t"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0xelu"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h2s3a"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_63key"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o2cxe"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o6u64"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s0h26"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kh48o"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3wiy8"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ysq6y"]
 content_margin_left = 12.0
 content_margin_right = 4.0
-bg_color = Color(0.15, 0.15, 0.13, 0.32)
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rkri6"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1mvpp"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mjg00"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lnvo3"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sfnmo"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ddaa2"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pupu8"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pyjax"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ck73r"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_00whp"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fi1qe"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ypvtl"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vw5dh"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rvlgl"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nmji0"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_124kw"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g1cvr"]
 content_margin_left = 12.0
 content_margin_right = 4.0
-bg_color = Color(0.15, 0.15, 0.13, 0.32)
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f2bph"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dnxi"]
 content_margin_left = 12.0
 content_margin_right = 4.0
-bg_color = Color(0.15, 0.15, 0.13, 0.32)
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4pqo"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cprkd"]
 content_margin_left = 12.0
 content_margin_right = 4.0
-bg_color = Color(0.15, 0.15, 0.13, 0.32)
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hpjsa"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gp22r"]
 content_margin_left = 12.0
 content_margin_right = 4.0
-bg_color = Color(0.15, 0.15, 0.13, 0.32)
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ab3c"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b8py7"]
 content_margin_left = 12.0
 content_margin_right = 4.0
-bg_color = Color(0.15, 0.15, 0.13, 0.32)
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p18fb"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7k2sl"]
 content_margin_left = 12.0
 content_margin_right = 4.0
-bg_color = Color(0.15, 0.15, 0.13, 0.32)
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mihx"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0t8qk"]
 content_margin_left = 12.0
 content_margin_right = 4.0
-bg_color = Color(0.15, 0.15, 0.13, 0.32)
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3aoqq"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsnqr"]
 content_margin_left = 12.0
 content_margin_right = 4.0
-bg_color = Color(0.15, 0.15, 0.13, 0.32)
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
-[node name="HUD" type="CanvasLayer" unique_id=1805165072]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xk86c"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c062o"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4e3tc"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vffg7"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hcbty"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l1uiu"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h81us"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_16tcl"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eaf3y"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbn71"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5a6bp"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_785cy"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_de1e5"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8n1ge"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jnv3a"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csq3k"]
+content_margin_left = 12.0
+content_margin_right = 4.0
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ex6ru"]
+content_margin_left = 12.0
+content_margin_right = 4.0
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxvtg"]
+content_margin_left = 12.0
+content_margin_right = 4.0
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5x72"]
+content_margin_left = 12.0
+content_margin_right = 4.0
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icnjr"]
+content_margin_left = 12.0
+content_margin_right = 4.0
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_44jky"]
+content_margin_left = 12.0
+content_margin_right = 4.0
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_no1o3"]
+content_margin_left = 12.0
+content_margin_right = 4.0
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cwhb6"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_axqcl"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_olush"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qolbp"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m7byw"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xh1t0"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_goghv"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5j2qc"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gnjv5"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a65uy"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[node name="HUD" type="CanvasLayer" unique_id=1251670722]
 process_mode = 3
 layer = 10
-script = ExtResource("1_acb04")
+script = ExtResource("1_4qk33")
 
-[node name="Layout" type="Control" parent="." unique_id=2015209634]
+[node name="Layout" type="Control" parent="." unique_id=1228292897]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-theme = SubResource("Theme_kgd86")
+theme = SubResource("Theme_iqumv")
 
-[node name="status_panel" type="PanelContainer" parent="Layout" unique_id=2057136265]
+[node name="status_panel" type="PanelContainer" parent="Layout" unique_id=1928813206]
 custom_minimum_size = Vector2(365, 156)
 layout_mode = 0
 anchor_top = 1.0
@@ -338,45 +1090,45 @@ offset_left = 26.0
 offset_top = -180.0
 offset_right = 26.0
 offset_bottom = -180.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_81w0g")
+theme_override_styles/panel = SubResource("StyleBoxFlat_2udvi")
 
-[node name="@VBoxContainer@3" type="VBoxContainer" parent="Layout/status_panel" unique_id=1126045077]
+[node name="@VBoxContainer@3" type="VBoxContainer" parent="Layout/status_panel" unique_id=1887276505]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="objective" type="Label" parent="Layout/status_panel/@VBoxContainer@3" unique_id=2029510533]
+[node name="objective" type="Label" parent="Layout/status_panel/@VBoxContainer@3" unique_id=148234855]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 theme_override_colors/font_color = Color(0.8745098, 0.83137256, 0.7372549, 1)
 text = "ФИГУРКИ  0 / 12"
 
-[node name="stamina_label" type="Label" parent="Layout/status_panel/@VBoxContainer@3" unique_id=890358131]
+[node name="stamina_label" type="Label" parent="Layout/status_panel/@VBoxContainer@3" unique_id=329995791]
 layout_mode = 2
 theme_override_font_sizes/font_size = 21
 theme_override_colors/font_color = Color(0.8745098, 0.83137256, 0.7372549, 1)
 text = "ВЫНОСЛИВОСТЬ"
 
-[node name="stamina_bar" type="ProgressBar" parent="Layout/status_panel/@VBoxContainer@3" unique_id=1783863080]
+[node name="stamina_bar" type="ProgressBar" parent="Layout/status_panel/@VBoxContainer@3" unique_id=1459763503]
 custom_minimum_size = Vector2(310, 5)
 layout_mode = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_jpq7v")
-theme_override_styles/fill = SubResource("StyleBoxFlat_dom06")
+theme_override_styles/background = SubResource("StyleBoxFlat_oftg1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_iehi4")
 show_percentage = false
 
-[node name="charge_label" type="Label" parent="Layout/status_panel/@VBoxContainer@3" unique_id=546640795]
+[node name="charge_label" type="Label" parent="Layout/status_panel/@VBoxContainer@3" unique_id=2016080948]
 layout_mode = 2
 theme_override_font_sizes/font_size = 21
 theme_override_colors/font_color = Color(0.8745098, 0.83137256, 0.7372549, 1)
 text = "ФОНАРИК · F"
 
-[node name="charge_bar" type="ProgressBar" parent="Layout/status_panel/@VBoxContainer@3" unique_id=1414350763]
+[node name="charge_bar" type="ProgressBar" parent="Layout/status_panel/@VBoxContainer@3" unique_id=1101218543]
 custom_minimum_size = Vector2(310, 5)
 layout_mode = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_gpcdm")
-theme_override_styles/fill = SubResource("StyleBoxFlat_r0lp5")
+theme_override_styles/background = SubResource("StyleBoxFlat_bu4hs")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2k3d5")
 show_percentage = false
 
-[node name="pickup_notice" type="Label" parent="Layout" unique_id=560720959]
+[node name="pickup_notice" type="Label" parent="Layout" unique_id=1600613390]
 layout_mode = 0
 offset_right = 900.0
 offset_bottom = 32.0
@@ -388,7 +1140,7 @@ theme_override_constants/shadow_offset_y = 2
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Notice1" type="Label" parent="Layout" unique_id=1333323261]
+[node name="Notice1" type="Label" parent="Layout" unique_id=1950359876]
 layout_mode = 0
 offset_right = 900.0
 offset_bottom = 32.0
@@ -400,7 +1152,7 @@ theme_override_constants/shadow_offset_y = 2
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Notice2" type="Label" parent="Layout" unique_id=1506402410]
+[node name="Notice2" type="Label" parent="Layout" unique_id=2099159467]
 layout_mode = 0
 offset_right = 900.0
 offset_bottom = 32.0
@@ -412,62 +1164,106 @@ theme_override_constants/shadow_offset_y = 2
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="overlay" type="ColorRect" parent="Layout" unique_id=84795560]
+[node name="overlay" type="ColorRect" parent="Layout" unique_id=1808146512]
 visible = false
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0.02, 0.025, 0.021, 0.9)
 
-[node name="@CenterContainer@11" type="CenterContainer" parent="Layout/overlay" unique_id=773290790]
+[node name="@CenterContainer@11" type="CenterContainer" parent="Layout/overlay" unique_id=1759391207]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="@VBoxContainer@12" type="VBoxContainer" parent="Layout/overlay/@CenterContainer@11" unique_id=605255339]
+[node name="@VBoxContainer@12" type="VBoxContainer" parent="Layout/overlay/@CenterContainer@11" unique_id=1449805354]
 layout_mode = 2
+theme = SubResource("Theme_4qk33")
 theme_override_constants/separation = 20
 
-[node name="result_title" type="Label" parent="Layout/overlay/@CenterContainer@11/@VBoxContainer@12" unique_id=1513384466]
+[node name="result_title" type="Label" parent="Layout/overlay/@CenterContainer@11/@VBoxContainer@12" unique_id=823803922]
 layout_mode = 2
 theme_override_font_sizes/font_size = 38
 theme_override_colors/font_color = Color(0.8745098, 0.83137256, 0.7372549, 1)
 horizontal_alignment = 1
 
-[node name="result_text" type="Label" parent="Layout/overlay/@CenterContainer@11/@VBoxContainer@12" unique_id=569763443]
+[node name="result_text" type="Label" parent="Layout/overlay/@CenterContainer@11/@VBoxContainer@12" unique_id=1010063533]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 theme_override_colors/font_color = Color(0.8745098, 0.83137256, 0.7372549, 1)
 horizontal_alignment = 1
 
-[node name="RestartResult" type="Button" parent="Layout/overlay/@CenterContainer@11/@VBoxContainer@12" unique_id=1409386480]
-custom_minimum_size = Vector2(300, 48)
+[node name="RestartResult" type="Button" parent="Layout/overlay/@CenterContainer@11/@VBoxContainer@12" unique_id=2040613820]
+custom_minimum_size = Vector2(300, 56)
 layout_mode = 2
-text = "Начать заново [R]"
+text = "НАЧАТЬ ЗАНОВО [R]"
 
-[node name="QuitResult" type="Button" parent="Layout/overlay/@CenterContainer@11/@VBoxContainer@12" unique_id=1316634741]
-custom_minimum_size = Vector2(0, 44)
+[node name="Highlight" type="TextureRect" parent="Layout/overlay/@CenterContainer@11/@VBoxContainer@12/RestartResult" unique_id=505727936]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+material = SubResource("ShaderMaterial_tldsg")
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.5
+offset_top = -34.0
+offset_right = 161.5
+offset_bottom = 34.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_sd8kv")
+expand_mode = 1
+script = ExtResource("7_j2336")
+
+[node name="QuitResult" type="Button" parent="Layout/overlay/@CenterContainer@11/@VBoxContainer@12" unique_id=1952519515]
+custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
-text = "Выйти из игры"
+text = "ВЫЙТИ ИЗ ИГРЫ"
 
-[node name="pause_overlay" type="ColorRect" parent="Layout" unique_id=889142855]
+[node name="Highlight" type="TextureRect" parent="Layout/overlay/@CenterContainer@11/@VBoxContainer@12/QuitResult" unique_id=349239551]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+material = SubResource("ShaderMaterial_1ryph")
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -34.0
+offset_right = 134.0
+offset_bottom = 34.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_j6s3p")
+expand_mode = 1
+script = ExtResource("7_j2336")
+
+[node name="pause_overlay" type="ColorRect" parent="Layout" unique_id=1752355043]
 visible = false
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = SubResource("Theme_8dox7")
+theme = SubResource("Theme_ryyfs")
 color = Color(1, 1, 1, 0)
-script = ExtResource("3_n5j44")
+script = ExtResource("3_sd8kv")
+metadata/navigation_theme = SubResource("Theme_rt0h7")
 
-[node name="Backdrop" type="ColorRect" parent="Layout/pause_overlay" unique_id=1983344171]
+[node name="GameFrame" type="BackBufferCopy" parent="Layout/pause_overlay"]
+z_index = -2
+copy_mode = 2
+
+[node name="Backdrop" type="ColorRect" parent="Layout/pause_overlay" unique_id=245657171]
 z_index = -1
-material = SubResource("ShaderMaterial_ub8ry")
+material = SubResource("ShaderMaterial_rkri6")
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="NavigationDivider" type="ColorRect" parent="Layout/pause_overlay" unique_id=1746296850]
+[node name="NavigationDivider" type="ColorRect" parent="Layout/pause_overlay" unique_id=821332667]
 z_index = 1
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 0
@@ -477,49 +1273,105 @@ anchor_right = 0.307
 anchor_bottom = 0.92
 offset_right = 2.0
 mouse_filter = 2
-color = Color(0.32, 0.31, 0.27, 0.32)
+color = Color(1, 1, 1, 0)
 
-[node name="Navigation" type="VBoxContainer" parent="Layout/pause_overlay" unique_id=11201174]
+[node name="Navigation" type="VBoxContainer" parent="Layout/pause_overlay" unique_id=1736940444]
 z_index = 1
 layout_mode = 0
 anchor_left = 0.065
 anchor_top = 0.17
 anchor_right = 0.277
 anchor_bottom = 0.17
+theme = SubResource("Theme_rt0h7")
 theme_override_constants/separation = 13
 
-[node name="PauseTitle" type="Label" parent="Layout/pause_overlay/Navigation" unique_id=368152456]
+[node name="PauseTitle" type="Label" parent="Layout/pause_overlay/Navigation" unique_id=1663949963]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_20ki6")
+theme_override_fonts/font = ExtResource("2_tldsg")
 theme_override_font_sizes/font_size = 60
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 text = "ПАУЗА"
+horizontal_alignment = 1
 
-[node name="@Control@15" type="Control" parent="Layout/pause_overlay/Navigation" unique_id=1407293791]
+[node name="@Control@15" type="Control" parent="Layout/pause_overlay/Navigation" unique_id=641513733]
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Resume" type="Button" parent="Layout/pause_overlay/Navigation" unique_id=902066692]
+[node name="Resume" type="Button" parent="Layout/pause_overlay/Navigation" unique_id=796226717]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "ПРОДОЛЖИТЬ"
-alignment = 0
 
-[node name="RestartPause" type="Button" parent="Layout/pause_overlay/Navigation" unique_id=300114275]
+[node name="Highlight" type="TextureRect" parent="Layout/pause_overlay/Navigation/Resume" unique_id=1620095078]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+material = SubResource("ShaderMaterial_f2bph")
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.5
+offset_top = -27.0
+offset_right = 86.5
+offset_bottom = 27.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_t4pqo")
+expand_mode = 1
+script = ExtResource("7_j2336")
+
+[node name="RestartPause" type="Button" parent="Layout/pause_overlay/Navigation" unique_id=2009430212]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "НАЧАТЬ ЗАНОВО [R]"
-alignment = 0
 
-[node name="Settings" type="Button" parent="Layout/pause_overlay/Navigation" unique_id=1907270675]
+[node name="Highlight" type="TextureRect" parent="Layout/pause_overlay/Navigation/RestartPause" unique_id=490034000]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+material = SubResource("ShaderMaterial_hpjsa")
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = -27.0
+offset_right = 118.0
+offset_bottom = 27.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_6ab3c")
+expand_mode = 1
+script = ExtResource("7_j2336")
+
+[node name="Settings" type="Button" parent="Layout/pause_overlay/Navigation" unique_id=1559610652]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 toggle_mode = true
 text = "НАСТРОЙКИ"
-alignment = 0
 
-[node name="SelectionArrow" type="Label" parent="Layout/pause_overlay/Navigation/Settings" unique_id=409261306]
+[node name="Highlight" type="TextureRect" parent="Layout/pause_overlay/Navigation/Settings" unique_id=532590476]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+material = SubResource("ShaderMaterial_p18fb")
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -27.0
+offset_right = 78.5
+offset_bottom = 27.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_0mihx")
+expand_mode = 1
+script = ExtResource("7_j2336")
+
+[node name="SelectionArrow" type="Label" parent="Layout/pause_overlay/Navigation/Settings" unique_id=338309754]
 visible = false
 layout_mode = 0
 offset_left = -15.0
@@ -530,165 +1382,295 @@ theme_override_font_sizes/font_size = 32
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 text = "›"
 
-[node name="QuitPause" type="Button" parent="Layout/pause_overlay/Navigation" unique_id=1619058839]
+[node name="MainMenu" type="Button" parent="Layout/pause_overlay/Navigation" unique_id=54199310]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "В ГЛАВНОЕ МЕНЮ"
+
+[node name="Highlight" type="TextureRect" parent="Layout/pause_overlay/Navigation/MainMenu" unique_id=1490553158]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+material = SubResource("ShaderMaterial_3aoqq")
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -27.0
+offset_right = 102.0
+offset_bottom = 27.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_1av1f")
+expand_mode = 1
+script = ExtResource("7_j2336")
+
+[node name="QuitPause" type="Button" parent="Layout/pause_overlay/Navigation" unique_id=623365509]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "ВЫЙТИ ИЗ ИГРЫ"
-alignment = 0
 
-[node name="SettingsPanel" type="PanelContainer" parent="Layout/pause_overlay" unique_id=354376541]
+[node name="Highlight" type="TextureRect" parent="Layout/pause_overlay/Navigation/QuitPause" unique_id=1386015082]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+material = SubResource("ShaderMaterial_c8pwp")
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -27.0
+offset_right = 99.0
+offset_bottom = 27.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_n4hyg")
+expand_mode = 1
+script = ExtResource("7_j2336")
+
+[node name="SettingsPanel" type="PanelContainer" parent="Layout/pause_overlay" unique_id=572899134]
 visible = false
 z_index = 1
+material = SubResource("ShaderMaterial_5ua0o")
 layout_mode = 0
 anchor_left = 0.323
 anchor_top = 0.09
 anchor_right = 0.95
 anchor_bottom = 0.9
-theme_override_styles/panel = SubResource("StyleBoxFlat_fkved")
+theme_override_styles/panel = SubResource("StyleBoxFlat_kfe3p")
+script = ExtResource("9_81w0g")
 
-[node name="Frame" type="VBoxContainer" parent="Layout/pause_overlay/SettingsPanel" unique_id=724051998]
+[node name="Frame" type="VBoxContainer" parent="Layout/pause_overlay/SettingsPanel" unique_id=1149198730]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 6
 
-[node name="@Label@16" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame" unique_id=1910945360]
+[node name="@Label@16" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame" unique_id=357093259]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 text = "НАСТРОЙКИ"
 
-[node name="@ColorRect@17" type="ColorRect" parent="Layout/pause_overlay/SettingsPanel/Frame" unique_id=2114213541]
+[node name="@ColorRect@17" type="ColorRect" parent="Layout/pause_overlay/SettingsPanel/Frame" unique_id=2146354511]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 mouse_filter = 2
-color = Color(0.32, 0.31, 0.27, 0.32)
+color = Color(1, 1, 1, 0)
 
-[node name="Body" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame" unique_id=904952252]
+[node name="Body" type="VBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame" unique_id=335471703]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 20
+theme_override_constants/separation = 6
 
-[node name="@VBoxContainer@18" type="VBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body" unique_id=1398802238]
+[node name="@HBoxContainer@18" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body" unique_id=1403723098]
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="GraphicsTab" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/@VBoxContainer@18" unique_id=51348541]
-custom_minimum_size = Vector2(0, 44)
+[node name="GraphicsTab" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/@HBoxContainer@18" unique_id=53709050]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_v1220")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_iuq22")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ct3lo")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_6ufxl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_065hy")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_font_sizes/font_size = 23
 toggle_mode = true
-button_group = SubResource("ButtonGroup_sn3uh")
+button_group = SubResource("ButtonGroup_grh7q")
 text = "ГРАФИКА"
 alignment = 0
 
-[node name="SoundTab" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/@VBoxContainer@18" unique_id=1679976560]
-custom_minimum_size = Vector2(0, 44)
+[node name="SoundTab" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/@HBoxContainer@18" unique_id=2114078556]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4eb0p")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ev7n3")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ewqgb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_2123q")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t35cy")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_font_sizes/font_size = 23
 toggle_mode = true
-button_group = SubResource("ButtonGroup_sn3uh")
+button_group = SubResource("ButtonGroup_grh7q")
 text = "ЗВУК"
 alignment = 0
 
-[node name="GameTab" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/@VBoxContainer@18" unique_id=1235983955]
-custom_minimum_size = Vector2(0, 44)
+[node name="GameTab" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/@HBoxContainer@18" unique_id=1284544496]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6kwpx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kh8gb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_i6tiv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_fsxin")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kqco8")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_font_sizes/font_size = 23
 toggle_mode = true
-button_group = SubResource("ButtonGroup_sn3uh")
+button_group = SubResource("ButtonGroup_grh7q")
 text = "ИГРА"
 alignment = 0
 
-[node name="ControlsTab" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/@VBoxContainer@18" unique_id=1382000058]
-custom_minimum_size = Vector2(0, 44)
+[node name="ControlsTab" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/@HBoxContainer@18" unique_id=1515240796]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gielg")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3o5oq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5ciul")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_54cbk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0f4h1")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_font_sizes/font_size = 23
 toggle_mode = true
-button_group = SubResource("ButtonGroup_sn3uh")
+button_group = SubResource("ButtonGroup_grh7q")
 text = "УПРАВЛЕНИЕ"
 alignment = 0
 
-[node name="@ColorRect@19" type="ColorRect" parent="Layout/pause_overlay/SettingsPanel/Frame/Body" unique_id=1045156724]
+[node name="@ColorRect@19" type="ColorRect" parent="Layout/pause_overlay/SettingsPanel/Frame/Body" unique_id=1974490379]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 mouse_filter = 2
-color = Color(0.32, 0.31, 0.27, 0.32)
+color = Color(1, 1, 1, 0)
 
-[node name="Pages" type="Control" parent="Layout/pause_overlay/SettingsPanel/Frame/Body" unique_id=1442624580]
+[node name="Pages" type="Control" parent="Layout/pause_overlay/SettingsPanel/Frame/Body" unique_id=1647884662]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="GraphicsPage" type="VBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages" unique_id=231949270]
+[node name="GraphicsPage" type="VBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages" unique_id=1129998519]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_constants/separation = 7
+theme_override_constants/separation = 3
 
-[node name="@Label@20" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=1449984795]
+[node name="@Label@20" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=1857175073]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 text = "ЭКРАН"
 
-[node name="@PanelContainer@21" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=1325341270]
+[node name="@PanelContainer@21" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=1117268221]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6hhip")
+theme_override_styles/panel = SubResource("StyleBoxFlat_6pl51")
 
-[node name="@HBoxContainer@22" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@21" unique_id=569726085]
-custom_minimum_size = Vector2(0, 42)
+[node name="@HBoxContainer@22" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@21" unique_id=150754974]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="@Label@23" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@21/@HBoxContainer@22" unique_id=1139196848]
+[node name="@Label@23" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@21/@HBoxContainer@22" unique_id=2092595924]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 text = "Полный экран"
 
-[node name="FullscreenPrevious" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@21/@HBoxContainer@22" unique_id=1520258173]
-custom_minimum_size = Vector2(30, 42)
+[node name="FullscreenPrevious" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@21/@HBoxContainer@22" unique_id=2144797104]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cw6g2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pr6xc")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_1lefd")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_uuq1k")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y0vmq")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
 text = "‹"
 
-[node name="fullscreen_toggle" type="CheckButton" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@21/@HBoxContainer@22" unique_id=733493219]
-custom_minimum_size = Vector2(140, 42)
+[node name="fullscreen_toggle" type="CheckButton" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@21/@HBoxContainer@22" unique_id=1705789538]
+custom_minimum_size = Vector2(140, 30)
 layout_mode = 2
-theme_override_icons/checked = SubResource("GradientTexture2D_ssn0m")
-theme_override_icons/unchecked = SubResource("GradientTexture2D_ssn0m")
-theme_override_icons/checked_disabled = SubResource("GradientTexture2D_ssn0m")
-theme_override_icons/unchecked_disabled = SubResource("GradientTexture2D_ssn0m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_b8bff")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fi8or")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_46y33")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dxweu")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gdc3y")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_icons/checked = SubResource("GradientTexture2D_bljsh")
+theme_override_icons/unchecked = SubResource("GradientTexture2D_bljsh")
+theme_override_icons/checked_disabled = SubResource("GradientTexture2D_bljsh")
+theme_override_icons/unchecked_disabled = SubResource("GradientTexture2D_bljsh")
 text = "Выкл."
 alignment = 1
 
-[node name="FullscreenNext" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@21/@HBoxContainer@22" unique_id=1929199012]
-custom_minimum_size = Vector2(30, 42)
+[node name="FullscreenNext" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@21/@HBoxContainer@22" unique_id=87758094]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1rrpw")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1tqa0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_lco63")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_gfa2e")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dx8jc")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
 text = "›"
 
-[node name="@PanelContainer@34" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=340776163]
+[node name="@PanelContainer@34" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=1096227909]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_4qkoi")
+theme_override_styles/panel = SubResource("StyleBoxFlat_8x4bp")
 
-[node name="@HBoxContainer@35" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@34" unique_id=141691517]
-custom_minimum_size = Vector2(0, 42)
+[node name="@HBoxContainer@35" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@34" unique_id=1576436268]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="@Label@36" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@34/@HBoxContainer@35" unique_id=346300421]
+[node name="@Label@36" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@34/@HBoxContainer@35" unique_id=1026787073]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 text = "Разрешение"
 
-[node name="ResolutionPrevious" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@34/@HBoxContainer@35" unique_id=1586750524]
-custom_minimum_size = Vector2(30, 42)
+[node name="ResolutionPrevious" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@34/@HBoxContainer@35" unique_id=1098963499]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jdjjt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_f3jcg")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_u2f8h")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_53cj2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lg8w8")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
 text = "‹"
 
-[node name="ResolutionChoice" type="OptionButton" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@34/@HBoxContainer@35" unique_id=1729337953]
-custom_minimum_size = Vector2(140, 42)
+[node name="ResolutionChoice" type="OptionButton" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@34/@HBoxContainer@35" unique_id=2007582321]
+custom_minimum_size = Vector2(140, 30)
 layout_mode = 2
 tooltip_text = "Размер окна. В полном экране используется разрешение дисплея."
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ob0mx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xw5i4")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_r3xdc")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ybxqk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bxv3v")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
 theme_override_font_sizes/font_size = 24
-theme_override_icons/arrow = SubResource("GradientTexture2D_ssn0m")
+theme_override_icons/arrow = SubResource("GradientTexture2D_bljsh")
 alignment = 1
 selected = 0
 item_count = 3
@@ -699,28 +1681,37 @@ popup/item_1/id = 1
 popup/item_2/text = "1920 × 1080"
 popup/item_2/id = 2
 
-[node name="ResolutionNext" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@34/@HBoxContainer@35" unique_id=1446024570]
-custom_minimum_size = Vector2(30, 42)
+[node name="ResolutionNext" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@34/@HBoxContainer@35" unique_id=56824278]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4tfnt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4nr4q")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yeorq")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_c2ksn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_01ou0")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
 text = "›"
 
-[node name="@PanelContainer@37" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=1659826560]
+[node name="@PanelContainer@37" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=252635010]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_nbekg")
+theme_override_styles/panel = SubResource("StyleBoxFlat_u3g47")
 
-[node name="@HBoxContainer@38" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@37" unique_id=1910575907]
-custom_minimum_size = Vector2(0, 42)
+[node name="@HBoxContainer@38" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@37" unique_id=2034977500]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="@Label@39" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@37/@HBoxContainer@38" unique_id=557979557]
+[node name="@Label@39" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@37/@HBoxContainer@38" unique_id=1635143248]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 text = "Частота обновления"
 
-[node name="RefreshRate" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@37/@HBoxContainer@38" unique_id=1424276747]
+[node name="RefreshRate" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@37/@HBoxContainer@38" unique_id=1073580495]
 custom_minimum_size = Vector2(206, 0)
 layout_mode = 2
 tooltip_text = "Текущая частота дисплея; изменяется в параметрах экрана Windows."
@@ -729,115 +1720,187 @@ theme_override_colors/font_color = Color(0.50980395, 0.49803922, 0.44705883, 1)
 text = "144 Гц"
 horizontal_alignment = 1
 
-[node name="@PanelContainer@40" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=97761921]
+[node name="@PanelContainer@40" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=1455301982]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_nm63t")
+theme_override_styles/panel = SubResource("StyleBoxFlat_c5e4b")
 
-[node name="@HBoxContainer@41" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@40" unique_id=114490638]
-custom_minimum_size = Vector2(0, 42)
+[node name="@HBoxContainer@41" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@40" unique_id=1353231265]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="@Label@42" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@40/@HBoxContainer@41" unique_id=897272962]
+[node name="@Label@42" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@40/@HBoxContainer@41" unique_id=83407464]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 text = "Вертикальная синхронизация"
 
-[node name="VsyncPrevious" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@40/@HBoxContainer@41" unique_id=2113065506]
-custom_minimum_size = Vector2(30, 42)
+[node name="VsyncPrevious" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@40/@HBoxContainer@41" unique_id=49761012]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d3vce")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_rcr2x")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_m4mtb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_execp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5e6bc")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
 text = "‹"
 
-[node name="VsyncToggle" type="CheckButton" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@40/@HBoxContainer@41" unique_id=1992484655]
-custom_minimum_size = Vector2(140, 42)
+[node name="VsyncToggle" type="CheckButton" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@40/@HBoxContainer@41" unique_id=111508182]
+custom_minimum_size = Vector2(140, 30)
 layout_mode = 2
-theme_override_icons/checked = SubResource("GradientTexture2D_ssn0m")
-theme_override_icons/unchecked = SubResource("GradientTexture2D_ssn0m")
-theme_override_icons/checked_disabled = SubResource("GradientTexture2D_ssn0m")
-theme_override_icons/unchecked_disabled = SubResource("GradientTexture2D_ssn0m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5lw2k")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fm6aa")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_w8huk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_mcgps")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_i8t80")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_icons/checked = SubResource("GradientTexture2D_bljsh")
+theme_override_icons/unchecked = SubResource("GradientTexture2D_bljsh")
+theme_override_icons/checked_disabled = SubResource("GradientTexture2D_bljsh")
+theme_override_icons/unchecked_disabled = SubResource("GradientTexture2D_bljsh")
 text = "Выкл."
 alignment = 1
 
-[node name="VsyncNext" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@40/@HBoxContainer@41" unique_id=2062941463]
-custom_minimum_size = Vector2(30, 42)
+[node name="VsyncNext" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@40/@HBoxContainer@41" unique_id=925240194]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8ceby")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_y4tc0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_roh2t")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1y6vh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xkq6w")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
 text = "›"
 
-[node name="@PanelContainer@43" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=539028130]
+[node name="@PanelContainer@43" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=334650918]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ryyfs")
+theme_override_styles/panel = SubResource("StyleBoxFlat_yefkq")
 
-[node name="@HBoxContainer@44" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@43" unique_id=1530997141]
-custom_minimum_size = Vector2(0, 42)
+[node name="@HBoxContainer@44" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@43" unique_id=608019225]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="@Label@45" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@43/@HBoxContainer@44" unique_id=748308111]
+[node name="@Label@45" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@43/@HBoxContainer@44" unique_id=1531700969]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 text = "Виньетка"
 
-[node name="VignettePrevious" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@43/@HBoxContainer@44" unique_id=953448428]
-custom_minimum_size = Vector2(30, 42)
+[node name="VignettePrevious" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@43/@HBoxContainer@44" unique_id=438294242]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_k3fcn")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_emecb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_p1uhe")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_pj3xj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5eepp")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
 text = "‹"
 
-[node name="VignetteToggle" type="CheckButton" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@43/@HBoxContainer@44" unique_id=330396032]
-custom_minimum_size = Vector2(140, 42)
+[node name="VignetteToggle" type="CheckButton" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@43/@HBoxContainer@44" unique_id=1425187527]
+custom_minimum_size = Vector2(140, 30)
 layout_mode = 2
-theme_override_icons/checked = SubResource("GradientTexture2D_ssn0m")
-theme_override_icons/unchecked = SubResource("GradientTexture2D_ssn0m")
-theme_override_icons/checked_disabled = SubResource("GradientTexture2D_ssn0m")
-theme_override_icons/unchecked_disabled = SubResource("GradientTexture2D_ssn0m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1w0cq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_cedm7")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_g5w1n")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_lumob")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t441f")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_icons/checked = SubResource("GradientTexture2D_bljsh")
+theme_override_icons/unchecked = SubResource("GradientTexture2D_bljsh")
+theme_override_icons/checked_disabled = SubResource("GradientTexture2D_bljsh")
+theme_override_icons/unchecked_disabled = SubResource("GradientTexture2D_bljsh")
 text = "Выкл."
 alignment = 1
 
-[node name="VignetteNext" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@43/@HBoxContainer@44" unique_id=874883630]
-custom_minimum_size = Vector2(30, 42)
+[node name="VignetteNext" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@43/@HBoxContainer@44" unique_id=1747206823]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_s1l6d")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_yl3dq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_rnxhe")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_yxctv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_64swb")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
 text = "›"
 
-[node name="@Control@46" type="Control" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=845137224]
+[node name="@Control@46" type="Control" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=1711157723]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="@Label@47" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=256735566]
+[node name="@Label@47" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=443402704]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 text = "ПРОИЗВОДИТЕЛЬНОСТЬ"
 
-[node name="@PanelContainer@58" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=895700233]
+[node name="@PanelContainer@58" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=1229615980]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_1nio4")
+theme_override_styles/panel = SubResource("StyleBoxFlat_gr78l")
 
-[node name="@HBoxContainer@59" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@58" unique_id=1455303058]
-custom_minimum_size = Vector2(0, 42)
+[node name="@HBoxContainer@59" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@58" unique_id=2140599784]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="@Label@60" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@58/@HBoxContainer@59" unique_id=1284592113]
+[node name="@Label@60" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@58/@HBoxContainer@59" unique_id=1721879104]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 text = "Лимит FPS"
 
-[node name="FpsPrevious" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@58/@HBoxContainer@59" unique_id=192193570]
-custom_minimum_size = Vector2(30, 42)
+[node name="FpsPrevious" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@58/@HBoxContainer@59" unique_id=1573682014]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kqwdh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3dct3")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_oj2rg")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_wgy2e")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jv77h")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
 text = "‹"
 
-[node name="FpsChoice" type="OptionButton" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@58/@HBoxContainer@59" unique_id=2125322523]
-custom_minimum_size = Vector2(140, 42)
+[node name="FpsChoice" type="OptionButton" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@58/@HBoxContainer@59" unique_id=1445121267]
+custom_minimum_size = Vector2(140, 30)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xhtxj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_qow3t")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0xelu")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_h2s3a")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_63key")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
 theme_override_font_sizes/font_size = 24
-theme_override_icons/arrow = SubResource("GradientTexture2D_ssn0m")
+theme_override_icons/arrow = SubResource("GradientTexture2D_bljsh")
 alignment = 1
 selected = 0
 item_count = 4
@@ -850,298 +1913,589 @@ popup/item_2/id = 180
 popup/item_3/text = "Без лимита"
 popup/item_3/id = 0
 
-[node name="FpsNext" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@58/@HBoxContainer@59" unique_id=1233251036]
-custom_minimum_size = Vector2(30, 42)
+[node name="FpsNext" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@58/@HBoxContainer@59" unique_id=1433005338]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o2cxe")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o6u64")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_s0h26")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_kh48o")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3wiy8")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
 text = "›"
 
-[node name="@PanelContainer@61" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=1294497574]
+[node name="@PanelContainer@61" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage" unique_id=2015169381]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_rt0h7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ysq6y")
 
-[node name="@HBoxContainer@62" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@61" unique_id=2069391772]
-custom_minimum_size = Vector2(0, 42)
+[node name="@HBoxContainer@62" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@61" unique_id=1896377228]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="@Label@63" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@61/@HBoxContainer@62" unique_id=339066755]
+[node name="@Label@63" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@61/@HBoxContainer@62" unique_id=1573098064]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 text = "Отображение FPS"
 
-[node name="CounterPrevious" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@61/@HBoxContainer@62" unique_id=1803763270]
-custom_minimum_size = Vector2(30, 42)
+[node name="CounterPrevious" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@61/@HBoxContainer@62" unique_id=2119013518]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1mvpp")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_mjg00")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_lnvo3")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_sfnmo")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ddaa2")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
 text = "‹"
 
-[node name="FpsCounterToggle" type="CheckButton" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@61/@HBoxContainer@62" unique_id=942991326]
-custom_minimum_size = Vector2(140, 42)
+[node name="FpsCounterToggle" type="CheckButton" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@61/@HBoxContainer@62" unique_id=31437318]
+custom_minimum_size = Vector2(140, 30)
 layout_mode = 2
-theme_override_icons/checked = SubResource("GradientTexture2D_ssn0m")
-theme_override_icons/unchecked = SubResource("GradientTexture2D_ssn0m")
-theme_override_icons/checked_disabled = SubResource("GradientTexture2D_ssn0m")
-theme_override_icons/unchecked_disabled = SubResource("GradientTexture2D_ssn0m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pupu8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pyjax")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ck73r")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_00whp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fi1qe")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_icons/checked = SubResource("GradientTexture2D_bljsh")
+theme_override_icons/unchecked = SubResource("GradientTexture2D_bljsh")
+theme_override_icons/checked_disabled = SubResource("GradientTexture2D_bljsh")
+theme_override_icons/unchecked_disabled = SubResource("GradientTexture2D_bljsh")
 text = "Выкл."
 alignment = 1
 
-[node name="CounterNext" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@61/@HBoxContainer@62" unique_id=713894474]
-custom_minimum_size = Vector2(30, 42)
+[node name="CounterNext" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GraphicsPage/@PanelContainer@61/@HBoxContainer@62" unique_id=1772617378]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ypvtl")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vw5dh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_rvlgl")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_nmji0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_124kw")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
 text = "›"
 
-[node name="SoundPage" type="VBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages" unique_id=159344833]
+[node name="SoundPage" type="VBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages" unique_id=1268526757]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_constants/separation = 7
+theme_override_constants/separation = 3
 
-[node name="@Label@64" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage" unique_id=43502288]
+[node name="@Label@64" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage" unique_id=1852932572]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 text = "ГРОМКОСТЬ"
 
-[node name="@PanelContainer@65" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage" unique_id=1809628218]
+[node name="@PanelContainer@65" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage" unique_id=1270264756]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_rkri6")
+theme_override_styles/panel = SubResource("StyleBoxFlat_g1cvr")
 
-[node name="@HBoxContainer@66" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@65" unique_id=796918018]
-custom_minimum_size = Vector2(0, 42)
+[node name="@HBoxContainer@66" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@65" unique_id=1035255315]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="@Label@67" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@65/@HBoxContainer@66" unique_id=1364744726]
+[node name="@Label@67" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@65/@HBoxContainer@66" unique_id=1958446223]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 text = "Общая громкость"
 
-[node name="MasterVolume" type="HSlider" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@65/@HBoxContainer@66" unique_id=2001500548]
+[node name="MasterVolume" type="HSlider" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@65/@HBoxContainer@66" unique_id=2117787888]
 custom_minimum_size = Vector2(145, 0)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="VolumeValue" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@65/@HBoxContainer@66" unique_id=1890269439]
+[node name="VolumeValue" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@65/@HBoxContainer@66" unique_id=1187426319]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 text = "80%"
 
-[node name="GamePage" type="VBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages" unique_id=745468332]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme_override_constants/separation = 7
+[node name="@PanelContainer@68" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage" unique_id=428483131]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4dnxi")
 
-[node name="@Label@68" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GamePage" unique_id=1678428139]
+[node name="@HBoxContainer@69" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@68" unique_id=690612126]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="@Label@70" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@68/@HBoxContainer@69" unique_id=1511762087]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "Музыка"
+
+[node name="MusicVolume" type="HSlider" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@68/@HBoxContainer@69" unique_id=2040348621]
+custom_minimum_size = Vector2(145, 0)
+layout_mode = 2
+size_flags_vertical = 4
+value = 100.0
+
+[node name="MusicVolumeValue" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@68/@HBoxContainer@69" unique_id=1956079541]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "100%"
+
+[node name="@PanelContainer@71" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage" unique_id=403075951]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cprkd")
+
+[node name="@HBoxContainer@72" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@71" unique_id=743868125]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="@Label@73" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@71/@HBoxContainer@72" unique_id=1581796809]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "Окружение"
+
+[node name="EnvironmentVolume" type="HSlider" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@71/@HBoxContainer@72" unique_id=1444984446]
+custom_minimum_size = Vector2(145, 0)
+layout_mode = 2
+size_flags_vertical = 4
+value = 100.0
+
+[node name="EnvironmentVolumeValue" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@71/@HBoxContainer@72" unique_id=505837128]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "100%"
+
+[node name="@PanelContainer@74" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage" unique_id=1712771337]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gp22r")
+
+[node name="@HBoxContainer@75" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@74" unique_id=1967095865]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="@Label@76" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@74/@HBoxContainer@75" unique_id=545370451]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "Шаги"
+
+[node name="StepsRoomVolume" type="HSlider" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@74/@HBoxContainer@75" unique_id=669969647]
+custom_minimum_size = Vector2(145, 0)
+layout_mode = 2
+size_flags_vertical = 4
+value = 100.0
+
+[node name="StepsRoomVolumeValue" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@74/@HBoxContainer@75" unique_id=1373085197]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "100%"
+
+[node name="@PanelContainer@77" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage" unique_id=1171104491]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b8py7")
+
+[node name="@HBoxContainer@78" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@77" unique_id=1098154609]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="@Label@79" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@77/@HBoxContainer@78" unique_id=2098797870]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "Дыхание"
+
+[node name="BreathingVolume" type="HSlider" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@77/@HBoxContainer@78" unique_id=1881405877]
+custom_minimum_size = Vector2(145, 0)
+layout_mode = 2
+size_flags_vertical = 4
+value = 100.0
+
+[node name="BreathingVolumeValue" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@77/@HBoxContainer@78" unique_id=1073147462]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "100%"
+
+[node name="@PanelContainer@80" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage" unique_id=462689225]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7k2sl")
+
+[node name="@HBoxContainer@81" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@80" unique_id=1693393648]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="@Label@82" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@80/@HBoxContainer@81" unique_id=1365205494]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "Сердцебиение"
+
+[node name="HeartbeatVolume" type="HSlider" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@80/@HBoxContainer@81" unique_id=380676126]
+custom_minimum_size = Vector2(145, 0)
+layout_mode = 2
+size_flags_vertical = 4
+value = 100.0
+
+[node name="HeartbeatVolumeValue" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@80/@HBoxContainer@81" unique_id=1288100226]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "100%"
+
+[node name="@PanelContainer@83" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage" unique_id=1303546299]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0t8qk")
+
+[node name="@HBoxContainer@84" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@83" unique_id=1810382762]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="@Label@85" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@83/@HBoxContainer@84" unique_id=500804187]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "Звуковые эффекты"
+
+[node name="EffectsVolume" type="HSlider" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@83/@HBoxContainer@84" unique_id=524814120]
+custom_minimum_size = Vector2(145, 0)
+layout_mode = 2
+size_flags_vertical = 4
+value = 100.0
+
+[node name="EffectsVolumeValue" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@83/@HBoxContainer@84" unique_id=35343184]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "100%"
+
+[node name="@Control@86" type="Control" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage" unique_id=955236828]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="@Label@87" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage" unique_id=212111474]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
-text = "СЛОЖНОСТЬ"
+text = "МУЗЫКА ГЛАВНОГО МЕНЮ"
 
-[node name="difficulty_0" type="CheckButton" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GamePage" unique_id=1823927679]
+[node name="@PanelContainer@98" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage" unique_id=405055713]
 layout_mode = 2
-text = "Хардкор · 3 монстра"
+theme_override_styles/panel = SubResource("StyleBoxFlat_bsnqr")
 
-[node name="@Label@69" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/GamePage" unique_id=1182709367]
+[node name="@HBoxContainer@99" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@98" unique_id=796074746]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-theme_override_font_sizes/font_size = 23
-theme_override_colors/font_color = Color(0.50980395, 0.49803922, 0.44705883, 1)
-text = "Применяется со следующего забега.
-Два охотника и бесшумный гуманоид.
-Четыре батарейки вместо пяти."
+theme_override_constants/separation = 3
 
-[node name="ControlsPage" type="VBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages" unique_id=267627534]
+[node name="@Label@100" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@98/@HBoxContainer@99" unique_id=103007724]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
+text = "Композиция"
+
+[node name="MusicPrevious" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@98/@HBoxContainer@99" unique_id=1855704630]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xk86c")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_c062o")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4e3tc")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_vffg7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hcbty")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+text = "‹"
+
+[node name="MusicChoice" type="OptionButton" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@98/@HBoxContainer@99" unique_id=275224289]
+custom_minimum_size = Vector2(140, 30)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_l1uiu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_h81us")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_16tcl")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_eaf3y")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tbn71")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_icons/arrow = SubResource("GradientTexture2D_bljsh")
+alignment = 1
+selected = 0
+item_count = 4
+popup/item_0/text = "Основная"
+popup/item_0/id = 0
+popup/item_1/text = "Трек 1"
+popup/item_1/id = 1
+popup/item_2/text = "Трек 2"
+popup/item_2/id = 2
+popup/item_3/text = "Трек 3"
+popup/item_3/id = 3
+
+[node name="MusicNext" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/SoundPage/@PanelContainer@98/@HBoxContainer@99" unique_id=495047601]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5a6bp")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_785cy")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_de1e5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_8n1ge")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jnv3a")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+text = "›"
+
+[node name="GamePage" type="VBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages" unique_id=1579875926]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_constants/separation = 7
+theme_override_constants/separation = 3
 
-[node name="@Label@70" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=92312422]
+[node name="ControlsPage" type="VBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages" unique_id=1612932935]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 3
+
+[node name="@Label@101" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=1117032260]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 text = "УПРАВЛЕНИЕ"
 
-[node name="@PanelContainer@71" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=1385479834]
+[node name="@PanelContainer@102" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=1613954732]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_f2bph")
+theme_override_styles/panel = SubResource("StyleBoxFlat_csq3k")
 
-[node name="@HBoxContainer@72" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@71" unique_id=749893652]
-custom_minimum_size = Vector2(0, 42)
+[node name="@HBoxContainer@103" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@102" unique_id=1090116097]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="@Label@73" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@71/@HBoxContainer@72" unique_id=602539273]
+[node name="@Label@104" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@102/@HBoxContainer@103" unique_id=1712780137]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 text = "Движение"
 
-[node name="@Label@74" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@71/@HBoxContainer@72" unique_id=131401245]
+[node name="@Label@105" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@102/@HBoxContainer@103" unique_id=717413363]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(0.50980395, 0.49803922, 0.44705883, 1)
 text = "WASD / стрелки"
 
-[node name="@PanelContainer@75" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=1926052482]
+[node name="@PanelContainer@106" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=2042864016]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_t4pqo")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ex6ru")
 
-[node name="@HBoxContainer@76" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@75" unique_id=1339672533]
-custom_minimum_size = Vector2(0, 42)
+[node name="@HBoxContainer@107" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@106" unique_id=1313284357]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="@Label@77" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@75/@HBoxContainer@76" unique_id=869157464]
+[node name="@Label@108" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@106/@HBoxContainer@107" unique_id=1809482882]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 text = "Взгляд"
 
-[node name="@Label@78" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@75/@HBoxContainer@76" unique_id=861453442]
+[node name="@Label@109" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@106/@HBoxContainer@107" unique_id=2038677525]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(0.50980395, 0.49803922, 0.44705883, 1)
 text = "Мышь"
 
-[node name="@PanelContainer@79" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=2128773165]
+[node name="@PanelContainer@110" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=121905127]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_hpjsa")
+theme_override_styles/panel = SubResource("StyleBoxFlat_kxvtg")
 
-[node name="@HBoxContainer@80" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@79" unique_id=1347574811]
-custom_minimum_size = Vector2(0, 42)
+[node name="@HBoxContainer@111" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@110" unique_id=1042565895]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="@Label@81" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@79/@HBoxContainer@80" unique_id=605055422]
+[node name="@Label@112" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@110/@HBoxContainer@111" unique_id=1093550820]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 text = "Спринт"
 
-[node name="@Label@82" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@79/@HBoxContainer@80" unique_id=1514068294]
+[node name="@Label@113" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@110/@HBoxContainer@111" unique_id=197933947]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(0.50980395, 0.49803922, 0.44705883, 1)
 text = "Shift"
 
-[node name="@PanelContainer@83" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=1572605206]
+[node name="@PanelContainer@114" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=1569480430]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6ab3c")
+theme_override_styles/panel = SubResource("StyleBoxFlat_b5x72")
 
-[node name="@HBoxContainer@84" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@83" unique_id=1714090684]
-custom_minimum_size = Vector2(0, 42)
+[node name="@HBoxContainer@115" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@114" unique_id=1284514532]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="@Label@85" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@83/@HBoxContainer@84" unique_id=107911621]
+[node name="@Label@116" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@114/@HBoxContainer@115" unique_id=1080682000]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 text = "Фонарик"
 
-[node name="@Label@86" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@83/@HBoxContainer@84" unique_id=653565123]
+[node name="@Label@117" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@114/@HBoxContainer@115" unique_id=72705085]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(0.50980395, 0.49803922, 0.44705883, 1)
 text = "F"
 
-[node name="@PanelContainer@87" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=374721481]
+[node name="@PanelContainer@118" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=1665568586]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_p18fb")
+theme_override_styles/panel = SubResource("StyleBoxFlat_icnjr")
 
-[node name="@HBoxContainer@88" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@87" unique_id=1751868275]
-custom_minimum_size = Vector2(0, 42)
+[node name="@HBoxContainer@119" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@118" unique_id=1199778534]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="@Label@89" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@87/@HBoxContainer@88" unique_id=950115648]
+[node name="@Label@120" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@118/@HBoxContainer@119" unique_id=1619277484]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 text = "Проверка захвата"
 
-[node name="@Label@90" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@87/@HBoxContainer@88" unique_id=307235543]
+[node name="@Label@121" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@118/@HBoxContainer@119" unique_id=816992017]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(0.50980395, 0.49803922, 0.44705883, 1)
 text = "Пробел"
 
-[node name="@PanelContainer@91" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=1458313161]
+[node name="@PanelContainer@122" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=1594840293]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0mihx")
+theme_override_styles/panel = SubResource("StyleBoxFlat_44jky")
 
-[node name="@HBoxContainer@92" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@91" unique_id=1141504873]
-custom_minimum_size = Vector2(0, 42)
+[node name="@HBoxContainer@123" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@122" unique_id=1757560114]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="@Label@93" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@91/@HBoxContainer@92" unique_id=231988708]
+[node name="@Label@124" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@122/@HBoxContainer@123" unique_id=1139828735]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 text = "Пауза"
 
-[node name="@Label@94" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@91/@HBoxContainer@92" unique_id=314342146]
+[node name="@Label@125" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@122/@HBoxContainer@123" unique_id=1840250044]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(0.50980395, 0.49803922, 0.44705883, 1)
 text = "Esc"
 
-[node name="@PanelContainer@95" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=165532066]
+[node name="@PanelContainer@126" type="PanelContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage" unique_id=2060510435]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_3aoqq")
+theme_override_styles/panel = SubResource("StyleBoxFlat_no1o3")
 
-[node name="@HBoxContainer@96" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@95" unique_id=1545856940]
-custom_minimum_size = Vector2(0, 42)
+[node name="@HBoxContainer@127" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@126" unique_id=251935425]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="@Label@97" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@95/@HBoxContainer@96" unique_id=1464765675]
+[node name="@Label@128" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@126/@HBoxContainer@127" unique_id=850168111]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 theme_override_colors/font_color = Color(0.77254903, 0.75686276, 0.69803923, 1)
 text = "Полный экран"
 
-[node name="@Label@98" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@95/@HBoxContainer@96" unique_id=1952962508]
+[node name="@Label@129" type="Label" parent="Layout/pause_overlay/SettingsPanel/Frame/Body/Pages/ControlsPage/@PanelContainer@126/@HBoxContainer@127" unique_id=988059399]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(0.50980395, 0.49803922, 0.44705883, 1)
 text = "F11"
 
-[node name="Footer" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame" unique_id=1786986852]
+[node name="Footer" type="HBoxContainer" parent="Layout/pause_overlay/SettingsPanel/Frame" unique_id=1541579199]
 layout_mode = 2
 
-[node name="SettingsBack" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Footer" unique_id=919918848]
+[node name="SettingsBack" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Footer" unique_id=454205888]
 custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cwhb6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_axqcl")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_olush")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_qolbp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_m7byw")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
 text = "[ESC]  НАЗАД"
 alignment = 0
 
-[node name="@Control@99" type="Control" parent="Layout/pause_overlay/SettingsPanel/Frame/Footer" unique_id=1897389000]
+[node name="@Control@130" type="Control" parent="Layout/pause_overlay/SettingsPanel/Frame/Footer" unique_id=1079537424]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="ApplySettings" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Footer" unique_id=1405845908]
+[node name="ApplySettings" type="Button" parent="Layout/pause_overlay/SettingsPanel/Frame/Footer" unique_id=917227525]
 custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xh1t0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_goghv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5j2qc")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_gnjv5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a65uy")
+theme_override_colors/font_focus_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9647059, 0.87058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.9647059, 0.87058824, 1)
 text = "[ENTER]  ПРИМЕНИТЬ"
 alignment = 0
 
-[node name="FpsCounter" type="Label" parent="Layout" unique_id=1613166459]
+[node name="FpsCounter" type="Label" parent="Layout" unique_id=1832277694]
 visible = false
 layout_mode = 0
 anchor_left = 1.0
@@ -1154,10 +2508,9 @@ theme_override_font_sizes/font_size = 16
 theme_override_colors/font_color = Color(0.8745098, 0.83137256, 0.7372549, 1)
 horizontal_alignment = 2
 
-[node name="GrabSkillCheck" type="Control" parent="Layout" unique_id=682356102]
+[node name="GrabSkillCheck" parent="Layout" unique_id=1949579334 instance=ExtResource("10_jpq7v")]
 visible = false
 anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-script = ExtResource("5_ehshv")

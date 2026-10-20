@@ -27,7 +27,12 @@ func run() -> void:
 	game.get_node("Stalker").global_position = fixture.global_position
 	fixture.danger_probe = 0.0
 	fixture._process(0.1)
-	expect(fixture.light_state == 0 and not fixture.danger, "Other monsters never trigger lamp disturbance")
+	expect(fixture.light_state == 2 and fixture.danger, "Nearby active secondary hunters also disturb the lamp")
+	game.get_node("SecondMonster").active = false
+	game.get_node("Stalker").active = false
+	fixture.danger_probe = 0.0
+	fixture._process(0.1)
+	expect(fixture.light_state == 0 and not fixture.danger, "Inactive secondary hunters do not disturb the lamp")
 	first.active = true
 	first.global_position = fixture.global_position + Vector2(300, 0)
 	fixture.danger_probe = 0.0
@@ -44,6 +49,9 @@ func run() -> void:
 	fixture.danger_probe = 0.0
 	fixture._process(0.1)
 	expect(fixture.light_state == 0 and not fixture.get_node("Housing/Sparks").emitting, "Leaving restores ordinary flicker and stops new sparks")
+	for hunter_name in ["SecondMonster", "Stalker"]:
+		game.get_node(hunter_name).global_position = fixture.global_position + Vector2(1000, 0)
+		game.get_node(hunter_name).active = true
 	expect(overhead.fixtures.size() == 6 and overhead.shadow_texture.get_height() == 6, "All six fixtures have shadow-map rows")
 	var bunker: Node2D = overhead.get_node("Fixtures/WallLampUpperLeft")
 	expect(bunker.position.x < -1000 and bunker.position.y < -1000 and bunker.fixture_kind == "bunker", "Sixth lamp is a wall bunker fixture in the upper-left zone")
@@ -69,5 +77,5 @@ func run() -> void:
 		if lamp.fixture_kind == "fluorescent": expect("fluorescent_top" in lamp.get_node("Housing/Lens").texture.resource_path, "Fluorescent lamp shows its upper metal case")
 	var vignette: CanvasLayer = game.get_node("Vignette")
 	expect(vignette.layer < game.get_node("HUD").layer and vignette.get_node("Edges").mouse_filter == Control.MOUSE_FILTER_IGNORE, "Vignette darkens the world without dimming HUD or blocking input")
-	print("RESULT first-monster lamp states, six lights, rubble variants, nearest ambush and vignette: %d failure(s)" % failures)
+	print("RESULT active-hunter lamp states, six lights, rubble variants, nearest ambush and vignette: %d failure(s)" % failures)
 	quit(0 if failures == 0 else 1)

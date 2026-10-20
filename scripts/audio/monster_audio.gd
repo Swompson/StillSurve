@@ -20,7 +20,7 @@ func _ready() -> void:
 	volume_db = -1.0
 	panning_strength = 1.0
 	howl_player.attenuation = 0.0
-	bus = &"Master"
+	bus = &"Effects"
 
 func _process(delta: float) -> void:
 	var monster: CharacterBody2D = get_parent() as CharacterBody2D

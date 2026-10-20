@@ -17,11 +17,20 @@ func run() -> void:
 	intro._process(2.0)
 	assert(intro.get_node("Title").modulate.a > 0.9)
 	for frame in range(120):
-		if ResourceLoader.load_threaded_get_status("res://scenes/game.tscn") == ResourceLoader.THREAD_LOAD_LOADED: break
+		if ResourceLoader.load_threaded_get_status("res://scenes/ui/main_menu.tscn") == ResourceLoader.THREAD_LOAD_LOADED: break
 		await process_frame
 	intro.finish()
+	assert(not intro.leaving)
+	intro.elapsed = 4.4
+	intro._process(0.0)
+	await RenderingServer.frame_post_draw
+	var faded_image: Image = root.get_texture().get_image()
+	assert(faded_image.get_pixel(20, 20).get_luminance() < 0.002)
+	faded_image.save_png("res://.godot/intro_fade_preview.png")
+	intro.elapsed = intro.DURATION
+	intro.finish()
 	for frame in range(8): await process_frame
-	assert(current_scene.name == "Game" and not paused)
+	assert(current_scene.name == "MainMenu" and not paused)
 	assert(Input.mouse_mode == Input.MOUSE_MODE_VISIBLE)
-	print("RESULT custom intro fade, asynchronous preload, skip and game transition: passed")
+	print("RESULT custom intro fade, blocked skip and main menu transition: passed")
 	quit()

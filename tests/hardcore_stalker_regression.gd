@@ -25,7 +25,12 @@ func load_game(hard: bool) -> Node:
 func run() -> void:
 	var body: Node2D = load("res://scenes/actors/stalker_body.tscn").instantiate()
 	expect(body.has_node("Torso") and body.has_node("Head") and body.has_node("LeftFoot") and body.has_node("RightFoot"), "Stalker is an authored textured biped in the editor")
-	expect(not body.has_node("LeftThigh") and not body.has_node("RightShin"), "Overhead model has feet without exposed leg segments")
+	for prefix in ["Left", "Right"]:
+		for suffix in ["Thigh", "Shin", "Knee", "Foot"]:
+			var part: Sprite2D = body.get_node_or_null(NodePath(prefix + suffix)) as Sprite2D
+			expect(part != null, "Stalker overhead legs must save %s%s in the editor" % [prefix, suffix])
+			if part != null:
+				expect(part.z_index < body.get_node("Torso").z_index, "Stalker %s%s must remain occluded by its torso" % [prefix, suffix])
 	body.free()
 	var game: Node = await load_game(false)
 	expect(game.get("monsters").size() == 2 and not game.get_node("Stalker").visible, "Normal mode retains two existing hunters")
@@ -56,7 +61,7 @@ func run() -> void:
 	growl.cooldown = 0.0
 	growl._process(1.0)
 	expect(growl.playing and growl.volume_db > -2.0 and growl.attenuation == 0.0, "Close hunter is audible without double distance attenuation")
-	expect(growl.bus == &"Master" and AudioServer.get_bus_effect(0, 1) is AudioEffectReverb, "Monster audio retains the shared hall acoustics")
+	expect(growl.bus == &"Effects" and AudioServer.get_bus_effect(0, 1) is AudioEffectReverb, "Monster audio retains the shared hall acoustics")
 	var circle: CircleShape2D = CircleShape2D.new()
 	circle.radius = 20.0
 	var query: PhysicsShapeQueryParameters2D = PhysicsShapeQueryParameters2D.new()
@@ -188,7 +193,7 @@ func run() -> void:
 	stalker.submit_check()
 	expect(player.battery == 52.0 and stalker.results.size() == 3, "Additional input cannot exceed three checks")
 	stalker.update_grab(2.9)
-	expect(stalker.state == "grab", "Quick answers retain the full three-second struggle")
+	expect(stalker.state == "flee" and not player.grabbed, "Three quick answers release the player without waiting for the timer")
 	stalker.update_grab(0.1)
 	expect(stalker.state == "flee" and not player.grabbed, "Monster releases and flees after exactly three seconds")
 	expect(player.get_node("Camera").offset == Vector2.ZERO, "Release resets camera shake")
@@ -216,7 +221,11 @@ func run() -> void:
 	expect(stalker.state != "leap" and stalker.attack_cooldown > 0.0, "Cooldown prevents another nearby attack for fifteen seconds")
 	stalker.attack_cooldown = 0.0
 	stalker.begin_flee(6.0)
-	for tick in range(120): stalker._physics_process(1.0 / 60.0)
+	# move_and_slide uses the engine frame delta, so movement checks must run in
+	# actual physics frames rather than calling 120 times in one render frame.
+	for tick in range(120):
+		await physics_frame
+		stalker._physics_process(1.0 / 60.0)
 	expect(stalker.global_position.distance_to(player.global_position) > 220.0, "Released hunter actually runs away through the maze")
 	# Light fear is independent of the ambient visibility circle.
 	stalker.state = "stalk"

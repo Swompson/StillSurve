@@ -27,7 +27,7 @@ static func find_corner(hunter: Node2D, objective: Node2D) -> Dictionary:
 			if not hunter.maze.can_walk_line(point, trigger) or not hunter.dark_segment(point, trigger): continue
 			var score: float = progress + hunter.global_position.distance_to(point) * 0.3
 			if score >= best: continue
-			var travel: PackedVector2Array = hunter.navigation.route(hunter.global_position, point)
+			var travel: PackedVector2Array = hunter.navigation.concealed_route(hunter.global_position, point, hero)
 			if travel.is_empty(): continue
 			var length: float = hunter.global_position.distance_to(travel[0])
 			for step in range(1, travel.size()): length += travel[step - 1].distance_to(travel[step])

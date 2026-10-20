@@ -13,6 +13,15 @@ func _initialize() -> void:
 func check_authored_body(kind: String) -> void:
 	# Inspect before entering the tree: none of these sprites can come from _ready.
 	var body: Node2D = load("res://scenes/actors/%s_body.tscn" % kind).instantiate()
+	if kind == "player":
+		expect(body.get_node("Torso") is Sprite2D and body.get_node("Head") is Sprite2D, "Editor must have saved player torso and head sprites")
+		for side in ["Left", "Right"]:
+			for part in ["Thigh", "Shin", "Knee", "Foot"]:
+				var sprite: Sprite2D = body.get_node(side + part)
+				expect(sprite.texture != null and sprite.z_index < body.get_node("Torso").z_index, "Authored leg parts must stay underneath the torso")
+		expect(not body.has_node("ModelViewport"), "The player must render directly in 2D")
+		body.free()
+		return
 	expect(body.has_node("Torso") and body.has_node("Head"), "Editor must have saved torso/head sprites")
 	expect(body.has_node("LeftFoot") and body.has_node("RightFoot"), "Editor must have saved foot sprites")
 	expect(not body.has_node("LeftThigh") and not body.has_node("LeftShin") and not body.has_node("LeftKnee"), "Overhead bodies must not contain intermediate leg parts")
@@ -70,12 +79,12 @@ func run_chase(recovery: bool) -> void:
 	var player_sprite: Node2D = player.get_node("Sprite")
 	expect(player_sprite.has_node("ArticulatedBody"), "Player must use its saved body scene")
 	expect(monster.has_node("Visual/ArticulatedBody"), "Monster must use the same saved model in editor and game")
-	expect(maze.has_node("CorridorDetails/Rubble00/Surface/Concrete"), "Rubble geometry must be saved and visible in the editor")
+	expect(maze.get_node("CorridorDetails/Rubble00/Surface") is Sprite2D, "Rubble artwork must be saved and visible in the editor")
 	expect(AudioServer.get_bus_effect(0, 0) is AudioEffectDelay, "Every sound must pass through hall early reflections")
 	expect(AudioServer.get_bus_effect(0, 1) is AudioEffectReverb, "Every sound must pass through the hall reverb")
 	expect(not AudioServer.is_bus_bypassing_effects(0), "Hall effects must be enabled")
 	for bus in range(1, AudioServer.bus_count):
-		expect(AudioServer.get_bus_send(bus) == &"Master", "All sound buses must reach shared hall acoustics")
+		expect(AudioServer.get_bus_send(bus) == (&"Environment" if AudioServer.get_bus_name(bus) == &"Ambience" else &"Master"), "All sound buses must reach shared hall acoustics")
 	var sound: AudioStream = player.get("SWITCH_ON")
 	expect(sound.resource_path.ends_with("user_switch_on.wav"), "Flashlight must use the user-provided recording")
 	expect(int(maze.call("cell_at", maze.call("cell_position", 60))) == 60, "Navigation must account for the maze transform")

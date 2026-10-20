@@ -37,6 +37,9 @@ func run() -> void:
 	var budget: Node = root.get_node("RuntimeBudget")
 	# The benchmark forces foreground/background states, even in a hidden test window.
 	budget.set_process(false)
+	budget.set_process_input(false)
+	root.focus_entered.disconnect(budget.mark_focused)
+	root.focus_exited.disconnect(budget.request_background)
 	budget.mark_focused()
 	var game: Node = current_scene
 	game.immortal = true

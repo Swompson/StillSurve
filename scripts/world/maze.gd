@@ -5,8 +5,9 @@ extends Node2D
 @export var cell_size: float = 320.0
 @export var connections: PackedInt32Array
 var graph: AStar2D = AStar2D.new()
+var warehouse_navigation: AStar2D
 const WALL_SCENE = preload("res://scenes/world/wall.tscn")
-const RUBBLE = preload("res://scripts/world/rubble.gd")
+const RUBBLE = preload("res://scenes/world/rubble.tscn")
 const OFFSETS: Array[Vector2i] = [Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT]
 const BITS: Array[int] = [1, 2, 4, 8]
 
@@ -45,7 +46,8 @@ func build_corridor_details() -> void:
 			door_count += 1
 	for index in range(16):
 		var cell: int = (index * 17 + 19) % (width * height)
-		var debris: StaticBody2D = RUBBLE.new()
+		var debris: StaticBody2D = RUBBLE.instantiate()
+		debris.set("visual_variant", index % 4)
 		debris.name = "Rubble%02d" % index
 		debris.position = cell_local_position(cell) + Vector2(100.0 if index % 2 == 0 else -100.0, 105.0)
 		debris.rotation = -0.22 if index % 2 == 0 else 0.18
@@ -63,7 +65,8 @@ func build_corner_cover(details: Node2D) -> void:
 			var next: int = (corner + 1) % 4
 			if connections[cell] & BITS[corner] or connections[cell] & BITS[next]:
 				continue
-			var debris: StaticBody2D = RUBBLE.new()
+			var debris: StaticBody2D = RUBBLE.instantiate()
+			debris.set("visual_variant", count % 4)
 			debris.name = "CornerCover%02d" % count
 			var offset: Vector2 = Vector2(OFFSETS[corner] + OFFSETS[next]) * 94.0
 			debris.position = cell_local_position(cell) + offset
@@ -88,14 +91,49 @@ func cell_at(point: Vector2) -> int:
 	return y * width + x
 
 func find_path(from: Vector2, to: Vector2) -> PackedVector2Array:
-	return graph.get_point_path(cell_at(from), cell_at(to))
+	return refine_warehouse_path(from, to, graph.get_point_path(cell_at(from), cell_at(to)))
+
+func refine_warehouse_path(from: Vector2, to: Vector2, coarse: PackedVector2Array) -> PackedVector2Array:
+	if not has_node("Warehouse"): return coarse
+	var warehouse: Node2D = get_node("Warehouse")
+	var local_bounds: Rect2 = warehouse.get_meta("bounds")
+	var area: Rect2 = Rect2(warehouse.to_global(local_bounds.position), local_bounds.size).grow(preload("res://scripts/world/warehouse_navigation.gd").MARGIN)
+	if coarse.is_empty():
+		if not area.has_point(from) or not area.has_point(to): return coarse
+		return warehouse_detour(from, to)
+	var points: PackedVector2Array = PackedVector2Array([from])
+	points.append_array(coarse)
+	points.append(to)
+	var result: PackedVector2Array = PackedVector2Array()
+	var changed: bool = false
+	for index in range(1, points.size()):
+		var previous: Vector2 = points[index - 1]
+		var next: Vector2 = points[index]
+		if area.has_point(previous) and area.has_point(next) and not can_walk_line(previous, next):
+			var detour: PackedVector2Array = warehouse_detour(previous, next)
+			if detour.is_empty(): return PackedVector2Array()
+			result.append_array(detour)
+			changed = true
+		else:
+			result.append(next)
+	return result if changed else coarse
+
+func warehouse_detour(from: Vector2, to: Vector2) -> PackedVector2Array:
+	if warehouse_navigation == null:
+		warehouse_navigation = preload("res://scripts/world/warehouse_navigation.gd").new()
+		warehouse_navigation.build(self)
+	return warehouse_navigation.route(from, to)
 
 func find_alternate_path(from: Vector2, to: Vector2, direct_route: PackedVector2Array) -> PackedVector2Array:
 	# Reserve the direct hunter's final corridor; restore the shared graph immediately.
 	if direct_route.size() < 2:
 		return PackedVector2Array()
-	var entry: int = cell_at(direct_route[direct_route.size() - 2])
 	var goal: int = cell_at(to)
+	var entry: int = goal
+	# Fine warehouse waypoints can share the goal cell; reserve its actual entry.
+	for index in range(direct_route.size() - 2, -1, -1):
+		entry = cell_at(direct_route[index])
+		if entry != goal: break
 	if not graph.are_points_connected(entry, goal):
 		return PackedVector2Array()
 	graph.disconnect_points(entry, goal)

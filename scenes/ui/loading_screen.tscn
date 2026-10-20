@@ -1,0 +1,90 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/loading_screen.gd" id="script"]
+[ext_resource type="Texture2D" path="res://assets/ui/loading/basement_animation.tres" id="background"]
+[ext_resource type="FontFile" path="res://assets/fonts/sjz/Sjz.otf" id="font"]
+[ext_resource type="Shader" path="res://shaders/loading_progress.gdshader" id="grain"]
+[ext_resource type="AudioStream" path="res://assets/audio/user_originals/loading_screen.mp3" id="audio_loading"]
+
+[sub_resource type="ShaderMaterial" id="progress_material"]
+shader = ExtResource("grain")
+
+[sub_resource type="StyleBoxFlat" id="track"]
+bg_color = Color(0.10, 0.095, 0.08, 0.72)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.28, 0.27, 0.23, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="fill"]
+bg_color = Color(0.70, 0.68, 0.60, 0.94)
+border_width_top = 1
+border_color = Color(0.84, 0.82, 0.75, 1)
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("script")
+
+[node name="Black" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 1)
+mouse_filter = 2
+
+[node name="LoadingAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("audio_loading")
+bus = &"Effects"
+volume_db = -26.0
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 2
+texture = ExtResource("background")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="HUD" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Progress" type="ProgressBar" parent="HUD"]
+material = SubResource("progress_material")
+anchor_left = 0.355
+anchor_top = 0.865
+anchor_right = 0.645
+anchor_bottom = 0.865
+offset_bottom = 6.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("track")
+theme_override_styles/fill = SubResource("fill")
+show_percentage = false
+
+[node name="Error" type="Label" parent="HUD"]
+visible = false
+anchor_left = 0.2
+anchor_top = 0.72
+anchor_right = 0.8
+anchor_bottom = 0.78
+theme_override_fonts/font = ExtResource("font")
+theme_override_font_sizes/font_size = 26
+text = "Не удалось загрузить сцену"
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="HUD"]
+visible = false
+anchor_left = 0.4
+anchor_top = 0.78
+anchor_right = 0.6
+anchor_bottom = 0.83
+theme_override_fonts/font = ExtResource("font")
+text = "ВЕРНУТЬСЯ В МЕНЮ"

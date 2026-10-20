@@ -27,4 +27,4 @@ max_distance = 4200.0
 attenuation = 0.0
 panning_strength = 2.0
 volume_db = -7.0
-bus = &"Master"
+bus = &"Effects"

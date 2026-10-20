@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/rubble.gd" id="script"]
+[ext_resource type="Texture2D" path="res://assets/textures/rubble/stone_mask_0.svg" id="texture"]
+[ext_resource type="Shape2D" path="res://assets/textures/rubble/broken_concrete_0_shape.tres" id="shape"]
+[ext_resource type="Material" path="res://assets/textures/rubble/broken_concrete_0_material.tres" id="material"]
+
+[node name="Rubble" type="StaticBody2D" groups=["rubble", "vision_blockers", "warehouse_props"]]
+z_index = 90
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("script")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = ExtResource("shape")
+
+[node name="Surface" type="Sprite2D" parent="."]
+material = ExtResource("material")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("texture")

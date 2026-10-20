@@ -37,6 +37,8 @@ func capture() -> void:
 		await RenderingServer.frame_post_draw
 		RenderingServer.force_draw(false)
 		viewport.get_texture().get_image().save_png("res://.godot/stalker_skill_%d.png" % stage)
+		hud.reparent(game)
 		stalker.submit_check(stalker.green_center)
+		hud.reparent(viewport)
 	print("Saved three skill-check sizes below bonus notifications")
 	quit()

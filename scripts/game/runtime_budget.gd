@@ -9,6 +9,7 @@ var focus_loss_pending: bool = false
 var focus_loss_elapsed: float = 0.0
 var vsync_enabled: bool = false
 var master_volume: float = 0.794328
+var category_volumes: Dictionary = {"Music": 1.0, "Environment": 1.0, "StepsRoom": 1.0, "Breathing": 1.0, "Heartbeat": 1.0, "Effects": 1.0}
 var show_fps: bool = false
 var vignette_enabled: bool = true
 signal vignette_changed(enabled: bool)
@@ -27,6 +28,9 @@ func _ready() -> void:
 	vignette_enabled = bool(settings.get_value("video", "vignette", true))
 	window_size = settings.get_value("video", "window_size", Vector2i(1280, 720))
 	AudioServer.set_bus_volume_db(0, linear_to_db(maxf(master_volume, 0.0001)))
+	for category in category_volumes:
+		category_volumes[category] = clampf(float(settings.get_value("audio", "volume_" + category, 1.0)), 0.0, 1.0)
+		apply_category_volume(category)
 	# The editor can embed the game before its first native focus event arrives.
 	# Application focus notifications are unreliable for that child window.
 	focused = true
@@ -56,6 +60,12 @@ func has_focused_game_window() -> bool:
 
 func _process(delta: float) -> void:
 	if DisplayServer.get_name() == "headless": return
+	if get_window().mode == Window.MODE_MINIMIZED:
+		if focused:
+			focus_loss_pending = false
+			focused = false
+			apply_budget()
+		return
 	if focus_loss_pending or not focused:
 		update_window_focus(has_focused_game_window(), delta)
 
@@ -82,8 +92,12 @@ func set_paused(value: bool) -> void:
 	apply_budget()
 
 func apply_budget() -> void:
-	Engine.max_fps = BACKGROUND_FPS if not focused else active_fps
-	OS.low_processor_usage_mode = not focused
+	var minimized: bool = DisplayServer.get_name() != "headless" and get_window().mode == Window.MODE_MINIMIZED
+	var background: bool = not focused or minimized
+	Engine.max_fps = BACKGROUND_FPS if background else active_fps
+	OS.low_processor_usage_mode = background
+	# Mute the final bus, including menu sounds and the building's effect tails.
+	AudioServer.set_bus_mute(0, background)
 
 func set_fps(value: int, persist: bool = true) -> void:
 	if value not in FPS_OPTIONS:
@@ -112,6 +126,21 @@ func set_master_volume(value: float) -> void:
 	master_volume = clampf(value, 0.0, 1.0)
 	AudioServer.set_bus_volume_db(0, linear_to_db(maxf(master_volume, 0.0001)))
 	save_preference("audio", "master_volume", master_volume)
+
+func apply_category_volume(category: String) -> void:
+	var index: int = AudioServer.get_bus_index(category)
+	if index < 0:
+		return
+	var amount: float = category_volumes[category]
+	AudioServer.set_bus_volume_db(index, linear_to_db(maxf(amount, 0.0001)))
+	AudioServer.set_bus_mute(index, amount <= 0.0)
+
+func set_category_volume(category: String, value: float) -> void:
+	if not category_volumes.has(category):
+		return
+	category_volumes[category] = clampf(value, 0.0, 1.0)
+	apply_category_volume(category)
+	save_preference("audio", "volume_" + category, category_volumes[category])
 
 func set_show_fps(enabled: bool) -> void:
 	show_fps = enabled

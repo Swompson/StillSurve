@@ -7,5 +7,6 @@ void fragment() {
 	float halo = exp(-length(p * vec2(1.1, 2.2)) * 6.0);
 	float noise = hash(floor(UV * vec2(1280.0, 720.0)) + floor(clock * 24.0)) * 0.012;
 	float scan = pow(max(0.0, 1.0 - abs(UV.y - fract(clock * 0.18)) * 90.0), 3.0) * 0.009;
-	COLOR = vec4(vec3(0.003, 0.006, 0.007) + vec3(0.035, 0.048, 0.045) * halo + noise + scan, 1.0);
+	float fade = 1.0 - smoothstep(3.5, 4.3, clock);
+	COLOR = vec4((vec3(0.003, 0.006, 0.007) + vec3(0.035, 0.048, 0.045) * halo + noise + scan) * fade, 1.0);
 }

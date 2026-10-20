@@ -42,6 +42,10 @@ func _ready() -> void:
 	for node in find_children("Quit*", "Button", true, false):
 		node.pressed.connect(_quit)
 	find_child("Resume", true, false).pressed.connect(func() -> void: set_paused(false))
+	find_child("MainMenu", true, false).pressed.connect(func() -> void:
+		set_paused(false)
+		Input.set_custom_mouse_cursor(null)
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/ui/main_menu.tscn"))
 	fullscreen_toggle.toggled.connect(set_fullscreen)
 	fullscreen_toggle.set_pressed_no_signal(is_fullscreen())
 	fps_choice = find_child("FpsChoice", true, false) as OptionButton
@@ -150,6 +154,13 @@ func build_layout() -> void:
 	add_quit_button(result_box, "QuitResult")
 	overlay.hide()
 	build_pause_menu(root, box_style)
+	result_box.theme = pause_overlay.get_meta("navigation_theme").duplicate()
+	result_box.theme.default_font_size = 44
+	for entry in result_box.get_children():
+		if entry is Button:
+			entry.text = entry.text.to_upper()
+			entry.custom_minimum_size.y = 56
+			pause_overlay.add_navigation_highlight(entry)
 	fps_counter = make_label("", 16)
 	fps_counter.name = "FpsCounter"
 	root.add_child(fps_counter)
@@ -159,11 +170,7 @@ func build_layout() -> void:
 	fps_counter.offset_right = -20
 	fps_counter.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	fps_counter.hide()
-	var skill_check: Control = Control.new()
-	skill_check.name = "GrabSkillCheck"
-	skill_check.set_script(load("res://scripts/ui/grab_skill_check.gd"))
-	skill_check.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	skill_check.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var skill_check: Control = preload("res://scenes/ui/grab_skill_check.tscn").instantiate()
 	skill_check.hide()
 	root.add_child(skill_check)
 	for key in ["objective", "stamina_label", "charge_label", "stamina_bar", "charge_bar", "overlay", "result_title", "result_text", "pause_overlay", "fullscreen_toggle", "status_panel", "pickup_notice"]:

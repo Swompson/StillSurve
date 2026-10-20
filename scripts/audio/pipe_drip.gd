@@ -4,9 +4,10 @@ extends AudioStreamPlayer2D
 var restart_delay: float = 0.0
 
 func _ready() -> void:
-	bus = &"Master"
+	bus = &"Effects"
 	finished.connect(_on_finished)
-	play(start_offset)
+	# Every authored joint starts at a different point of the original recording.
+	play(fmod(start_offset, maxf(stream.get_length(), 0.01)))
 
 func _process(delta: float) -> void:
 	if playing:

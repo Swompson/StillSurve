@@ -13,6 +13,7 @@ func _initialize() -> void:
 func check_bones(rig: Node2D, monstrous: bool) -> void:
 	var worst_length_error: float = 0.0
 	var worst_elbow_jump: float = 0.0
+	var free_arm_projection_valid: bool = true
 	for direction_index in range(8):
 		rig.set("travel_direction", Vector2.from_angle(direction_index * TAU / 8.0))
 		var previous: Dictionary = {}
@@ -27,18 +28,26 @@ func check_bones(rig: Node2D, monstrous: bool) -> void:
 				var shoulder: Vector2 = joints[side + "_shoulder"]
 				var elbow: Vector2 = joints[side + "_elbow"]
 				var hand: Vector2 = joints[side + "_hand"]
-				worst_length_error = maxf(worst_length_error, absf(shoulder.distance_to(elbow) - (29.0 if monstrous else 20.0)))
-				worst_length_error = maxf(worst_length_error, absf(elbow.distance_to(hand) - (32.0 if monstrous else 23.0)))
+				var upper_length: float = shoulder.distance_to(elbow)
+				var lower_length: float = elbow.distance_to(hand)
+				if monstrous or (side == "left" and is_equal_approx(float(rig.get("actor").get("flashlight_reveal")), 1.0)):
+					worst_length_error = maxf(worst_length_error, absf(upper_length - 18.0))
+					worst_length_error = maxf(worst_length_error, absf(lower_length - (24.0 if monstrous else 21.0)))
+				else:
+					free_arm_projection_valid = free_arm_projection_valid and upper_length > 0.1 and upper_length <= 18.001 and lower_length > 0.1 and lower_length <= 21.001
 				if not monstrous:
 					expect(elbow.x < shoulder.x if side == "left" else elbow.x > shoulder.x, "Player elbows must face outwards")
 				if previous.has(side):
 					worst_elbow_jump = maxf(worst_elbow_jump, elbow.distance_to(previous[side]))
 				previous[side] = elbow
-	expect(worst_length_error < 0.001, "Both actor rigs must keep every limb segment length constant")
+	expect(worst_length_error < 0.001, "Monster arms and the player's flashlight arm must keep their limb segment lengths constant")
+	expect(free_arm_projection_valid, "The player's free arm must keep a nonzero overhead projection within its physical segment lengths")
 	expect(worst_elbow_jump < 4.0, "Elbows must not flip sides during gait or flashlight draw")
 	print("BONES %s max length error %.6f; max elbow movement %.3f" % ["monster" if monstrous else "player", worst_length_error, worst_elbow_jump])
 
 func run_checks() -> void:
+	seed(31018)
+	set_meta("hard_mode", false)
 	change_scene_to_file("res://scenes/game.tscn")
 	for frame in range(4):
 		await process_frame
@@ -48,7 +57,11 @@ func run_checks() -> void:
 	var monster: CharacterBody2D = game.get_node("Monster")
 	var maze: Node2D = game.get_node("Maze")
 	player.set_physics_process(false)
-	monster.set_physics_process(false)
+	# This checks one stable investigation route. Other patrols can step on glass
+	# and legitimately redirect it to a different sound before it reaches the goal.
+	for hunter in game.get("monsters"):
+		hunter.set_physics_process(false)
+		if hunter != monster: hunter.set("active", false)
 	player.get_node("Sprite").set_process(false)
 	monster.get_node("Visual").set_process(false)
 	check_bones(player.get_node("Sprite").get("rig"), false)

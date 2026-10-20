@@ -1,0 +1,24 @@
+Use case: stylized-concept.
+Asset type: production 2D articulated sprite component atlas for Godot, a dark abandoned-building top-down survival horror game.
+Primary request: Create a NEW ORIGINAL hero texture sheet using STRICT 90-degree orthographic bird's-eye anatomy. The character silhouette must read like a person photographed straight down from the ceiling: broad short shoulders, the crown on top, limbs strongly foreshortened. This is NOT a front-view character paper doll and NOT an isometric render.
+Subject: one adult male survivor in a worn muted olive canvas hooded jacket, short dark tousled hair, brown work gloves, charcoal olive cargo trousers and scuffed dark brown work boots. The jacket has a SMALL FOLDED CLOTH HOOD at the nape of the neck, integrated into the collar. No backpack, no bag, no shoulder straps, no pouch on the back. No raised luggage-shaped object behind the head.
+Style/medium: high-quality realistic hand-painted 2D videogame sprites; tactile worn canvas, subtle seams and cloth folds, restrained rough leather. Natural painted volume with soft neutral overhead light. Crisp readable silhouettes at 70–90 pixel character size. No hard cel outlines, no cartoon flat vector treatment, no plastic 3D toy appearance. Muted low-saturation horror palette.
+Composition: ONE transparent landscape sheet, ideally 2048 x 1536 pixels, EXACTLY 4 EQUAL COLUMNS x 3 EQUAL ROWS. Each of the 12 cells contains exactly ONE isolated component, centered, with generous transparent margins on all sides. Each item stays completely inside its cell; no touching, overlap or assembled character. The sheet background must be genuine alpha transparency, not a checkerboard.
+All parts have the SAME scale of fabric detail, same lighting and material palette, and can be rotated and overlapped seamlessly by code. Limbs are CLOTHED living body parts, not exposed skeleton bones. Both ends of sleeve and trouser segments are softly rounded and carry overlapping cloth, avoiding black cut ends.
+Row 1, left to right:
+1. TORSO ONLY: directly overhead view of compact broad jacket shoulders and upper back, a wide horizontal foreshortened oval, width about 1.5 times its depth. Empty head connection at FRONT/BOTTOM center, small folded hood at the rear of that connection, no attached head, arms or legs. Show the TOP surfaces of shoulders, not the full vertical back/chest of a coat.
+2. HEAD ONLY: the crown of a short messy dark-haired man's head, directly overhead, near-circular. Minimal ears, a tiny nose tip points toward BOTTOM. No eyes, face portrait or long neck.
+3. UPPER ARM ONLY: one short olive jacket upper sleeve, straight vertical, shoulder connection at top and elbow connection at bottom, rounded cloth overlap at both ends, no hand.
+4. FOREARM ONLY: one matching olive forearm sleeve, vertical, elbow connection at top and ribbed cuff at bottom, no hand.
+Row 2, left to right:
+1. FOOT ONLY: one brown work boot seen from directly above, rounded toe points BOTTOM, restrained laces and toe cap, no attached trouser leg or ankle shaft.
+2. HAND ONLY: one relaxed work-gloved dorsal hand, fingers close together pointing BOTTOM, no attached sleeve, no open spread fingers.
+3. ELBOW CAP ONLY: one small round softly edged olive fabric cap matching the sleeves, no separate exposed bone.
+4. FLASHLIGHT ONLY: one short weathered dark metal hand flashlight seen from directly above; vertical axis, handle TOP and circular warm lens BOTTOM; no glow, no light beam, no hand.
+Row 3, left to right:
+1. THIGH CLOTH SEGMENT ONLY: one short straight charcoal olive upper trouser leg, vertical hip-to-knee axis, rounded overlap ends, no attached torso, foot or shin.
+2. SHIN CLOTH SEGMENT ONLY: one matching short straight tapered lower trouser leg, vertical knee-to-ankle axis, rounded overlap ends, no attached knee or boot.
+3. KNEE CAP ONLY: a small round softly edged charcoal olive trouser cloth cap, no armor, no exposed bone.
+4. SHOULDER CAP ONLY: one small round olive jacket cloth cap for smoothing the shoulder overlap.
+Animation purpose: torso and head will be layered ABOVE the limb segments. During the step, hands and boots and only the exposed ends of the sleeves/trousers emerge from underneath the torso, as in a real strict overhead walk cycle. Components need complete clean textures so this occlusion can happen in the engine.
+Constraints: precise 4x3 grid placement with transparent space between all twelve components; no grid lines, no text, labels, numbers, logos or watermarks; no full assembled character, no duplicated parts in a cell, no perspective, no frontal anatomy, no cast shadows on an imaginary floor.

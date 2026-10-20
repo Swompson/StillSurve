@@ -2,11 +2,20 @@
 
 [ext_resource type="Shader" path="res://shaders/concrete_wall.gdshader" id="2_fj4g1"]
 [ext_resource type="Script" path="res://scripts/world/wall.gd" id="3_omoq8"]
-[ext_resource type="Texture2D" path="res://assets/textures/rubble/broken_concrete_0.svg" id="4_wmlyr"]
+[ext_resource type="Texture2D" path="res://assets/textures/rubble/stone_mask_0.svg" id="4_wmlyr"]
 [ext_resource type="Script" path="res://scripts/world/rubble.gd" id="4_xreub"]
-[ext_resource type="Texture2D" path="res://assets/textures/rubble/broken_concrete_1.svg" id="5_1cc6u"]
-[ext_resource type="Texture2D" path="res://assets/textures/rubble/broken_concrete_2.svg" id="6_6q4yq"]
-[ext_resource type="Texture2D" path="res://assets/textures/rubble/broken_concrete_3.svg" id="7_anxtn"]
+[ext_resource type="Texture2D" path="res://assets/textures/rubble/stone_mask_1.svg" id="5_1cc6u"]
+[ext_resource type="Shape2D" path="res://assets/textures/rubble/broken_concrete_0_shape.tres" id="5_anxtn"]
+[ext_resource type="Texture2D" path="res://assets/textures/rubble/stone_mask_2.svg" id="6_6q4yq"]
+[ext_resource type="Shape2D" path="res://assets/textures/rubble/broken_concrete_1_shape.tres" id="7_00l55"]
+[ext_resource type="Texture2D" path="res://assets/textures/rubble/stone_mask_3.svg" id="7_anxtn"]
+[ext_resource type="Shape2D" path="res://assets/textures/rubble/broken_concrete_2_shape.tres" id="9_264hd"]
+[ext_resource type="Shape2D" path="res://assets/textures/rubble/broken_concrete_3_shape.tres" id="11_5c8s1"]
+
+[ext_resource type="Material" path="res://assets/textures/rubble/broken_concrete_0_material.tres" id="stone_material_0"]
+[ext_resource type="Material" path="res://assets/textures/rubble/broken_concrete_1_material.tres" id="stone_material_1"]
+[ext_resource type="Material" path="res://assets/textures/rubble/broken_concrete_2_material.tres" id="stone_material_2"]
+[ext_resource type="Material" path="res://assets/textures/rubble/broken_concrete_3_material.tres" id="stone_material_3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uyjst"]
 shader = ExtResource("2_fj4g1")
@@ -542,7 +551,7 @@ wall_size = Vector2(28, 88)
 [node name="Collision" type="CollisionShape2D" parent="Door13JambB" unique_id=36829657]
 shape = SubResource("RectangleShape2D_qrar7")
 
-[node name="Rubble00" type="StaticBody2D" parent="." unique_id=386504627]
+[node name="Rubble00" type="StaticBody2D" parent="." unique_id=386504627 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(1060, -1175)
 rotation = -0.22
@@ -550,14 +559,17 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("4_xreub")
 
-[node name="Collision" type="CollisionPolygon2D" parent="Rubble00" unique_id=444388300]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="Rubble00" unique_id=1093321179]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_0")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_wmlyr")
 
-[node name="Rubble01" type="StaticBody2D" parent="." unique_id=1137378882]
+[node name="Collision" type="CollisionShape2D" parent="Rubble00" unique_id=1586143322]
+shape = ExtResource("5_anxtn")
+
+[node name="Rubble01" type="StaticBody2D" parent="." unique_id=1137378882 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(-740, -535)
 rotation = 0.18
@@ -566,14 +578,17 @@ collision_mask = 0
 script = ExtResource("4_xreub")
 visual_variant = 1
 
-[node name="Collision" type="CollisionPolygon2D" parent="Rubble01" unique_id=131084662]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="Rubble01" unique_id=2098201404]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_1")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_1cc6u")
 
-[node name="Rubble02" type="StaticBody2D" parent="." unique_id=895211792]
+[node name="Collision" type="CollisionShape2D" parent="Rubble01" unique_id=1927606312]
+shape = ExtResource("7_00l55")
+
+[node name="Rubble02" type="StaticBody2D" parent="." unique_id=895211792 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(1380, -215)
 rotation = -0.22
@@ -582,14 +597,17 @@ collision_mask = 0
 script = ExtResource("4_xreub")
 visual_variant = 2
 
-[node name="Collision" type="CollisionPolygon2D" parent="Rubble02" unique_id=406828030]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="Rubble02" unique_id=256317865]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_2")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("6_6q4yq")
 
-[node name="Rubble03" type="StaticBody2D" parent="." unique_id=383040000]
+[node name="Collision" type="CollisionShape2D" parent="Rubble02" unique_id=1414723381]
+shape = ExtResource("9_264hd")
+
+[node name="Rubble03" type="StaticBody2D" parent="." unique_id=383040000 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(-420, 425)
 rotation = 0.18
@@ -598,14 +616,17 @@ collision_mask = 0
 script = ExtResource("4_xreub")
 visual_variant = 3
 
-[node name="Collision" type="CollisionPolygon2D" parent="Rubble03" unique_id=1469577633]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="Rubble03" unique_id=1198130845]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_3")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_anxtn")
 
-[node name="Rubble04" type="StaticBody2D" parent="." unique_id=1484414061]
+[node name="Collision" type="CollisionShape2D" parent="Rubble03" unique_id=198344691]
+shape = ExtResource("11_5c8s1")
+
+[node name="Rubble04" type="StaticBody2D" parent="." unique_id=1484414061 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(1700, 745)
 rotation = -0.22
@@ -613,14 +634,17 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("4_xreub")
 
-[node name="Collision" type="CollisionPolygon2D" parent="Rubble04" unique_id=627632010]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="Rubble04" unique_id=1585145410]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_0")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_wmlyr")
 
-[node name="Rubble05" type="StaticBody2D" parent="." unique_id=823986723]
+[node name="Collision" type="CollisionShape2D" parent="Rubble04" unique_id=1030624165]
+shape = ExtResource("5_anxtn")
+
+[node name="Rubble05" type="StaticBody2D" parent="." unique_id=823986723 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(-100, 1385)
 rotation = 0.18
@@ -629,14 +653,17 @@ collision_mask = 0
 script = ExtResource("4_xreub")
 visual_variant = 1
 
-[node name="Collision" type="CollisionPolygon2D" parent="Rubble05" unique_id=367357659]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="Rubble05" unique_id=138008905]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_1")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_1cc6u")
 
-[node name="Rubble06" type="StaticBody2D" parent="." unique_id=85544585]
+[node name="Collision" type="CollisionShape2D" parent="Rubble05" unique_id=1788405736]
+shape = ExtResource("7_00l55")
+
+[node name="Rubble06" type="StaticBody2D" parent="." unique_id=85544585 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(-1500, -1495)
 rotation = -0.22
@@ -645,14 +672,17 @@ collision_mask = 0
 script = ExtResource("4_xreub")
 visual_variant = 2
 
-[node name="Collision" type="CollisionPolygon2D" parent="Rubble06" unique_id=1581001207]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="Rubble06" unique_id=806725568]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_2")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("6_6q4yq")
 
-[node name="Rubble07" type="StaticBody2D" parent="." unique_id=15305438]
+[node name="Collision" type="CollisionShape2D" parent="Rubble06" unique_id=1206848795]
+shape = ExtResource("9_264hd")
+
+[node name="Rubble07" type="StaticBody2D" parent="." unique_id=15305438 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(220, -1175)
 rotation = 0.18
@@ -661,14 +691,17 @@ collision_mask = 0
 script = ExtResource("4_xreub")
 visual_variant = 3
 
-[node name="Collision" type="CollisionPolygon2D" parent="Rubble07" unique_id=692000908]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="Rubble07" unique_id=1511211829]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_3")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_anxtn")
 
-[node name="Rubble08" type="StaticBody2D" parent="." unique_id=2116277023]
+[node name="Collision" type="CollisionShape2D" parent="Rubble07" unique_id=2055093727]
+shape = ExtResource("11_5c8s1")
+
+[node name="Rubble08" type="StaticBody2D" parent="." unique_id=2116277023 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(-1180, -535)
 rotation = -0.22
@@ -676,14 +709,17 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("4_xreub")
 
-[node name="Collision" type="CollisionPolygon2D" parent="Rubble08" unique_id=571099539]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="Rubble08" unique_id=2120553429]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_0")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_wmlyr")
 
-[node name="Rubble09" type="StaticBody2D" parent="." unique_id=575680681]
+[node name="Collision" type="CollisionShape2D" parent="Rubble08" unique_id=1642149558]
+shape = ExtResource("5_anxtn")
+
+[node name="Rubble09" type="StaticBody2D" parent="." unique_id=575680681 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(540, -215)
 rotation = 0.18
@@ -692,14 +728,17 @@ collision_mask = 0
 script = ExtResource("4_xreub")
 visual_variant = 1
 
-[node name="Collision" type="CollisionPolygon2D" parent="Rubble09" unique_id=1008542342]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="Rubble09" unique_id=368572642]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_1")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_1cc6u")
 
-[node name="Rubble10" type="StaticBody2D" parent="." unique_id=1749429002]
+[node name="Collision" type="CollisionShape2D" parent="Rubble09" unique_id=1358039628]
+shape = ExtResource("7_00l55")
+
+[node name="Rubble10" type="StaticBody2D" parent="." unique_id=1749429002 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(-860, 425)
 rotation = -0.22
@@ -708,14 +747,17 @@ collision_mask = 0
 script = ExtResource("4_xreub")
 visual_variant = 2
 
-[node name="Collision" type="CollisionPolygon2D" parent="Rubble10" unique_id=2103621940]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="Rubble10" unique_id=1073962091]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_2")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("6_6q4yq")
 
-[node name="Rubble11" type="StaticBody2D" parent="." unique_id=1701126064]
+[node name="Collision" type="CollisionShape2D" parent="Rubble10" unique_id=120546780]
+shape = ExtResource("9_264hd")
+
+[node name="Rubble11" type="StaticBody2D" parent="." unique_id=1701126064 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(860, 745)
 rotation = 0.18
@@ -724,14 +766,17 @@ collision_mask = 0
 script = ExtResource("4_xreub")
 visual_variant = 3
 
-[node name="Collision" type="CollisionPolygon2D" parent="Rubble11" unique_id=1718872914]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="Rubble11" unique_id=1837820767]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_3")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_anxtn")
 
-[node name="Rubble12" type="StaticBody2D" parent="." unique_id=455016245]
+[node name="Collision" type="CollisionShape2D" parent="Rubble11" unique_id=1367134750]
+shape = ExtResource("11_5c8s1")
+
+[node name="Rubble12" type="StaticBody2D" parent="." unique_id=455016245 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(-540, 1385)
 rotation = -0.22
@@ -739,14 +784,17 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("4_xreub")
 
-[node name="Collision" type="CollisionPolygon2D" parent="Rubble12" unique_id=1070924088]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="Rubble12" unique_id=1558129779]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_0")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_wmlyr")
 
-[node name="Rubble13" type="StaticBody2D" parent="." unique_id=2038986439]
+[node name="Collision" type="CollisionShape2D" parent="Rubble12" unique_id=2112801538]
+shape = ExtResource("5_anxtn")
+
+[node name="Rubble13" type="StaticBody2D" parent="." unique_id=2038986439 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(1180, 1705)
 rotation = 0.18
@@ -755,14 +803,17 @@ collision_mask = 0
 script = ExtResource("4_xreub")
 visual_variant = 1
 
-[node name="Collision" type="CollisionPolygon2D" parent="Rubble13" unique_id=1485008616]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="Rubble13" unique_id=311286076]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_1")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_1cc6u")
 
-[node name="Rubble14" type="StaticBody2D" parent="." unique_id=1225484948]
+[node name="Collision" type="CollisionShape2D" parent="Rubble13" unique_id=1467166933]
+shape = ExtResource("7_00l55")
+
+[node name="Rubble14" type="StaticBody2D" parent="." unique_id=1225484948 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(-220, -1175)
 rotation = -0.22
@@ -771,14 +822,17 @@ collision_mask = 0
 script = ExtResource("4_xreub")
 visual_variant = 2
 
-[node name="Collision" type="CollisionPolygon2D" parent="Rubble14" unique_id=1605751813]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="Rubble14" unique_id=1587744977]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_2")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("6_6q4yq")
 
-[node name="Rubble15" type="StaticBody2D" parent="." unique_id=1989733825]
+[node name="Collision" type="CollisionShape2D" parent="Rubble14" unique_id=1316374922]
+shape = ExtResource("9_264hd")
+
+[node name="Rubble15" type="StaticBody2D" parent="." unique_id=1989733825 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(1500, -855)
 rotation = 0.18
@@ -787,14 +841,17 @@ collision_mask = 0
 script = ExtResource("4_xreub")
 visual_variant = 3
 
-[node name="Collision" type="CollisionPolygon2D" parent="Rubble15" unique_id=1012409787]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="Rubble15" unique_id=863499777]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_3")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_anxtn")
 
-[node name="CornerCover00" type="StaticBody2D" parent="." unique_id=732184997]
+[node name="Collision" type="CollisionShape2D" parent="Rubble15" unique_id=1924327494]
+shape = ExtResource("11_5c8s1")
+
+[node name="CornerCover00" type="StaticBody2D" parent="." unique_id=732184997 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(-1694, -1694)
 rotation = 4.832389
@@ -803,14 +860,17 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("4_xreub")
 
-[node name="Collision" type="CollisionPolygon2D" parent="CornerCover00" unique_id=1757541988]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="CornerCover00" unique_id=75610912]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_0")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_wmlyr")
 
-[node name="CornerCover01" type="StaticBody2D" parent="." unique_id=491437372]
+[node name="Collision" type="CollisionShape2D" parent="CornerCover00" unique_id=492190298]
+shape = ExtResource("5_anxtn")
+
+[node name="CornerCover01" type="StaticBody2D" parent="." unique_id=491437372 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(-546, -1694)
 rotation = 0.12
@@ -820,14 +880,17 @@ collision_mask = 0
 script = ExtResource("4_xreub")
 visual_variant = 1
 
-[node name="Collision" type="CollisionPolygon2D" parent="CornerCover01" unique_id=596381721]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="CornerCover01" unique_id=894895613]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_1")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_1cc6u")
 
-[node name="CornerCover02" type="StaticBody2D" parent="." unique_id=669568485]
+[node name="Collision" type="CollisionShape2D" parent="CornerCover01" unique_id=1877077433]
+shape = ExtResource("7_00l55")
+
+[node name="CornerCover02" type="StaticBody2D" parent="." unique_id=669568485 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(1054, -1694)
 rotation = 0.12
@@ -837,14 +900,17 @@ collision_mask = 0
 script = ExtResource("4_xreub")
 visual_variant = 2
 
-[node name="Collision" type="CollisionPolygon2D" parent="CornerCover02" unique_id=986246049]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="CornerCover02" unique_id=507597719]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_2")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("6_6q4yq")
 
-[node name="CornerCover03" type="StaticBody2D" parent="." unique_id=2082567609]
+[node name="Collision" type="CollisionShape2D" parent="CornerCover02" unique_id=1984584858]
+shape = ExtResource("9_264hd")
+
+[node name="CornerCover03" type="StaticBody2D" parent="." unique_id=2082567609 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(1694, -1694)
 rotation = 0.12
@@ -854,14 +920,17 @@ collision_mask = 0
 script = ExtResource("4_xreub")
 visual_variant = 3
 
-[node name="Collision" type="CollisionPolygon2D" parent="CornerCover03" unique_id=481157823]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="CornerCover03" unique_id=200241033]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_3")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_anxtn")
 
-[node name="CornerCover04" type="StaticBody2D" parent="." unique_id=864889394]
+[node name="Collision" type="CollisionShape2D" parent="CornerCover03" unique_id=657229380]
+shape = ExtResource("11_5c8s1")
+
+[node name="CornerCover04" type="StaticBody2D" parent="." unique_id=864889394 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(414, -1054)
 rotation = 0.12
@@ -870,14 +939,17 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("4_xreub")
 
-[node name="Collision" type="CollisionPolygon2D" parent="CornerCover04" unique_id=1540154586]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="CornerCover04" unique_id=1927194569]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_0")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_wmlyr")
 
-[node name="CornerCover05" type="StaticBody2D" parent="." unique_id=1202899318]
+[node name="Collision" type="CollisionShape2D" parent="CornerCover04" unique_id=1000003372]
+shape = ExtResource("5_anxtn")
+
+[node name="CornerCover05" type="StaticBody2D" parent="." unique_id=1202899318 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(94, -734)
 rotation = 0.12
@@ -887,14 +959,17 @@ collision_mask = 0
 script = ExtResource("4_xreub")
 visual_variant = 1
 
-[node name="Collision" type="CollisionPolygon2D" parent="CornerCover05" unique_id=268463259]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="CornerCover05" unique_id=870873164]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_1")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_1cc6u")
 
-[node name="CornerCover06" type="StaticBody2D" parent="." unique_id=456159628]
+[node name="Collision" type="CollisionShape2D" parent="CornerCover05" unique_id=829037058]
+shape = ExtResource("7_00l55")
+
+[node name="CornerCover06" type="StaticBody2D" parent="." unique_id=456159628 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(-226, -414)
 rotation = 0.12
@@ -904,14 +979,17 @@ collision_mask = 0
 script = ExtResource("4_xreub")
 visual_variant = 2
 
-[node name="Collision" type="CollisionPolygon2D" parent="CornerCover06" unique_id=1132347277]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="CornerCover06" unique_id=1889004470]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_2")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("6_6q4yq")
 
-[node name="CornerCover07" type="StaticBody2D" parent="." unique_id=1847533721]
+[node name="Collision" type="CollisionShape2D" parent="CornerCover06" unique_id=1875112924]
+shape = ExtResource("9_264hd")
+
+[node name="CornerCover07" type="StaticBody2D" parent="." unique_id=1847533721 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(414, -226)
 rotation = 1.6907964
@@ -921,14 +999,17 @@ collision_mask = 0
 script = ExtResource("4_xreub")
 visual_variant = 3
 
-[node name="Collision" type="CollisionPolygon2D" parent="CornerCover07" unique_id=1269507797]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="CornerCover07" unique_id=1905151884]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_3")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_anxtn")
 
-[node name="CornerCover08" type="StaticBody2D" parent="." unique_id=433609251]
+[node name="Collision" type="CollisionShape2D" parent="CornerCover07" unique_id=682891547]
+shape = ExtResource("11_5c8s1")
+
+[node name="CornerCover08" type="StaticBody2D" parent="." unique_id=433609251 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(1374, -226)
 rotation = 1.6907964
@@ -937,14 +1018,17 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("4_xreub")
 
-[node name="Collision" type="CollisionPolygon2D" parent="CornerCover08" unique_id=752628583]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="CornerCover08" unique_id=1177867840]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_0")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_wmlyr")
 
-[node name="CornerCover09" type="StaticBody2D" parent="." unique_id=1093953856]
+[node name="Collision" type="CollisionShape2D" parent="CornerCover08" unique_id=122753549]
+shape = ExtResource("5_anxtn")
+
+[node name="CornerCover09" type="StaticBody2D" parent="." unique_id=1093953856 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(-1694, 94)
 rotation = 3.2615926
@@ -954,14 +1038,17 @@ collision_mask = 0
 script = ExtResource("4_xreub")
 visual_variant = 1
 
-[node name="Collision" type="CollisionPolygon2D" parent="CornerCover09" unique_id=530623437]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="CornerCover09" unique_id=1129973648]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_1")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_1cc6u")
 
-[node name="CornerCover10" type="StaticBody2D" parent="." unique_id=1542103928]
+[node name="Collision" type="CollisionShape2D" parent="CornerCover09" unique_id=1684931459]
+shape = ExtResource("7_00l55")
+
+[node name="CornerCover10" type="StaticBody2D" parent="." unique_id=1542103928 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(94, -94)
 rotation = 0.12
@@ -971,14 +1058,17 @@ collision_mask = 0
 script = ExtResource("4_xreub")
 visual_variant = 2
 
-[node name="Collision" type="CollisionPolygon2D" parent="CornerCover10" unique_id=1762277665]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="CornerCover10" unique_id=1604224040]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_2")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("6_6q4yq")
 
-[node name="CornerCover11" type="StaticBody2D" parent="." unique_id=1306303082]
+[node name="Collision" type="CollisionShape2D" parent="CornerCover10" unique_id=802186108]
+shape = ExtResource("9_264hd")
+
+[node name="CornerCover11" type="StaticBody2D" parent="." unique_id=1306303082 groups=["rubble", "vision_blockers", "warehouse_props"]]
 z_index = 90
 position = Vector2(1054, 94)
 rotation = 1.6907964
@@ -988,9 +1078,12 @@ collision_mask = 0
 script = ExtResource("4_xreub")
 visual_variant = 3
 
-[node name="Collision" type="CollisionPolygon2D" parent="CornerCover11" unique_id=1442458878]
-polygon = PackedVector2Array(-37, -10, -24, -22, -3, -16, 16, -21, 36, -4, 26, 16, 5, 20, -28, 15)
-
 [node name="Surface" type="Sprite2D" parent="CornerCover11" unique_id=1392251739]
-scale = Vector2(0.82, 0.82)
+material = ExtResource("stone_material_3")
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_anxtn")
+
+[node name="Collision" type="CollisionShape2D" parent="CornerCover11" unique_id=1807649868]
+shape = ExtResource("11_5c8s1")

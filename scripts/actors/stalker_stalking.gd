@@ -87,6 +87,7 @@ func target(hunter: Node2D) -> Vector2:
 	# Once spotted, change side and seek an actual occluded corner.
 	var best: float = INF
 	var chosen: Vector2 = behind
+	var start: int = hunter.navigation.get_closest_point(hunter.global_position)
 	for index in range(16):
 		var angle: float = float(hero.facing_angle) + PI + hunter.flank_side * (0.35 + index * 0.15)
 		var sample: Vector2 = hero.global_position + Vector2.from_angle(angle) * (150.0 if index % 2 == 0 else 300.0)
@@ -95,7 +96,7 @@ func target(hunter: Node2D) -> Vector2:
 		var hidden: bool = not hunter.maze.clear_line(hero.global_position, point)
 		var score: float = point.distance_to(behind) * 0.65 + point.distance_to(hunter.global_position) * 0.4 - (450.0 if hidden else 0.0)
 		if (point - hero.global_position).normalized().dot(facing) > 0.15: score += 600.0
-		if score < best and not hunter.navigation.route(hunter.global_position, point).is_empty():
+		if score < best and hunter.navigation.has_route(start, hunter.navigation.get_closest_point(point)):
 			best = score
 			chosen = point
 	return chosen

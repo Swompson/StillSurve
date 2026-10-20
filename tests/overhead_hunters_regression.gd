@@ -39,7 +39,7 @@ func run_checks() -> void:
 		expect(float(voice.call("distance_gain_db", 90.0, 1150.0)) > float(voice.call("distance_gain_db", 1000.0, 1150.0)) + 25.0, "Near monsters sound substantially louder than distant monsters")
 		for drip_index in range(1, 4):
 			var drip: AudioStreamPlayer2D = game.get_node("Maze/Overhead/PipeDrip%d" % drip_index)
-			expect(drip.stream.resource_path.ends_with("waterdrop.mp3") and drip.bus == &"Master", "Original waterdrop uses the shared building acoustics")
+			expect(drip.stream.resource_path.ends_with("waterdrop.mp3") and drip.bus == &"Effects", "Original waterdrop uses the shared building acoustics")
 		var fixture: Node2D = fixtures[0]
 		for hunter in hunters: hunter.global_position = fixture.global_position + Vector2(1000, 0)
 		fixture.set("blink_timer", 0.0)

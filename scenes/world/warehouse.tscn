@@ -1,0 +1,234 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/warehouse/shelving_top.svg" id="rack"]
+[ext_resource type="Texture2D" path="res://assets/textures/warehouse/loaded_pallet_top.svg" id="pallet"]
+[ext_resource type="Texture2D" path="res://assets/textures/warehouse/shipping_crate_top.svg" id="crate"]
+[ext_resource type="Texture2D" path="res://assets/textures/warehouse/steel_drum_top.svg" id="drum"]
+[ext_resource type="Texture2D" path="res://assets/textures/warehouse/floor_bays.svg" id="paint"]
+[ext_resource type="Script" path="res://scripts/world/warehouse_prop.gd" id="blocker"]
+
+[sub_resource type="RectangleShape2D" id="rack"]
+size = Vector2(62, 180)
+
+[sub_resource type="RectangleShape2D" id="short_rack"]
+size = Vector2(62, 158)
+
+[sub_resource type="RectangleShape2D" id="pallet"]
+size = Vector2(72, 68)
+
+[sub_resource type="RectangleShape2D" id="crate"]
+size = Vector2(54, 54)
+
+[sub_resource type="CircleShape2D" id="drum"]
+radius = 23.0
+
+[node name="Warehouse" type="Node2D"]
+metadata/zone_name = "Storage 03"
+metadata/cells = PackedInt32Array(70, 71, 72, 81, 82, 83)
+metadata/bounds = Rect2(-480, 160, 960, 640)
+
+[node name="FloorBayPaint" type="Sprite2D" parent="."]
+z_index = -15
+position = Vector2(0, 480)
+texture = ExtResource("paint")
+
+[node name="StorageStencil" type="Label" parent="."]
+z_index = -14
+modulate = Color(0.58, 0.55, 0.39, 0.35)
+offset_left = -250.0
+offset_top = 190.0
+offset_right = -50.0
+offset_bottom = 216.0
+theme_override_font_sizes/font_size = 17
+text = "С К Л А Д  /  0 3"
+horizontal_alignment = 1
+
+[node name="StorageStencilSouth" type="Label" parent="."]
+z_index = -14
+modulate = Color(0.58, 0.55, 0.39, 0.28)
+offset_left = -160.0
+offset_top = 760.0
+offset_right = 40.0
+offset_bottom = 786.0
+theme_override_font_sizes/font_size = 14
+text = "СКЛАД  03   →"
+horizontal_alignment = 1
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="WestRackA" type="StaticBody2D" parent="Props" groups=["vision_blockers", "warehouse_props"]]
+z_index = 90
+position = Vector2(-429, 280)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("blocker")
+
+[node name="Collision" type="CollisionShape2D" parent="Props/WestRackA"]
+shape = SubResource("short_rack")
+
+[node name="Surface" type="Sprite2D" parent="Props/WestRackA"]
+z_index = 101
+z_as_relative = false
+scale = Vector2(1, 0.86)
+texture = ExtResource("rack")
+
+[node name="WestRackB" type="StaticBody2D" parent="Props" groups=["vision_blockers", "warehouse_props"]]
+z_index = 90
+position = Vector2(-429, 640)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("blocker")
+
+[node name="Collision" type="CollisionShape2D" parent="Props/WestRackB"]
+shape = SubResource("rack")
+
+[node name="Surface" type="Sprite2D" parent="Props/WestRackB"]
+z_index = 101
+z_as_relative = false
+scale = Vector2(1, 0.96)
+texture = ExtResource("rack")
+
+[node name="PartitionRackWest" type="StaticBody2D" parent="Props" groups=["vision_blockers", "warehouse_props"]]
+z_index = 90
+position = Vector2(109, 640)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("blocker")
+
+[node name="Collision" type="CollisionShape2D" parent="Props/PartitionRackWest"]
+shape = SubResource("rack")
+
+[node name="Surface" type="Sprite2D" parent="Props/PartitionRackWest"]
+z_index = 101
+z_as_relative = false
+scale = Vector2(1, 0.96)
+texture = ExtResource("rack")
+
+[node name="PartitionRackEast" type="StaticBody2D" parent="Props" groups=["vision_blockers", "warehouse_props"]]
+z_index = 90
+position = Vector2(211, 640)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("blocker")
+
+[node name="Collision" type="CollisionShape2D" parent="Props/PartitionRackEast"]
+shape = SubResource("rack")
+
+[node name="Surface" type="Sprite2D" parent="Props/PartitionRackEast"]
+z_index = 101
+z_as_relative = false
+scale = Vector2(1, 0.96)
+texture = ExtResource("rack")
+
+[node name="EastRack" type="StaticBody2D" parent="Props" groups=["vision_blockers", "warehouse_props"]]
+z_index = 90
+position = Vector2(429, 640)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("blocker")
+
+[node name="Collision" type="CollisionShape2D" parent="Props/EastRack"]
+shape = SubResource("rack")
+
+[node name="Surface" type="Sprite2D" parent="Props/EastRack"]
+z_index = 101
+z_as_relative = false
+scale = Vector2(1, 0.96)
+texture = ExtResource("rack")
+
+[node name="LoadedPalletA" type="StaticBody2D" parent="Props" groups=["vision_blockers", "warehouse_props"]]
+z_index = 90
+position = Vector2(-213, 555)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("blocker")
+
+[node name="Collision" type="CollisionShape2D" parent="Props/LoadedPalletA"]
+shape = SubResource("pallet")
+
+[node name="Surface" type="Sprite2D" parent="Props/LoadedPalletA"]
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.86, 0.88)
+texture = ExtResource("pallet")
+
+[node name="LoadedPalletB" type="StaticBody2D" parent="Props" groups=["vision_blockers", "warehouse_props"]]
+z_index = 90
+position = Vector2(223, 218)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("blocker")
+
+[node name="Collision" type="CollisionShape2D" parent="Props/LoadedPalletB"]
+shape = SubResource("pallet")
+
+[node name="Surface" type="Sprite2D" parent="Props/LoadedPalletB"]
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.86, 0.88)
+texture = ExtResource("pallet")
+
+[node name="ShippingCrateA" type="StaticBody2D" parent="Props" groups=["vision_blockers", "warehouse_props"]]
+z_index = 90
+position = Vector2(-212, 740)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("blocker")
+
+[node name="Collision" type="CollisionShape2D" parent="Props/ShippingCrateA"]
+shape = SubResource("crate")
+
+[node name="Surface" type="Sprite2D" parent="Props/ShippingCrateA"]
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.92, 0.92)
+texture = ExtResource("crate")
+
+[node name="ShippingCrateB" type="StaticBody2D" parent="Props" groups=["vision_blockers", "warehouse_props"]]
+z_index = 90
+position = Vector2(222, 437)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("blocker")
+
+[node name="Collision" type="CollisionShape2D" parent="Props/ShippingCrateB"]
+shape = SubResource("crate")
+
+[node name="Surface" type="Sprite2D" parent="Props/ShippingCrateB"]
+z_index = 101
+z_as_relative = false
+scale = Vector2(0.92, 0.92)
+texture = ExtResource("crate")
+
+[node name="SteelDrumA" type="StaticBody2D" parent="Props" groups=["vision_blockers", "warehouse_props"]]
+z_index = 90
+position = Vector2(-106, 438)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("blocker")
+
+[node name="Collision" type="CollisionShape2D" parent="Props/SteelDrumA"]
+shape = SubResource("drum")
+
+[node name="Surface" type="Sprite2D" parent="Props/SteelDrumA"]
+z_index = 101
+z_as_relative = false
+scale = Vector2(1, 1)
+texture = ExtResource("drum")
+
+[node name="SteelDrumB" type="StaticBody2D" parent="Props" groups=["vision_blockers", "warehouse_props"]]
+z_index = 90
+position = Vector2(-82, 730)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("blocker")
+
+[node name="Collision" type="CollisionShape2D" parent="Props/SteelDrumB"]
+shape = SubResource("drum")
+
+[node name="Surface" type="Sprite2D" parent="Props/SteelDrumB"]
+z_index = 101
+z_as_relative = false
+scale = Vector2(1, 1)
+texture = ExtResource("drum")
+

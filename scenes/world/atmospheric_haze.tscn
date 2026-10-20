@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/rendering/atmospheric_haze.gd" id="script"]
+[ext_resource type="Shader" path="res://shaders/atmospheric_haze.gdshader" id="composite"]
+
+[sub_resource type="ShaderMaterial" id="HazeMaterial"]
+resource_local_to_scene = true
+shader = ExtResource("composite")
+
+[node name="Haze" type="CanvasLayer"]
+layer = 2
+script = ExtResource("script")
+
+[node name="Overlay" type="ColorRect" parent="."]
+material = SubResource("HazeMaterial")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
